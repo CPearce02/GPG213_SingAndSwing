@@ -16,7 +16,12 @@ namespace Scenes
         bool isLoaded;
         private Mouse mouse;
         
-        private void Awake() => mouse = Mouse.current;
+        private void Awake()
+        {
+            mouse = Mouse.current;
+            
+            //Would be cool to get the current level from the LevelManager or GameManager or something.
+        }
 
         // This script will need some events that will be called to initiate the loading of the next section.
         // And it will be fired by a trigger area when the player enters it.
@@ -33,7 +38,6 @@ namespace Scenes
 
             SectionToLoad = Level.NextSection;
             nextSegment = SectionToLoad.SegmentPrefab;
-
         }
 
         private void Update()
