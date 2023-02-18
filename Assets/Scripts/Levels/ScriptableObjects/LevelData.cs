@@ -32,12 +32,13 @@ namespace Levels.ScriptableObjects
         
         void SetNextSection(LevelSectionData section) => NextSection = section;
         
-        public void LoadNextSection()
+        public void InstantiateNextSection()
         {
             if (NextSection != null)
             {
-                // I think I should also set the CurrentSection here after the scene loads
-                SceneManager.LoadScene(NextSection.SceneID);
+                // I need to position the next section prefab to the right of the current section prefab accounting for width of the prefab
+                // Kinda like this?
+                Instantiate(NextSection.SegmentPrefab, CurrentSection.SegmentPrefab.transform.position + new Vector3(NextSection.SegmentPrefab.transform.localScale.x, 0, 0), Quaternion.identity);
             }
         }
 
