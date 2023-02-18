@@ -18,7 +18,9 @@ namespace Scenes
         
         private void Awake() => mouse = Mouse.current;
 
-
+        // This script will need some events that will be called to initiate the loading of the next section.
+        // And it will be fired by a trigger area when the player enters it.
+        
         void Start()
         {
             if (Level == null)
