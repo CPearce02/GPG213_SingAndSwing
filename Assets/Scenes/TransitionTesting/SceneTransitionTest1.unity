@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &593755609
+--- !u!1 &1049193846
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,8 +131,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 593755611}
-  - component: {fileID: 593755610}
+  - component: {fileID: 1049193848}
+  - component: {fileID: 1049193847}
   m_Layer: 0
   m_Name: TranslateScenes
   m_TagString: Untagged
@@ -140,26 +140,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &593755610
+--- !u!114 &1049193847
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593755609}
+  m_GameObject: {fileID: 1049193846}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a787e2def0d97a4e89ae73dc64d261e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: 0
---- !u!4 &593755611
+  sceneToLoad: 2
+--- !u!4 &1049193848
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593755609}
+  m_GameObject: {fileID: 1049193846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.855844, y: 0.250488, z: 0.049904324}
   m_LocalScale: {x: 1, y: 1, z: 1}
