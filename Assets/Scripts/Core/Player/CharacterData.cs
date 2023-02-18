@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Core.Player
 {
-    [CreateAssetMenu(fileName = "FILENAME", menuName = "MENUNAME", order = 0)]
+    [CreateAssetMenu(fileName = "_Character", menuName = "Characters/New Character", order = 0)]
     public class CharacterData : ScriptableObject
     {
         [field: SerializeField] public string Name { get; private set; }

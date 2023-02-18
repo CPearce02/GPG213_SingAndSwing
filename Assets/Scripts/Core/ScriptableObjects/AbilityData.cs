@@ -2,7 +2,7 @@
 
 namespace Core.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "Ability", menuName = "New Ability", order = 0)]
+    [CreateAssetMenu(fileName = "Ability", menuName = "Abilities/New Ability", order = 0)]
     public class AbilityData : ScriptableObject
     {
         [field: SerializeField] public string Name { get; private set; }
