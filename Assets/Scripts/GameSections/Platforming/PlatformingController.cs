@@ -24,6 +24,7 @@ public class PlatformingController : MonoBehaviour
     public LayerMask ignoreLayers;
     public Vector2 groundCheckSize;
 
+    //holdingJump is used while the player is jumping, jumped is when the player has finished their jump.
     bool holdingJump = false, jumped = false;
 
     private void Start()
@@ -35,9 +36,6 @@ public class PlatformingController : MonoBehaviour
     private void Update()
     {
         OnMove();
-
-        if (grounded) CalculateJumpHeight();
-
         OnJump();
     }
 
@@ -75,23 +73,28 @@ public class PlatformingController : MonoBehaviour
         float pressing = playerInput.actions["Jump"].ReadValue<float>();
         bool isPressingJump = pressing != 0;
 
+        if (grounded) CalculateJumpHeight();
+
         if (isPressingJump && jumped == false)
         {
+            //If the player wasn't already jumping, and they are on the ground, let them call the jump function.
             if (grounded && !holdingJump) holdingJump = true;
 
             if (holdingJump) Jump();
 
             if (transform.position.y > relativeJumpHeight)
             {
-                holdingJump = false;
-                jumped = true;
+                holdingJump = false; //Stop the player from continuing their jump if they finish their jump.
+                jumped = true; //Prevent bunnyhopping.
             }
         }
-
+        
         if (!isPressingJump)
         {
+            //Stop the player from continuing their jump if they let go of the jump key.
             holdingJump = false;
 
+            //Prevent bunnyhopping
             if (grounded) jumped = false;
             else jumped = true;
         }
