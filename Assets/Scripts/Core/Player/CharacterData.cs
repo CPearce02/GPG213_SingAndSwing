@@ -11,7 +11,11 @@ namespace Core.Player
         [field: SerializeField] public int Health { get; private set; }
         [field: SerializeField] public int Mana { get; private set; }
         [field: SerializeField] public float MoveSpeed { get; private set; }
-        
+
+        [field: SerializeField] public float JumpSpeed { get; private set; }
+
+        [field: SerializeField] public float JumpHeight { get; private set; }
+
         [SerializeField] private List<AbilityData> abilities = new();
 
         public bool CanMove { get; private set; }

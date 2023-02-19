@@ -15,5 +15,7 @@ MonoBehaviour:
   <Name>k__BackingField: Warrior
   <Health>k__BackingField: 100
   <Mana>k__BackingField: 100
-  <MoveSpeed>k__BackingField: 1000
+  <MoveSpeed>k__BackingField: 2000
+  <JumpSpeed>k__BackingField: 10
+  <JumpHeight>k__BackingField: 2.5
   abilities: []
