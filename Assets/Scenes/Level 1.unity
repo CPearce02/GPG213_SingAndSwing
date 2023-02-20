@@ -2435,6 +2435,7 @@ MonoBehaviour:
   music: {fileID: 169487921}
   startPlaying: 0
   bS: {fileID: 169487919}
+  Player: {fileID: 11400000, guid: a8ecbfbc29080ad4aa0dac40d8f74010, type: 2}
   currentPlayerHealth: 100
   maxPlayerHealth: 100
   hc: {fileID: 2106083405}
@@ -4771,7 +4772,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1089761155
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5905,7 +5906,7 @@ GameObject:
   - component: {fileID: 1366646043}
   - component: {fileID: 1366646042}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5974,7 +5975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1400606659
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7800,7 +7801,6 @@ MonoBehaviour:
   enemies:
   - {fileID: 11400000, guid: 9ace75700ae90664bbb1cbe7dc07d385, type: 2}
   - {fileID: 11400000, guid: c0668efa5e55fb44ea539a56bb500249, type: 2}
-  - {fileID: 11400000, guid: f60b1adca1dd9a54bbebf6edf874edd3, type: 2}
   - {fileID: 11400000, guid: e0c3feb237453dc469884737d3bf660a, type: 2}
   - {fileID: 11400000, guid: 80b2cc23c5266b54f9d886d9f85d28d1, type: 2}
   currentEnemy: {fileID: 11400000, guid: c0668efa5e55fb44ea539a56bb500249, type: 2}

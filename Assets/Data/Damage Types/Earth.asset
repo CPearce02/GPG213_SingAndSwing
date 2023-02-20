@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8986a768ac9b48fab4ab3873bf0c3303, type: 3}
+  m_Name: Earth
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: Earth
+  <Description>k__BackingField: 
+  <Icon>k__BackingField: {fileID: 21300000, guid: 6283c40f7429cef4781b3384901652fd, type: 3}
+  <WeaknessAgainst>k__BackingField: {fileID: 11400000, guid: 8c3c58cf336f2bb47947652ee98a3993, type: 2}
+  <StrongAgainst>k__BackingField: {fileID: 11400000, guid: 5006ce766f045e84d850a2bda6f39291, type: 2}

@@ -100,11 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyToPress: 100
-  canBePressed: 0
   hitEffect: {fileID: 2618341868572916081, guid: 15570e8efeb958f4ebfd04064f0a0c60, type: 3}
   goodEffect: {fileID: 5176898141340899651, guid: 97261d8e4d9f55146b0690f752790c2f, type: 3}
   perfectEffect: {fileID: 8231950865402460511, guid: 448bdbfb78e633143b2780803174e27d, type: 3}
-  nT: 2
+  noteDamageType: {fileID: 11400000, guid: ca5dc4a2e4862ec47af93bef06d77152, type: 2}
 --- !u!50 &2067141401683008072
 Rigidbody2D:
   serializedVersion: 4

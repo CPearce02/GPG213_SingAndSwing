@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5804370677980336002}
   m_Layer: 0
   m_Name: EnemyAttack
-  m_TagString: Note
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: be14656ff69071942b1403a77b537007, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 80d11c419c78c16468619feca6ec9fcf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -121,12 +121,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyToPress: 32
-  canBePressed: 0
-  effectSpawn: {fileID: 0}
   hitEffect: {fileID: 0}
   goodEffect: {fileID: 0}
   perfectEffect: {fileID: 0}
-  nT: 6
+  noteDamageType: {fileID: 0}
 --- !u!61 &5804370677980336002
 BoxCollider2D:
   m_ObjectHideFlags: 0

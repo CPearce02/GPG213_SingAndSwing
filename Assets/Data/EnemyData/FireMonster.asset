@@ -17,5 +17,4 @@ MonoBehaviour:
   enemyAttackSprite: {fileID: 21300000, guid: 7c1c9bae919d05144989677ad23ed6c4, type: 3}
   damageAmount: 20
   healthAmount: 60
-  damageType: 0
-  damageWeak: 2
+  <DamageType>k__BackingField: {fileID: 11400000, guid: 0d64c71eff7d8684ea9718a9c64813b0, type: 2}

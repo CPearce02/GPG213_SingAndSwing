@@ -8,7 +8,7 @@ public class EffectObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, lifetime);
+        //Destroy(gameObject, lifetime);
     }
 
     // Update is called once per frame

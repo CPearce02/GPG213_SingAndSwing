@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5480598436077763464}
   - component: {fileID: 5480598436077763467}
-  - component: {fileID: 5480598436077763465}
   - component: {fileID: 5480598436077763471}
-  - component: {fileID: 8727955988702743562}
+  - component: {fileID: -2646204407952619414}
+  - component: {fileID: -8741447916627844246}
   m_Layer: 0
-  m_Name: E
+  m_Name: A
   m_TagString: Note
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5480598436077763466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.49, y: 3.5, z: 0}
+  m_LocalPosition: {x: 1, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 1367019918, guid: 6214892e3d3af1849ba521a3e99c6934, type: 3}
-  m_Color: {r: 1, g: 0.42834574, b: 0, a: 1}
+  m_Sprite: {fileID: 1045520004, guid: 6214892e3d3af1849ba521a3e99c6934, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -87,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5480598436077763465
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5480598436077763466}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.421875
 --- !u!114 &5480598436077763471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,13 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdba51f6676e3214aa57644c59115bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyToPress: 101
-  canBePressed: 0
+  keyToPress: 97
   hitEffect: {fileID: 2618341868572916081, guid: 15570e8efeb958f4ebfd04064f0a0c60, type: 3}
   goodEffect: {fileID: 5176898141340899651, guid: 97261d8e4d9f55146b0690f752790c2f, type: 3}
   perfectEffect: {fileID: 8231950865402460511, guid: 448bdbfb78e633143b2780803174e27d, type: 3}
-  nT: 5
---- !u!50 &8727955988702743562
+  noteDamageType: {fileID: 11400000, guid: 0d64c71eff7d8684ea9718a9c64813b0, type: 2}
+--- !u!50 &-2646204407952619414
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -142,3 +125,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &-8741447916627844246
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5480598436077763466}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.421875

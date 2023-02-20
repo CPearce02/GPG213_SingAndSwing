@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class EnemyManager : MonoBehaviour
 {
     //Scriptable object
@@ -48,34 +47,14 @@ public class EnemyManager : MonoBehaviour
 
         if(currentEnemyHealth <= 0)
         {
-            //ENEMY DIED
-            currentEnemyHealth = 0;
-            //update killcount
-            enemiesKilled++;
-            //increase speed
-            GameManager.instance.EnemyDied();
-            //increase health bonus
-            healthBonus += 10;
-            //increase damage bonus
-            damageBonus += 5;
-            //set to dead
-            isAlive = false;
-            sr.enabled = false;
-            //Find all attacks spawned on screen and destroy them
-            GameObject[] enemyAttacks = GameObject.FindGameObjectsWithTag("Note");
-            foreach (GameObject attack in enemyAttacks)
-            {
-                Destroy(attack);
-            }
-            //Wait then spawn
-            StartCoroutine(WaitAndSpawn());
+            EnemyDied();
         }
     }
 
     public void SpawnEnemy()
     {
         //instantiate random enemy 
-        int index = Random.Range(0, enemies.Count - 1);
+        int index = Random.Range(0, enemies.Count);
         currentEnemy = enemies[index];
         //enemies.RemoveAt(index);
         //change Enemy sprite
@@ -94,6 +73,28 @@ public class EnemyManager : MonoBehaviour
         sr.enabled = true;
     }
 
+    private void EnemyDied()
+    {
+        //ENEMY DIED
+        currentEnemyHealth = 0;
+        //update killcount
+        enemiesKilled++;
+        ////increase health bonus
+        //healthBonus += 10;
+        ////increase damage bonus
+        //damageBonus += 5;
+        //set to dead
+        isAlive = false;
+        sr.enabled = false;
+        //Find all attacks spawned on screen and destroy them
+        GameObject[] enemyAttacks = GameObject.FindGameObjectsWithTag("Attack");
+        foreach (GameObject attack in enemyAttacks)
+        {
+            Destroy(attack);
+        }
+        //Wait then spawn
+        StartCoroutine(WaitAndSpawn());
+    }
     IEnumerator WaitAndSpawn()
     {
         yield return new WaitForSeconds(spawnTime);

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Core.ScriptableObjects;
+using Core.Player;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class GameManager : MonoBehaviour
     public BeatScroller bS;
 
     [Header("Health")]
+    public CharacterData Player;
     public float currentPlayerHealth;
     public float maxPlayerHealth;
     public HealthBarController hc;
@@ -43,7 +46,7 @@ public class GameManager : MonoBehaviour
     {
         menu.SetActive(true);
         instance = this;
-        mc.UpdateHealthBar(3, currentMultiplier); ;
+        //mc.UpdateHealthBar(3, currentMultiplier); ;
     }
 
     // Update is called once per frame
@@ -70,7 +73,7 @@ public class GameManager : MonoBehaviour
         em.SpawnEnemy();
     }
 
-    public void NoteHit(NoteController nC, float damagePerNote)
+    public void NoteHit(DamageType noteDamageType, float damagePerNote)
     {
         //Debug.Log("hit");
 
@@ -79,14 +82,14 @@ public class GameManager : MonoBehaviour
 
         //Determine attack type
         //Check if the enemy is weak to the attack type 
-        if(nC.nT.ToString() == em.currentEnemy.damageWeak.ToString())
+        if (noteDamageType == em.currentEnemy.DamageType.WeaknessAgainst)
         {
             //set damage 
             currentDamage = damagePerNote * 2;
             //Debug.Log(currentDamage + "double damage");
         }
         // check if the enemy is resistant to the attack type
-        else if (nC.nT.ToString() == em.currentEnemy.damageType.ToString())
+        else if (noteDamageType == em.currentEnemy.DamageType.StrongAgainst)
         {
             currentDamage = damagePerNote / 2;
             //Debug.Log("less damage");
@@ -135,7 +138,7 @@ public class GameManager : MonoBehaviour
             }
         }
         //update multiplier bar
-        mc.UpdateHealthBar(3, currentMultiplier);
+        //mc.UpdateHealthBar(3, currentMultiplier);
     }
 
     IEnumerator HeroDied()
@@ -153,10 +156,5 @@ public class GameManager : MonoBehaviour
         //currentMultiplier = 1;
         //multiplierTracker = 0;
         //mc.UpdateHealthBar(3, currentMultiplier);
-    }
-
-    public void EnemyDied()
-    {
-        bS.beatTempo += 0.25f;
     }
 }

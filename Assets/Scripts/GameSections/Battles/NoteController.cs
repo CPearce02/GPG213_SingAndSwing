@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Core.ScriptableObjects;
 
 public class NoteController : MonoBehaviour
 {
    // public float speed;
-    Rigidbody2D rb;
+    //Rigidbody2D rb;
     public KeyCode keyToPress;
-    public bool canBePressed;
+    private bool canBePressed;
 
-    public GameObject effectSpawn;
+    private GameObject effectSpawn;
     public GameObject hitEffect, goodEffect, perfectEffect;
-    public enum NoteType {Fire, Water, Earth, Lightning, Wind, Healing, Damage}
-    public NoteType nT;
+
+    //public enum NoteType {Fire, Water, Earth, Lightning, Wind, Healing, Damage}
+    //public NoteType nT;
+
+    public DamageType noteDamageType;
 
     private void Awake()
     {
@@ -32,39 +36,42 @@ public class NoteController : MonoBehaviour
         if (Input.GetKeyDown(keyToPress))
         {
             if (canBePressed)
-            {   
+            {
                 //DETERMINE TYPE
                 //healing
-                if(nT.ToString() == "Healing")
+                if (gameObject.tag == "Healing")
                 {
                     GameManager.instance.HealHero();
+                } 
+                //enemy attack
+                else if (gameObject.tag == "Attack")
+                {
+                    Destroy(gameObject);
                 }
-                //element
-                else if (nT.ToString() != "Damage")
+                else
                 {
                     //DETERMINE THE TYPE OF HIT
                     //Normal Hit
                     if (Mathf.Abs(transform.position.x) > 0.25)
                     {
                         Debug.Log("Normal");
-                        GameManager.instance.NoteHit(GetComponent<NoteController>(), 2);
+                        GameManager.instance.NoteHit(noteDamageType, 1);
                         Instantiate(hitEffect, effectSpawn.transform.position, Quaternion.identity);
                     }
                     //Good Hit
                     else if (Mathf.Abs(transform.position.x) > 0.05F)
                     {
                         Debug.Log("Good");
-                        GameManager.instance.NoteHit(GetComponent<NoteController>(), 5);
+                        GameManager.instance.NoteHit(noteDamageType, 3);
                         Instantiate(goodEffect, effectSpawn.transform.position, Quaternion.identity);
                     }
                     //Perfect Hit
                     else
                     {
                         Debug.Log("Perfect");
-                        GameManager.instance.NoteHit(GetComponent<NoteController>(), 5);
+                        GameManager.instance.NoteHit(noteDamageType, 5);
                         Instantiate(perfectEffect, effectSpawn.transform.position, Quaternion.identity);
                     }
-                    Destroy(gameObject);
                 }
                 //enemy attack
                 Destroy(gameObject);
@@ -86,6 +93,7 @@ public class NoteController : MonoBehaviour
         if(collision.tag == "Destroyer")
         {
             //Do damage or remove multipliyer 
+            //MAYBE ONLY DO DAMAGE WHEN HIT BY THE ENEMY AND NOT WHEN THE PLAYER MISSES A NOTE - LOSE MULTIPLIER
             GameManager.instance.NoteMissed();
             Destroy(gameObject);
         }
