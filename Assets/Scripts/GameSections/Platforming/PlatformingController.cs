@@ -107,12 +107,10 @@ public class PlatformingController : MonoBehaviour
     }
 
     //Public void so it can be called in other scripts such as a jump pad.
-    public void AddJump(float additionalHeight = 0)
+    public void AddJump(float jumpHeight = 0)
     {
-        float calculatedJumpHeight = jumpSpeed + additionalHeight;
-
         rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.AddForce(transform.up * calculatedJumpHeight, ForceMode2D.Impulse);
+        rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
     }
 
     void CheckGround() => grounded = Physics2D.BoxCast(groundCheckTransform.position, groundCheckSize, 0f, Vector2.down, 0.1f, ~ignoreLayers);
