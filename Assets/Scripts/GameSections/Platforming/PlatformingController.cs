@@ -9,6 +9,7 @@ public class PlatformingController : MonoBehaviour
     float moveSpeed => playerStats.MoveSpeed;
     float jumpSpeed => playerStats.JumpSpeed;
     float jumpHeight => playerStats.JumpHeight;
+
     public float relativeJumpHeight = 0;
 
     [Range(1, 2)] public float friction;
@@ -18,14 +19,15 @@ public class PlatformingController : MonoBehaviour
     Rigidbody2D rb;
     public CharacterData playerStats;
 
-    bool grounded = false;
-
     public Transform groundCheckTransform;
     public LayerMask ignoreLayers;
     public Vector2 groundCheckSize;
 
     //holdingJump is used while the player is jumping, jumped is when the player has finished their jump.
     bool holdingJump = false, jumped = false;
+
+    bool grounded = false;
+    public bool Grounded { get => grounded; private set => grounded = value; }
 
     private void Start()
     {
@@ -49,7 +51,7 @@ public class PlatformingController : MonoBehaviour
         if(isPressingMove)
         {
             //If the player is moving in the opposite direction and presses a different key and is on the ground, reset their x velocity.
-            if (grounded)
+            if (Grounded)
             {
                 if (direction > 0 && rb.velocity.x < 0) rb.velocity = new Vector2(0, rb.velocity.y);
                 if (direction < 0 && rb.velocity.x > 0) rb.velocity = new Vector2(0, rb.velocity.y);
@@ -70,15 +72,16 @@ public class PlatformingController : MonoBehaviour
 
     void OnJump()
     {
-        float pressing = playerInput.actions["Jump"].ReadValue<float>();
+        var jump = playerInput.actions["Jump"];
+        float pressing = jump.ReadValue<float>();
         bool isPressingJump = pressing != 0;
 
-        if (grounded) CalculateJumpHeight();
+        if (Grounded) CalculateJumpHeight();
 
         if (isPressingJump && jumped == false)
         {
             //If the player wasn't already jumping, and they are on the ground, let them call the jump function.
-            if (grounded && !holdingJump) holdingJump = true;
+            if (Grounded && !holdingJump) holdingJump = true;
 
             if (holdingJump) Jump();
 
@@ -95,7 +98,7 @@ public class PlatformingController : MonoBehaviour
             holdingJump = false;
 
             //Prevent bunnyhopping
-            if (grounded) jumped = false;
+            if (Grounded) jumped = false;
             else jumped = true;
         }
     }
@@ -113,7 +116,7 @@ public class PlatformingController : MonoBehaviour
         rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
     }
 
-    void CheckGround() => grounded = Physics2D.BoxCast(groundCheckTransform.position, groundCheckSize, 0f, Vector2.down, 0.1f, ~ignoreLayers);
+    void CheckGround() => Grounded = Physics2D.BoxCast(groundCheckTransform.position, groundCheckSize, 0f, Vector2.down, 0.1f, ~ignoreLayers);
 
     void CalculateJumpHeight() => relativeJumpHeight = jumpHeight + transform.position.y;
 

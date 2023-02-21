@@ -38,7 +38,7 @@ public partial class @PlatformingControlActions : IInputActionCollection2, IDisp
                 },
                 {
                     ""name"": ""Jump"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""0797d4fa-6d2d-4769-b931-0a03d314cede"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
