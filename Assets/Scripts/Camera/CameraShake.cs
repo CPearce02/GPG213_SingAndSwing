@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Cinemachine;
 using Enums;
+using Events;
 using UnityEngine;
 
 namespace Camera
@@ -17,9 +18,9 @@ namespace Camera
             SetCameraValues(0,0, noise);
         }
 
-        private void OnEnable() => GameEvents.OnScreenShakeEvent += Shake;
+        private void OnEnable() => GameEvents.onScreenShakeEvent += Shake;
 
-        private void OnDisable() => GameEvents.OnScreenShakeEvent -= Shake;
+        private void OnDisable() => GameEvents.onScreenShakeEvent -= Shake;
     
         void Shake(Strength str, float  lengthInSeconds= .2f)
         {
