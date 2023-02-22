@@ -5,24 +5,18 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Core.ScriptableObjects;
 using Core.Player;
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
     [Header("Audio")]
     public AudioSource music;
     public bool startPlaying;
     public BeatScroller bS;
 
-    [Header("Health")]
-    public CharacterData Player;
-    public float currentPlayerHealth;
-    public float maxPlayerHealth;
-    public HealthBarController hc;
-
-    [Header("Damage")]
+    //[Header("Damage")]
     //public float damagePerNote;
-    public float currentDamage;
+    private int currentDamage;
 
     [Header("Multiplier")]
     public int currentMultiplier;
@@ -31,11 +25,7 @@ public class GameManager : MonoBehaviour
     public HealthBarController mc;
 
     [Header("UI")]
-    //public Text damageText;
     public GameObject diedText;
-    public GameObject menu;
-    public Text slayText;
-    // public Text multiplierText;
 
     [Header("Enemies")]
     public EnemyManager em;
@@ -44,7 +34,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        menu.SetActive(true);
         instance = this;
         //mc.UpdateHealthBar(3, currentMultiplier); ;
     }
@@ -52,17 +41,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentPlayerHealth >= maxPlayerHealth)
-        {
-            currentPlayerHealth = maxPlayerHealth;
-        }
-        
-        if(currentPlayerHealth <= 0)
-        {
-            currentPlayerHealth = 0;
-            slayText.text = "You slayed " + em.enemiesKilled + " creatures";
-            StartCoroutine(HeroDied());
-        }
+
     }
 
     public void StartGame()
@@ -73,31 +52,26 @@ public class GameManager : MonoBehaviour
         em.SpawnEnemy();
     }
 
-    public void NoteHit(DamageType noteDamageType, float damagePerNote)
+    public void NoteHit(DamageType noteDamageType, int damagePerNote)
     {
-        //Debug.Log("hit");
-
         //Determine Multiplier
         CalculateMultiplier();
 
         //Determine attack type
-        //Check if the enemy is weak to the attack type 
+        //Check if the enemy is weak to the attack type - DOUBLE DAMAGE
         if (noteDamageType == em.currentEnemy.DamageType.WeaknessAgainst)
         {
-            //set damage 
             currentDamage = damagePerNote * 2;
-            //Debug.Log(currentDamage + "double damage");
         }
-        // check if the enemy is resistant to the attack type
+        // check if the enemy is resistant to the attack type - HALF DAMAGE
         else if (noteDamageType == em.currentEnemy.DamageType.StrongAgainst)
         {
             currentDamage = damagePerNote / 2;
-            //Debug.Log("less damage");
         }
+        // - NORMAL DAMAGE
         else
         {
             currentDamage = damagePerNote;
-            //Debug.Log("normal damage");
         }
 
         //Damage Enemy 
@@ -110,21 +84,10 @@ public class GameManager : MonoBehaviour
     {
         //Damage Player
         Debug.Log("missed");
-        currentPlayerHealth -= em.currentEnemyDamage;
-        //update player healthbar
-        hc.UpdateHealthBar(maxPlayerHealth, currentPlayerHealth);
+        PlayersManager.instance.DamagePlayer(em.currentEnemyDamage);
         ResetMultiplier();
     }
-    
-    public void HealHero()
-    {
-        CalculateMultiplier();
-        Debug.Log("Healing");
-        currentPlayerHealth += 10;
-        hc.UpdateHealthBar(maxPlayerHealth, currentPlayerHealth);
-    }
-
-    private void CalculateMultiplier()
+    public void CalculateMultiplier()
     {
         //Determine Multiplier
         if (currentMultiplier - 1 < multiplierThresholds.Length)
@@ -138,23 +101,34 @@ public class GameManager : MonoBehaviour
             }
         }
         //update multiplier bar
-        //mc.UpdateHealthBar(3, currentMultiplier);
+        mc.UpdateHealthBar(currentMultiplier, 3);
     }
 
-    IEnumerator HeroDied()
+    //IEnumerator HeroDied()
+    //{
+    //    bS.hasStarted = false;
+    //    bS.GetComponent<AudioSource>().enabled = false;
+    //    diedText.SetActive(true);
+    //    yield return new WaitForSeconds(5);
+    //    SceneManager.LoadScene(0);
+    //}
+
+    public void PlayerDied()
     {
-        bS.hasStarted = false;
-        bS.GetComponent<AudioSource>().enabled = false;
-        diedText.SetActive(true);
-        yield return new WaitForSeconds(5);
-        SceneManager.LoadScene(0);
+        //Check to see how many lives are left 
+
+        //Reset battle 
+
+        //If no more lives left 
+        
+        //Load scene 1 
     }
 
     public void ResetMultiplier()
     {
-        //Debug.Log("Multiplier Reset");
-        //currentMultiplier = 1;
-        //multiplierTracker = 0;
-        //mc.UpdateHealthBar(3, currentMultiplier);
+        Debug.Log("Multiplier Reset");
+        currentMultiplier = 1;
+        multiplierTracker = 0;
+        mc.UpdateHealthBar(currentMultiplier, 3);
     }
 }

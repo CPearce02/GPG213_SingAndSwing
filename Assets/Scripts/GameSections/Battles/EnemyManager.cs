@@ -1,23 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 public class EnemyManager : MonoBehaviour
 {
     //Scriptable object
     public List<Enemy> enemies = new List<Enemy>();
-    //public Enemy[] enemies;
+
     public Enemy currentEnemy;
 
     public int enemiesKilled;
     //Enemy Health amount 
-    public float currentEnemyHealth;
+    public int currentEnemyHealth;
 
-    private float healthBonus;
-    private float damageBonus;
     //Enemy Damage amount 
-    public float currentEnemyDamage;
+    public int currentEnemyDamage;
 
     public bool isAlive;
+
+    private bool canSpawn = true;
 
     private SpriteRenderer sr;
 
@@ -37,17 +38,20 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
     }
 
-    public void DamageEnemy(float damage)
+    public void DamageEnemy(int damage)
     {
         currentEnemyHealth -= damage;
         //update healthbar 
-        hc.UpdateHealthBar(currentEnemy.healthAmount, currentEnemyHealth);
+        hc.UpdateHealthBar(currentEnemyHealth, currentEnemy.healthAmount);
 
-        if(currentEnemyHealth <= 0)
+        if(currentEnemyHealth <= 0 && canSpawn)
         {
+            currentEnemyHealth = 0;
             EnemyDied();
+            canSpawn = false;
         }
     }
 
@@ -56,44 +60,54 @@ public class EnemyManager : MonoBehaviour
         //instantiate random enemy 
         int index = Random.Range(0, enemies.Count);
         currentEnemy = enemies[index];
-        //enemies.RemoveAt(index);
+        enemies.RemoveAt(index);
+
         //change Enemy sprite
         sr.sprite = currentEnemy.enemySprite;
         //set health
-        currentEnemyHealth = currentEnemy.healthAmount + healthBonus;
+        currentEnemyHealth = currentEnemy.healthAmount;
         //reset healthbar;
         hc.UpdateHealthBar(currentEnemy.healthAmount, currentEnemyHealth);
         //set damage
-        currentEnemyDamage = currentEnemy.damageAmount + damageBonus;
+        currentEnemyDamage = currentEnemy.damageAmount;
         //set correct damage attack
         bs.enemyNotePb.GetComponent<SpriteRenderer>().sprite = currentEnemy.enemyAttackSprite;
-        //set enemy to alive 
+        //
         isAlive = true;
         //turn on sprite renderer
         sr.enabled = true;
+        //
+        canSpawn = true;
     }
 
     private void EnemyDied()
     {
-        //ENEMY DIED
-        currentEnemyHealth = 0;
         //update killcount
         enemiesKilled++;
-        ////increase health bonus
-        //healthBonus += 10;
-        ////increase damage bonus
-        //damageBonus += 5;
+
         //set to dead
         isAlive = false;
         sr.enabled = false;
-        //Find all attacks spawned on screen and destroy them
-        GameObject[] enemyAttacks = GameObject.FindGameObjectsWithTag("Attack");
+        //Find all attacks and notes spawned on screen and destroy them
+        GameObject[] allGameObjects = FindObjectsOfType<Transform>().Select(t => t.gameObject).ToArray();
+        GameObject[] enemyAttacks = allGameObjects.Where(go => go.CompareTag("Attack") || go.CompareTag("Note")).ToArray();
         foreach (GameObject attack in enemyAttacks)
         {
             Destroy(attack);
         }
-        //Wait then spawn
-        StartCoroutine(WaitAndSpawn());
+
+        //Check to see how many enemies left 
+        if (enemies.Count == 0)
+        {
+            //end battle sequence
+            Debug.Log("LEVEL FINSIHED");
+        }
+        else 
+        {
+            //Wait then spawn
+            StartCoroutine(WaitAndSpawn());
+        }
+
     }
     IEnumerator WaitAndSpawn()
     {

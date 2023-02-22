@@ -9,9 +9,9 @@ public class Enemy : ScriptableObject
     public Sprite enemySprite;
     public Sprite enemyAttackSprite;
 
-    public float damageAmount;
+    public int damageAmount;
 
-    public float healthAmount;
+    public int healthAmount;
 
     // TODO: This is good, I want to refactor these to use ScriptableObjects instead of enums because we can have more than 5 types of damage
     // and we can have more than 5 weaknesses. I want to make a DamageType ScriptableObject that has a name and a weakness.

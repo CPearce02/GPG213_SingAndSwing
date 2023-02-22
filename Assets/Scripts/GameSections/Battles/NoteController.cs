@@ -2,26 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Core.ScriptableObjects;
+using Core.Player;
 
 public class NoteController : MonoBehaviour
 {
-   // public float speed;
-    //Rigidbody2D rb;
     public KeyCode keyToPress;
     private bool canBePressed;
 
     private GameObject effectSpawn;
     public GameObject hitEffect, goodEffect, perfectEffect;
 
-    //public enum NoteType {Fire, Water, Earth, Lightning, Wind, Healing, Damage}
-    //public NoteType nT;
-
     public DamageType noteDamageType;
 
-    private void Awake()
-    {
-        //rb = GetComponent<Rigidbody2D>();
-    }
     // Start is called before the first frame update
     void Start()
     {
@@ -31,17 +23,15 @@ public class NoteController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //rb.velocity = new Vector2(-speed, 0);
-
         if (Input.GetKeyDown(keyToPress))
         {
             if (canBePressed)
             {
-                //DETERMINE TYPE
+                //DETERMINE NOTE TYPE
                 //healing
                 if (gameObject.tag == "Healing")
                 {
-                    GameManager.instance.HealHero();
+                    PlayersManager.instance.HealPlayer();
                 } 
                 //enemy attack
                 else if (gameObject.tag == "Attack")
@@ -50,7 +40,7 @@ public class NoteController : MonoBehaviour
                 }
                 else
                 {
-                    //DETERMINE THE TYPE OF HIT
+                    //DETERMINE HOW ACCURATE THE HIT IS
                     //Normal Hit
                     if (Mathf.Abs(transform.position.x) > 0.25)
                     {
@@ -73,12 +63,8 @@ public class NoteController : MonoBehaviour
                         Instantiate(perfectEffect, effectSpawn.transform.position, Quaternion.identity);
                     }
                 }
-                //enemy attack
+
                 Destroy(gameObject);
-            }
-            else
-            {
-                GameManager.instance.ResetMultiplier();
             }
         }
     }
@@ -93,7 +79,6 @@ public class NoteController : MonoBehaviour
         if(collision.tag == "Destroyer")
         {
             //Do damage or remove multipliyer 
-            //MAYBE ONLY DO DAMAGE WHEN HIT BY THE ENEMY AND NOT WHEN THE PLAYER MISSES A NOTE - LOSE MULTIPLIER
             GameManager.instance.NoteMissed();
             Destroy(gameObject);
         }

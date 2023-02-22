@@ -10,7 +10,7 @@ public class HealthBarController : MonoBehaviour
     private float reduceSpeed = 2;
     private float target = 1;
 
-    public void UpdateHealthBar(float maxHealth, float currentHealth)
+    public void UpdateHealthBar(float currentHealth, float maxHealth)
     {
         target = currentHealth / maxHealth;
     }
