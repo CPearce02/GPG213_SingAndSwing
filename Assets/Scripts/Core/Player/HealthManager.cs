@@ -9,6 +9,8 @@ public class HealthManager : MonoBehaviour
     public CharacterData playerStats;
     Vector2 respawnPosition;
 
+    public Vector2 RespawnPosition { get => respawnPosition; set => respawnPosition = value; }
+
     void Awake()
     {
         health = playerStats.Health;

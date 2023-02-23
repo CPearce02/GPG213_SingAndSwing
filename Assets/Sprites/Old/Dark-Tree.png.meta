@@ -113,6 +113,30 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -3844,10 +3868,10 @@ TextureImporter:
       Dark-Tree_14: -1068851379
       Dark-Tree_60: -917628106
       Dark-Tree_36: -719380515
-      Dark-Tree_69: -1709219639
-      Dark-Tree_173: -2050332594
-      Dark-Tree_115: -84088493
       Dark-Tree_46: -1604017152
+      Dark-Tree_69: -1709219639
+      Dark-Tree_115: -84088493
+      Dark-Tree_173: -2050332594
       Dark-Tree_175: 1552393213
       Dark-Tree_22: -943215800
       Dark-Tree_136: 548720450

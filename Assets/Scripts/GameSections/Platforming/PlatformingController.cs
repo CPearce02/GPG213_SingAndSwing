@@ -20,15 +20,17 @@ public class PlatformingController : MonoBehaviour
     public CharacterData playerStats;
 
     public Transform groundCheckTransform;
+    public Transform roofCheckTransform;
     public LayerMask ignoreLayers;
     public Vector2 groundCheckSize;
 
     //holdingJump is used while the player is jumping, jumped is when the player has finished their jump.
     bool holdingJump = false, jumped = false;
 
-    bool grounded = false, findGround = false;
+    bool grounded = false, findGround = false, touchingRoof = false;
     public bool Grounded { get => grounded; private set => grounded = value; }
     public bool FindGround { get => findGround; private set => findGround = value; }
+    public bool TouchingRoof { get => touchingRoof; private set => touchingRoof = value; }
 
 
     private void Start()
@@ -42,7 +44,8 @@ public class PlatformingController : MonoBehaviour
         OnMove();
         OnJump();
 
-        FindingGround();
+        FindingGround(); //Different to CheckGround(), because it checks further down and CheckGround() only activates when the player is colliding with something.
+        CheckRoof();
     }
 
     void OnMove()
@@ -89,7 +92,7 @@ public class PlatformingController : MonoBehaviour
 
             if (holdingJump) Jump();
 
-            if (transform.position.y > relativeJumpHeight)
+            if (transform.position.y > relativeJumpHeight || TouchingRoof)
             {
                 holdingJump = false; //Stop the player from continuing their jump if they finish their jump.
                 jumped = true; //Prevent bunnyhopping.
@@ -120,6 +123,7 @@ public class PlatformingController : MonoBehaviour
         rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
     }
 
+    void CheckRoof() => TouchingRoof = Physics2D.BoxCast(roofCheckTransform.position, groundCheckSize, 0f, Vector2.up, 0.1f, ~ignoreLayers);
     void CheckGround() => Grounded = Physics2D.BoxCast(groundCheckTransform.position, groundCheckSize, 0f, Vector2.down, 0.1f, ~ignoreLayers);
     void FindingGround() => findGround = Physics2D.BoxCast(groundCheckTransform.position, groundCheckSize, 0f, Vector2.down, 1f, ~ignoreLayers);
 
