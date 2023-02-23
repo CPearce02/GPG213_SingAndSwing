@@ -15,6 +15,10 @@ MonoBehaviour:
   <Name>k__BackingField: Healing
   <Description>k__BackingField: 
   <Icon>k__BackingField: {fileID: 21300000, guid: 2be4489fb2bd97b4eb65e354feae6035, type: 3}
+  <BaseDamage>k__BackingField: 10
   <NotePrefab>k__BackingField: {fileID: 5480598436077763466, guid: 677379d9f2039d24591c7378f3e198b4, type: 3}
   <WeaknessAgainst>k__BackingField: {fileID: 0}
   <StrongAgainst>k__BackingField: {fileID: 0}
+  <Combination>k__BackingField:
+  - {fileID: 11400000, guid: ca5dc4a2e4862ec47af93bef06d77152, type: 2}
+  - {fileID: 11400000, guid: 5006ce766f045e84d850a2bda6f39291, type: 2}

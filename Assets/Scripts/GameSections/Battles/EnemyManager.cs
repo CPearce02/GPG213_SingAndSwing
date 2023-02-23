@@ -88,19 +88,14 @@ public class EnemyManager : MonoBehaviour
         //set to dead
         isAlive = false;
         sr.enabled = false;
-        //Find all attacks and notes spawned on screen and destroy them
-        GameObject[] allGameObjects = FindObjectsOfType<Transform>().Select(t => t.gameObject).ToArray();
-        GameObject[] enemyAttacks = allGameObjects.Where(go => go.CompareTag("Attack") || go.CompareTag("Note")).ToArray();
-        foreach (GameObject attack in enemyAttacks)
-        {
-            Destroy(attack);
-        }
+
+        GameManager.instance.ClearScreen();
 
         //Check to see how many enemies left 
         if (enemies.Count == 0)
         {
             //end battle sequence
-            Debug.Log("LEVEL FINSIHED");
+            GameManager.instance.BattleComplete();
         }
         else 
         {
@@ -114,4 +109,5 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(spawnTime);
         SpawnEnemy();
     }
+
 }

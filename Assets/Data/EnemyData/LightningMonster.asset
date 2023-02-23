@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: LightningMonster
   m_EditorClassIdentifier: 
   enemyName: LightningMonster
-  enemySprite: {fileID: 21300000, guid: 5c2dc67ffe9545940b12f0c135ea92a8, type: 3}
-  enemyAttackSprite: {fileID: 21300000, guid: be14656ff69071942b1403a77b537007, type: 3}
+  enemySprite: {fileID: 21300000, guid: f479e5d7d35420344a545f34114c9156, type: 3}
+  enemyAttackSprite: {fileID: 21300000, guid: bf6c37f2d5b7e1c49b9e620579cfb734, type: 3}
   damageAmount: 25
   healthAmount: 90
-  damageType: 3
-  damageWeak: 1
+  <DamageType>k__BackingField: {fileID: 11400000, guid: 9a7b61c95935ec447b09d28a71cd80a2, type: 2}

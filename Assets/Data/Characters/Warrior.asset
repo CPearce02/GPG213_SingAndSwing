@@ -15,12 +15,14 @@ MonoBehaviour:
   <Name>k__BackingField: Warrior
   <Health>k__BackingField: 100
   <MaxHealth>k__BackingField: 100
+  <Lives>k__BackingField: 2
   <Mana>k__BackingField: 100
   <MoveSpeed>k__BackingField: 2000
   <JumpSpeed>k__BackingField: 10
   <JumpHeight>k__BackingField: 2.5
-  abilities:
-  - {fileID: 11400000, guid: c91fcf1e9e98f344b90665be5a3a6db5, type: 2}
-  - {fileID: 11400000, guid: c69edd2838e83e24181c057dc4001aa6, type: 2}
-  - {fileID: 11400000, guid: 1c6b316338551ab4f9007e8632e28dcb, type: 2}
-  - {fileID: 11400000, guid: f8deb49968c0f4247bc32e2990a1e257, type: 2}
+  abilities: []
+  combinationsUnlocked:
+  - {fileID: 11400000, guid: 96335181629046a4594134b42e5a0ffd, type: 2}
+  - {fileID: 11400000, guid: 25b257dbaf8df934eae3f0d25171c487, type: 2}
+  - {fileID: 11400000, guid: 9a7b61c95935ec447b09d28a71cd80a2, type: 2}
+  - {fileID: 11400000, guid: 83b09a181f8fd9049bd5a951cb36921d, type: 2}

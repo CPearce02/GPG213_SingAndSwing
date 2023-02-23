@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Lava
   <Description>k__BackingField: 
-  <Icon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: 21300000, guid: edf91d1add841a942a5a6e7c9283dd82, type: 3}
+  <BaseDamage>k__BackingField: 2
   <NotePrefab>k__BackingField: {fileID: 5480598436077763466, guid: 1af302edb45aaa44d9564ee6e5636967, type: 3}
-  <WeaknessAgainst>k__BackingField: {fileID: 0}
-  <StrongAgainst>k__BackingField: {fileID: 0}
+  <WeaknessAgainst>k__BackingField: {fileID: 11400000, guid: 83b09a181f8fd9049bd5a951cb36921d, type: 2}
+  <StrongAgainst>k__BackingField: {fileID: 11400000, guid: 5006ce766f045e84d850a2bda6f39291, type: 2}
+  <Combination>k__BackingField:
+  - {fileID: 11400000, guid: ca5dc4a2e4862ec47af93bef06d77152, type: 2}
+  - {fileID: 11400000, guid: 0d64c71eff7d8684ea9718a9c64813b0, type: 2}

@@ -36,7 +36,7 @@ public class NoteController : MonoBehaviour
                 //enemy attack
                 else if (noteDamageType.name == "Healing")
                 {
-                    PlayersManager.instance.HealPlayer();
+                    PlayersManager.instance.HealPlayer(noteDamageType.BaseDamage);
                 }
                 else
                 {
@@ -45,21 +45,21 @@ public class NoteController : MonoBehaviour
                     if (Mathf.Abs(transform.position.x) > 0.25)
                     {
                         Debug.Log("Normal");
-                        GameManager.instance.NoteHit(noteDamageType, 1);
+                        GameManager.instance.NoteHit(noteDamageType, noteDamageType.BaseDamage);
                         Instantiate(hitEffect, effectSpawn.transform.position, Quaternion.identity);
                     }
                     //Good Hit
                     else if (Mathf.Abs(transform.position.x) > 0.05F)
                     {
                         Debug.Log("Good");
-                        GameManager.instance.NoteHit(noteDamageType, 3);
+                        GameManager.instance.NoteHit(noteDamageType, noteDamageType.BaseDamage + 2);
                         Instantiate(goodEffect, effectSpawn.transform.position, Quaternion.identity);
                     }
                     //Perfect Hit
                     else
                     {
                         Debug.Log("Perfect");
-                        GameManager.instance.NoteHit(noteDamageType, 5);
+                        GameManager.instance.NoteHit(noteDamageType, noteDamageType.BaseDamage + 4);
                         Instantiate(perfectEffect, effectSpawn.transform.position, Quaternion.identity);
                     }
                 }

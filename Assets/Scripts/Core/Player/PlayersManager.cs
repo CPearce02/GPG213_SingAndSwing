@@ -16,18 +16,20 @@ namespace Core.Player
 
         private void Update()
         { 
+            //IF PLAYER DIED
             if (warrior.Health <= 0)
-            {
-                //Player Died
+            { 
+                warrior.ChangeLives(-1);
+                HealPlayer(100);
                 GameManager.instance.PlayerDied();
             }
         }
 
-        public void HealPlayer()
+        public void HealPlayer(int healingAmount)
         {
             Debug.Log("Healing");
             GameManager.instance.CalculateMultiplier();
-            warrior.ChangeHealth(10);
+            warrior.ChangeHealth(healingAmount);
             hc.UpdateHealthBar(warrior.Health, warrior.MaxHealth);
         }
 

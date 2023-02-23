@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using Core.ScriptableObjects;
 using Core.Player;
 using Events;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -37,7 +38,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        //mc.UpdateHealthBar(3, currentMultiplier); ;
+        mc.UpdateHealthBar(currentMultiplier, 3);
+        StartCoroutine("BattleStart");
     }
 
     // Update is called once per frame
@@ -61,11 +63,10 @@ public class GameManager : MonoBehaviour
         GameEvents.onSendCameraEvent?.Invoke(Camera.main);
     }
 
-    public void StartGame()
+    public void StartBattle()
     {
         startPlaying = true;
         bS.hasStarted = true;
-        music.Play();
         em.SpawnEnemy();
     }
 
@@ -81,7 +82,7 @@ public class GameManager : MonoBehaviour
             currentDamage = damagePerNote * 2;
         }
         // check if the enemy is resistant to the attack type - HALF DAMAGE
-        else if (noteDamageType == em.currentEnemy.DamageType.StrongAgainst)
+        else if (noteDamageType == em.currentEnemy.DamageType.StrongAgainst || noteDamageType == em.currentEnemy.DamageType)
         {
             currentDamage = damagePerNote / 2;
         }
@@ -121,24 +122,25 @@ public class GameManager : MonoBehaviour
         mc.UpdateHealthBar(currentMultiplier, 3);
     }
 
-    //IEnumerator HeroDied()
-    //{
-    //    bS.hasStarted = false;
-    //    bS.GetComponent<AudioSource>().enabled = false;
-    //    diedText.SetActive(true);
-    //    yield return new WaitForSeconds(5);
-    //    SceneManager.LoadScene(0);
-    //}
-
     public void PlayerDied()
     {
+        ClearScreen();
+        music.Stop();
+        startPlaying = false;
+        bS.hasStarted = false;
+
+
         //Check to see how many lives are left 
-
-        //Reset battle 
-
-        //If no more lives left 
-        
-        //Load scene 1 
+        if (PlayersManager.instance.warrior.Lives < 0)
+        {
+            //Send player to level 1 
+            StartCoroutine("RestartLevel");
+        }
+        else
+        {
+            //ResetBattle
+            StartCoroutine("RestartBattle");
+        } 
     }
 
     public void ResetMultiplier()
@@ -149,8 +151,43 @@ public class GameManager : MonoBehaviour
         mc.UpdateHealthBar(currentMultiplier, 3);
     }
 
-    public void LevelComplete()
+    IEnumerator BattleStart()
     {
+        music.Play();
+        yield return new WaitForSeconds(2);
+        StartBattle();
+    }
+    public void BattleComplete()
+    {
+        //move on to next platforming section
+        //currently just loads the menu
+        SceneManager.LoadScene(0);
+    }
 
+    IEnumerator RestartBattle()
+    {
+        diedText.GetComponent<Text>().text = "YOU DIED! Remaining Lives: " + PlayersManager.instance.warrior.Lives;
+        diedText.SetActive(true);
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene(2);
+    }
+    IEnumerator RestartLevel()
+    {
+        diedText.GetComponent<Text>().text = "No Remaining Lives";
+        diedText.SetActive(true);
+        PlayersManager.instance.warrior.ChangeLives(4);
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene(1);
+    }
+
+    public void ClearScreen()
+    {
+        //Find all attacks and notes spawned on screen and destroy them
+        GameObject[] allGameObjects = FindObjectsOfType<Transform>().Select(t => t.gameObject).ToArray();
+        GameObject[] enemyAttacks = allGameObjects.Where(go => go.CompareTag("Attack") || go.CompareTag("Note")).ToArray();
+        foreach (GameObject attack in enemyAttacks)
+        {
+            Destroy(attack);
+        }
     }
 }

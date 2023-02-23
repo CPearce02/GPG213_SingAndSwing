@@ -10,11 +10,13 @@ public class CombineElements : MonoBehaviour
     public static CombineElements instance;
     [SerializeField]  private DamageType element1, element2;
     public Button combinedElement;
+    private Color originalColour;
     
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
+        originalColour = GetComponent<Image>().color; 
         combinedElement.gameObject.SetActive(false);
     }
 
@@ -45,30 +47,53 @@ public class CombineElements : MonoBehaviour
 
     private void CombineTwoElements()
     {
-        foreach (AbilityData ability in PlayersManager.instance.warrior.abilities)
+        foreach (DamageType damageType in PlayersManager.instance.warrior.combinationsUnlocked)
         {
-            if (ability.DamageType[0] == element1 && ability.DamageType[1] == element2)
+            if (damageType.Combination[0] == element1 && damageType.Combination[1] == element2)
             {
-                NewCombinedElement(ability);
+                NewCombinedElement(damageType);
                 break;
             }
-            else if (ability.DamageType[0] == element2 && ability.DamageType[1] == element1)
+            else if (damageType.Combination[0] == element2 && damageType.Combination[1] == element1)
             {
-                NewCombinedElement(ability);
+                NewCombinedElement(damageType);
                 break;
             }
+            else
+            {
+                StartCoroutine(FlashColour(Color.red));
+            }
+
+            //if(ReferenceEquals(damageType.Combination[1], element1) && ReferenceEquals(damageType.Combination[2], element2))
+            //{
+            //    NewCombinedElement(damageType);
+            //    break;
+            //}
+            //else if (ReferenceEquals(damageType.Combination[1], element2) && ReferenceEquals(damageType.Combination[2], element1))
+            //{
+            //    NewCombinedElement(damageType);
+            //    break;
+            //}
         }
+        
         //reset elements
         element1 = null;
         element2 = null;
+
     }
 
-    private void NewCombinedElement(AbilityData abilityData)
+    private void NewCombinedElement(DamageType damageType)
     {
-        combinedElement.image.sprite = abilityData.Icon;
-        combinedElement.gameObject.GetComponent<NoteButtonManager>().noteToSpawn = abilityData.NotePrefab;
+        StartCoroutine(FlashColour(Color.green));
+        combinedElement.image.sprite = damageType.Icon;
+        combinedElement.gameObject.GetComponent<NoteButtonManager>().noteToSpawn = damageType.NotePrefab;
         combinedElement.gameObject.SetActive(true);
+    }
 
-        //Debug.Log(abilityData);
+    IEnumerator FlashColour(Color colourToChange)
+    {
+        GetComponent<Image>().color = colourToChange;
+        yield return new WaitForSeconds(0.25f);
+        GetComponent<Image>().color = originalColour;
     }
 }

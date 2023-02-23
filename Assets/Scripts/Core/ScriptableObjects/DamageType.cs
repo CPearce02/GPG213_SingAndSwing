@@ -8,9 +8,11 @@ namespace Core.ScriptableObjects
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField] public string Description { get; private set; }
         [field: SerializeField] public Sprite Icon { get; private set; }
+        [field: SerializeField] public int  BaseDamage { get; private set; }
         [field: SerializeField] public GameObject NotePrefab { get; private set; }
         
         [field: SerializeField] public DamageType WeaknessAgainst { get; private set; }
         [field: SerializeField] public DamageType StrongAgainst { get; private set; }
+        [field: SerializeField] public DamageType[] Combination{ get; private set; }
     }
 }

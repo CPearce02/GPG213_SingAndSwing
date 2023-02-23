@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Storm
   <Description>k__BackingField: 
-  <Icon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: 21300000, guid: cfcd7f6c7bc8c35468e59a3505a400df, type: 3}
+  <BaseDamage>k__BackingField: 2
   <NotePrefab>k__BackingField: {fileID: 5480598436077763466, guid: 8b99ddbd564c4944bb69dcdf582c3f43, type: 3}
-  <WeaknessAgainst>k__BackingField: {fileID: 0}
-  <StrongAgainst>k__BackingField: {fileID: 0}
+  <WeaknessAgainst>k__BackingField: {fileID: 11400000, guid: 5006ce766f045e84d850a2bda6f39291, type: 2}
+  <StrongAgainst>k__BackingField: {fileID: 11400000, guid: 0d64c71eff7d8684ea9718a9c64813b0, type: 2}
+  <Combination>k__BackingField:
+  - {fileID: 11400000, guid: 8c3c58cf336f2bb47947652ee98a3993, type: 2}
+  - {fileID: 11400000, guid: 5006ce766f045e84d850a2bda6f39291, type: 2}
