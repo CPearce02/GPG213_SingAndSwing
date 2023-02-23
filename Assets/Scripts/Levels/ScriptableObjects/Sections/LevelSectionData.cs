@@ -7,6 +7,6 @@ namespace Levels.ScriptableObjects.Sections
         [field: SerializeField] public string SectionName { get; private set; }
         [field: SerializeField] public string SectionDescription { get; private set; }
         [field: SerializeField] public GameObject SegmentPrefab { get; private set; }
-        [field: SerializeField] public UnityEditor.SceneAsset scene { get; private set; }
+        [field: SerializeField] public UnityEditor.SceneAsset Scene { get; private set; }
     }
 }
