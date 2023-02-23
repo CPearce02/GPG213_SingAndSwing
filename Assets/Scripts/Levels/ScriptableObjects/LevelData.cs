@@ -46,11 +46,12 @@ namespace Levels.ScriptableObjects
 
         private void SetCurrentSection(LevelSectionData section = null)
         {
-            if (currentSection == null || section == null)
+            if (currentSection == null)
             {
                 CurrentSection = FindCurrentSection();
             } 
-            else {
+            else if(section != null)
+            {
                 CurrentSection = section;
             }
             

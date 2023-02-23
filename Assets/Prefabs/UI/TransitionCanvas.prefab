@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8226912907385199645}
   - component: {fileID: 8226912907385199644}
   - component: {fileID: 8226912907385199647}
+  - component: {fileID: 1148821670}
   m_Layer: 5
   m_Name: TransitionCanvas
   m_TagString: Untagged
@@ -49,10 +50,10 @@ Canvas:
   m_GameObject: {fileID: 8226912907385199646}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -100,7 +101,19 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
+--- !u!114 &1148821670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8226912907385199646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe16c7775f038e94e994394f23b2d753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8226912908235043143
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: ea177412641f0a4489c8a6a17b87d071, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -193,9 +206,9 @@ MonoBehaviour:
   level: {fileID: 11400000, guid: 57f00e80fd11f4c4f8902e3f727c9fc3, type: 2}
   isTransitioning: 0
   sprite: {fileID: 0}
-  transitionImage: {fileID: 0}
-  transitionSpeed: 3
-  transitionProgress: 1
+  transitionImage: {fileID: 21300000, guid: 2b2db6440e0f6464cbbe7f94107aec44, type: 3}
+  transitionSpeed: 1
+  transitionProgress: 0
   transitionColor: {r: 0.21176471, g: 0.2, b: 0.20784314, a: 0}
   nextTransitionState: 0
-  testingControls: 1
+  testingControls: 0

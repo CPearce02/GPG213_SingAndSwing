@@ -251,7 +251,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &415559599
 MonoBehaviour:
@@ -366,7 +366,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1360915573
 MonoBehaviour:
@@ -480,7 +480,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1898019915
 GameObject:
@@ -551,7 +551,7 @@ Transform:
   m_Children:
   - {fileID: 186054545}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4063296371137503633
 PrefabInstance:
@@ -566,7 +566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4063296371203422568, guid: 21e67cd5abec4cb46b3fbfc258ad9c65, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4063296371203422568, guid: 21e67cd5abec4cb46b3fbfc258ad9c65, type: 3}
       propertyPath: m_LocalPosition.x
@@ -619,7 +619,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6640643427573156753, guid: 1f4d5a753cda8c64fa70bdb8f2cc8073, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6640643427573156753, guid: 1f4d5a753cda8c64fa70bdb8f2cc8073, type: 3}
       propertyPath: m_LocalPosition.x
@@ -684,7 +684,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8226912907385199642, guid: 3549d698f3e39e142a8f3c129bc0b92c, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8226912907385199642, guid: 3549d698f3e39e142a8f3c129bc0b92c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -762,49 +762,9 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 415559597}
-    - target: {fileID: 8226912907385199645, guid: 3549d698f3e39e142a8f3c129bc0b92c, type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8226912907385199645, guid: 3549d698f3e39e142a8f3c129bc0b92c, type: 3}
-      propertyPath: m_PixelPerfect
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8226912907385199645, guid: 3549d698f3e39e142a8f3c129bc0b92c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8226912907385199646, guid: 3549d698f3e39e142a8f3c129bc0b92c, type: 3}
       propertyPath: m_Name
       value: TransitionCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 8226912907385199647, guid: 3549d698f3e39e142a8f3c129bc0b92c, type: 3}
-      propertyPath: m_BlockingMask.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8226912908235043139, guid: 3549d698f3e39e142a8f3c129bc0b92c, type: 3}
-      propertyPath: testingControls
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8226912908235043139, guid: 3549d698f3e39e142a8f3c129bc0b92c, type: 3}
-      propertyPath: transitionImage
-      value: 
-      objectReference: {fileID: 21300000, guid: 2b2db6440e0f6464cbbe7f94107aec44, type: 3}
-    - target: {fileID: 8226912908235043139, guid: 3549d698f3e39e142a8f3c129bc0b92c, type: 3}
-      propertyPath: transitionSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8226912908235043139, guid: 3549d698f3e39e142a8f3c129bc0b92c, type: 3}
-      propertyPath: transitionProgress
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8226912908235043141, guid: 3549d698f3e39e142a8f3c129bc0b92c, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8226912908235043141, guid: 3549d698f3e39e142a8f3c129bc0b92c, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3549d698f3e39e142a8f3c129bc0b92c, type: 3}
