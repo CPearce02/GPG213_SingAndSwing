@@ -787,6 +787,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8226912908235043139, guid: 3549d698f3e39e142a8f3c129bc0b92c, type: 3}
+      propertyPath: transitionImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 2b2db6440e0f6464cbbe7f94107aec44, type: 3}
+    - target: {fileID: 8226912908235043139, guid: 3549d698f3e39e142a8f3c129bc0b92c, type: 3}
       propertyPath: transitionSpeed
       value: 1
       objectReference: {fileID: 0}

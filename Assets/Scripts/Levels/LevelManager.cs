@@ -15,6 +15,7 @@ namespace Levels
         {
             GameEvents.onLevelLoadEvent += LoadLevel;
         }
+        
         private void OnDisable()
         {
             GameEvents.onLevelLoadEvent -= LoadLevel;

@@ -5,11 +5,12 @@ namespace Scenes
 {
     public class SceneTransitionTrigger : MonoBehaviour
     {
+
         private void OnTriggerEnter2D(Collider2D col)
         {
-            var isPlayer = col.TryGetComponent(out PlatformingController player);
+            col.TryGetComponent(out PlatformingController player);
             
-            if(isPlayer)
+            if(player)
                 GameEvents.onSceneTransitionOutEvent?.Invoke();
         }
     }
