@@ -26,8 +26,10 @@ public class PlatformingController : MonoBehaviour
     //holdingJump is used while the player is jumping, jumped is when the player has finished their jump.
     bool holdingJump = false, jumped = false;
 
-    bool grounded = false;
+    bool grounded = false, findGround = false;
     public bool Grounded { get => grounded; private set => grounded = value; }
+    public bool FindGround { get => findGround; private set => findGround = value; }
+
 
     private void Start()
     {
@@ -39,6 +41,8 @@ public class PlatformingController : MonoBehaviour
     {
         OnMove();
         OnJump();
+
+        FindingGround();
     }
 
     void OnMove()
@@ -117,11 +121,14 @@ public class PlatformingController : MonoBehaviour
     }
 
     void CheckGround() => Grounded = Physics2D.BoxCast(groundCheckTransform.position, groundCheckSize, 0f, Vector2.down, 0.1f, ~ignoreLayers);
+    void FindingGround() => findGround = Physics2D.BoxCast(groundCheckTransform.position, groundCheckSize, 0f, Vector2.down, 1f, ~ignoreLayers);
 
     void CalculateJumpHeight() => relativeJumpHeight = jumpHeight + transform.position.y;
 
     //Check ground only when the player is touching something.
     private void OnCollisionStay2D(Collision2D collision) => CheckGround();
+
+    private void OnCollisionExit2D(Collision2D collision) => Grounded = false;
 
     private void OnDrawGizmosSelected()
     {
