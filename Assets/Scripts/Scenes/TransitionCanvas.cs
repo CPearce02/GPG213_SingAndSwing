@@ -1,3 +1,4 @@
+using Events;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,15 +12,15 @@ namespace Scenes
 
         private void OnEnable()
         {
-            SceneManager.sceneLoaded += GetMainCamera;
+            GameEvents.onSendCameraEvent += GetMainCamera;
         }
 
         private void OnDisable()
         {
-            SceneManager.sceneLoaded -= GetMainCamera;
+            GameEvents.onSendCameraEvent -= GetMainCamera;
         }
 
-        private void GetMainCamera(Scene arg0, LoadSceneMode arg1)
+        private void GetMainCamera(Camera cam)
         {
             if (_cam != null) return;
             

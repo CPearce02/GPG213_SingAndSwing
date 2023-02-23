@@ -1,4 +1,5 @@
 using Enums;
+using UnityEngine;
 
 namespace Events
 {
@@ -8,11 +9,12 @@ namespace Events
         public delegate void SceneTransitionOut();
         public delegate void SceneTransitionIn();
         public delegate void LoadLevel();
+        public delegate void SendCamera(Camera cam);
         
         public static ScreenShake onScreenShakeEvent;
         public static SceneTransitionOut onSceneTransitionOutEvent;
         public static SceneTransitionIn onSceneTransitionInEvent;
-        
+        public static SendCamera onSendCameraEvent;
         public static LoadLevel onLevelLoadEvent;
     }
 }

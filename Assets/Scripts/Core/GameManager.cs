@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Core.ScriptableObjects;
 using Core.Player;
+using Events;
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -42,6 +44,21 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        GameEvents.onSendCameraEvent?.Invoke(Camera.main);
     }
 
     public void StartGame()
