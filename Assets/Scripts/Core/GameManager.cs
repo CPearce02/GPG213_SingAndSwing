@@ -131,4 +131,9 @@ public class GameManager : MonoBehaviour
         multiplierTracker = 0;
         mc.UpdateHealthBar(currentMultiplier, 3);
     }
+
+    public void LevelComplete()
+    {
+
+    }
 }
