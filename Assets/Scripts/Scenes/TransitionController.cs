@@ -123,6 +123,8 @@ namespace Scenes
                 yield return null;
             }
             isTransitioning = false;
+            //We need to load the next level
+            GameEvents.onLevelLoadEvent?.Invoke();
             nextTransitionState = TransitionState.In;
         }
         
