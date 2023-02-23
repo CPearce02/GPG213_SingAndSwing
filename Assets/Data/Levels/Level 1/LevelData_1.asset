@@ -20,5 +20,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5bbc7a99827e4444083ea16395433097, type: 2}
   - {fileID: 11400000, guid: 84b7f18654cec0840b704d5701fff9a1, type: 2}
   currentSection: {fileID: 0}
-  nextSection: {fileID: 11400000, guid: 84b7f18654cec0840b704d5701fff9a1, type: 2}
+  nextSection: {fileID: 11400000, guid: 5bbc7a99827e4444083ea16395433097, type: 2}
   levelState: 0

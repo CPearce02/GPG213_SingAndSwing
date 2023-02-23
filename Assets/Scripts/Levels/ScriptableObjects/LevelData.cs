@@ -3,6 +3,7 @@ using System.ComponentModel;
 using Enums;
 using Levels.ScriptableObjects.Sections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Levels.ScriptableObjects
 {
@@ -43,11 +44,11 @@ namespace Levels.ScriptableObjects
 
         public LevelState GetLevelState() => levelState;
 
-        public void SetCurrentSection(LevelSectionData section = null)
+        private void SetCurrentSection(LevelSectionData section = null)
         {
             if (currentSection == null || section == null)
             {
-                CurrentSection = LevelSections[0];
+                CurrentSection = FindCurrentSection();
             } 
             else {
                 CurrentSection = section;
@@ -66,12 +67,8 @@ namespace Levels.ScriptableObjects
             }
             nextSection = LevelSections[LevelSections.IndexOf(CurrentSection) + 1];
         }
-        
-        public GameObject InstantiateSection(Transform currentSectionTransform, GameObject nextSectionTransform)
-        {
-            var nextSectionInstance = Instantiate(nextSectionTransform, currentSectionTransform.transform.position + new Vector3(nextSectionTransform.transform.position.x, 0, 0), Quaternion.identity);
-            return nextSectionInstance;
-        }
+
+        LevelSectionData FindCurrentSection() => LevelSections.Find(l => l.Scene.name == SceneManager.GetActiveScene().name);
 
         #endregion
     }
