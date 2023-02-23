@@ -29,14 +29,14 @@ public class NoteController : MonoBehaviour
             {
                 //DETERMINE NOTE TYPE
                 //healing
-                if (gameObject.tag == "Healing")
-                {
-                    PlayersManager.instance.HealPlayer();
-                } 
-                //enemy attack
-                else if (gameObject.tag == "Attack")
+                if (gameObject.tag == "Attack")
                 {
                     Destroy(gameObject);
+                } 
+                //enemy attack
+                else if (noteDamageType.name == "Healing")
+                {
+                    PlayersManager.instance.HealPlayer();
                 }
                 else
                 {
