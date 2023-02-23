@@ -10,7 +10,7 @@ public class PlatformingController : MonoBehaviour
     float jumpSpeed => playerStats.JumpSpeed;
     float jumpHeight => playerStats.JumpHeight;
 
-    public float relativeJumpHeight = 0;
+    float relativeJumpHeight = 0;
 
     [Range(1, 2)] public float friction;
     public float speedLimit = 1000f;
@@ -32,6 +32,8 @@ public class PlatformingController : MonoBehaviour
     public bool FindGround { get => findGround; private set => findGround = value; }
     public bool TouchingRoof { get => touchingRoof; private set => touchingRoof = value; }
 
+    bool allowFriction = false;
+
 
     private void Start()
     {
@@ -48,6 +50,11 @@ public class PlatformingController : MonoBehaviour
         CheckRoof();
     }
 
+    private void FixedUpdate()
+    {
+        if (allowFriction) AddFriction();
+    }
+
     void OnMove()
     {
         float direction = playerInput.actions["Move"].ReadValue<float>();
@@ -57,6 +64,8 @@ public class PlatformingController : MonoBehaviour
 
         if(isPressingMove)
         {
+            allowFriction = false;
+
             //If the player is moving in the opposite direction and presses a different key and is on the ground, reset their x velocity.
             if (Grounded)
             {
@@ -67,9 +76,11 @@ public class PlatformingController : MonoBehaviour
             rb.AddForce(new Vector2(moveSpeed * direction * Time.deltaTime, 0));
         } else
         {
-            rb.velocity = new Vector2(rb.velocity.x / friction, rb.velocity.y);
+            allowFriction = true;
         }
     }
+
+    void AddFriction() => rb.velocity = new Vector2(rb.velocity.x / friction, rb.velocity.y);
 
     void CapSpeed()
     {
