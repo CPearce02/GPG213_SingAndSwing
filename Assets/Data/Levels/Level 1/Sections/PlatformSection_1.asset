@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44c326ce48264a54a946f67cce7c44b9, type: 3}
-  m_Name: TestScene2
+  m_Name: PlatformSection_1
   m_EditorClassIdentifier: 
-  <SectionName>k__BackingField: TestScene2
+  <SectionName>k__BackingField: Platform-1-1
   <SectionDescription>k__BackingField: 
-  <SegmentPrefab>k__BackingField: {fileID: 1825049449323898317, guid: 8cea256f21ad48c4780007f879b295b9, type: 3}
+  <Scene>k__BackingField: {fileID: 102900000, guid: 5e7d037547f97b646a69eeb5ffb5b3de, type: 3}
