@@ -4,7 +4,7 @@ using Enums;
 using Events;
 using UnityEngine;
 
-namespace Camera
+namespace Cameras
 {
     public class CameraShake : MonoBehaviour
     {
