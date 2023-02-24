@@ -12,19 +12,17 @@ namespace Scenes
     public class TransitionController : MonoBehaviour
     {
         [SerializeField] private LevelData level;
-        [SerializeField] private bool isTransitioning = false;
+        [SerializeField] TransitionData transitionData;
         [SerializeField] private Image sprite;
-        
+
         [Header("Transition Settings")]
         [SerializeField] Sprite transitionImage;
-        [SerializeField] private float transitionSpeed = 1f;
+        [SerializeField] private float transitionSpeed => transitionData.speed;
         [SerializeField] private float transitionProgress = 1f;
-        [SerializeField] private Color transitionColor;
         [SerializeField] TransitionState nextTransitionState;
-        
-        [Header("Testing Only")]
-        [SerializeField] bool testingControls = false;
-        
+
+        [SerializeField] public bool c { get; private set; }
+
         private static readonly int CutOff = Shader.PropertyToID("_CutOff");
         private static readonly int MainColor = Shader.PropertyToID("_MainColor");
         private static readonly int MainTex = Shader.PropertyToID("_MainTex");
@@ -33,30 +31,13 @@ namespace Scenes
 
         private void Start()
         {
-            sprite.material.SetColor(MainColor, transitionColor);
-            
-            SetStateValues();
-            if(transitionImage == null) return; 
-            
-            sprite.material.SetTexture(MainTex, transitionImage.texture);
-            
-        }
+            transitionData.material.SetColor(MainColor, transitionData.color);
 
-        private void SetStateValues()
-        {
-            switch (nextTransitionState)
-            {
-                case TransitionState.In:
-                    transitionProgress = 0;
-                    sprite.material.SetFloat(CutOff, transitionProgress - 0.1f);
-                    break;
-                case TransitionState.Out:
-                    transitionProgress = 1;
-                    sprite.material.SetFloat(CutOff, transitionProgress + 0.1f);
-                    break;
-                default:
-                    break;
-            }
+            transitionData.SetStateValues();
+
+            if (transitionImage == null) return;
+
+            transitionData.material.SetTexture(MainTex, transitionData.transitionImage.texture);
         }
 
         // The mouse controls are for testing only
@@ -82,74 +63,40 @@ namespace Scenes
         void TransitionIn()
         {
             transitionProgress = 0;
-            isTransitioning = true;
-            StartCoroutine(TransitionInCoroutine());
+            transitionData.isTransitioning = true;
+            StartCoroutine(transitionData.TransitionInCoroutine());
         }
-        
+
         void TransitionIn(Scene scene, LoadSceneMode mode)
         {
-            transitionProgress = 0;
-            isTransitioning = true;
-            StartCoroutine(TransitionInCoroutine(2f));
+            transitionData.progress = 0;
+            transitionData.isTransitioning = true;
+            StartCoroutine(transitionData.TransitionInCoroutine(2f));
         }
-    
+
         void TransitionOut()
         {
-            transitionProgress = 1f;
-            isTransitioning = true;
-            StartCoroutine(TransitionOutCoroutine());
+            transitionData.progress = 1f;
+            transitionData.isTransitioning = true;
+            StartCoroutine(transitionData.TransitionOutCoroutine());
         }
 
-        IEnumerator TransitionInCoroutine(float initialDelaySeconds = 0f)
-        {
-            yield return new WaitForSeconds(initialDelaySeconds);
-            while (transitionProgress < 1f)
-            {
-                transitionProgress += Time.deltaTime * transitionSpeed;
-                SetCutOff();
-                yield return null;
-            }
-            isTransitioning = false;
-            nextTransitionState = TransitionState.Out;
-        }
-
-
-        IEnumerator TransitionOutCoroutine()
-        {
-            while (transitionProgress > 0f)
-            {
-                transitionProgress -= Time.deltaTime * transitionSpeed;
-                SetCutOff();
-                yield return null;
-            }
-            isTransitioning = false;
-            //We need to load the next level
-            GameEvents.onLevelLoadEvent?.Invoke();
-            nextTransitionState = TransitionState.In;
-        }
-        
-        private void SetCutOff()
-        {
-            var transitionOffset = nextTransitionState == TransitionState.In ? 0.1f : -0.1f;
-            sprite.material.SetFloat(CutOff, transitionProgress + transitionOffset);
-        }
-        
         private void TestTransition()
         {
-            if (testingControls != true) return;
+            if (transitionData.testingControls != true) return;
 
             var mouse = Mouse.current;
 
-            if (mouse.leftButton.wasPressedThisFrame && !isTransitioning)
+            if (mouse.leftButton.wasPressedThisFrame && !transitionData.isTransitioning)
             {
                 TransitionOut();
             }
 
-            if (mouse.rightButton.wasPressedThisFrame && !isTransitioning)
+            if (mouse.rightButton.wasPressedThisFrame && !transitionData.isTransitioning)
             {
                 TransitionIn();
             }
         }
     }
-    
+
 }

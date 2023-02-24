@@ -1,29 +1,37 @@
 using Events;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Scenes
 {
     public class TransitionCanvas : MonoBehaviour
     {
         private Camera _cam;
-        
-        void Start() => DontDestroyOnLoad(gameObject);
+        Canvas canvas;
+
+        private void Awake()
+        {
+            canvas = GetComponent<Canvas>();
+        }
 
         private void OnEnable()
         {
-            GameEvents.onSendCameraEvent += GetMainCamera;
+            SceneManager.sceneLoaded += GetMainCamera;
         }
 
         private void OnDisable()
         {
-            GameEvents.onSendCameraEvent -= GetMainCamera;
+            SceneManager.sceneLoaded -= GetMainCamera;
         }
 
-        private void GetMainCamera(Camera cam)
+        private void GetMainCamera(Scene scene, LoadSceneMode mode)
         {
             if (_cam != null) return;
-            
-            _cam = Camera.main;
+
+            _cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+
+            canvas.worldCamera = _cam;
+            Debug.Log("New camera: " + _cam);
         }
     }
 }

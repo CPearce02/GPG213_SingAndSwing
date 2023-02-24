@@ -7,20 +7,20 @@ namespace Levels
 {
     public class LevelManager : MonoBehaviour
     {
-        //[SerializeField] private LevelData level;
-        
-        //private void Awake() => level.Init();
+        [SerializeField] private LevelData level;
 
-        //private void OnEnable()
-        //{
-        //    GameEvents.onLevelLoadEvent += LoadLevel;
-        //}
-        
-        //private void OnDisable()
-        //{
-        //    GameEvents.onLevelLoadEvent -= LoadLevel;
-        //}
-        
-        //private void LoadLevel() => SceneManager.LoadScene(level.NextSection.Scene.name);
+        private void Awake() => level.Init();
+
+        private void OnEnable()
+        {
+            GameEvents.onLevelLoadEvent += LoadLevel;
+        }
+
+        private void OnDisable()
+        {
+            GameEvents.onLevelLoadEvent -= LoadLevel;
+        }
+
+        private void LoadLevel() => SceneManager.LoadScene(level.NextSection.Scene);
     }
 }
