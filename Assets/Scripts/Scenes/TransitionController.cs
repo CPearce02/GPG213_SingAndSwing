@@ -17,34 +17,11 @@ namespace Scenes
 
         [Header("Transition Settings")]
         [SerializeField] Sprite transitionImage;
-        [SerializeField] private float transitionSpeed => transitionData.speed;
-        [SerializeField] private float transitionProgress = 1f;
-        [SerializeField] TransitionState nextTransitionState;
-
-        [SerializeField] public bool c { get; private set; }
-
-        private static readonly int CutOff = Shader.PropertyToID("_CutOff");
-        private static readonly int MainColor = Shader.PropertyToID("_MainColor");
-        private static readonly int MainTex = Shader.PropertyToID("_MainTex");
 
         private void Awake() => sprite = GetComponent<Image>();
 
-        private void Start()
-        {
-            transitionData.material.SetColor(MainColor, transitionData.color);
+        private void Start() => transitionData.Init();
 
-            transitionData.SetStateValues();
-
-            if (transitionImage == null) return;
-
-            transitionData.material.SetTexture(MainTex, transitionData.transitionImage.texture);
-        }
-
-        // The mouse controls are for testing only
-        private void Update()
-        {
-            TestTransition();
-        }
 
         private void OnEnable()
         {
@@ -59,10 +36,15 @@ namespace Scenes
             SceneManager.sceneLoaded -= TransitionIn;
         }
 
+        // The mouse controls are for testing only
+        private void Update()
+        {
+            TestTransition();
+        }
 
         void TransitionIn()
         {
-            transitionProgress = 0;
+            transitionData.progress = 0;
             transitionData.isTransitioning = true;
             StartCoroutine(transitionData.TransitionInCoroutine());
         }
@@ -83,7 +65,7 @@ namespace Scenes
 
         private void TestTransition()
         {
-            if (transitionData.testingControls != true) return;
+            if (transitionData.testingControls) return;
 
             var mouse = Mouse.current;
 
