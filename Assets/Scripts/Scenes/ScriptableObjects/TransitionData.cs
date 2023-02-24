@@ -26,6 +26,16 @@ public class TransitionData : ScriptableObject
     private static readonly int MainColor = Shader.PropertyToID("_MainColor");
     private static readonly int MainTex = Shader.PropertyToID("_MainTex");
 
+    public void Init()
+    {
+        material.SetColor(MainColor, color);
+
+        SetStateValues();
+
+        if (transitionImage == null) return;
+
+        material.SetTexture(MainTex, transitionImage.texture);
+    }
 
     public void SetStateValues()
     {
