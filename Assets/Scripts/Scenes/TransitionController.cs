@@ -83,7 +83,7 @@ namespace Scenes
 
         private void TestTransition()
         {
-            if (transitionData.testingControls != true) return;
+            if (transitionData.testingControls) return;
 
             var mouse = Mouse.current;
 

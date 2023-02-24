@@ -160,7 +160,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8226912908235043143}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!114 &8226912908235043141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,11 +204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 11400000, guid: 57f00e80fd11f4c4f8902e3f727c9fc3, type: 2}
-  isTransitioning: 0
+  transitionData: {fileID: 11400000, guid: 62e3ff47bc8168b4c868951beab7432e, type: 2}
   sprite: {fileID: 0}
   transitionImage: {fileID: 21300000, guid: 2b2db6440e0f6464cbbe7f94107aec44, type: 3}
-  transitionSpeed: 1
   transitionProgress: 0
-  transitionColor: {r: 0.21176471, g: 0.2, b: 0.20784314, a: 0}
   nextTransitionState: 0
-  testingControls: 0
