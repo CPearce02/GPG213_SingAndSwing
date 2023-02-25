@@ -8939,6 +8939,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6419258818656474042, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
+      propertyPath: shakeOnLanded.duration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6419258818656474042, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: landedCameraShakeStrength
       value: 1
       objectReference: {fileID: 0}
