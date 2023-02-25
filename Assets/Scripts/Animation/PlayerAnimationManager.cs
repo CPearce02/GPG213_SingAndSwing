@@ -1,9 +1,10 @@
 using Enums;
 using Events;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace AnimatorHandlers
+namespace Animation
 {
     public class PlayerAnimationManager : MonoBehaviour
     {
@@ -12,7 +13,7 @@ namespace AnimatorHandlers
         public Rigidbody2D rb;
         public PlatformingController platformingController;
     
-        [SerializeField] bool isFalling;
+        [SerializeField] [ReadOnly] bool isFalling;
     
         [Header("Camera Shake Events")]
         [SerializeField] bool shakeOnLanded;
