@@ -7,6 +7,7 @@ namespace Levels
 {
     public class LevelManager : MonoBehaviour
     {
+        [SerializeField] private LevelList levels;
         [SerializeField] private LevelData level;
 
         private void Awake() => level.Init();

@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <SectionName>k__BackingField: Platform-1-1
   <SectionDescription>k__BackingField: 
-  <Scene>k__BackingField: {fileID: 102900000, guid: 5e7d037547f97b646a69eeb5ffb5b3de, type: 3}
+  <Scene>k__BackingField: PlatformingTest
+  sceneAsset: {fileID: 102900000, guid: 5e7d037547f97b646a69eeb5ffb5b3de, type: 3}

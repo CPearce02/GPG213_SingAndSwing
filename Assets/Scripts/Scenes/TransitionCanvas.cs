@@ -1,4 +1,3 @@
-using Events;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,12 +6,9 @@ namespace Scenes
     public class TransitionCanvas : MonoBehaviour
     {
         private Camera _cam;
-        Canvas canvas;
+        Canvas _canvas;
 
-        private void Awake()
-        {
-            canvas = GetComponent<Canvas>();
-        }
+        private void Awake() => _canvas = GetComponent<Canvas>();
 
         private void OnEnable()
         {
@@ -27,10 +23,10 @@ namespace Scenes
         private void GetMainCamera(Scene scene, LoadSceneMode mode)
         {
             if (_cam != null) return;
-
+            
             _cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
-            canvas.worldCamera = _cam;
+            _canvas.worldCamera = _cam;
             Debug.Log("New camera: " + _cam);
         }
     }

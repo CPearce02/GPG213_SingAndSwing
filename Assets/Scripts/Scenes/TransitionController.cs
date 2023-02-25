@@ -2,6 +2,7 @@ using System.Collections;
 using Enums;
 using Events;
 using Levels.ScriptableObjects;
+using Scenes.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -14,15 +15,11 @@ namespace Scenes
         [SerializeField] private LevelData level;
         [SerializeField] TransitionData transitionData;
         [SerializeField] private Image sprite;
-
-        [Header("Transition Settings")]
-        [SerializeField] Sprite transitionImage;
-
+        
         private void Awake() => sprite = GetComponent<Image>();
 
         private void Start() => transitionData.Init();
-
-
+        
         private void OnEnable()
         {
             GameEvents.onSceneTransitionInEvent += TransitionIn;

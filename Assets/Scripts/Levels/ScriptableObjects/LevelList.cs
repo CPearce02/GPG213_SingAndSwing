@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace Levels.ScriptableObjects
@@ -37,8 +39,27 @@ namespace Levels.ScriptableObjects
         public int GetLevelCount() => levels.Count;
         
         void SetLevelName(int levelNumber, string levelName) => levels[levelNumber].name = levelName;
+        
 
         #endregion
+        
+        #if UNITY_EDITOR
+        
+        List<LevelData> GetLevels()
+        {
+            List<LevelData> findAllLevels = AssetDatabase.FindAssets("t:LevelData")
+                .Select(AssetDatabase.GUIDToAssetPath)
+                .Select(AssetDatabase.LoadAssetAtPath<LevelData>)
+                .ToList();
+            return findAllLevels;
+        }
+        
+        [ContextMenu("Update Levels")]
+        void UpdateLevels()
+        {
+            Levels = GetLevels();
+        }
+        #endif
         
     }
 }

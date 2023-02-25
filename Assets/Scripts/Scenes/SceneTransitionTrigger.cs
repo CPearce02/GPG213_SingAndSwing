@@ -1,22 +1,25 @@
 using Events;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Scenes
 {
     public class SceneTransitionTrigger : MonoBehaviour
     {
-        [SerializeField] private string levelToLoad;
-
         private void OnTriggerEnter2D(Collider2D col)
         {
             col.TryGetComponent(out PlatformingController player);
 
             if (player)
             {
-                SceneManager.LoadScene(levelToLoad);
-            // GameEvents.onSceneTransitionOutEvent?.Invoke();
+                GameEvents.onSceneTransitionOutEvent?.Invoke();
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = new Color(0, 1, 0, 0.25f);
+            var t = transform;
+            Gizmos.DrawCube(t.position, t.localScale);
         }
     }
 }

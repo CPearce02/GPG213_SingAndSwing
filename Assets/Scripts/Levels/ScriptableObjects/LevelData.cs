@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using Enums;
 using Levels.ScriptableObjects.Sections;
 using UnityEngine;
@@ -48,7 +47,7 @@ namespace Levels.ScriptableObjects
         {
             if (currentSection == null)
             {
-                //CurrentSection = FindCurrentSection();
+                CurrentSection = FindCurrentSection();
             }
             else if (section != null)
             {
@@ -69,7 +68,7 @@ namespace Levels.ScriptableObjects
             nextSection = LevelSections[LevelSections.IndexOf(CurrentSection) + 1];
         }
 
-        //LevelSectionData FindCurrentSection() => LevelSections.Find(l => l.Scene.name == SceneManager.GetActiveScene().name);
+        LevelSectionData FindCurrentSection() => LevelSections.Find(l => l.Scene == SceneManager.GetActiveScene().name);
 
         #endregion
     }
