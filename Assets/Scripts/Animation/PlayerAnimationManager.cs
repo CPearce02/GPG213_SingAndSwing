@@ -1,23 +1,24 @@
 using Enums;
 using Events;
-using Unity.Collections;
+using Structs;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Animation
 {
+    [RequireComponent(typeof(Animator))]
     public class PlayerAnimationManager : MonoBehaviour
     {
         Animator _animator;
-        public PlayerInput playerInput;
+        [SerializeField] private PlayerInput playerInput;
         public Rigidbody2D rb;
         public PlatformingController platformingController;
     
         [SerializeField] [ReadOnly] bool isFalling;
-    
-        [Header("Camera Shake Events")]
-        [SerializeField] bool shakeOnLanded;
-        [SerializeField] Strength landedCameraShakeStrength = Strength.VeryLow;
+
+        [Header("Camera Shake Events")] 
+        
+        [SerializeField] private CameraShakeEvent shakeOnLanded = new ();
     
         private static readonly int Falling = Animator.StringToHash("IsFalling");
         private static readonly int Grounded = Animator.StringToHash("Grounded");
@@ -27,6 +28,8 @@ namespace Animation
         void Awake()
         {
             _animator = GetComponent<Animator>();
+            if (playerInput == null)
+                playerInput = GetComponentInParent<PlayerInput>();
         }
 
         private void OnEnable()
@@ -62,9 +65,7 @@ namespace Animation
 
         void InvokeLanded()
         {
-            if(!shakeOnLanded) return;
-        
-            GameEvents.onScreenShakeEvent?.Invoke(landedCameraShakeStrength, 0.2f);
+            shakeOnLanded.Invoke();
         }
     }
 }

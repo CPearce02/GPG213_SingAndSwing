@@ -1,5 +1,3 @@
-using System.Collections;
-using Enums;
 using Events;
 using Levels.ScriptableObjects;
 using Scenes.ScriptableObjects;
@@ -14,7 +12,7 @@ namespace Scenes
     {
         [SerializeField] private LevelData level;
         [SerializeField] TransitionData transitionData;
-        [SerializeField] private Image sprite;
+        [ReadOnly][SerializeField] private Image sprite;
         
         private void Awake() => sprite = GetComponent<Image>();
 
