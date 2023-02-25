@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8226912907385199647}
   - component: {fileID: 1148821670}
   m_Layer: 5
-  m_Name: TransitionCanvas
+  m_Name: TransitionManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,6 +206,3 @@ MonoBehaviour:
   level: {fileID: 11400000, guid: 57f00e80fd11f4c4f8902e3f727c9fc3, type: 2}
   transitionData: {fileID: 11400000, guid: 62e3ff47bc8168b4c868951beab7432e, type: 2}
   sprite: {fileID: 0}
-  transitionImage: {fileID: 21300000, guid: 2b2db6440e0f6464cbbe7f94107aec44, type: 3}
-  transitionProgress: 0
-  nextTransitionState: 0
