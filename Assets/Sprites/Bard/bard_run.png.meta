@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 887f4d60bf191054cabb1528a2a332ca
+guid: 2b9e7277283dd574584417cddb745f95
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bard_play_0
+      name: bard_run_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7f4a59f232d59545a6bde187aff8de9
-      internalID: 1320268618
+      spriteID: d77cb2c4bdb1f774b97400abafd3b591
+      internalID: -248975113
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bard_play_1
+      name: bard_run_1
       rect:
         serializedVersion: 2
         x: 64
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc87edd6e8cc0b94db329be09fb68f62
-      internalID: -1313306295
+      spriteID: cb8fa54be6b952c4295d4e81956f5621
+      internalID: 1361961105
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bard_play_2
+      name: bard_run_2
       rect:
         serializedVersion: 2
         x: 128
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9034a58dc2672b94186bde0fd5f77bbd
-      internalID: 1313197417
+      spriteID: 1842ef3fe63ff5d4eb90b9c2c6c3960b
+      internalID: -1191561975
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bard_play_3
+      name: bard_run_3
       rect:
         serializedVersion: 2
         x: 192
@@ -194,71 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c304b480c63b594698778f5eda0668b
-      internalID: -887718060
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bard_play_4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1ca4084618372eb408e9448302fb866c
-      internalID: 594099724
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bard_play_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 65d8411df84ae33409065377d5f6c78c
-      internalID: 948217844
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bard_play_6
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d8d9a89bf0d4b7546889254034fa699d
-      internalID: 329635211
+      spriteID: 22e7ecda9b2bf4a48947d8763fdc6756
+      internalID: -582896576
       vertices: []
       indices: 
       edges: []
@@ -274,13 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      bard_play_2: 1313197417
-      bard_play_3: -887718060
-      bard_play_4: 594099724
-      bard_play_0: 1320268618
-      bard_play_1: -1313306295
-      bard_play_6: 329635211
-      bard_play_5: 948217844
+      bard_run_2: -1191561975
+      bard_run_1: 1361961105
+      bard_run_0: -248975113
+      bard_run_3: -582896576
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
