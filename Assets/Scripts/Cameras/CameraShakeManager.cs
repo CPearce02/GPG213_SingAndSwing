@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Cameras
 {
-    public class CameraShake : MonoBehaviour
+    public class CameraShakeManager : MonoBehaviour
     {
         [SerializeField] CinemachineVirtualCamera cam;
         [SerializeField] private CinemachineBasicMultiChannelPerlin noise;

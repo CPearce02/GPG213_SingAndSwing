@@ -50,7 +50,7 @@ namespace Scenes
         {
             transitionData.progress = 0;
             transitionData.isTransitioning = true;
-            StartCoroutine(transitionData.TransitionInCoroutine(2f));
+            StartCoroutine(transitionData.TransitionInCoroutine());
         }
 
         void TransitionOut()
@@ -62,7 +62,7 @@ namespace Scenes
 
         private void TestTransition()
         {
-            if (transitionData.testingControls) return;
+            if (!transitionData.testingControls) return;
 
             var mouse = Mouse.current;
 

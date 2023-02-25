@@ -18,6 +18,7 @@ namespace Scenes.ScriptableObjects
         [SerializeField] public float speed = 1f;
         [SerializeField] public float progress = 1f;
         [SerializeField] public Material material;
+        [SerializeField] public float transitionInDelay = 1f, transitionOutDelay = 0.25f;
 
         [Header("Testing Only")]
         [SerializeField] public bool testingControls = false;
@@ -64,7 +65,7 @@ namespace Scenes.ScriptableObjects
 
         public IEnumerator TransitionInCoroutine(float initialDelaySeconds = 0f)
         {
-            yield return new WaitForSeconds(initialDelaySeconds);
+            yield return new WaitForSeconds(initialDelaySeconds == 0 ? transitionInDelay : initialDelaySeconds);
             while (progress < 1f)
             {
                 progress += Time.deltaTime * speed;
@@ -75,8 +76,9 @@ namespace Scenes.ScriptableObjects
             nextTransitionState = TransitionState.Out;
         }
 
-        public IEnumerator TransitionOutCoroutine()
+        public IEnumerator TransitionOutCoroutine(float initialDelaySeconds = 0f)
         {
+            yield return new WaitForSeconds(initialDelaySeconds == 0 ? transitionInDelay : initialDelaySeconds);
             while (progress > 0f)
             {
                 progress -= Time.deltaTime * speed;

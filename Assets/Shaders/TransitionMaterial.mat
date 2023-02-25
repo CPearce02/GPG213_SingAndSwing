@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Transition2Material
+  m_Name: TransitionMaterial
   m_Shader: {fileID: -6465566751694194690, guid: baeff1c794204544a961460a8b55e4ba, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -46,7 +46,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CutOff: 1.1006919
+    - _CutOff: 1.100243
     - _EdgeSmoothing: 0
     m_Colors:
     - _MainColor: {r: 1, g: 0.9810171, b: 0, a: 0}

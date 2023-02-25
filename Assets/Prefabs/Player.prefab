@@ -135,11 +135,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e06f10430f03011478f9aca187143510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relativeJumpHeight: 0
   friction: 1.1
   speedLimit: 10
   playerStats: {fileID: 11400000, guid: a8ecbfbc29080ad4aa0dac40d8f74010, type: 2}
   groundCheckTransform: {fileID: 6419258819617880469}
+  roofCheckTransform: {fileID: 0}
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 68
@@ -279,6 +279,9 @@ MonoBehaviour:
   playerInput: {fileID: 6419258818573561546}
   rb: {fileID: 6419258818573561551}
   platformingController: {fileID: 6419258818573561550}
+  isFalling: 0
+  shakeOnLanded: 1
+  landedCameraShakeStrength: 0
 --- !u!1 &6419258819617880468
 GameObject:
   m_ObjectHideFlags: 0
