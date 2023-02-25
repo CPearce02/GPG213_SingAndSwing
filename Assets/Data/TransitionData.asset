@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec51697c1d065740b2737cb7cb58227, type: 3}
   m_Name: TransitionData
   m_EditorClassIdentifier: 
-  nextTransitionState: 1
-  color: {r: 1, g: 0.9810171, b: 0, a: 0}
+  nextTransitionState: 0
+  color: {r: 0.31764707, g: 0.3372549, b: 0.41960785, a: 1}
   isTransitioning: 0
   transitionImage: {fileID: 21300000, guid: 5cd04c33c55cac446ad437f12ad50698, type: 3}
   speed: 1
-  progress: 1.0009925
+  progress: 1.0007846
   material: {fileID: 2100000, guid: ea177412641f0a4489c8a6a17b87d071, type: 2}
   transitionInDelay: 1
   transitionOutDelay: 1
