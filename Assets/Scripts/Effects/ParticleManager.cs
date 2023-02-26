@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Events;
 using UnityEngine;
 
@@ -10,6 +9,13 @@ namespace Effects
 
         private void OnDisable() => GameEvents.onParticleEvent -= PlayParticle;
 
-        private void PlayParticle(ParticleSystem particle, Transform t) => Instantiate(particle, t.position, Quaternion.identity);
+        private void PlayParticle(ParticleSystem particle, Transform t, Color color)
+        {
+            var p = Instantiate(particle, t.position, Quaternion.identity);
+            var main = p.main;
+            main.startColor = color;
+        }
+        
+        
     }
 }

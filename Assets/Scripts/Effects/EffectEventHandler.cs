@@ -7,7 +7,7 @@ namespace Effects
     {
         [Header("Landing Effects")]
         [SerializeField] private CameraShakeEvent shakeOnLanded = new ();
-        [SerializeField] private ParticleEvent particleOnLanded = new ();
+        [SerializeField] private ParticleEvent particleOnLanded = new();
         [Header("Attack Effects")]
         [SerializeField] private CameraShakeEvent shakeOnAttack = new ();
         
@@ -16,7 +16,8 @@ namespace Effects
             shakeOnLanded.Invoke();
             particleOnLanded.Invoke();
         }
-
+        
         void InvokeOnAttack() => shakeOnAttack.Invoke();
+
     }
 }

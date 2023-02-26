@@ -217,18 +217,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 514009650263695910, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
-      propertyPath: particleOnLanded.particle
-      value: 
-      objectReference: {fileID: 4835578510343703656, guid: 0f00298f1e2b1f242808fe65b9b1ebc8, type: 3}
-    - target: {fileID: 514009650263695910, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
-      propertyPath: particleOnLanded.transform
-      value: 
-      objectReference: {fileID: 1069416385}
-    - target: {fileID: 514009650263695910, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
-      propertyPath: particleOnLanded.doParticles
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6419258818573561545, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -276,10 +264,6 @@ PrefabInstance:
     - target: {fileID: 6419258818573561549, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6419258818656474042, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
-      propertyPath: shakeOnLanded.doShake
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
@@ -394,11 +378,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1069416385 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6419258819617880469, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
-  m_PrefabInstance: {fileID: 854307057}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1435645303
 GameObject:
   m_ObjectHideFlags: 0

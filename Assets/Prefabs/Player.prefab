@@ -203,9 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e3d59568325fa346afd15ce905d74ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityX: 1
-  direction: 0
-  isFacingRight: 1
+  rb: {fileID: 0}
+  flipThreshold: 0.1
 --- !u!1 &6419258818656474046
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,9 +341,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakeOnLanded:
-    strength: 0
+    strength: 1
     duration: 0.2
     doShake: 1
+  particleOnLanded:
+    transform: {fileID: 6419258819617880469}
+    particle: {fileID: 4835578510343703656, guid: 0f00298f1e2b1f242808fe65b9b1ebc8, type: 3}
+    doParticles: 1
   shakeOnAttack:
     strength: 0
     duration: 0
