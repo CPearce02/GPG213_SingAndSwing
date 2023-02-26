@@ -1,4 +1,3 @@
-using Structs;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,8 +15,6 @@ namespace Animation
 
         [Header("Camera Shake Events")] 
         
-        [SerializeField] private CameraShakeEvent shakeOnLanded = new ();
-    
         private static readonly int Falling = Animator.StringToHash("IsFalling");
         private static readonly int Grounded = Animator.StringToHash("Grounded");
         private static readonly int XVelocity = Animator.StringToHash("XVelocity");
@@ -60,10 +57,6 @@ namespace Animation
         {
             if(platformingController.Grounded) _animator.SetTrigger(Jump);
         }
-
-        void InvokeLanded()
-        {
-            shakeOnLanded.Invoke();
-        }
+        
     }
 }

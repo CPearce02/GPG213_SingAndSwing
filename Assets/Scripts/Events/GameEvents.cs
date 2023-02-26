@@ -6,6 +6,7 @@ namespace Events
     public static class GameEvents 
     {
         public delegate void ScreenShake(Strength str, float lengthInSeconds = 0.2f);
+        public delegate void ParticleEffect(ParticleSystem particle, Transform transform);
         public delegate void SceneTransitionOut();
         public delegate void SceneTransitionIn();
         public delegate void LoadLevel();
@@ -15,6 +16,7 @@ namespace Events
         public static SceneTransitionOut onSceneTransitionOutEvent;
         public static SceneTransitionIn onSceneTransitionInEvent;
         public static SendCamera onSendCameraEvent;
+        public static ParticleEffect onParticleEvent;
         public static LoadLevel onLevelLoadEvent;
     }
 }

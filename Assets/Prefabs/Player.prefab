@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 6419258818656474040}
   - component: {fileID: 6419258818656474041}
   - component: {fileID: 6419258818656474042}
+  - component: {fileID: 514009650263695910}
   m_Layer: 6
   m_Name: GFX
   m_TagString: Untagged
@@ -328,9 +329,25 @@ MonoBehaviour:
   rb: {fileID: 6419258818573561551}
   platformingController: {fileID: 6419258818573561550}
   isFalling: 0
+--- !u!114 &514009650263695910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6419258818656474046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df5f8a2f49b42ab8539897943ed0689, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   shakeOnLanded:
     strength: 0
     duration: 0.2
+    doShake: 1
+  shakeOnAttack:
+    strength: 0
+    duration: 0
     doShake: 0
 --- !u!1 &6419258819617880468
 GameObject:

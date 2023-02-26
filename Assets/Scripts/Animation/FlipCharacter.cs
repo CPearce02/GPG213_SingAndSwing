@@ -4,57 +4,41 @@ namespace Animation
 {
     public class FlipCharacter : MonoBehaviour
     {
+        [SerializeField] private Rigidbody2D rb;
+        [SerializeField] private float flipThreshold = 0.1f;
 
-        [SerializeField] float velocityX = 1f;
-        float previousVelocity;
-        [SerializeField] private float direction;
-        [SerializeField][ReadOnly] private bool isFacingRight = true;
-        Rigidbody2D rb;
+        private bool _isFacingRight = true;
 
-        public bool IsFacingRight
+        private void Awake()
         {
-            get => isFacingRight;
-            set => isFacingRight = value;
+            if (rb == null)
+            {
+                rb = GetComponent<Rigidbody2D>();
+            }
         }
 
-        private void Start() => rb = GetComponent<Rigidbody2D>();
-
-        // Update is called once per frame
-        void FixedUpdate()
+        private void FixedUpdate()
         {
-            FlipSpriteDirection();
-            velocityX = rb.velocity.normalized.x;
+            float xVelocity = rb.velocity.x;
 
+            if (Mathf.Abs(xVelocity) > flipThreshold)
+            {
+                bool shouldFlip = xVelocity > 0;
+                Flip(shouldFlip);
+            }
         }
 
-        private void FlipSpriteDirection()
+        private void Flip(bool shouldFlip)
         {
-            if (velocityX != 0)
-                previousVelocity = velocityX;
-
-            CheckMoveDirection();
-            Flip();
-
-            void Flip()
+            if (shouldFlip != _isFacingRight)
             {
                 Vector3 localScale = transform.localScale;
-                direction = IsFacingRight ? 1 : -1;
-                localScale.x = direction;
+                localScale.x *= -1;
                 transform.localScale = localScale;
-            }
-        }
 
-        private void CheckMoveDirection()
-        {
-            if (velocityX > 0)
-            {
-                IsFacingRight = true;
+                _isFacingRight = shouldFlip;
             }
-            else if (velocityX < 0)
-            {
-                IsFacingRight = false;
-            }
-
         }
     }
+    
 }
