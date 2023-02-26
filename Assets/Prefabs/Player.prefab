@@ -345,9 +345,10 @@ MonoBehaviour:
     duration: 0.2
     doShake: 1
   particleOnLanded:
-    transform: {fileID: 6419258819617880469}
-    particle: {fileID: 4835578510343703656, guid: 0f00298f1e2b1f242808fe65b9b1ebc8, type: 3}
-    doParticles: 1
+    <Transform>k__BackingField: {fileID: 6419258819617880469}
+    <Particle>k__BackingField: {fileID: 4835578510343703656, guid: 0f00298f1e2b1f242808fe65b9b1ebc8, type: 3}
+    <DoParticles>k__BackingField: 1
+    <Color>k__BackingField: {r: 0.61960787, g: 0.35686275, b: 0.33333334, a: 1}
   shakeOnAttack:
     strength: 0
     duration: 0
