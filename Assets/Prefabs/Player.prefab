@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1152786756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1152786757}
+  m_Layer: 6
+  m_Name: RoofCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1152786757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152786756}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.03399992, y: -0.312, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6419258818573561545}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6419258818573561549
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,6 +45,7 @@ GameObject:
   - component: {fileID: 6419258818573561546}
   - component: {fileID: 6419258818573561550}
   - component: {fileID: 6419258818573561547}
+  - component: {fileID: 1062540711}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -35,6 +67,7 @@ Transform:
   m_Children:
   - {fileID: 6419258818656474047}
   - {fileID: 6419258819617880469}
+  - {fileID: 1152786757}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -81,7 +114,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: eed9512ce8d924546aa3cc7291b1a0f1, type: 2}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -135,11 +168,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e06f10430f03011478f9aca187143510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  friction: 1.1
-  speedLimit: 10
+  friction: 1.5
+  speedLimit: 8
   playerStats: {fileID: 11400000, guid: a8ecbfbc29080ad4aa0dac40d8f74010, type: 2}
   groundCheckTransform: {fileID: 6419258819617880469}
-  roofCheckTransform: {fileID: 0}
+  roofCheckTransform: {fileID: 1152786757}
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 68
@@ -158,6 +191,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   playerStats: {fileID: 11400000, guid: a8ecbfbc29080ad4aa0dac40d8f74010, type: 2}
+--- !u!114 &1062540711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6419258818573561549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e3d59568325fa346afd15ce905d74ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityX: 1
+  direction: 0
+  isFacingRight: 1
 --- !u!1 &6419258818656474046
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,8 +328,10 @@ MonoBehaviour:
   rb: {fileID: 6419258818573561551}
   platformingController: {fileID: 6419258818573561550}
   isFalling: 0
-  shakeOnLanded: 1
-  landedCameraShakeStrength: 0
+  shakeOnLanded:
+    strength: 0
+    duration: 0.2
+    doShake: 0
 --- !u!1 &6419258819617880468
 GameObject:
   m_ObjectHideFlags: 0
