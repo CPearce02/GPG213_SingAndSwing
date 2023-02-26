@@ -1,4 +1,5 @@
 using Events;
+using Structs;
 using UnityEngine;
 
 namespace Effects
@@ -9,11 +10,11 @@ namespace Effects
 
         private void OnDisable() => GameEvents.onParticleEvent -= PlayParticle;
 
-        private void PlayParticle(ParticleSystem particle, Transform t, Color color)
+        private void PlayParticle(ParticleEvent particleEvent)
         {
-            var p = Instantiate(particle, t.position, Quaternion.identity);
+            var p = Instantiate(particleEvent.Particle, particleEvent.Transform.position, Quaternion.identity);
             var main = p.main;
-            main.startColor = color;
+            main.startColor = particleEvent.Color;
         }
         
         

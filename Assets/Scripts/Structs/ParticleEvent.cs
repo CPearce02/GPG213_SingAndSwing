@@ -5,18 +5,18 @@ using UnityEngine;
 namespace Structs
 {
     [Serializable]
-    public class ParticleEvent
+    public struct ParticleEvent
     {
-        [SerializeField] public Transform transform;
-        [SerializeField] private ParticleSystem particle;
-        [SerializeField] private bool doParticles;
-        [SerializeField] private Color particleColor;
+        [field: SerializeField] public Transform Transform{ get; private set; }
+        [field: SerializeField] public ParticleSystem Particle{ get; private set; }
+        [field: SerializeField] public bool DoParticles{ get; private set; }
+        [field: SerializeField] public Color Color { get; private set; }
 
         public void Invoke()
         {
-            if(!doParticles) return;
+            if(!DoParticles) return;
             
-            GameEvents.onParticleEvent?.Invoke(particle, transform, particleColor);
+            GameEvents.onParticleEvent?.Invoke(this);
         }
     }
 }
