@@ -483,7 +483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2251019362841744464, guid: 04280b3ce93f05841816a37aa9a1497f, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.3
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 2251019362841744464, guid: 04280b3ce93f05841816a37aa9a1497f, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
@@ -499,7 +499,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2251019362841744464, guid: 04280b3ce93f05841816a37aa9a1497f, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 0.01
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2251019362841744464, guid: 04280b3ce93f05841816a37aa9a1497f, type: 3}
       propertyPath: TrailModule.widthOverTrail.scalar
@@ -615,7 +615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2251019362841744464, guid: 04280b3ce93f05841816a37aa9a1497f, type: 3}
       propertyPath: TrailModule.widthOverTrail.maxCurve.m_Curve.Array.data[0].value
-      value: 0.8125
+      value: 0.40625
       objectReference: {fileID: 0}
     - target: {fileID: 2251019362841744464, guid: 04280b3ce93f05841816a37aa9a1497f, type: 3}
       propertyPath: TrailModule.widthOverTrail.maxCurve.m_Curve.Array.data[1].value
@@ -754,7 +754,7 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
