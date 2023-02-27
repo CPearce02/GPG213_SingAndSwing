@@ -41,6 +41,16 @@ namespace Animation
         {
             SetFalling();
             SetGrounded();
+            SetMovment();
+        }
+
+        private void SetMovment()
+        {
+            var horizontalMovement = playerInput.actions["Move"].ReadValue<float>();
+            if (platformingController.Grounded)
+            {
+                _animator.SetFloat(XVelocity, Mathf.Abs(horizontalMovement));
+            }
         }
 
         void SetFalling()
