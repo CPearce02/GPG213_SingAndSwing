@@ -225,8 +225,5 @@ namespace Enemies
             HasAttacked = true;
             Flee();
         }
-
-
-
     }
 }
