@@ -54,7 +54,7 @@ PrefabInstance:
     - target: {fileID: 4862367670183223577, guid: fe93907a5421d26418ebe2281cc25bcf, type: 3}
       propertyPath: UVModule.sprites.Array.data[0].sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 106d271e27a17914188fac115bed2ba4, type: 3}
+      objectReference: {fileID: 21300000, guid: f5f0c7a30c4f61449a7c4abf76f88e77, type: 3}
     - target: {fileID: 4862367670183223579, guid: fe93907a5421d26418ebe2281cc25bcf, type: 3}
       propertyPath: m_Name
       value: Sparkles
