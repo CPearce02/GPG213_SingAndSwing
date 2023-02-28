@@ -157,9 +157,9 @@ namespace Enemies
             }
         }
 
-        public new void TakeDamage()
+        public new void TakeDamage(int amount)
         {
-            base.TakeDamage();
+            base.TakeDamage(amount);
             if (IsDead)
                 return;
 
@@ -214,7 +214,7 @@ namespace Enemies
             if (distance)
             {
                 Debug.Log("The distance was too far so the attack missed");
-                attackable.TakeDamage();
+                attackable.TakeDamage(0);
             }
 
             // Debug.Log($"Hit {raycastHit2D.GetComponent<Collider>()}");

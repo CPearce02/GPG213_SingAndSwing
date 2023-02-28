@@ -3,6 +3,6 @@
     
     public interface IAttackable
     {
-        public void TakeDamage();
+        public void TakeDamage(int amount);
     }
 }
