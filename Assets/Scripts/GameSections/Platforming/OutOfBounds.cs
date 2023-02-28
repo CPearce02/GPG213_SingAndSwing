@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Events;
 using UnityEngine;
 
 public class OutOfBounds : MonoBehaviour
@@ -13,6 +12,6 @@ public class OutOfBounds : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y >= player.transform.position.y) player.GetComponent<HealthManager>().Respawn();
+        if (transform.position.y >= player.transform.position.y) GameEvents.onPlayerRespawnEvent?.Invoke();
     }
 }

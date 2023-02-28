@@ -10,7 +10,7 @@ namespace Enemies
         private ParticleSystem _particleSystem;
         [SerializeField] private bool destroyOnDeath = false;
         
-        public void TakeDamage()
+        public void TakeDamage(int amount)
         {
             var particle= Instantiate(destroyParticle, transform.position, Quaternion.identity);
             _particleSystem = particle.GetComponent<ParticleSystem>();
