@@ -13,11 +13,12 @@ namespace Animation
     
         [SerializeField] [ReadOnly] bool isFalling;
 
-        [Header("Camera Shake Events")] 
-        
+        [Header("Camera Shake Events")]
+
         private static readonly int Falling = Animator.StringToHash("IsFalling");
         private static readonly int Grounded = Animator.StringToHash("Grounded");
         private static readonly int XVelocity = Animator.StringToHash("XVelocity");
+        private static readonly int YVelocity = Animator.StringToHash("YVelocity");
         private static readonly int Jump = Animator.StringToHash("Jump");
 
         void Awake()
@@ -41,16 +42,22 @@ namespace Animation
         {
             SetFalling();
             SetGrounded();
-            SetMovment();
+            SetMovement();
+            SetYVelocity();
         }
 
-        private void SetMovment()
+        private void SetMovement()
         {
             var horizontalMovement = playerInput.actions["Move"].ReadValue<float>();
             if (platformingController.Grounded)
             {
                 _animator.SetFloat(XVelocity, Mathf.Abs(horizontalMovement));
             }
+        }
+
+        private void SetYVelocity()
+        {
+            _animator.SetFloat(YVelocity, rb.velocity.y);
         }
 
         void SetFalling()
@@ -65,7 +72,7 @@ namespace Animation
 
         void SetJump(InputAction.CallbackContext context)
         {
-            if(platformingController.Grounded) _animator.SetTrigger(Jump);
+            if(platformingController.Grounded && context.performed) _animator.SetTrigger(Jump);
         }
         
     }
