@@ -156,6 +156,39 @@ public partial class @PlatformingControlActions : IInputActionCollection2, IDisp
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""Joystick"",
+                    ""id"": ""d4792d91-8504-4096-a852-1f83dc27b202"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""e14d0721-948f-418a-8ba5-096aa9fa85ea"",
+                    ""path"": ""<Joystick>/stick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""4146262f-b3d9-4971-bdc0-0d9fcb7b7d90"",
+                    ""path"": ""<Joystick>/stick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""3e5d390a-3d9c-4647-aed5-aefc62815daf"",
                     ""path"": ""<Keyboard>/space"",
