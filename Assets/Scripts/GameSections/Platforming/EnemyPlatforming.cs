@@ -2,11 +2,13 @@ using Interfaces;
 using UnityEngine;
 using Events;
 using Enums;
+using Structs;
 
 public class EnemyPlatforming : MonoBehaviour, IAttackable
 {
     public int damage = 10;
     public bool canBeDestroyed = false;
+    [SerializeField] ParticleEvent takeDamageParticle;
 
     private void OnCollisionEnter2D(Collision2D collision) => HandleCollision2D(collision);
 
@@ -29,7 +31,8 @@ public class EnemyPlatforming : MonoBehaviour, IAttackable
     public void TakeDamage(int amount)
     {
         if (canBeDestroyed == false) return;
-        GameEvents.onScreenShakeEvent.Invoke(Strength.Low, .2f);
+        GameEvents.onScreenShakeEvent?.Invoke(Strength.Low, .2f);
+        takeDamageParticle.Invoke();
         Destroy(gameObject);
     }
 }

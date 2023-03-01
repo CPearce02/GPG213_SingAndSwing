@@ -73,6 +73,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  canBeDestroyed: 0
+  takeDamageParticle:
+    <Transform>k__BackingField: {fileID: 4767656718564846560}
+    <Particle>k__BackingField: {fileID: 4862367670183223577, guid: fe93907a5421d26418ebe2281cc25bcf, type: 3}
+    <DoParticles>k__BackingField: 1
+    <Color>k__BackingField: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &4767656719195334696
 GameObject:
   m_ObjectHideFlags: 0
