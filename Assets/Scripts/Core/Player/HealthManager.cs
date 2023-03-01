@@ -1,6 +1,7 @@
 using System.Collections;
 using Enums;
 using Events;
+using Structs;
 using UnityEngine;
 using Interfaces;
 
@@ -11,8 +12,14 @@ namespace Core.Player
         [SerializeField] [ReadOnly] private int health;
         [SerializeField] private CharacterData playerStats;
         [SerializeField] Transform respawnPosition;
+        [SerializeField] ParticleEvent deathParticles;
+        PlatformingController controller;
+        Rigidbody2D rb;
         
         public int maxHitPoints = 3;
+        bool dead = false;
+
+        public bool Dead { get => dead; private set => dead = value; }
         
         public int Health
         {
@@ -47,12 +54,15 @@ namespace Core.Player
         {
             health = playerStats.Health;
             respawnPosition = transform;
+
+            controller = GetComponent<PlatformingController>();
         }
 
         private void Start()
         {
             GameEvents.onSetHealthCountEvent?.Invoke(Health);
             CreateSpawnpoint();
+            rb = GetComponent<Rigidbody2D>();
         }
 
         void CreateSpawnpoint()
@@ -95,13 +105,32 @@ namespace Core.Player
             yield return new WaitForSeconds(delaySeconds);
             Health = playerStats.Health;
             transform.position = respawn;
+            Alive();
         }
 
         //Linked to the interface IAttackable
         public void TakeDamage(int amount)
         {
+            if (dead) return;
+
             ReduceHealth(amount);
-            Respawn(0, respawnPosition);
+            Death();
+            Respawn(3f, respawnPosition);
+        }
+
+        void Alive()
+        {
+            dead = false;
+            controller.enabled = true;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+
+        void Death()
+        {
+            dead = true;
+            controller.enabled = false;
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+            deathParticles.Invoke();
         }
     }
 }

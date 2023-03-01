@@ -697,6 +697,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 20
   coll: {fileID: 1964873662}
+--- !u!95 &630065933 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6419258818656474041, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
+  m_PrefabInstance: {fileID: 6419258818536261500}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &677194516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8657,7 +8662,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112518275}
-  m_LocalRotation: {x: 0.00000001720638, y: -0.00032404586, z: 5.5756567e-12, w: 0.99999994}
+  m_LocalRotation: {x: -0.00000001720638, y: -0.00032404586, z: -5.5756567e-12, w: 0.99999994}
   m_LocalPosition: {x: -6, y: -2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9163,11 +9168,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6009364978798124481, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.00000001720638
+      value: -0.00000001720638
       objectReference: {fileID: 0}
     - target: {fileID: 6009364978798124481, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 5.5756567e-12
+      value: -5.5756567e-12
       objectReference: {fileID: 0}
     - target: {fileID: 6419258818573561545, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: m_RootOrder
@@ -9212,6 +9217,38 @@ PrefabInstance:
     - target: {fileID: 6419258818573561545, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6419258818573561547, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 630065933}
+    - target: {fileID: 6419258818573561547, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
+      propertyPath: deathParticles.<Color>k__BackingField.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6419258818573561547, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
+      propertyPath: deathParticles.<Color>k__BackingField.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6419258818573561547, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
+      propertyPath: deathParticles.<Color>k__BackingField.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6419258818573561547, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
+      propertyPath: deathParticles.<Color>k__BackingField.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6419258818573561547, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
+      propertyPath: deathParticles.<Particle>k__BackingField
+      value: 
+      objectReference: {fileID: 3424604424310546434, guid: fd092454b21b75b4dbca45883fd491a9, type: 3}
+    - target: {fileID: 6419258818573561547, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
+      propertyPath: deathParticles.<Transform>k__BackingField
+      value: 
+      objectReference: {fileID: 1015912912}
+    - target: {fileID: 6419258818573561547, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
+      propertyPath: deathParticles.<DoParticles>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6419258818573561549, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: m_Name

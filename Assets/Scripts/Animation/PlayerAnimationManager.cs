@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Core.Player;
 
 namespace Animation
 {
@@ -10,6 +11,7 @@ namespace Animation
         [SerializeField] private PlayerInput playerInput;
         public Rigidbody2D rb;
         public PlatformingController platformingController;
+        HealthManager healthManager;
     
         [SerializeField] [ReadOnly] bool isFalling;
 
@@ -20,12 +22,15 @@ namespace Animation
         private static readonly int XVelocity = Animator.StringToHash("XVelocity");
         private static readonly int YVelocity = Animator.StringToHash("YVelocity");
         private static readonly int Jump = Animator.StringToHash("Jump");
+        private static readonly int Dead = Animator.StringToHash("Dead");
 
         void Awake()
         {
             _animator = GetComponent<Animator>();
             if (playerInput == null)
                 playerInput = GetComponentInParent<PlayerInput>();
+
+            healthManager = GetComponentInParent<HealthManager>();
         }
 
         private void OnEnable()
@@ -46,6 +51,7 @@ namespace Animation
             SetGrounded();
             SetMovement();
             SetYVelocity();
+            SetDead();
         }
 
         private void SetMovement()
@@ -77,6 +83,12 @@ namespace Animation
             if(platformingController.Grounded && context.performed) _animator.SetTrigger(Jump);
         }
 
-        void SetAttack(InputAction.CallbackContext context) { if (context.performed) _animator.CrossFade("knight_attack", 0, 0); }
+        void SetAttack(InputAction.CallbackContext context) { if (context.performed && !healthManager.Dead) _animator.CrossFade("knight_attack", 0, 0); }
+
+        void SetDead() 
+        {
+            _animator.SetBool(Dead, healthManager.Dead);
+            if (healthManager.Dead) _animator.CrossFade("knight_death", 0, 0);
+        }
     }
 }
