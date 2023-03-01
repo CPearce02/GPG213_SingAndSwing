@@ -1,12 +1,11 @@
-using Interfaces;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using Events;
-using Enums;
+using Interfaces;
 
-public class EnemyPlatforming : MonoBehaviour, IAttackable
+public class PlayerAttack : MonoBehaviour
 {
-    public int damage = 10;
-    public bool canBeDestroyed = false;
+    public int damageAmount = 20;
 
     private void OnCollisionEnter2D(Collision2D collision) => HandleCollision2D(collision);
 
@@ -16,20 +15,13 @@ public class EnemyPlatforming : MonoBehaviour, IAttackable
     {
         var attackable = collider.gameObject.TryGetComponent<IAttackable>(out var attackableComponent);
         if (!attackable) return;
-        attackableComponent.TakeDamage(damage);
+        attackableComponent.TakeDamage(damageAmount);
     }
-    
+
     private void HandleCollision2D(Collision2D collision)
     {
         var attackable = collision.gameObject.TryGetComponent<IAttackable>(out var attackableComponent);
         if (!attackable) return;
-        attackableComponent.TakeDamage(damage);
-    }
-
-    public void TakeDamage(int amount)
-    {
-        if (canBeDestroyed == false) return;
-        GameEvents.onScreenShakeEvent.Invoke(Strength.Low, .2f);
-        Destroy(gameObject);
+        attackableComponent.TakeDamage(damageAmount);
     }
 }

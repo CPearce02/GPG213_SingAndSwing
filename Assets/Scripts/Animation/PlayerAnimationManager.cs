@@ -31,11 +31,13 @@ namespace Animation
         private void OnEnable()
         {
             playerInput.actions["Jump"].performed += SetJump;
+            playerInput.actions["Attack"].performed += SetAttack;
         }
 
         private void OnDisable()
         {
             playerInput.actions["Jump"].performed -= SetJump;
+            playerInput.actions["Attack"].performed -= SetAttack;
         }
 
         void Update()
@@ -74,6 +76,7 @@ namespace Animation
         {
             if(platformingController.Grounded && context.performed) _animator.SetTrigger(Jump);
         }
-        
+
+        void SetAttack(InputAction.CallbackContext context) { if (context.performed) _animator.CrossFade("knight_attack", 0, 0); }
     }
 }

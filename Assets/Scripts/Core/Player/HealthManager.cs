@@ -2,10 +2,11 @@ using System.Collections;
 using Enums;
 using Events;
 using UnityEngine;
+using Interfaces;
 
 namespace Core.Player
 {
-    public class HealthManager : MonoBehaviour
+    public class HealthManager : MonoBehaviour, IAttackable
     {
         [SerializeField] [ReadOnly] private int health;
         [SerializeField] private CharacterData playerStats;
@@ -47,9 +48,20 @@ namespace Core.Player
             health = playerStats.Health;
             respawnPosition = transform;
         }
-        
-        private void Start() => GameEvents.onSetHealthCountEvent?.Invoke(Health);
-        
+
+        private void Start()
+        {
+            GameEvents.onSetHealthCountEvent?.Invoke(Health);
+            CreateSpawnpoint();
+        }
+
+        void CreateSpawnpoint()
+        {
+            GameObject obj = new GameObject();
+            obj.name = "Spawnpoint";
+            respawnPosition = obj.transform;
+        }
+
         private void ReduceHealth(int amount)
         {
             _ = amount == 0 ? Health-- : Health -= amount;
@@ -82,6 +94,13 @@ namespace Core.Player
             yield return new WaitForSeconds(delaySeconds);
             Health = playerStats.Health;
             transform.position = respawn;
+        }
+
+        //Linked to the interface IAttackable
+        public void TakeDamage(int amount)
+        {
+            ReduceHealth(amount);
+            Respawn(0, respawnPosition);
         }
     }
 }
