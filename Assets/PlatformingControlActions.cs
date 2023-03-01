@@ -169,7 +169,7 @@ public partial class @PlatformingControlActions : IInputActionCollection2, IDisp
                 {
                     ""name"": ""negative"",
                     ""id"": ""e14d0721-948f-418a-8ba5-096aa9fa85ea"",
-                    ""path"": ""<Joystick>/stick/left"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -180,7 +180,7 @@ public partial class @PlatformingControlActions : IInputActionCollection2, IDisp
                 {
                     ""name"": ""positive"",
                     ""id"": ""4146262f-b3d9-4971-bdc0-0d9fcb7b7d90"",
-                    ""path"": ""<Joystick>/stick/right"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
