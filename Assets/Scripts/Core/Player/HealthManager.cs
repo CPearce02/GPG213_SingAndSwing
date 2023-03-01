@@ -59,6 +59,7 @@ namespace Core.Player
         {
             GameObject obj = new GameObject();
             obj.name = "Spawnpoint";
+            obj.transform.position = transform.position;
             respawnPosition = obj.transform;
         }
 
