@@ -12,6 +12,9 @@ namespace Events
         public delegate void SceneTransitionIn();
         public delegate void LoadLevel();
         public delegate void SendCamera(Camera cam);
+        public delegate void ButtonPressed(ComboValues comboValue);
+        public delegate void NewCombo();
+
 
         #region Player Events
         public delegate void PlayerKill();
@@ -26,6 +29,8 @@ namespace Events
         public static PlayerDied onPlayerDiedEvent;
         public static PlayerRespawn onPlayerRespawnEvent;
         #endregion
+        public static ButtonPressed onButtonPressed;
+        public static NewCombo onNewCombo;
 
         #region UI Events
         public delegate void SetValue(int value);

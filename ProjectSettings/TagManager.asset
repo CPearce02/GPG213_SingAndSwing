@@ -10,6 +10,7 @@ TagManager:
   - Spawn
   - Healing
   - Note
+  - Enemy
   layers:
   - Default
   - TransparentFX
