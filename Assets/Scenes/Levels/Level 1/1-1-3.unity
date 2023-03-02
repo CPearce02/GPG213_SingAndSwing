@@ -319,10 +319,14 @@ PrefabInstance:
     - target: {fileID: 4767656718564846574, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
       propertyPath: enemyData
       value: 
-      objectReference: {fileID: 11400000, guid: 9ace75700ae90664bbb1cbe7dc07d385, type: 2}
+      objectReference: {fileID: 11400000, guid: f60b1adca1dd9a54bbebf6edf874edd3, type: 2}
     - target: {fileID: 4767656718564846575, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148049322407487821, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.279
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
@@ -4271,18 +4275,6 @@ PrefabInstance:
       propertyPath: canBeDestroyed
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4767656718564846574, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
-      propertyPath: takeDamageParticle.<Color>k__BackingField.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4767656718564846574, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
-      propertyPath: takeDamageParticle.<Color>k__BackingField.g
-      value: 0.4627451
-      objectReference: {fileID: 0}
-    - target: {fileID: 4767656718564846574, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
-      propertyPath: takeDamageParticle.<Color>k__BackingField.r
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4767656718564846575, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
@@ -5673,7 +5665,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112518275}
-  m_LocalRotation: {x: 0.00000001720638, y: -0.00032378457, z: 5.5711603e-12, w: 0.99999994}
+  m_LocalRotation: {x: -0.00000001720638, y: -0.00032404586, z: -5.5756567e-12, w: 0.99999994}
   m_LocalPosition: {x: 0, y: -2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5813,15 +5805,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6009364978798124481, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.00000001720638
+      value: -0.00000001720638
       objectReference: {fileID: 0}
     - target: {fileID: 6009364978798124481, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00032378457
+      value: -0.00032404586
       objectReference: {fileID: 0}
     - target: {fileID: 6009364978798124481, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 5.5711603e-12
+      value: -5.5756567e-12
       objectReference: {fileID: 0}
     - target: {fileID: 6419258818573561545, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: m_RootOrder
