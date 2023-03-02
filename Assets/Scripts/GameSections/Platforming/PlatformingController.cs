@@ -24,6 +24,9 @@ public class PlatformingController : MonoBehaviour
     public LayerMask ignoreLayers;
     public Vector2 groundCheckSize;
 
+    Transform platformTarget;
+    Vector2 platformOffset;
+
     //holdingJump is used while the player is jumping, jumped is when the player has finished their jump.
     bool holdingJump = false, jumped = false;
 
@@ -53,6 +56,11 @@ public class PlatformingController : MonoBehaviour
     private void FixedUpdate()
     {
         if (allowFriction) AddFriction();
+    }
+
+    private void LateUpdate()
+    {
+        if (platformTarget != null) transform.position = new Vector2(platformTarget.transform.position.x, platformTarget.transform.position.y) + platformOffset;
     }
 
     void OnMove()
@@ -140,10 +148,28 @@ public class PlatformingController : MonoBehaviour
 
     void CalculateJumpHeight() => relativeJumpHeight = jumpHeight + transform.position.y;
 
-    //Check ground only when the player is touching something.
-    private void OnCollisionStay2D(Collision2D collision) => CheckGround();
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        transform.SetParent(collision.transform);
+    }
 
-    private void OnCollisionExit2D(Collision2D collision) => Grounded = false;
+    //Check ground only when the player is touching something.
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        CheckGround();
+
+        platformTarget = collision.transform;
+        platformOffset = transform.position - collision.transform.position;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        Grounded = false;
+
+        platformTarget = null;
+
+        transform.SetParent(null);
+    }
 
     private void OnDrawGizmosSelected()
     {

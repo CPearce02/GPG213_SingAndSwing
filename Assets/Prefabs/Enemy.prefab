@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d778276522fef428737fef44b86d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 100
   canBeDestroyed: 0
   takeDamageParticle:
     <Transform>k__BackingField: {fileID: 4767656718564846560}

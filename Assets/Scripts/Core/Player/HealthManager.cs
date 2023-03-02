@@ -114,22 +114,26 @@ namespace Core.Player
             if (dead) return;
 
             ReduceHealth(amount);
-            Death();
-            Respawn(3f, respawnPosition);
+
+            if (health <= 0)
+            {
+                Death();
+                Respawn(3f, respawnPosition);
+            }
         }
 
         void Alive()
         {
             dead = false;
             controller.enabled = true;
-            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            rb.simulated = true;
         }
 
         void Death()
         {
             dead = true;
             controller.enabled = false;
-            rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+            rb.simulated = false;
             deathParticles.Invoke();
         }
     }
