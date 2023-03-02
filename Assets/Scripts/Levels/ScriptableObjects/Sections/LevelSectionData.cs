@@ -13,7 +13,7 @@ namespace Levels.ScriptableObjects.Sections
 
 #if UNITY_EDITOR
         [SerializeField] private SceneAsset sceneAsset;
-        
+
         private void OnValidate()
         {
             if (sceneAsset != null && Scene != sceneAsset.name)

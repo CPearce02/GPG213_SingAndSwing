@@ -17,7 +17,7 @@ MonoBehaviour:
   isTransitioning: 0
   transitionImage: {fileID: 21300000, guid: 5cd04c33c55cac446ad437f12ad50698, type: 3}
   speed: 1
-  progress: 1.0007846
+  progress: 1.0000608
   material: {fileID: 2100000, guid: ea177412641f0a4489c8a6a17b87d071, type: 2}
   transitionInDelay: 1
   transitionOutDelay: 1

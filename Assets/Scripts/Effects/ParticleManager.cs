@@ -16,7 +16,7 @@ namespace Effects
             var main = p.main;
             main.startColor = particleEvent.Color;
         }
-        
-        
+
+
     }
 }
