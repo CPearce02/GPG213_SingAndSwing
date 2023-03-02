@@ -18,4 +18,4 @@ MonoBehaviour:
   damageAmount: 15
   healthAmount: 70
   <DamageType>k__BackingField: {fileID: 11400000, guid: ca5dc4a2e4862ec47af93bef06d77152, type: 2}
-  <Combo>k__BackingField: {fileID: 11400000, guid: bee749aa12db5404aa61867bf3009ac2, type: 2}
+  <Combo>k__BackingField: {fileID: 11400000, guid: a2cd30b2f1e20b54bb7354e256c1092b, type: 2}
