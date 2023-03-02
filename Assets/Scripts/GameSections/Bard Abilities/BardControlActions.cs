@@ -29,7 +29,7 @@ public partial class @BardControlActions : IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Button1"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""2f46026d-3dbe-41ba-ae06-2364a511967f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -78,6 +78,17 @@ public partial class @BardControlActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""341769bf-1252-43da-9b62-b97a08fe15d0"",
+                    ""path"": ""<Keyboard>/numpad1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Button1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""4c4e207a-1bf6-4bff-9b30-a00e081aaea2"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
@@ -100,6 +111,17 @@ public partial class @BardControlActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""fa122ef5-494e-4bb4-bc4c-858b7c1cc8ab"",
+                    ""path"": ""<Keyboard>/numpad2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Button2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""e9bcc0e2-6fc8-473c-87f9-566b2e4ec8e6"",
                     ""path"": ""<Keyboard>/3"",
                     ""interactions"": """",
@@ -111,11 +133,33 @@ public partial class @BardControlActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""ef70071e-fe06-4b31-aac2-870fc93198c8"",
+                    ""path"": ""<Keyboard>/numpad3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Button3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""a8c26c40-b265-451c-b849-5b8995c53696"",
                     ""path"": ""<Keyboard>/4"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Button4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c00977bf-7a05-46fa-bd11-10d30f4ec490"",
+                    ""path"": ""<Keyboard>/numpad4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Button4"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

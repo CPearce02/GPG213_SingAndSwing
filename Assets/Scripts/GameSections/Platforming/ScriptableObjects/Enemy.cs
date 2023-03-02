@@ -1,7 +1,5 @@
 using Core.ScriptableObjects;
 using UnityEngine;
-using Enums;
-using System.Collections.Generic;
 
 [CreateAssetMenu (fileName = "New Enemy", menuName = "Enemy")]
 public class Enemy : ScriptableObject
@@ -28,9 +26,8 @@ public class Enemy : ScriptableObject
     //public DamageType damageWeak;
 
     [field: SerializeField] public DamageType DamageType { get; private set; }
-    [field: SerializeField] public List<ComboValues> ComboData { get; private set; }
-    //{ get; private set; }
 
+    [field: SerializeField] public Combo Combo { get; private set; }
 
 
 }
