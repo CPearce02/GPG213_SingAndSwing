@@ -1,5 +1,6 @@
 using Events;
 using UnityEngine;
+using Animation;
 
 namespace Scenes
 {
@@ -11,6 +12,12 @@ namespace Scenes
 
             if (player)
             {
+                //This is really bad, but its 2 hours before friday and im tired so we'll fix it later - Greg
+                player.GetComponent<PlatformingController>().enabled = false;
+                player.GetComponent<Rigidbody2D>().simulated = false;
+                player.GetComponentInChildren<PlayerAnimationManager>().enabled = false;
+                player.GetComponentInChildren<Animator>().SetFloat("XVelocity", 0);
+                player.GetComponentInChildren<Animator>().CrossFade("knight_landing", 0, 0);
                 GameEvents.onSceneTransitionOutEvent?.Invoke();
             }
         }
