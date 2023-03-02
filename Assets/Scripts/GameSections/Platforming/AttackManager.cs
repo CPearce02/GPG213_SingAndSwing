@@ -1,13 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using Interfaces;
 
 public class AttackManager : MonoBehaviour
 {
-    public int damageAmount;
-
     Animator animator;
     public Collider2D coll; 
 
