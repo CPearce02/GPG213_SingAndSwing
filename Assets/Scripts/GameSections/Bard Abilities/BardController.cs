@@ -27,4 +27,12 @@ public class BardController : MonoBehaviour
     {
         GameEvents.onButtonPressed?.Invoke(comboValue: ComboValues.ComboValue2);
     }
+    private void OnButton3()
+    {
+        GameEvents.onButtonPressed?.Invoke(comboValue: ComboValues.ComboValue3);
+    }
+    private void OnButton4()
+    {
+        GameEvents.onButtonPressed?.Invoke(comboValue: ComboValues.ComboValue4);
+    }
 }

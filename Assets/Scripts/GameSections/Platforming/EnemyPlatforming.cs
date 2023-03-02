@@ -6,6 +6,7 @@ using Structs;
 
 public class EnemyPlatforming : MonoBehaviour, IAttackable
 {
+    public Enemy enemyData;
     public int damage = 10;
     public bool canBeDestroyed = false;
     [SerializeField] ParticleEvent takeDamageParticle;

@@ -13,7 +13,8 @@ namespace Events
         public delegate void LoadLevel();
         public delegate void SendCamera(Camera cam);
         public delegate void ButtonPressed(ComboValues comboValue);
-        public delegate void NewCombo();
+        public delegate void NewCombo(Combo combo);
+        public delegate void ComboFinsihed ();
 
 
         #region Player Events
@@ -31,6 +32,7 @@ namespace Events
         #endregion
         public static ButtonPressed onButtonPressed;
         public static NewCombo onNewCombo;
+        public static ComboFinsihed onComboFinish;
 
         #region UI Events
         public delegate void SetValue(int value);
