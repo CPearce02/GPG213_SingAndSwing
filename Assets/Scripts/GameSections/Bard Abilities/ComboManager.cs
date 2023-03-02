@@ -11,7 +11,7 @@ public class ComboManager : MonoBehaviour
     public EnemyPlatforming currentEnemy;
     private ComboValues expectedNote;
     private int comboIndex = 0 ;
-    private bool withinRange;
+    private bool noArmour;
     private bool hasStarted;
 
     public float timeFrame = 5f;
@@ -52,6 +52,7 @@ public class ComboManager : MonoBehaviour
         if (comboIndex == 3)
         {
             //all notes pressed
+            noArmour = true;
             GameEvents.onComboFinish?.Invoke();
         }
         else if (value == expectedNote)
@@ -79,7 +80,7 @@ public class ComboManager : MonoBehaviour
         currentCombo = null;
         comboIndex = 0;
         hasStarted = false;
-        if(comboIndex == 3)
+        if(noArmour)
         {
             currentEnemy.canBeDestroyed = true;
         }
@@ -90,6 +91,7 @@ public class ComboManager : MonoBehaviour
         if (collision.gameObject.tag == "Enemy" && currentCombo == null)
         {
             currentEnemy = collision.GetComponent<EnemyPlatforming>();
+            noArmour = false;
             currentCombo = currentEnemy.enemyData.Combo;
             GameEvents.onNewCombo?.Invoke(currentCombo);
             expectedNote = currentCombo.ComboValues[0];
