@@ -13,6 +13,7 @@ public class ComboUIController : MonoBehaviour
 
     [SerializeField] public List<GameObject> spawnedNotes = new List<GameObject>();
 
+    private ComboManager cm;
 
     private void OnEnable()
     {
@@ -28,8 +29,20 @@ public class ComboUIController : MonoBehaviour
         GameEvents.onComboFinish -= ClearComboNotes;
     }
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        cm = FindObjectOfType<ComboManager>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
     private void DisplayComboNotes(Combo combo)
     {
+        if (cm.currentEnemy != GetComponentInParent<EnemyPlatforming>() || cm.currentEnemy.canBeDestroyed == true) return;
         foreach (ComboValues value in combo.ComboValues)
         {
             GameObject note = Instantiate(ComboDictionary.instance.comboPrefabDictionary[value], spawnPositions[index].position, Quaternion.identity);
@@ -42,27 +55,28 @@ public class ComboUIController : MonoBehaviour
 
     private void UpdateComboNotes(ComboValues value)
     {
-        if (noteIndex >= 4)
+        if (noteIndex >= spawnedNotes.Count)
         {
             noteIndex = 0;
         }
-        
-        if (value == spawnedNotes[noteIndex].GetComponent<ComboNoteManager>().value)
+        else if (value == spawnedNotes[noteIndex].GetComponent<ComboNoteManager>().value)
         {
-            //Correct note - update index
+            //Correct note - update index and color
             spawnedNotes[noteIndex].GetComponent<SpriteRenderer>().color = Color.green;
             noteIndex++;
         }
         else
         {
-            //Incorret - reset index
+            //Incorrect - reset index and flash colors
+            noteIndex = 0;
             foreach (GameObject note in spawnedNotes)
             {
                 StartCoroutine(FlashColour(note));
-                noteIndex = 0;
             }
         }
     }
+
+
 
     private void ClearComboNotes()
     {
@@ -71,18 +85,6 @@ public class ComboUIController : MonoBehaviour
             Destroy(note);
         }
         spawnedNotes.Clear();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     IEnumerator FlashColour(GameObject note)

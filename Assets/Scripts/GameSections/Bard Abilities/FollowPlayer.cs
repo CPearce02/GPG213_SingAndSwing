@@ -1,7 +1,9 @@
 using UnityEngine;
+using Structs;
 
 public class FollowPlayer : MonoBehaviour
 {
+    private ParticleEvent particleEvent;
     public Transform player; // Reference to the player object
     public float xOffset; // The distance the 2D object should be from the player on the x-axis
     private Vector3 offset; // The offset between the player and the 2D object
