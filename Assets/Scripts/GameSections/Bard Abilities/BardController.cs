@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Events;
+using Structs;
 using Enums;
 using UnityEngine.InputSystem;
 

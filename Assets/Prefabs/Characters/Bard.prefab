@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8162570258018312773}
   - component: {fileID: 8162570258018312772}
   - component: {fileID: 8162570258018312770}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ComboManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}

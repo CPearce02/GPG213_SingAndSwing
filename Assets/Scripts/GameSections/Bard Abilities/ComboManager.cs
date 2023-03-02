@@ -10,7 +10,7 @@ public class ComboManager : MonoBehaviour
     public Combo currentCombo;
     public EnemyPlatforming currentEnemy;
     private ComboValues expectedNote;
-    private int comboIndex = 0 ;
+    public int comboIndex = 0 ;
     private bool noArmour;
     private bool hasStarted;
 
@@ -33,7 +33,6 @@ public class ComboManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -80,10 +79,11 @@ public class ComboManager : MonoBehaviour
         currentCombo = null;
         comboIndex = 0;
         hasStarted = false;
-        if(noArmour)
+        if(noArmour && currentEnemy != null)
         {
             currentEnemy.canBeDestroyed = true;
         }
+        currentEnemy = null;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -96,13 +96,6 @@ public class ComboManager : MonoBehaviour
             GameEvents.onNewCombo?.Invoke(currentCombo);
             expectedNote = currentCombo.ComboValues[0];
         }
-        //else if(collision.gameObject.tag == "Enemy")
-        //{
-        //    foreach (GameObject note in collision.GetComponentInChildren<ComboUIController>().spawnedNotes)
-        //    {
-        //        note.GetComponent<SpriteRenderer>().enabled = true;
-        //    }
-        //}
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -110,10 +103,6 @@ public class ComboManager : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             GameEvents.onComboFinish?.Invoke();
-            //foreach (GameObject note in collision.GetComponentInChildren<ComboUIController>().spawnedNotes)
-            //{
-            //    note.GetComponent<SpriteRenderer>().enabled = false;
-            //}
         }
     }
 }
