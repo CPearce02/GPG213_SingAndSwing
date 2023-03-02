@@ -1,5 +1,6 @@
 using Events;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OutOfBounds : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class OutOfBounds : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y >= player.transform.position.y) GameEvents.onPlayerRespawnEvent?.Invoke();
+        //if (transform.position.y >= player.transform.position.y) GameEvents.onPlayerRespawnEvent?.Invoke();
+        if (transform.position.y >= player.transform.position.y) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

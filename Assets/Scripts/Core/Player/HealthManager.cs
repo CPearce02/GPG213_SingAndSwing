@@ -4,6 +4,7 @@ using Events;
 using Structs;
 using UnityEngine;
 using Interfaces;
+using UnityEngine.SceneManagement;
 
 namespace Core.Player
 {
@@ -106,6 +107,7 @@ namespace Core.Player
             Health = playerStats.Health;
             transform.position = respawn;
             Alive();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         //Linked to the interface IAttackable

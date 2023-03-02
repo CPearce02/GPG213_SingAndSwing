@@ -22,6 +22,10 @@ namespace Levels
             GameEvents.onLevelLoadEvent -= LoadLevel;
         }
 
-        private void LoadLevel() => SceneManager.LoadScene(level.NextSection.Scene);
+        private void LoadLevel()
+        {
+            SceneManager.LoadScene(level.NextSection.Scene);
+            level.Step();
+        }
     }
 }
