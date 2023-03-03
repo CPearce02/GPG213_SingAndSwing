@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 4767656718564846561}
   - component: {fileID: 4767656718564846574}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy_Combat
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -260,6 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4767656719195334699}
   - component: {fileID: 4767656719195334698}
+  - component: {fileID: 5771440038925721341}
   m_Layer: 0
   m_Name: GFX
   m_TagString: Untagged
@@ -334,6 +335,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5771440038925721341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4767656719195334696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2e9e1c7aa43f947ba3d7e343967713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7020664702188721080
 GameObject:
   m_ObjectHideFlags: 0
