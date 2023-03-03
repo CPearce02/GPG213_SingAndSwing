@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 360529592}
   - component: {fileID: 360529595}
   - component: {fileID: 360529594}
+  - component: {fileID: 360529596}
   m_Layer: 0
   m_Name: SingAndSwing-Logo
   m_TagString: Untagged
@@ -189,7 +190,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f6a5bb2a800b0154b88c48f89d8c7c41, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bdf3fa172d39c3246a355edfac59ba3e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -435,6 +436,26 @@ MonoBehaviour:
   optionalScrambleMode: 0
   optionalShakeRandomnessMode: 0
   optionalString: 
+--- !u!95 &360529596
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360529588}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fbef093d0df7ca7489818afd8378ca03, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &583145158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1732,6 +1753,10 @@ PrefabInstance:
     - target: {fileID: 1475695481558075443, guid: da2f02cdc2a31eb498496d521946aa5c, type: 3}
       propertyPath: m_Name
       value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475695481558075444, guid: da2f02cdc2a31eb498496d521946aa5c, type: 3}
+      propertyPath: m_FillCenter
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1475695481558075445, guid: da2f02cdc2a31eb498496d521946aa5c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
