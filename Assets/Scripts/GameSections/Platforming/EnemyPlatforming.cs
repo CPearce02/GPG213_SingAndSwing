@@ -19,14 +19,20 @@ public class EnemyPlatforming : MonoBehaviour, IAttackable
     {
         var attackable = collider.gameObject.TryGetComponent<IAttackable>(out var attackableComponent);
         if (!attackable) return;
-        attackableComponent.TakeDamage(damage);
+
+        //Stops enemies from attacking each other
+        collider.TryGetComponent(out PlatformingController player);
+        if(player) attackableComponent.TakeDamage(damage);
     }
     
     private void HandleCollision2D(Collision2D collision)
     {
         var attackable = collision.gameObject.TryGetComponent<IAttackable>(out var attackableComponent);
         if (!attackable) return;
-        attackableComponent.TakeDamage(damage);
+
+        //Stops enemies from attacking each other
+        collision.transform.TryGetComponent(out PlatformingController player);
+        if (player) attackableComponent.TakeDamage(damage);
     }
 
     public void TakeDamage(int amount)

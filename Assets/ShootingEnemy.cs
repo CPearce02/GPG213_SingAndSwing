@@ -4,39 +4,79 @@ using UnityEngine;
 
 public class ShootingEnemy : MonoBehaviour
 {
+    [Header("Prefabs")]
     public GameObject bullet;
-
     public Transform directionTransform;
+    [HideInInspector] public Transform player;
+    public PhysicsMaterial2D bounceMaterial;
+
+    [Header("Properties")]
+    public bool aimAtPlayer = false;
+    public float fireRate = 1f;
+    public float bulletSpeed = 10f;
+    [HideInInspector] public float homingTime = 1f;
+
+    bool countingDownShoot = false;
 
     public enum ShootState
     {
-        fixedDirection,
-        followPlayer,
-        both
+        ConstantDirection,
+        Homing,
+        Gravity,
+        Bouncing
     }
 
     public ShootState shootState;
 
-    private void Start()
-    {
-        GameObject clonedBullet = Instantiate(bullet, directionTransform.position, Quaternion.identity);
-
-        clonedBullet.GetComponent<Rigidbody2D>().isKinematic = true;
-        clonedBullet.GetComponent<Collider2D>().isTrigger = true;
-    }
-
     void Update()
     {
-        
+        if(aimAtPlayer) DirectionToPlayer();
+
+        if (!aimAtPlayer)
+        {
+            if (!countingDownShoot) StartCoroutine(DelayShoot());
+        } else
+        {
+            if (!countingDownShoot && player != null) StartCoroutine(DelayShoot());
+        }
     }
 
     void Shoot()
     {
+        GameObject clonedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+        Rigidbody2D rb = clonedBullet.GetComponent<Rigidbody2D>();
+        BulletManager bManager = clonedBullet.AddComponent<BulletManager>();
+        Collider2D coll = clonedBullet.GetComponent<Collider2D>();
 
+        rb.isKinematic = true;
+        coll.isTrigger = true;
+
+        if (player != null) bManager.player = player;
+        if(shootState == ShootState.Homing) bManager.homingTime = homingTime;
+        bManager.bulletSpeed = bulletSpeed;
+        bManager.directionTransform = directionTransform;
+        
+        Physics2D.IgnoreCollision(coll, GetComponent<Collider2D>());
+
+        if (shootState == ShootState.Gravity || shootState == ShootState.Bouncing)
+        {
+            coll.isTrigger = false;
+            rb.isKinematic = false;
+        }
+
+        if(shootState == ShootState.Bouncing) rb.sharedMaterial = bounceMaterial;
     }
 
-    void ShootFollow()
+    void DirectionToPlayer()
     {
+        if(player != null) directionTransform.position = player.transform.position;
+    }
 
+    IEnumerator DelayShoot()
+    {
+        countingDownShoot = true;
+        yield return new WaitForSeconds(fireRate);
+        countingDownShoot = false;
+        Shoot();
     }
 }
