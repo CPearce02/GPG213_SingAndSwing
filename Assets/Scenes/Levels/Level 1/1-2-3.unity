@@ -2271,10 +2271,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You found a secret room!
+  m_text: If you managed to fall down here you're either curious or you're Chantelle.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2caa83d5dfaff3b42b9fd49dcf89242d, type: 2}
-  m_sharedMaterial: {fileID: -5090442402603522692, guid: 2caa83d5dfaff3b42b9fd49dcf89242d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cf2be50b7f0a62d43a37645c08a3397b, type: 2}
+  m_sharedMaterial: {fileID: -8755077516033508706, guid: cf2be50b7f0a62d43a37645c08a3397b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2298,13 +2298,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.5
-  m_fontSizeBase: 0.5
+  m_fontSize: 0.75
+  m_fontSizeBase: 0.75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 16
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2557,7 +2557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b9da7372c1d56042a27678f00e7590a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
+  sceneName: 1-1-3
 --- !u!61 &1214764419
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3156,10 +3156,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8226912907385199645, guid: 3549d698f3e39e142a8f3c129bc0b92c, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 2112518277}
     - target: {fileID: 8226912907385199645, guid: 3549d698f3e39e142a8f3c129bc0b92c, type: 3}
       propertyPath: m_SortingOrder
       value: 5

@@ -64,6 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCombo: {fileID: 0}
   currentEnemy: {fileID: 0}
+  comboIndex: 0
   timeFrame: 5
 --- !u!114 &8162570258018312770
 MonoBehaviour:
@@ -96,6 +97,7 @@ GameObject:
   - component: {fileID: 8162570258677425958}
   - component: {fileID: 8162570258677425977}
   - component: {fileID: 8162570258677425959}
+  - component: {fileID: 8533605000431539975}
   m_Layer: 0
   m_Name: Bard
   m_TagString: Untagged
@@ -221,8 +223,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2138e9c076bef0844b3384178379ffe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  xOffset: -1.25
+  playerTransform: {fileID: 0}
+  followSpeed: 10
+  stoppingDistance: 0.25
+--- !u!114 &8533605000431539975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8162570258677425968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e3d59568325fa346afd15ce905d74ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 8162570258677425983}
+  flipThreshold: 0.1
 --- !u!1 &8162570259291630726
 GameObject:
   m_ObjectHideFlags: 0

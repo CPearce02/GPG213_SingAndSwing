@@ -10,7 +10,7 @@ public class ComboManager : MonoBehaviour
     public Combo currentCombo;
     public EnemyPlatforming currentEnemy;
     private ComboValues expectedNote;
-    public int comboIndex = 0 ;
+    public int comboIndex;
     private bool noArmour;
     private bool hasStarted;
 
@@ -48,17 +48,20 @@ public class ComboManager : MonoBehaviour
 
     private void CheckComboValue(ComboValues value)
     {
-        if (comboIndex == 3)
-        {
-            //all notes pressed
-            noArmour = true;
-            GameEvents.onComboFinish?.Invoke();
-        }
-        else if (value == expectedNote)
+        if (value == expectedNote)
         {
             //Increase and set the next note
             comboIndex++;
-            expectedNote = currentCombo.ComboValues[comboIndex];
+            if (comboIndex >= currentCombo.ComboValues.Count)
+            {
+                //all notes pressed
+                noArmour = true;
+                GameEvents.onComboFinish?.Invoke();
+            }
+            else
+            {
+                expectedNote = currentCombo.ComboValues[comboIndex];
+            }
         }
         else
         {
@@ -66,23 +69,25 @@ public class ComboManager : MonoBehaviour
             comboIndex = 0;
             expectedNote = currentCombo.ComboValues[comboIndex];
         }
+        //Debug.Log(comboIndex);
     }
     private void ComboStart(Combo combo)
     {
         //start timer
         sequenceStartTime = Time.time;
         hasStarted = true;
+        comboIndex = 0;
+
     }
 
     private void ComboFinished()
     {
-        currentCombo = null;
-        comboIndex = 0;
-        hasStarted = false;
         if(noArmour && currentEnemy != null)
         {
             currentEnemy.canBeDestroyed = true;
         }
+        currentCombo = null;
+        hasStarted = false;
         currentEnemy = null;
     }
 

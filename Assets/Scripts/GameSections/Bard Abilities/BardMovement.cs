@@ -1,24 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+using Structs;
 
 public class BardMovement : MonoBehaviour
 {
-    public GameObject knight;
-    private NavMeshAgent agent;
+    public Transform playerTransform; // Reference to the player's transform
+    public float followSpeed;  // Speed at which the object follows the player
+    public float stoppingDistance;
 
-    // Start is called before the first frame update
-    void Start()
+    private Rigidbody2D rb;
+
+    private void Awake()
     {
-        knight = GameObject.FindGameObjectWithTag("Player");
-        agent = GetComponent<NavMeshAgent>();
-
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        agent.SetDestination(knight.transform.position);
+        if (playerTransform != null)
+        {
+            Vector2 direction = (playerTransform.position - transform.position).normalized;
+
+            if (Vector2.Distance(transform.position, playerTransform.position) > stoppingDistance)
+            {
+                rb.velocity = direction * followSpeed;
+            }
+            else
+            {
+                rb.velocity = Vector2.zero;
+            }
+        }
     }
 }
