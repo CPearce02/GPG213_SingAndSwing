@@ -51,6 +51,7 @@ public class ComboUIController : MonoBehaviour
             index++;
         }
         index = 0;
+        noteIndex = 0;
     }
 
     private void UpdateComboNotes(ComboValues value)
@@ -75,9 +76,7 @@ public class ComboUIController : MonoBehaviour
             }
         }
     }
-
-
-
+    
     private void ClearComboNotes()
     {
         foreach (GameObject note in spawnedNotes)
