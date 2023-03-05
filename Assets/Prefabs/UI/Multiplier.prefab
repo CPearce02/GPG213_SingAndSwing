@@ -5093,16 +5093,16 @@ MonoBehaviour:
     doShake: 1
   - strength: 0
     duration: 0.75
-    doShake: 0
+    doShake: 1
   - strength: 0
     duration: 1
-    doShake: 0
+    doShake: 1
   - strength: 0
     duration: 1.25
-    doShake: 0
+    doShake: 1
   - strength: 3
     duration: 1
-    doShake: 0
+    doShake: 1
 --- !u!1 &7845695246566141683
 GameObject:
   m_ObjectHideFlags: 0
