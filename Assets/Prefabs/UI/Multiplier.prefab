@@ -5082,8 +5082,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff7a8e75d9a6b145aa09d6d0c07265c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 93233536}
+  animator: {fileID: 0}
   multiplierData: {fileID: 11400000, guid: a8f61339f3979e54da826e27de37344d, type: 2}
+  maxParticles:
+  - {fileID: 1997305993457863523}
+  - {fileID: 4562731338181435093}
+  cameraShakeEvents:
+  - strength: 1
+    duration: 0.5
+    doShake: 1
+  - strength: 0
+    duration: 0.75
+    doShake: 0
+  - strength: 0
+    duration: 1
+    doShake: 0
+  - strength: 0
+    duration: 1.25
+    doShake: 0
+  - strength: 3
+    duration: 1
+    doShake: 0
 --- !u!1 &7845695246566141683
 GameObject:
   m_ObjectHideFlags: 0
