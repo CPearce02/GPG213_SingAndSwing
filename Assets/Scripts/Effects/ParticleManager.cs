@@ -12,7 +12,7 @@ namespace Effects
 
         private void PlayParticle(ParticleEvent particleEvent)
         {
-            var p = Instantiate(particleEvent.Particle, particleEvent.Transform.position, Quaternion.identity);
+            var p = Instantiate(particleEvent.Particle, particleEvent.Transform.position, particleEvent.Transform.rotation);
             var main = p.main;
             main.startColor = particleEvent.Color;
         }

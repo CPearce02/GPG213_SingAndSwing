@@ -14,9 +14,7 @@ namespace Animation
         HealthManager healthManager;
     
         [SerializeField] [ReadOnly] bool isFalling;
-
-        [Header("Camera Shake Events")]
-
+        
         private static readonly int Falling = Animator.StringToHash("IsFalling");
         private static readonly int Grounded = Animator.StringToHash("Grounded");
         private static readonly int XVelocity = Animator.StringToHash("XVelocity");
