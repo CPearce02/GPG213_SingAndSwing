@@ -6,16 +6,8 @@ namespace Events
 {
     public static class GameEvents 
     {
-        public delegate void ScreenShake(Strength str, float lengthInSeconds = 0.2f);
-        public delegate void ParticleEffect(ParticleEvent particleEvent);
-        public delegate void SceneTransitionOut();
-        public delegate void SceneTransitionIn();
-        public delegate void LoadLevel();
-        public delegate void SendCamera(Camera cam);
-        public delegate void ButtonPressed(ComboValues comboValue);
-        public delegate void NewCombo(Combo combo);
-        public delegate void ComboFinsihed ();
-
+        
+       
 
         #region Player Events
         public delegate void PlayerKill();
@@ -30,22 +22,51 @@ namespace Events
         public static PlayerDied onPlayerDiedEvent;
         public static PlayerRespawn onPlayerRespawnEvent;
         #endregion
+
+        #region Combos
+        public delegate void ButtonPressed(ComboValues comboValue);
+        public delegate void NewCombo(Combo combo);
+        public delegate void ComboFinished ();
+        
         public static ButtonPressed onButtonPressed;
         public static NewCombo onNewCombo;
-        public static ComboFinsihed onComboFinish;
+        public static ComboFinished onComboFinish;
+        #endregion
 
         #region UI Events
         public delegate void SetValue(int value);
         public delegate void PlayerHealthUIChange(int currentHealth);
+        
         public static SetValue onSetHealthCountEvent;
         public static PlayerHealthUIChange onPlayerHealthUIChangeEvent;
         #endregion
-        
+
+        #region Effects
+        public delegate void SceneTransitionOut();
+        public delegate void SceneTransitionIn();
+        public delegate void ScreenShake(Strength str, float lengthInSeconds = 0.2f);
+        public delegate void ParticleEffect(ParticleEvent particleEvent);
+        public delegate void LoadLevel();
+        public delegate void SendCamera(Camera cam);
+
         public static ScreenShake onScreenShakeEvent;
         public static SceneTransitionOut onSceneTransitionOutEvent;
         public static SceneTransitionIn onSceneTransitionInEvent;
         public static SendCamera onSendCameraEvent;
         public static ParticleEffect onParticleEvent;
         public static LoadLevel onLevelLoadEvent;
+        #endregion
+
+        #region Score
+        public delegate void ScoreChange(int score);
+        public delegate void MultiplierIncrease();
+        public delegate void MultiplierReset();
+        public delegate void MultiplierDecrease();
+        
+        public static ScoreChange onScoreChangeEvent;
+        public static MultiplierIncrease onMultiplierIncreaseEvent;
+        public static MultiplierReset onMultiplierResetEvent;
+        public static MultiplierDecrease onMultiplierDecreaseEvent;
+        #endregion
     }
 }

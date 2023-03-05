@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!198 &492575110 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1997305993457863523, guid: e26093ce5e67dc6459f6b1ba66d60bef, type: 3}
+  m_PrefabInstance: {fileID: 1997305994197848764}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &863471276 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1114515894349492709, guid: da90ddb66b91c2c4085d575dc48b5a42, type: 3}
@@ -244,6 +249,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!198 &1396118191 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4562731338181435093, guid: e26093ce5e67dc6459f6b1ba66d60bef, type: 3}
+  m_PrefabInstance: {fileID: 1997305994197848764}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1776507198 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7374609646033765592, guid: 4c846ecc4e2f28c4ba91116ac9410157, type: 3}
@@ -650,6 +660,58 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1195966433}
     m_Modifications:
+    - target: {fileID: 1997305994197848766, guid: e26093ce5e67dc6459f6b1ba66d60bef, type: 3}
+      propertyPath: maxParticles.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997305994197848766, guid: e26093ce5e67dc6459f6b1ba66d60bef, type: 3}
+      propertyPath: maxParticles.Array.data[0]
+      value: 
+      objectReference: {fileID: 492575110}
+    - target: {fileID: 1997305994197848766, guid: e26093ce5e67dc6459f6b1ba66d60bef, type: 3}
+      propertyPath: maxParticles.Array.data[1]
+      value: 
+      objectReference: {fileID: 1396118191}
+    - target: {fileID: 1997305994197848766, guid: e26093ce5e67dc6459f6b1ba66d60bef, type: 3}
+      propertyPath: cameraShakeEvents.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997305994197848766, guid: e26093ce5e67dc6459f6b1ba66d60bef, type: 3}
+      propertyPath: _cameraShakeEvents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997305994197848766, guid: e26093ce5e67dc6459f6b1ba66d60bef, type: 3}
+      propertyPath: cameraShakeEvents.Array.data[0].doShake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997305994197848766, guid: e26093ce5e67dc6459f6b1ba66d60bef, type: 3}
+      propertyPath: cameraShakeEvents.Array.data[0].duration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997305994197848766, guid: e26093ce5e67dc6459f6b1ba66d60bef, type: 3}
+      propertyPath: cameraShakeEvents.Array.data[0].strength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997305994197848766, guid: e26093ce5e67dc6459f6b1ba66d60bef, type: 3}
+      propertyPath: cameraShakeEvents.Array.data[1].duration
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997305994197848766, guid: e26093ce5e67dc6459f6b1ba66d60bef, type: 3}
+      propertyPath: cameraShakeEvents.Array.data[2].duration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997305994197848766, guid: e26093ce5e67dc6459f6b1ba66d60bef, type: 3}
+      propertyPath: cameraShakeEvents.Array.data[3].duration
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997305994197848766, guid: e26093ce5e67dc6459f6b1ba66d60bef, type: 3}
+      propertyPath: cameraShakeEvents.Array.data[4].duration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997305994197848766, guid: e26093ce5e67dc6459f6b1ba66d60bef, type: 3}
+      propertyPath: cameraShakeEvents.Array.data[4].strength
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4545022534223258904, guid: e26093ce5e67dc6459f6b1ba66d60bef, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
