@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Enemies
+namespace Effects
 {
     [Serializable]
     public class TrailHandler
