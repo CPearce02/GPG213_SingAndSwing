@@ -15,7 +15,7 @@ public class ShootingEnemy : MonoBehaviour
     public bool aimAtPlayer = false;
     public float fireRate = 1f;
     public float bulletSpeed = 10f;
-    [HideInInspector] public float homingTime = 1f;
+    public float homingTime = 1f;
 
     bool countingDownShoot = false;
 

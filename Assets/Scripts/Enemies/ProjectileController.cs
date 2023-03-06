@@ -33,7 +33,7 @@ namespace Enemies
             {
                 _originalHomingTime -= Time.deltaTime;
 
-                rb.velocity = bulletSpeed * (player.position - transform.position).normalized;
+                if (player != null) rb.velocity = bulletSpeed * (player.position - transform.position).normalized;
             }
 
             if (bulletAliveTime > 0) bulletAliveTime -= Time.deltaTime;
