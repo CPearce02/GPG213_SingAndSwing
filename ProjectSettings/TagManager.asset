@@ -40,9 +40,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: GemsUI
-    uniqueID: 1938150315
-    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: PlayerUI
+    uniqueID: 1938150315
+    locked: 0
+  - name: SceneTransition
+    uniqueID: 1848904983
     locked: 0

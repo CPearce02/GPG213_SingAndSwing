@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 480301594331138782}
   - component: {fileID: 480301594331138785}
   - component: {fileID: 480301594331138784}
-  - component: {fileID: 480301594331138787}
+  - component: {fileID: 6305878053716332661}
   m_Layer: 5
   m_Name: PlayerUI
   m_TagString: Untagged
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &480301594331138787
+--- !u!114 &6305878053716332661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 480301594331138786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0dadc3bb407274ba651e13623bf502, type: 3}
+  m_Script: {fileID: 11500000, guid: fe16c7775f038e94e994394f23b2d753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &582505197012520764

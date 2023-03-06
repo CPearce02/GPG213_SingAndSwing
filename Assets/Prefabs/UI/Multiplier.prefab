@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 1997305993457863521}
   - component: {fileID: 1997305993457863523}
   - component: {fileID: 1997305993457863522}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ParticlesBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5039,6 +5039,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4545022534223258904}
   - component: {fileID: 1997305994197848766}
+  - component: {fileID: 7552741890631450359}
   m_Layer: 5
   m_Name: Multiplier
   m_TagString: Untagged
@@ -5103,6 +5104,27 @@ MonoBehaviour:
   - strength: 3
     duration: 1
     doShake: 1
+--- !u!223 &7552741890631450359
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7262070141213395763}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 1938150315
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &7845695246566141683
 GameObject:
   m_ObjectHideFlags: 0
@@ -5114,7 +5136,7 @@ GameObject:
   - component: {fileID: 2814006490262763986}
   - component: {fileID: 4562731338181435093}
   - component: {fileID: 308407219024316424}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ParticlesForeground
   m_TagString: Untagged
   m_Icon: {fileID: 0}

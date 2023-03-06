@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 namespace Scenes
 {
-    public class TransitionCanvas : MonoBehaviour
+    public class AssignUICamera : MonoBehaviour
     {
         private Camera _cam;
         Canvas _canvas;
