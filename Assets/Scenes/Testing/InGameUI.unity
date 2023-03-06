@@ -457,6 +457,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CM vcam1
       objectReference: {fileID: 0}
+    - target: {fileID: 8561150750363626585, guid: 6e61b2e906b49b7498d1de4b58fa69ec, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8561150750363626586, guid: 6e61b2e906b49b7498d1de4b58fa69ec, type: 3}
       propertyPath: m_Follow
       value: 
