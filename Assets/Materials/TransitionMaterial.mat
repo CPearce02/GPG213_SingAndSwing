@@ -49,5 +49,5 @@ Material:
     - _CutOff: 1.1
     - _EdgeSmoothing: 0
     m_Colors:
-    - _MainColor: {r: 0.31764707, g: 0.3372549, b: 0.41960785, a: 1}
+    - _MainColor: {r: 0.89411765, g: 0.29411766, b: 0.20784314, a: 1}
   m_BuildTextureStacks: []
