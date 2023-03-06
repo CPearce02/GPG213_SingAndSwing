@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Core.Player;
+using GameSections.Platforming;
 using UnityEngine;
 
 public class DetectPlayer : MonoBehaviour

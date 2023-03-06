@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Core.Player;
+using GameSections.Platforming;
 
 namespace Animation
 {

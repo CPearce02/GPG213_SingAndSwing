@@ -1,6 +1,7 @@
 using Enums;
 using Events;
 using GameSections.Bard_Abilities.ScriptableObject;
+using GameSections.Platforming;
 using UnityEngine;
 
 namespace GameSections.Bard_Abilities

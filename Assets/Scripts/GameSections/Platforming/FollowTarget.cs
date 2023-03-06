@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowTarget : MonoBehaviour
+namespace GameSections.Platforming
 {
-    public Transform target;
-    public Vector3 offset;
-
-    void Update()
+    public class FollowTarget : MonoBehaviour
     {
-        transform.position = target.position + offset;
+        public Transform target;
+        public Vector3 offset;
+
+        void Update()
+        {
+            transform.position = target.position + offset;
+        }
     }
 }

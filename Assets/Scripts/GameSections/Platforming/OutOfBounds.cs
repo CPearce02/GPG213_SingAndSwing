@@ -1,19 +1,21 @@
-using Events;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class OutOfBounds : MonoBehaviour
+namespace GameSections.Platforming
 {
-    GameObject player;
-
-    void Start()
+    public class OutOfBounds : MonoBehaviour
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
+        GameObject _player;
 
-    void Update()
-    {
-        //if (transform.position.y >= player.transform.position.y) GameEvents.onPlayerRespawnEvent?.Invoke();
-        if (transform.position.y >= player.transform.position.y) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        void Start()
+        {
+            _player = GameObject.FindGameObjectWithTag("Player");
+        }
+
+        void Update()
+        {
+            //if (transform.position.y >= player.transform.position.y) GameEvents.onPlayerRespawnEvent?.Invoke();
+            if (transform.position.y >= _player.transform.position.y) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }

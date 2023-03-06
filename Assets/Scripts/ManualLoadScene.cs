@@ -1,3 +1,5 @@
+using Core.Player;
+using GameSections.Platforming;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor;
