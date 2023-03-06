@@ -1,22 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBarController : MonoBehaviour
+namespace GameSections.Battles_DEPRECATED
 {
-    [SerializeField]
-    private Image healthBarSprite;
-    private float reduceSpeed = 2;
-    private float target = 1;
-
-    public void UpdateHealthBar(float currentHealth, float maxHealth)
+    public class HealthBarController : MonoBehaviour
     {
-        target = currentHealth / maxHealth;
-    }
+        [SerializeField]
+        private Image healthBarSprite;
+        private float reduceSpeed = 2;
+        private float target = 1;
 
-    private void Update()
-    {
-        healthBarSprite.fillAmount = Mathf.MoveTowards(healthBarSprite.fillAmount, target, reduceSpeed * Time.deltaTime);
+        public void UpdateHealthBar(float currentHealth, float maxHealth)
+        {
+            target = currentHealth / maxHealth;
+        }
+
+        private void Update()
+        {
+            healthBarSprite.fillAmount = Mathf.MoveTowards(healthBarSprite.fillAmount, target, reduceSpeed * Time.deltaTime);
+        }
     }
 }
