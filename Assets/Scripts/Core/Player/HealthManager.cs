@@ -1,7 +1,6 @@
 using System.Collections;
 using Enums;
 using Events;
-using GameSections.Platforming;
 using Structs;
 using UnityEngine;
 using Interfaces;
@@ -15,6 +14,8 @@ namespace Core.Player
         [SerializeField] private CharacterData playerStats;
         [SerializeField] Transform respawnPosition;
         [SerializeField] ParticleEvent deathParticles;
+        [SerializeField] private CameraShakeEvent takeDamageCameraShake;
+        
         PlatformingController controller;
         Rigidbody2D rb;
         
@@ -78,7 +79,7 @@ namespace Core.Player
         private void ReduceHealth(int amount)
         {
             _ = amount == 0 ? Health-- : Health -= amount;
-            GameEvents.onScreenShakeEvent.Invoke(Strength.Medium, .2f);
+            takeDamageCameraShake.Invoke();
             GameEvents.onMultiplierDecreaseEvent.Invoke();
         }
         

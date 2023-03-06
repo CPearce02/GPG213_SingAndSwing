@@ -1,8 +1,7 @@
 using Core.ScriptableObjects;
-using GameSections.Bard_Abilities.ScriptableObject;
 using UnityEngine;
 
-namespace GameSections.Platforming.ScriptableObjects
+namespace Enemies.ScriptableObjects
 {
     [CreateAssetMenu (fileName = "New Enemy", menuName = "Enemy")]
     public class EnemyData : ScriptableObject

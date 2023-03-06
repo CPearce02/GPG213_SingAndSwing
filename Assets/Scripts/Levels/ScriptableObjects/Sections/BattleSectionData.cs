@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using GameSections.Platforming.ScriptableObjects;
+using Enemies.ScriptableObjects;
 using UnityEngine;
 
 namespace Levels.ScriptableObjects.Sections

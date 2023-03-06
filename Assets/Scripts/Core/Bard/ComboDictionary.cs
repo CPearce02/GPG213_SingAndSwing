@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using Enums;
 using UnityEngine;
 
-namespace GameSections.Bard_Abilities
+namespace Core.Bard
 {
     public class ComboDictionary : MonoBehaviour
     {
         public static ComboDictionary instance;
 
-        [SerializeField] public Dictionary<ComboValues, GameObject> comboPrefabDictionary = new Dictionary<ComboValues, GameObject>();
+        public Dictionary<ComboValues, GameObject> comboPrefabDictionary = new ();
 
         [SerializeField] private GameObject[] comboValuePrefabs;
         private void Awake()

@@ -1,22 +1,22 @@
+using Core.ScriptableObjects;
+using Enemies;
 using Enums;
 using Events;
-using GameSections.Bard_Abilities.ScriptableObject;
-using GameSections.Platforming;
 using UnityEngine;
 
-namespace GameSections.Bard_Abilities
+namespace Core.Bard
 {
     public class ComboManager : MonoBehaviour
     {
-        public Combo currentCombo;
-        public EnemyPlatforming currentEnemy;
-        private ComboValues expectedNote;
+        [SerializeField] private Combo currentCombo;
+        public Enemy CurrentEnemy { get; private set;}
+        [SerializeField][ReadOnly] private ComboValues expectedNote;
         public int comboIndex;
-        private bool noArmour;
-        private bool hasStarted;
+        private bool _noArmour;
+        private bool _hasStarted;
 
         public float timeFrame = 5f;
-        private float sequenceStartTime = 0f;
+        private float _sequenceStartTime = 0f;
 
         private void OnEnable()
         {
@@ -39,8 +39,8 @@ namespace GameSections.Bard_Abilities
         // Update is called once per frame
         void Update()
         {
-            if (!hasStarted) return;
-            if (Time.time - sequenceStartTime > timeFrame)
+            if (!_hasStarted) return;
+            if (Time.time - _sequenceStartTime > timeFrame)
             {
                 Debug.Log("Time Up");
                 GameEvents.onComboFinish?.Invoke();
@@ -56,7 +56,7 @@ namespace GameSections.Bard_Abilities
                 if (comboIndex >= currentCombo.ComboValues.Count)
                 {
                     //all notes pressed
-                    noArmour = true;
+                    _noArmour = true;
                     GameEvents.onComboFinish?.Invoke();
                 }
                 else
@@ -75,30 +75,30 @@ namespace GameSections.Bard_Abilities
         private void ComboStart(Combo combo)
         {
             //start timer
-            sequenceStartTime = Time.time;
-            hasStarted = true;
+            _sequenceStartTime = Time.time;
+            _hasStarted = true;
             comboIndex = 0;
 
         }
 
         private void ComboFinished()
         {
-            if(noArmour && currentEnemy != null)
+            if(_noArmour && CurrentEnemy != null)
             {
-                currentEnemy.canBeDestroyed = true;
+                CurrentEnemy.canBeDestroyed = true;
             }
             currentCombo = null;
-            hasStarted = false;
-            currentEnemy = null;
+            _hasStarted = false;
+            CurrentEnemy = null;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.tag == "Enemy" && currentCombo == null)
             {
-                currentEnemy = collision.GetComponent<EnemyPlatforming>();
-                noArmour = false;
-                currentCombo = currentEnemy.enemyDataData.Combo;
+                CurrentEnemy = collision.GetComponent<Enemy>();
+                _noArmour = false;
+                currentCombo = CurrentEnemy.enemyData.Combo;
                 GameEvents.onNewCombo?.Invoke(currentCombo);
                 expectedNote = currentCombo.ComboValues[0];
             }

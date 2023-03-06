@@ -1,32 +1,33 @@
+using Enemies;
 using GameSections.Platforming;
 using UnityEngine;
 
-namespace GameSections.Bard_Abilities
+namespace Core.Bard
 {
     public class EnemySpriteManager : MonoBehaviour
     {
-        private SpriteRenderer sr;
-        private EnemyPlatforming ep;
+        private SpriteRenderer _sr;
+        private Enemy _ep;
         //private Color originalColor;
 
         // Start is called before the first frame update
         void Start()
         {
-            sr = GetComponent<SpriteRenderer>();
-            ep = GetComponentInParent<EnemyPlatforming>();
+            _sr = GetComponent<SpriteRenderer>();
+            _ep = GetComponentInParent<Enemy>();
             //originalColor = sr.color;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (ep.canBeDestroyed)
+            if (_ep.canBeDestroyed)
             {
-                sr.color = Color.red;
+                _sr.color = Color.red;
             }
             else
             {
-                sr.color = Color.cyan;
+                _sr.color = Color.cyan;
             }
         }
     }

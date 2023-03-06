@@ -1,20 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Core.ScriptableObjects;
+using Enemies;
 using Enums;
 using Events;
-using GameSections.Bard_Abilities.ScriptableObject;
-using GameSections.Platforming;
 using UnityEngine;
 
-namespace GameSections.Bard_Abilities
+namespace Core.Bard
 {
     public class ComboUIController : MonoBehaviour
     {
         [SerializeField] Transform[] spawnPositions;
-        private int index;
-        private int noteIndex = 0;
+        private int _index;
+        private int _noteIndex = 0;
 
-        [SerializeField] public List<GameObject> spawnedNotes = new List<GameObject>();
+        [SerializeField] public List<GameObject> spawnedNotes = new ();
 
         private ComboManager cm;
 
@@ -32,47 +32,41 @@ namespace GameSections.Bard_Abilities
             GameEvents.onComboFinish -= ClearComboNotes;
         }
 
-        // Start is called before the first frame update
         void Start()
         {
             cm = FindObjectOfType<ComboManager>();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
         private void DisplayComboNotes(Combo combo)
         {
-            if (cm.currentEnemy != GetComponentInParent<EnemyPlatforming>() || cm.currentEnemy.canBeDestroyed == true) return;
+            if (cm.CurrentEnemy != GetComponentInParent<Enemy>() || cm.CurrentEnemy.canBeDestroyed == true) return;
             foreach (ComboValues value in combo.ComboValues)
             {
-                GameObject note = Instantiate(ComboDictionary.instance.comboPrefabDictionary[value], spawnPositions[index].position, Quaternion.identity);
+                GameObject note = Instantiate(ComboDictionary.instance.comboPrefabDictionary[value], spawnPositions[_index].position, Quaternion.identity);
                 note.transform.parent = gameObject.transform;
                 spawnedNotes.Add(note);
-                index++;
+                _index++;
             }
-            index = 0;
-            noteIndex = 0;
+            _index = 0;
+            _noteIndex = 0;
         }
 
         private void UpdateComboNotes(ComboValues value)
         {
-            if (noteIndex >= spawnedNotes.Count)
+            if (_noteIndex >= spawnedNotes.Count)
             {
-                noteIndex = 0;
+                _noteIndex = 0;
             }
-            else if (value == spawnedNotes[noteIndex].GetComponent<ComboNoteManager>().value)
+            else if (value == spawnedNotes[_noteIndex].GetComponent<ComboNoteManager>().value)
             {
                 //Correct note - update index and color
-                spawnedNotes[noteIndex].GetComponent<SpriteRenderer>().color = Color.green;
-                noteIndex++;
+                spawnedNotes[_noteIndex].GetComponent<SpriteRenderer>().color = Color.green;
+                _noteIndex++;
             }
             else
             {
                 //Incorrect - reset index and flash colors
-                noteIndex = 0;
+                _noteIndex = 0;
                 foreach (GameObject note in spawnedNotes)
                 {
                     StartCoroutine(FlashColour(note));

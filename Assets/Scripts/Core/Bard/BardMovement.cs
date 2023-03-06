@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GameSections.Bard_Abilities
+namespace Core.Bard
 {
     public class BardMovement : MonoBehaviour
     {

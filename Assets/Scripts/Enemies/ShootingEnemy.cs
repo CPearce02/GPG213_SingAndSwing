@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Enemies;
 using UnityEngine;
 
 public class ShootingEnemy : MonoBehaviour
@@ -45,7 +46,7 @@ public class ShootingEnemy : MonoBehaviour
     {
         GameObject clonedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
         Rigidbody2D rb = clonedBullet.GetComponent<Rigidbody2D>();
-        BulletManager bManager = clonedBullet.AddComponent<BulletManager>();
+        ProjectileController bManager = clonedBullet.AddComponent<ProjectileController>();
         Collider2D coll = clonedBullet.GetComponent<Collider2D>();
 
         rb.isKinematic = true;

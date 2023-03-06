@@ -18,7 +18,9 @@ namespace Scoring
         private static readonly int Multiplier = Animator.StringToHash("Multiplier");
 
         [SerializeField] private CameraShakeEvent[] cameraShakeEvents;
-
+        
+        Tweener tweenPunchScale;
+        Tweener tweenPunchRotation;
         private void OnValidate()
         {
             if (cameraShakeEvents.Length > (int)MultiplierState.Five + 1)
@@ -31,6 +33,8 @@ namespace Scoring
         {
             if (multiplierData != null) multiplierData.Init();
             animator = GetComponentInChildren<Animator>();
+            
+            
         }
 
         private void Start() => DeactivateParticles();
@@ -51,6 +55,8 @@ namespace Scoring
             GameEvents.onMultiplierIncreaseEvent -= DoShake;
             GameEvents.onMultiplierDecreaseEvent -= multiplierData.Decrement;
             GameEvents.onMultiplierResetEvent -= multiplierData.Reset;
+            tweenPunchRotation?.Kill();
+            tweenPunchScale?.Kill();
         }
 
         void State()
@@ -69,8 +75,8 @@ namespace Scoring
             float stateFloat = (float)state;
             float duration = stateFloat * .25f;
             cameraShakeEvents[(int)state].Invoke();
-            transform.DOPunchScale(Vector3.one * .25f * stateFloat, duration, 5);
-            transform.DOPunchRotation(Vector3.forward * 2 * stateFloat, duration, 30, 30f);
+            tweenPunchScale = transform.DOPunchScale(Vector3.one * .25f * stateFloat, duration, 5);
+            tweenPunchRotation = transform.DOPunchRotation(Vector3.forward * 2 * stateFloat, duration, 30, 30f);
         }
 
         void ActivateParticles()

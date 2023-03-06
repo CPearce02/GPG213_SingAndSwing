@@ -1,0 +1,55 @@
+using System.ComponentModel;
+using Core.Player;
+using UnityEngine;
+
+namespace Enemies
+{
+    public class ProjectileController : MonoBehaviour
+    {
+        [Description("How long the bullet is alive + the homing time")]
+        public float bulletAliveTime = 5f;
+
+        [ReadOnly] public float homingTime = 0;
+        float _originalHomingTime = 0;
+        [ReadOnly] public Transform player, directionTransform;
+        [ReadOnly] public float bulletSpeed;
+        Rigidbody2D rb;
+
+        void Start()
+        {
+            _originalHomingTime = homingTime;
+            rb = GetComponent<Rigidbody2D>();
+            bulletAliveTime += homingTime;
+
+            if (!player || homingTime == 0)
+            {
+                rb.velocity = bulletSpeed * (directionTransform.position - transform.position).normalized;
+            }
+        }
+
+        void Update()
+        {
+            if (_originalHomingTime > 0)
+            {
+                _originalHomingTime -= Time.deltaTime;
+
+                rb.velocity = bulletSpeed * (player.position - transform.position).normalized;
+            }
+
+            if (bulletAliveTime > 0) bulletAliveTime -= Time.deltaTime;
+            else DestroyBullet();
+        }
+
+        //You can change this function to give the bullet cool effects or whatever
+        void DestroyBullet()
+        {
+            Destroy(gameObject);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            collision.TryGetComponent(out PlatformingController player);
+            if (player) DestroyBullet();
+        }
+    }
+}
