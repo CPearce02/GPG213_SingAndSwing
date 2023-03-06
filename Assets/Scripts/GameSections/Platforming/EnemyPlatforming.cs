@@ -2,11 +2,13 @@ using Interfaces;
 using UnityEngine;
 using Events;
 using Enums;
+using GameSections.Platforming.ScriptableObjects;
 using Structs;
+using UnityEngine.Serialization;
 
 public class EnemyPlatforming : MonoBehaviour, IAttackable
 {
-    public Enemy enemyData;
+    [FormerlySerializedAs("enemyData")] public EnemyData enemyDataData;
     public int damage = 10;
     public bool canBeDestroyed = false;
     [SerializeField] ParticleEvent takeDamageParticle;

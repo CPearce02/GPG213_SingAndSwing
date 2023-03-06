@@ -78,6 +78,7 @@ namespace Core.Player
         {
             _ = amount == 0 ? Health-- : Health -= amount;
             GameEvents.onScreenShakeEvent.Invoke(Strength.Medium, .2f);
+            GameEvents.onMultiplierDecreaseEvent.Invoke();
         }
         
         private void IncreaseHealth(int amount) => Health += amount;

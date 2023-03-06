@@ -1,113 +1,114 @@
-using System.Collections;
-using System.Collections.Generic;
-using Events;
 using Enums;
-using Core.ScriptableObjects;
+using Events;
+using GameSections.Bard_Abilities.ScriptableObject;
 using UnityEngine;
 
-public class ComboManager : MonoBehaviour
+namespace GameSections.Bard_Abilities
 {
-    public Combo currentCombo;
-    public EnemyPlatforming currentEnemy;
-    private ComboValues expectedNote;
-    public int comboIndex;
-    private bool noArmour;
-    private bool hasStarted;
-
-    public float timeFrame = 5f;
-    private float sequenceStartTime = 0f;
-
-    private void OnEnable()
+    public class ComboManager : MonoBehaviour
     {
-        GameEvents.onNewCombo += ComboStart;
-        GameEvents.onButtonPressed += CheckComboValue;
-        GameEvents.onComboFinish += ComboFinished;
-    }
+        public Combo currentCombo;
+        public EnemyPlatforming currentEnemy;
+        private ComboValues expectedNote;
+        public int comboIndex;
+        private bool noArmour;
+        private bool hasStarted;
 
-    private void OnDisable()
-    {
-        GameEvents.onNewCombo -= ComboStart;
-        GameEvents.onButtonPressed -= CheckComboValue;
-        GameEvents.onComboFinish -= ComboFinished;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+        public float timeFrame = 5f;
+        private float sequenceStartTime = 0f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (!hasStarted) return;
-        if (Time.time - sequenceStartTime > timeFrame)
+        private void OnEnable()
         {
-            Debug.Log("Time Up");
-            GameEvents.onComboFinish?.Invoke();
+            GameEvents.onNewCombo += ComboStart;
+            GameEvents.onButtonPressed += CheckComboValue;
+            GameEvents.onComboFinish += ComboFinished;
         }
-    }
 
-    private void CheckComboValue(ComboValues value)
-    {
-        if (value == expectedNote)
+        private void OnDisable()
         {
-            //Increase and set the next note
-            comboIndex++;
-            if (comboIndex >= currentCombo.ComboValues.Count)
+            GameEvents.onNewCombo -= ComboStart;
+            GameEvents.onButtonPressed -= CheckComboValue;
+            GameEvents.onComboFinish -= ComboFinished;
+        }
+        // Start is called before the first frame update
+        void Start()
+        {
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (!hasStarted) return;
+            if (Time.time - sequenceStartTime > timeFrame)
             {
-                //all notes pressed
-                noArmour = true;
+                Debug.Log("Time Up");
                 GameEvents.onComboFinish?.Invoke();
+            }
+        }
+
+        private void CheckComboValue(ComboValues value)
+        {
+            if (value == expectedNote)
+            {
+                //Increase and set the next note
+                comboIndex++;
+                if (comboIndex >= currentCombo.ComboValues.Count)
+                {
+                    //all notes pressed
+                    noArmour = true;
+                    GameEvents.onComboFinish?.Invoke();
+                }
+                else
+                {
+                    expectedNote = currentCombo.ComboValues[comboIndex];
+                }
             }
             else
             {
+                //Reset Index
+                comboIndex = 0;
                 expectedNote = currentCombo.ComboValues[comboIndex];
             }
+            //Debug.Log(comboIndex);
         }
-        else
+        private void ComboStart(Combo combo)
         {
-            //Reset Index
+            //start timer
+            sequenceStartTime = Time.time;
+            hasStarted = true;
             comboIndex = 0;
-            expectedNote = currentCombo.ComboValues[comboIndex];
+
         }
-        //Debug.Log(comboIndex);
-    }
-    private void ComboStart(Combo combo)
-    {
-        //start timer
-        sequenceStartTime = Time.time;
-        hasStarted = true;
-        comboIndex = 0;
 
-    }
-
-    private void ComboFinished()
-    {
-        if(noArmour && currentEnemy != null)
+        private void ComboFinished()
         {
-            currentEnemy.canBeDestroyed = true;
+            if(noArmour && currentEnemy != null)
+            {
+                currentEnemy.canBeDestroyed = true;
+            }
+            currentCombo = null;
+            hasStarted = false;
+            currentEnemy = null;
         }
-        currentCombo = null;
-        hasStarted = false;
-        currentEnemy = null;
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy" && currentCombo == null)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            currentEnemy = collision.GetComponent<EnemyPlatforming>();
-            noArmour = false;
-            currentCombo = currentEnemy.enemyData.Combo;
-            GameEvents.onNewCombo?.Invoke(currentCombo);
-            expectedNote = currentCombo.ComboValues[0];
+            if (collision.gameObject.tag == "Enemy" && currentCombo == null)
+            {
+                currentEnemy = collision.GetComponent<EnemyPlatforming>();
+                noArmour = false;
+                currentCombo = currentEnemy.enemyDataData.Combo;
+                GameEvents.onNewCombo?.Invoke(currentCombo);
+                expectedNote = currentCombo.ComboValues[0];
+            }
         }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
+        private void OnTriggerExit2D(Collider2D collision)
         {
-            GameEvents.onComboFinish?.Invoke();
+            if (collision.gameObject.tag == "Enemy")
+            {
+                GameEvents.onComboFinish?.Invoke();
+            }
         }
     }
 }

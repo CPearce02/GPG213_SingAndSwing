@@ -1,32 +1,34 @@
 using UnityEngine;
-using Structs;
 
-public class BardMovement : MonoBehaviour
+namespace GameSections.Bard_Abilities
 {
-    public Transform playerTransform; // Reference to the player's transform
-    public float followSpeed;  // Speed at which the object follows the player
-    public float stoppingDistance;
-
-    private Rigidbody2D rb;
-
-    private void Awake()
+    public class BardMovement : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
+        public Transform playerTransform; // Reference to the player's transform
+        public float followSpeed;  // Speed at which the object follows the player
+        public float stoppingDistance;
 
-    private void FixedUpdate()
-    {
-        if (playerTransform != null)
+        private Rigidbody2D rb;
+
+        private void Awake()
         {
-            Vector2 direction = (playerTransform.position - transform.position).normalized;
+            rb = GetComponent<Rigidbody2D>();
+        }
 
-            if (Vector2.Distance(transform.position, playerTransform.position) > stoppingDistance)
+        private void FixedUpdate()
+        {
+            if (playerTransform != null)
             {
-                rb.velocity = direction * followSpeed;
-            }
-            else
-            {
-                rb.velocity = Vector2.zero;
+                Vector2 direction = (playerTransform.position - transform.position).normalized;
+
+                if (Vector2.Distance(transform.position, playerTransform.position) > stoppingDistance)
+                {
+                    rb.velocity = direction * followSpeed;
+                }
+                else
+                {
+                    rb.velocity = Vector2.zero;
+                }
             }
         }
     }

@@ -1,11 +1,12 @@
-using Core.ScriptableObjects;
-using UnityEngine;
-using Enums;
 using System.Collections.Generic;
-using System;
+using Enums;
+using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Combo", menuName = "Combo")]
-public class Combo : ScriptableObject
+namespace GameSections.Bard_Abilities.ScriptableObject
 {
-    [field: SerializeField] public List<ComboValues> ComboValues { get; private set; }
+    [CreateAssetMenu(fileName = "New Combo", menuName = "Combo")]
+    public class Combo : UnityEngine.ScriptableObject
+    {
+        [field: SerializeField] public List<ComboValues> ComboValues { get; private set; }
+    }
 }

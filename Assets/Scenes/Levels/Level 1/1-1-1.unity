@@ -4158,7 +4158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d778276522fef428737fef44b86d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 0}
+  enemyDataData: {fileID: 0}
   damage: 100
   canBeDestroyed: 0
   takeDamageParticle:
@@ -4281,7 +4281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d778276522fef428737fef44b86d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 0}
+  enemyDataData: {fileID: 0}
   damage: 100
   canBeDestroyed: 0
   takeDamageParticle:
@@ -4337,7 +4337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d778276522fef428737fef44b86d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 0}
+  enemyDataData: {fileID: 0}
   damage: 100
   canBeDestroyed: 0
   takeDamageParticle:
@@ -4393,7 +4393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d778276522fef428737fef44b86d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 0}
+  enemyDataData: {fileID: 0}
   damage: 100
   canBeDestroyed: 0
   takeDamageParticle:
