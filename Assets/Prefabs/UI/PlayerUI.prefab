@@ -233,6 +233,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 480301594331138783}
     m_Modifications:
+    - target: {fileID: 1997305994197848766, guid: e26093ce5e67dc6459f6b1ba66d60bef, type: 3}
+      propertyPath: cameraShakeEvents.Array.data[1].strength
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997305994197848766, guid: e26093ce5e67dc6459f6b1ba66d60bef, type: 3}
+      propertyPath: cameraShakeEvents.Array.data[2].strength
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997305994197848766, guid: e26093ce5e67dc6459f6b1ba66d60bef, type: 3}
+      propertyPath: cameraShakeEvents.Array.data[3].strength
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4545022534223258904, guid: e26093ce5e67dc6459f6b1ba66d60bef, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

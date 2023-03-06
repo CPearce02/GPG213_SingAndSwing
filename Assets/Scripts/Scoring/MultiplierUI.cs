@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using DG.Tweening;
 using Enums;
 using Events;
 using Scoring.ScriptableObjects;
@@ -39,7 +40,6 @@ namespace Scoring
         private void OnEnable()
         {
             GameEvents.onMultiplierIncreaseEvent += multiplierData.Increment;
-            // An event needs to be fired to Increase so we can see the screen shake in action
             GameEvents.onMultiplierIncreaseEvent += DoShake;
             GameEvents.onMultiplierDecreaseEvent += multiplierData.Decrement;
             GameEvents.onMultiplierResetEvent += multiplierData.Reset;
@@ -66,7 +66,11 @@ namespace Scoring
         void DoShake()
         {
             var state = multiplierData.CurrentMultiplier;
+            float stateFloat = (float)state;
+            float duration = stateFloat * .25f;
             cameraShakeEvents[(int)state].Invoke();
+            transform.DOPunchScale(Vector3.one * .25f * stateFloat, duration, 5);
+            transform.DOPunchRotation(Vector3.forward * 2 * stateFloat, duration, 30, 30f);
         }
 
         void ActivateParticles()

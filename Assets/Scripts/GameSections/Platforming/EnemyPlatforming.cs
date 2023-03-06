@@ -44,6 +44,7 @@ namespace GameSections.Platforming
         {
             if (canBeDestroyed == false) return;
             GameEvents.onScreenShakeEvent?.Invoke(Strength.Low, .2f);
+            GameEvents.onMultiplierIncreaseEvent?.Invoke();
             takeDamageParticle.Invoke();
             Destroy(gameObject);
         }
