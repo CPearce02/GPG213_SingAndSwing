@@ -8,6 +8,11 @@ using UnityEngine.InputSystem;
 
 public class BardController : MonoBehaviour
 {
+    public bool Grounded { get; private set; }
+    public Transform groundCheckTransform;
+    public Vector2 groundCheckSize;
+    public LayerMask ignoreLayers;
+
     //particleEvent 
 
     // Start is called before the first frame update
@@ -19,7 +24,7 @@ public class BardController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        GroundCheck();
     }
 
     private void OnButton1()
@@ -40,7 +45,10 @@ public class BardController : MonoBehaviour
     }
     private void OnAim()
     {
-        
         //GameEvents.onAimStart?.Invoke();
     }
+
+    void GroundCheck() => Grounded = Physics2D.BoxCast(groundCheckTransform.position, groundCheckSize, 0f, Vector2.down, 0.1f, ~ignoreLayers);
+
+    private void OnDrawGizmosSelected() => Gizmos.DrawWireCube(groundCheckTransform.position, groundCheckSize);
 }

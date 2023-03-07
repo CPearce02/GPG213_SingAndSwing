@@ -84,7 +84,7 @@ namespace Animation
 
         void SetAttack(InputAction.CallbackContext context) { if (context.performed && !healthManager.Dead) _animator.CrossFade("knight_attack", 0, 0); }
 
-        void SetDead() 
+        void SetDead()
         {
             _animator.SetBool(Dead, healthManager.Dead);
             if (healthManager.Dead) _animator.CrossFade("knight_death", 0, 0);
