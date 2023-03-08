@@ -1,10 +1,10 @@
 using System.Collections;
-using Enums;
 using Events;
 using Structs;
 using UnityEngine;
 using Interfaces;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace Core.Player
 {
@@ -16,22 +16,27 @@ namespace Core.Player
         [SerializeField] ParticleEvent deathParticles;
         [SerializeField] private CameraShakeEvent takeDamageCameraShake;
         
-        PlatformingController controller;
-        Rigidbody2D rb;
+        PlatformingController _controller;
+        Rigidbody2D _rb;
         
-        public int maxHitPoints = 3;
-        bool dead = false;
+        [SerializeField][ReadOnly] int maxHealth;
+        bool _dead = false;
 
-        public bool Dead { get => dead; private set => dead = value; }
+        public bool Dead { get => _dead; private set => _dead = value; }
         
         public int Health
         {
             get => health;
             private set
             {
-                health = Mathf.Clamp(value, 0, maxHitPoints);
-                GameEvents.onPlayerHealthUIChangeEvent?.Invoke(health);
-                if (health == 0) GameEvents.onPlayerDiedEvent?.Invoke();
+                health = Mathf.Clamp(value, 0, maxHealth);
+                var normalisedHealth = Health / (float) maxHealth; 
+                GameEvents.onPlayerHealthUIChangeEvent?.Invoke(normalisedHealth);
+                if (health == 0)
+                {
+                    GameEvents.onPlayerDiedEvent?.Invoke();
+                    Debug.Log("Player died event");
+                }
             }
         }
         
@@ -39,7 +44,6 @@ namespace Core.Player
         
         private void OnEnable()
         {
-            GameEvents.onPlayerDamagedEvent += ReduceHealth;
             GameEvents.onPlayerHealedEvent += IncreaseHealth;
             GameEvents.onPlayerKillEvent += KillPlayer;
             GameEvents.onPlayerRespawnEvent += Respawn;
@@ -47,7 +51,6 @@ namespace Core.Player
         
         private void OnDisable()
         {
-            GameEvents.onPlayerDamagedEvent -= ReduceHealth;
             GameEvents.onPlayerHealedEvent -= IncreaseHealth;
             GameEvents.onPlayerKillEvent -= KillPlayer;
             GameEvents.onPlayerRespawnEvent -= Respawn;
@@ -56,16 +59,17 @@ namespace Core.Player
         void Awake()
         {
             health = playerStats.Health;
+            maxHealth = health;
             respawnPosition = transform;
 
-            controller = GetComponent<PlatformingController>();
+            _controller = GetComponent<PlatformingController>();
         }
 
         private void Start()
         {
-            GameEvents.onSetHealthCountEvent?.Invoke(Health);
+            // GameEvents.onSetHealthCountEvent?.Invoke(Health);
             CreateSpawnpoint();
-            rb = GetComponent<Rigidbody2D>();
+            _rb = GetComponent<Rigidbody2D>();
         }
 
         void CreateSpawnpoint()
@@ -78,7 +82,9 @@ namespace Core.Player
 
         private void ReduceHealth(int amount)
         {
-            _ = amount == 0 ? Health-- : Health -= amount;
+            if (Health == 0) return;
+            
+            Health -= amount;
             takeDamageCameraShake.Invoke();
             GameEvents.onMultiplierDecreaseEvent.Invoke();
         }
@@ -116,8 +122,8 @@ namespace Core.Player
         //Linked to the interface IAttackable
         public void TakeDamage(int amount)
         {
-            if (dead) return;
-
+            if (_dead) return;
+            Debug.Log($"{amount} in damage was taken by the player");
             ReduceHealth(amount);
 
             if (health <= 0)
@@ -129,16 +135,16 @@ namespace Core.Player
 
         void Alive()
         {
-            dead = false;
-            controller.enabled = true;
-            rb.simulated = true;
+            _dead = false;
+            _controller.enabled = true;
+            _rb.simulated = true;
         }
 
         void Death()
         {
-            dead = true;
-            controller.enabled = false;
-            rb.simulated = false;
+            _dead = true;
+            _controller.enabled = false;
+            _rb.simulated = false;
             deathParticles.Invoke();
         }
     }

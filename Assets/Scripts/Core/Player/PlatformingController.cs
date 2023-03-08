@@ -154,6 +154,7 @@ namespace Core.Player
         private void OnCollisionEnter2D(Collision2D collision)
         {
             transform.SetParent(collision.transform);
+            //BUG: if i run into an enemy this makes me a child of the enemy. Could be a good idea to stomp this bug and perhaps remove this.
         }
 
         //Check ground only when the player is touching something.

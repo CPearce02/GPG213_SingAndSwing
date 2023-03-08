@@ -26,7 +26,7 @@ namespace Enemies
 
             //Stops enemies from attacking each other
             collider.TryGetComponent(out PlatformingController player);
-            if(player) attackableComponent.TakeDamage(damage);
+            if(player) attackableComponent.TakeDamage(damage); Debug.Log($"{player} took {damage}");
         }
     
         private void HandleCollision2D(Collision2D collision)
@@ -36,7 +36,7 @@ namespace Enemies
 
             //Stops enemies from attacking each other
             collision.transform.TryGetComponent(out PlatformingController player);
-            if (player) attackableComponent.TakeDamage(damage);
+            if(player) attackableComponent.TakeDamage(damage); Debug.Log($"{player} took {damage}");
         }
 
         public void TakeDamage(int amount)

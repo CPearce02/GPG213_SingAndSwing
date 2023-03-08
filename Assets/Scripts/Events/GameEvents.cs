@@ -17,7 +17,6 @@ namespace Events
         public delegate void PlayerDied();
         public delegate void PlayerRespawn(float delaySeconds = 0, Transform positionToRespawn = null);
         
-        public static PlayerTakeDamage onPlayerDamagedEvent;
         public static PlayerHeal onPlayerHealedEvent;
         public static PlayerKill onPlayerKillEvent;
         public static PlayerDied onPlayerDiedEvent;
@@ -38,7 +37,7 @@ namespace Events
 
         #region UI Events
         public delegate void SetValue(int value);
-        public delegate void PlayerHealthUIChange(int currentHealth);
+        public delegate void PlayerHealthUIChange(float normalisedCurrentHealth);
         
         public static SetValue onSetHealthCountEvent;
         public static PlayerHealthUIChange onPlayerHealthUIChangeEvent;
