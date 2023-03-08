@@ -98,7 +98,8 @@ namespace Core.Bard
             {
                 CurrentEnemy = collision.GetComponent<Enemy>();
                 _noArmour = false;
-                currentCombo = CurrentEnemy.enemyData.Combo;
+                if (CurrentEnemy.enemyData.Combo == null) return;
+                currentCombo = CurrentEnemy.enemyData.Combo; //This line of code was causing a null reference exception, so I put that if statement above it to fix it.
                 GameEvents.onNewCombo?.Invoke(currentCombo);
                 expectedNote = currentCombo.ComboValues[0];
             }
