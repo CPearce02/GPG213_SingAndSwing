@@ -3,28 +3,38 @@ using Structs;
 
 public class BardMovement : MonoBehaviour
 {
-    public Transform playerTransform;
-    public float speed;
+    //private BardController _bardController;
+    private Transform _playerTransform;
+    private float _speed = 10f;
     public float followRange;
 
     private Rigidbody2D rb;
 
     private void Start()
     {
+        //_bardController = GetComponent<BardController>();
+        _playerTransform = GameObject.Find("Follow").transform;
         rb = GetComponent<Rigidbody2D>();
+
     }
 
     private void FixedUpdate()
     {
-        if (Vector2.Distance(transform.position, playerTransform.position) > followRange)
+        //if (Vector2.Distance(transform.position, _playerTransform.position) > 5)
+        //{
+        //    transform.position = _playerTransform.position;
+        //}
+        if (Vector2.Distance(transform.position, _playerTransform.position) > followRange)
         {
-            Vector2 direction = (playerTransform.position - transform.position).normalized;
-            Vector2 newPosition = rb.position + direction * speed * Time.fixedDeltaTime;
-            rb.MovePosition(newPosition);
+            Vector2 direction = (_playerTransform.position - transform.position).normalized;
+            Vector2 newPosition = rb.position + direction * _speed * Time.fixedDeltaTime;
+            Vector2 smoothedPosition = Vector2.Lerp(rb.position, newPosition, 0.5f); // Smooth the movement using Lerp
+            rb.MovePosition(smoothedPosition);
         }
         else
         {
             rb.velocity = Vector2.zero;
         }
     }
+
 }

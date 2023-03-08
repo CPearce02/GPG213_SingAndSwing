@@ -5,7 +5,7 @@ using Events;
 
 public class AimController : MonoBehaviour
 {
-    private float rotationSpeed = 5f;
+    private float rotationSpeed = 2f;
     private Vector2 aimDirection;
     private Collider2D aimCollider;
 
@@ -21,7 +21,11 @@ public class AimController : MonoBehaviour
 
     private void AimTowards(Vector2 direction)
     {
-        //aimDirection = direction.normalized; 
+        aimDirection = direction;
+        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+
+        //Rotate the target indicator towards the mouse position
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.AngleAxis(angle, Vector3.forward), Time.deltaTime * rotationSpeed);
     }
     // Start is called before the first frame update
     void Start()
@@ -30,13 +34,13 @@ public class AimController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        Vector2 aimDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+        ////Vector2 aimDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
 
-        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        //float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
-        // Rotate the target indicator towards the mouse position
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.AngleAxis(angle, Vector3.forward), Time.deltaTime * rotationSpeed);
+        //// Rotate the target indicator towards the mouse position
+        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.AngleAxis(angle, Vector3.forward), Time.deltaTime * rotationSpeed);
     }
 }

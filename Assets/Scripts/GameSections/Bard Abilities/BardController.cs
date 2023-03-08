@@ -13,12 +13,14 @@ public class BardController : MonoBehaviour
     public Vector2 groundCheckSize;
     public LayerMask ignoreLayers;
 
+    private PlayerInput _bardInput;
+
     //particleEvent 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _bardInput = GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
@@ -45,7 +47,7 @@ public class BardController : MonoBehaviour
     }
     private void OnAim()
     {
-        //GameEvents.onAimStart?.Invoke();
+        GameEvents.onAimStart?.Invoke(_bardInput.actions["Aim"].ReadValue<Vector2>());
     }
 
     void GroundCheck() => Grounded = Physics2D.BoxCast(groundCheckTransform.position, groundCheckSize, 0f, Vector2.down, 0.1f, ~ignoreLayers);

@@ -36,6 +36,8 @@ public class BardSingleplayerAnimator : MonoBehaviour
         _rb = GetComponentInParent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _bardController = GetComponentInParent<BardController>();
+        playerTransform = GameObject.Find("Player").transform;
+        playerInput = GameObject.Find("Player").GetComponent<PlayerInput>();
     }
 
     void Update()
