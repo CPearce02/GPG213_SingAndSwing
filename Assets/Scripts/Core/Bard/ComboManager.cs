@@ -94,7 +94,7 @@ namespace Core.Bard
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.tag == "Enemy" && currentCombo == null)
+            if (collision.gameObject.tag == "Enemy" && currentCombo == null) //tryget 
             {
                 CurrentEnemy = collision.GetComponent<Enemy>();
                 _noArmour = false;

@@ -10,7 +10,6 @@ public class BardMovement : MonoBehaviour
     private Transform _playerTransform;
     private float _speed = 10f;
     public float followRange;
-
     private Rigidbody2D rb;
 
     private void Start()
@@ -41,9 +40,10 @@ public class BardMovement : MonoBehaviour
         if (Vector2.Distance(transform.position, _playerTransform.position) > followRange)
         {
             Vector2 direction = (_playerTransform.position - transform.position).normalized;
+            if (direction.y >= 0) return;
             Vector2 newPosition = rb.position + direction * _speed * Time.fixedDeltaTime;
-            Vector2 smoothedPosition = Vector2.Lerp(rb.position, newPosition, 0.5f); // Smooth the movement using Lerp
-            rb.MovePosition(smoothedPosition);
+            //Vector2 smoothedPosition = Vector2.Lerp(rb.position, newPosition, 0.5f); // Smooth the movement using Lerp
+            rb.MovePosition(newPosition);
         }
         else
         {
