@@ -1,5 +1,6 @@
 using Events;
 using Structs;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +9,7 @@ namespace Core.Player
     public class PlatformingController : MonoBehaviour
     {
         float MoveSpeed => playerStats.MoveSpeed;
-        float JumpSpeed => playerStats.JumpSpeed;
+        public float JumpSpeed { get; private set; }
         float JumpHeight => playerStats.JumpHeight;
 
         float _relativeJumpHeight = 0;
@@ -17,7 +18,7 @@ namespace Core.Player
         public float speedLimit = 1000f;
 
         PlayerInput _playerInput;
-        Rigidbody2D _rb;
+        public Rigidbody2D rb { get; private set; }
         public CharacterData playerStats;
 
         public Transform groundCheckTransform;
@@ -42,11 +43,23 @@ namespace Core.Player
 
         bool _allowFriction = false;
 
+        public event Action JumpEvent;
 
-        private void Start()
+        private void Awake()
         {
-            _rb = GetComponent<Rigidbody2D>();
+            rb = GetComponent<Rigidbody2D>();
             PlayerInput = GetComponent<PlayerInput>();
+            JumpSpeed = playerStats.JumpSpeed;
+        }
+
+        private void OnEnable()
+        {
+            JumpEvent += Jump;
+        }
+
+        private void OnDisable()
+        {
+            JumpEvent -= Jump;
         }
 
         private void Update()
@@ -86,11 +99,11 @@ namespace Core.Player
                 //If the player is moving in the opposite direction and presses a different key and is on the ground, reset their x velocity.
                 if (Grounded)
                 {
-                    if (direction > 0 && _rb.velocity.x < 0) _rb.velocity = new Vector2(0, _rb.velocity.y);
-                    if (direction < 0 && _rb.velocity.x > 0) _rb.velocity = new Vector2(0, _rb.velocity.y);
+                    if (direction > 0 && rb.velocity.x < 0) rb.velocity = new Vector2(0, rb.velocity.y);
+                    if (direction < 0 && rb.velocity.x > 0) rb.velocity = new Vector2(0, rb.velocity.y);
                 }
 
-                _rb.AddForce(new Vector2(MoveSpeed * direction * Time.deltaTime, 0));
+                rb.AddForce(new Vector2(MoveSpeed * direction * Time.deltaTime, 0));
             }
             else
             {
@@ -98,12 +111,12 @@ namespace Core.Player
             }
         }
 
-        void AddFriction() => _rb.velocity = new Vector2(_rb.velocity.x / friction, _rb.velocity.y);
+        void AddFriction() => rb.velocity = new Vector2(rb.velocity.x / friction, rb.velocity.y);
 
         void CapSpeed()
         {
-            if (_rb.velocity.x > speedLimit) _rb.velocity = new Vector2(speedLimit, _rb.velocity.y);
-            if (_rb.velocity.x < -speedLimit) _rb.velocity = new Vector2(-speedLimit, _rb.velocity.y);
+            if (rb.velocity.x > speedLimit) rb.velocity = new Vector2(speedLimit, rb.velocity.y);
+            if (rb.velocity.x < -speedLimit) rb.velocity = new Vector2(-speedLimit, rb.velocity.y);
         }
 
         void OnJump()
@@ -128,7 +141,7 @@ namespace Core.Player
 
                 if (_holdingJump)
                 {
-                    Jump();
+                    JumpEvent?.Invoke();
                 }
 
                 if (transform.position.y > _relativeJumpHeight || TouchingRoof)
@@ -157,8 +170,8 @@ namespace Core.Player
 
         void Jump()
         {
-            _rb.velocity = new Vector2(_rb.velocity.x, 0);
-            _rb.AddForce(transform.up * JumpSpeed, ForceMode2D.Impulse);
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.AddForce(transform.up * JumpSpeed, ForceMode2D.Impulse);
         }
 
         //Public void so it can be called in other scripts such as a jump pad.
@@ -166,8 +179,8 @@ namespace Core.Player
         {
             finalJumpForce.JumpForce = jumpHeight;
 
-            _rb.velocity = new Vector2(_rb.velocity.x, 0);
-            _rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
         }
 
         void CheckRoof() => TouchingRoof = Physics2D.BoxCast(roofCheckTransform.position, groundCheckSize, 0f, Vector2.up, 0.1f, ~ignoreLayers);

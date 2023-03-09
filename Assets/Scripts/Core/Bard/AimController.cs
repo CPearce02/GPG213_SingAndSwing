@@ -38,6 +38,18 @@ public class AimController : MonoBehaviour
         aimCollider = GetComponentInChildren<Collider2D>();
     }
 
+    /*
+    private void OnEnable()
+    {
+        
+    }
+
+    private void OnDisable()
+    {
+        
+    }
+    */
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -45,8 +57,6 @@ public class AimController : MonoBehaviour
 
         //Vector2 aimDirection = (Camera.main.ScreenToWorldPoint(mousePosition - transform.position).normalized);
         Vector2 aimDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition - bard.position).normalized);
-
-        Debug.Log(Input.mousePosition);
 
 
         //aimDirection = _bardInput.actions["Aim"].ReadValue<Vector2>();
@@ -56,5 +66,10 @@ public class AimController : MonoBehaviour
         // Rotate the target indicator towards the mouse position
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.AngleAxis(angle, Vector3.forward), Time.deltaTime * rotationSpeed);
     }
+
+    //void SetBardInput()
+    //{
+
+    //}
 }
 

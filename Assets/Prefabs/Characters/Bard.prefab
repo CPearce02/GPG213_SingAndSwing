@@ -76,6 +76,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f416c8e83c55a4d8bfaf16e47015fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 2
+  bard: {fileID: 8162570258677425969}
+  _bardInput: {fileID: 0}
 --- !u!1 &8162570258018312774
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +215,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.2
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: eed9512ce8d924546aa3cc7291b1a0f1, type: 2}
@@ -305,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5cf1fe113e8f984f988ccaa5b4f8352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followRange: 0
+  followRange: 0.5
 --- !u!1 &8162570259291630726
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +441,7 @@ GameObject:
   - component: {fileID: 1770106966382966566}
   - component: {fileID: 6059500195652429505}
   - component: {fileID: 6611274422093324569}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

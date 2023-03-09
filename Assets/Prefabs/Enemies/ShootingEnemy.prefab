@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 1111095983260111899}
   - component: {fileID: 1111095983260111901}
   - component: {fileID: 1111095983260111900}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: PlayerDetectRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
