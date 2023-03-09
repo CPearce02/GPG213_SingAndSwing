@@ -198,6 +198,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 416284507136183027, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
   m_PrefabInstance: {fileID: 243455609}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1225049779 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8162570258677425958, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
+  m_PrefabInstance: {fileID: 1557457240}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1278392098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -796,6 +807,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2917675255978650672, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
+      propertyPath: _jump.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2917675255978650672, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1085797557}
@@ -879,6 +894,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8693929486551417900, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
+      propertyPath: _bardInput
+      value: 
+      objectReference: {fileID: 1225049779}
     - target: {fileID: 9108170369569505532, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
       propertyPath: m_Layer
       value: 2
