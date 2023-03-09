@@ -21,7 +21,7 @@ namespace Scoring.ScriptableObjects
         void DecreaseMultiplier()
         {
             if (CurrentMultiplier == MultiplierState.One) return;
-            CurrentMultiplier--;
+            ResetMultiplier();
         }
         
         void ResetMultiplier()

@@ -970,38 +970,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1111095983385881631, guid: 2195aa214b3ef9449965c4c72d39af93, type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 472631743756809970, guid: 1b2fc909374dc3a4a93a81c7b396bced, type: 3}
-    - target: {fileID: 1111095983385881631, guid: 2195aa214b3ef9449965c4c72d39af93, type: 3}
-      propertyPath: aimAtPlayer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1111095983385881631, guid: 2195aa214b3ef9449965c4c72d39af93, type: 3}
-      propertyPath: onBulletDestroyParticle.<Color>k__BackingField.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1111095983385881631, guid: 2195aa214b3ef9449965c4c72d39af93, type: 3}
-      propertyPath: onBulletDestroyParticle.<Color>k__BackingField.b
-      value: 0.4627451
-      objectReference: {fileID: 0}
-    - target: {fileID: 1111095983385881631, guid: 2195aa214b3ef9449965c4c72d39af93, type: 3}
-      propertyPath: onBulletDestroyParticle.<Color>k__BackingField.g
-      value: 0.2901961
-      objectReference: {fileID: 0}
-    - target: {fileID: 1111095983385881631, guid: 2195aa214b3ef9449965c4c72d39af93, type: 3}
-      propertyPath: onBulletDestroyParticle.<Color>k__BackingField.r
-      value: 0.24313726
-      objectReference: {fileID: 0}
-    - target: {fileID: 1111095983385881631, guid: 2195aa214b3ef9449965c4c72d39af93, type: 3}
-      propertyPath: onBulletDestroyParticle.<Particle>k__BackingField
-      value: 
-      objectReference: {fileID: 4862367670183223577, guid: fe93907a5421d26418ebe2281cc25bcf, type: 3}
-    - target: {fileID: 1111095983385881631, guid: 2195aa214b3ef9449965c4c72d39af93, type: 3}
-      propertyPath: onBulletDestroyParticle.<DoParticles>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2195aa214b3ef9449965c4c72d39af93, type: 3}
 --- !u!1001 &480301593277871422

@@ -12,7 +12,7 @@ namespace Scoring
     public class MultiplierUI : MonoBehaviour
     {
         
-        [SerializeField] private Animator animator;
+        [SerializeField][ReadOnly] private Animator animator;
         [SerializeField] private MultiplierData multiplierData;
         [SerializeField] private ParticleSystem[] maxParticles;
         private static readonly int Multiplier = Animator.StringToHash("Multiplier");
