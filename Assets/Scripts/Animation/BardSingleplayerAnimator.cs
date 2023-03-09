@@ -20,6 +20,16 @@ public class BardSingleplayerAnimator : MonoBehaviour
     private static readonly int Moving = Animator.StringToHash("Moving");
     private static readonly int Falling = Animator.StringToHash("Falling");
 
+    void Awake()
+    {
+        _bardSprite = GetComponent<SpriteRenderer>();
+        _rb = GetComponentInParent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        _bardController = GetComponentInParent<BardController>();
+        playerTransform = GameObject.Find("Player").transform;
+        playerInput = GameObject.Find("Player").GetComponent<PlayerInput>();
+    }
+
     private void OnEnable()
     {
         playerInput.actions["Jump"].performed += SetJump;
@@ -28,16 +38,6 @@ public class BardSingleplayerAnimator : MonoBehaviour
     private void OnDisable()
     {
         playerInput.actions["Jump"].performed -= SetJump;
-    }
-
-    void Start()
-    {
-        _bardSprite = GetComponent<SpriteRenderer>();
-        _rb = GetComponentInParent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
-        _bardController = GetComponentInParent<BardController>();
-        playerTransform = GameObject.Find("Player").transform;
-        playerInput = GameObject.Find("Player").GetComponent<PlayerInput>();
     }
 
     void Update()
@@ -74,7 +74,8 @@ public class BardSingleplayerAnimator : MonoBehaviour
         {
             if (!_bardController.Grounded) return;
             _animator.SetBool(Moving, true);
-        } else
+        }
+        else
         {
             _animator.SetBool(Moving, false);
         }
