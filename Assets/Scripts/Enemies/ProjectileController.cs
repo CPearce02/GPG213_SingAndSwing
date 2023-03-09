@@ -44,7 +44,7 @@ namespace Enemies
         }
 
         //You can change this function to give the bullet cool effects or whatever
-        void DestroyBullet()
+        public void DestroyBullet()
         {
             onBulletDestroyParticle.Invoke();
             Destroy(gameObject);

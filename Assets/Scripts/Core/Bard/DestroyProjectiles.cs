@@ -1,10 +1,11 @@
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Structs;
+using Enemies;
 
 public class DestroyProjectiles : MonoBehaviour
 {
+    [SerializeField] ParticleEvent takeDamageParticle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +20,9 @@ public class DestroyProjectiles : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Projectile")
+        if(collision.TryGetComponent<ProjectileController>(out ProjectileController pc))
         {
-            Destroy(collision.gameObject);
+            pc.DestroyBullet();
         }
     }
 }
