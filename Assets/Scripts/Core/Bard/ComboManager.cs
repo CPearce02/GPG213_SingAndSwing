@@ -40,11 +40,11 @@ namespace Core.Bard
         void Update()
         {
             if (!_hasStarted) return;
-            if (Time.time - _sequenceStartTime > timeFrame)
-            {
-                Debug.Log("Time Up");
-                GameEvents.onComboFinish?.Invoke();
-            }
+            //if (Time.time - _sequenceStartTime > timeFrame)
+            //{
+            //    Debug.Log("Time Up");
+            //    GameEvents.onComboFinish?.Invoke();
+            //}
         }
 
         private void CheckComboValue(ComboValues value)
@@ -94,11 +94,12 @@ namespace Core.Bard
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.tag == "Enemy" && currentCombo == null) //tryget 
+            //if (collision.gameObject.tag == "Enemy" && currentCombo == null) //tryget 
+            if (collision.TryGetComponent<Enemy>(out Enemy enemyComponent) && currentCombo == null) //tryget 
             {
-                CurrentEnemy = collision.GetComponent<Enemy>();
+                CurrentEnemy = enemyComponent;
                 _noArmour = false;
-                if (CurrentEnemy.enemyData.Combo == null) return;
+                if (enemyComponent.enemyData == null) return;
                 currentCombo = CurrentEnemy.enemyData.Combo; 
                 GameEvents.onNewCombo?.Invoke(currentCombo);
                 expectedNote = currentCombo.ComboValues[0];
