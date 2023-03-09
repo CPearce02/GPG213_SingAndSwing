@@ -1,3 +1,4 @@
+using Core.Player;
 using Core.ScriptableObjects;
 using Enums;
 using Structs;
@@ -21,6 +22,13 @@ namespace Events
         public static PlayerKill onPlayerKillEvent;
         public static PlayerDied onPlayerDiedEvent;
         public static PlayerRespawn onPlayerRespawnEvent;
+        #endregion
+
+        #region Utility Events
+        public delegate void RequestPlayer();
+        public delegate void SendPlayer(PlatformingController player);
+        public static RequestPlayer onRequestPlayerEvent;
+        public static SendPlayer onSendPlayerEvent;
         #endregion
 
         #region Combos

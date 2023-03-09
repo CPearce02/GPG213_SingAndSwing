@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 6419258818573561550}
   - component: {fileID: 6419258818573561547}
   - component: {fileID: 1062540711}
+  - component: {fileID: 4883007980478522277}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -326,6 +327,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   flipThreshold: 0.1
+--- !u!114 &4883007980478522277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6419258818573561549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 421a509a8b50cfe45b707994e4a95c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &6419258818656474046
 GameObject:
   m_ObjectHideFlags: 0

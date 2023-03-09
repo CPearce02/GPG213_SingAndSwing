@@ -1,3 +1,4 @@
+using Events;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -33,6 +34,7 @@ namespace Core.Player
         public bool Grounded { get => _grounded; private set => _grounded = value; }
         public bool FindGround { get => _findGround; private set => _findGround = value; }
         public bool TouchingRoof { get => _touchingRoof; private set => _touchingRoof = value; }
+        public PlayerInput PlayerInput { get => _playerInput; private set => _playerInput = value; }
 
         bool _allowFriction = false;
 
@@ -40,8 +42,9 @@ namespace Core.Player
         private void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _playerInput = GetComponent<PlayerInput>();
+            PlayerInput = GetComponent<PlayerInput>();
         }
+
 
         private void Update()
         {
@@ -68,12 +71,12 @@ namespace Core.Player
 
         void OnMove()
         {
-            float direction = _playerInput.actions["Move"].ReadValue<float>();
+            float direction = PlayerInput.actions["Move"].ReadValue<float>();
             bool isPressingMove = direction != 0;
 
             CapSpeed();
 
-            if(isPressingMove)
+            if (isPressingMove)
             {
                 _allowFriction = false;
 
@@ -85,7 +88,8 @@ namespace Core.Player
                 }
 
                 _rb.AddForce(new Vector2(MoveSpeed * direction * Time.deltaTime, 0));
-            } else
+            }
+            else
             {
                 _allowFriction = true;
             }
@@ -101,7 +105,7 @@ namespace Core.Player
 
         void OnJump()
         {
-            var jump = _playerInput.actions["Jump"];
+            var jump = PlayerInput.actions["Jump"];
             float pressing = jump.ReadValue<float>();
             bool isPressingJump = pressing != 0;
 
@@ -120,7 +124,7 @@ namespace Core.Player
                     _jumped = true; //Prevent bunnyhopping.
                 }
             }
-        
+
             if (!isPressingJump)
             {
                 //Stop the player from continuing their jump if they let go of the jump key.
@@ -179,5 +183,8 @@ namespace Core.Player
         {
             Gizmos.DrawWireCube(groundCheckTransform.position, groundCheckSize);
         }
+
+        // We might need to refactor when we have two players
+        private void SendPlayer() => GameEvents.onSendPlayerEvent?.Invoke(this);
     }
 }

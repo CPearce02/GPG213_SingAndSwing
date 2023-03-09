@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Core.Player;
+using Events;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class BardSingleplayerAnimator : MonoBehaviour
 {
-    [SerializeField] private Transform playerTransform;
-    [SerializeField] private PlayerInput playerInput;
+    [SerializeField][ReadOnly] private Transform playerTransform;
+    [SerializeField][ReadOnly] private PlayerInput playerInput;
 
     Rigidbody2D _rb;
     SpriteRenderer _bardSprite;
@@ -26,18 +29,27 @@ public class BardSingleplayerAnimator : MonoBehaviour
         _rb = GetComponentInParent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _bardController = GetComponentInParent<BardController>();
-        playerTransform = GameObject.Find("Player").transform;
-        playerInput = GameObject.Find("Player").GetComponent<PlayerInput>();
     }
+
+    private void Start() => GameEvents.onRequestPlayerEvent?.Invoke();
 
     private void OnEnable()
     {
-        playerInput.actions["Jump"].performed += SetJump;
+        GameEvents.onSendPlayerEvent += SetPlayer;
     }
 
     private void OnDisable()
     {
-        playerInput.actions["Jump"].performed -= SetJump;
+        GameEvents.onSendPlayerEvent -= SetPlayer;
+        if (playerInput != null)
+            playerInput.actions["Jump"].performed -= SetJump;
+    }
+
+    private void SetPlayer(PlatformingController player)
+    {
+        playerInput = player.PlayerInput;
+        playerTransform = player.transform;
+        playerInput.actions["Jump"].performed += SetJump;
     }
 
     void Update()
