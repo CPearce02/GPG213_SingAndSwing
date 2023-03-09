@@ -10,12 +10,14 @@ namespace GameSections.Platforming
 
         void Start()
         {
+            //TODO: This will be a problem if we have more than one player
             _playerRb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
             _platformingController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlatformingController>();
         }
 
         void Update()
         {
+            // @Greg TODO: This is a rigid way of doing this. What if an enemy needs to go through a platform?
             if (_playerRb.velocity.y > 0.01f) DisableCollision();
             if (_playerRb.velocity.y <= 0)
             {

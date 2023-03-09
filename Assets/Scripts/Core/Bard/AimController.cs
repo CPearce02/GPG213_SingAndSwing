@@ -5,7 +5,7 @@ using Events;
 
 public class AimController : MonoBehaviour
 {
-    private float rotationSpeed = 2f;
+    [SerializeField] private float rotationSpeed = 2f;
     private Vector2 aimDirection;
     private Collider2D aimCollider;
 
@@ -16,7 +16,7 @@ public class AimController : MonoBehaviour
 
     private void OnDisable()
     {
-        GameEvents.onAimStart -= AimTowards; 
+        GameEvents.onAimStart -= AimTowards;
     }
 
     private void AimTowards(Vector2 direction)

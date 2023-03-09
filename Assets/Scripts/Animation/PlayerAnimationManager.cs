@@ -13,15 +13,21 @@ namespace Animation
         public Rigidbody2D rb;
         public PlatformingController platformingController;
         HealthManager healthManager;
-    
-        [SerializeField] [ReadOnly] bool isFalling;
-        
+
+        [SerializeField][ReadOnly] bool isFalling;
+
         private static readonly int Falling = Animator.StringToHash("IsFalling");
         private static readonly int Grounded = Animator.StringToHash("Grounded");
         private static readonly int XVelocity = Animator.StringToHash("XVelocity");
         private static readonly int YVelocity = Animator.StringToHash("YVelocity");
         private static readonly int Jump = Animator.StringToHash("Jump");
         private static readonly int Dead = Animator.StringToHash("Dead");
+
+        #region Animations
+        private static readonly int DeathAnim = Animator.StringToHash("knight_death");
+        private static readonly int AttackAnim = Animator.StringToHash("knight_attack");
+
+        #endregion
 
         void Awake()
         {
@@ -79,15 +85,15 @@ namespace Animation
 
         void SetJump(InputAction.CallbackContext context)
         {
-            if(platformingController.Grounded && context.performed) _animator.SetTrigger(Jump);
+            if (platformingController.Grounded && context.performed) _animator.SetTrigger(Jump);
         }
 
-        void SetAttack(InputAction.CallbackContext context) { if (context.performed && !healthManager.Dead) _animator.CrossFade("knight_attack", 0, 0); }
+        void SetAttack(InputAction.CallbackContext context) { if (context.performed && !healthManager.Dead) _animator.CrossFade(AttackAnim, 0, 0); }
 
         void SetDead()
         {
             _animator.SetBool(Dead, healthManager.Dead);
-            if (healthManager.Dead) _animator.CrossFade("knight_death", 0, 0);
+            if (healthManager.Dead) _animator.CrossFade(DeathAnim, 0, 0);
         }
     }
 }

@@ -5,18 +5,18 @@ using UnityEngine;
 
 namespace Events
 {
-    public static class GameEvents 
+    public static class GameEvents
     {
-        
-       
+
+
 
         #region Player Events
         public delegate void PlayerKill();
-        public delegate void PlayerTakeDamage(int amount);   
+        public delegate void PlayerTakeDamage(int amount);
         public delegate void PlayerHeal(int amount);
         public delegate void PlayerDied();
         public delegate void PlayerRespawn(float delaySeconds = 0, Transform positionToRespawn = null);
-        
+
         public static PlayerHeal onPlayerHealedEvent;
         public static PlayerKill onPlayerKillEvent;
         public static PlayerDied onPlayerDiedEvent;
@@ -26,9 +26,9 @@ namespace Events
         #region Combos
         public delegate void ButtonPressed(ComboValues comboValue);
         public delegate void NewCombo(Combo combo);
-        public delegate void ComboFinished ();
+        public delegate void ComboFinished();
         public delegate void AimStart(Vector2 directon);
-        
+
         public static ButtonPressed onButtonPressed;
         public static NewCombo onNewCombo;
         public static ComboFinished onComboFinish;
@@ -38,14 +38,14 @@ namespace Events
         #region UI Events
         public delegate void SetValue(int value);
         public delegate void PlayerHealthUIChange(float normalisedCurrentHealth);
-        
+
         public static SetValue onSetHealthCountEvent;
         public static PlayerHealthUIChange onPlayerHealthUIChangeEvent;
         #endregion
 
         #region Effects
-        public delegate void SceneTransitionOut();
         public delegate void SceneTransitionIn();
+        public delegate void SceneTransitionOut();
         public delegate void ScreenShake(Strength str, float lengthInSeconds = 0.2f);
         public delegate void ParticleEffect(ParticleEvent particleEvent);
         public delegate void LoadLevel();
@@ -64,7 +64,7 @@ namespace Events
         public delegate void MultiplierIncrease();
         public delegate void MultiplierReset();
         public delegate void MultiplierDecrease();
-        
+
         public static ScoreChange onScoreChangeEvent;
         public static MultiplierIncrease onMultiplierIncreaseEvent;
         public static MultiplierReset onMultiplierResetEvent;
