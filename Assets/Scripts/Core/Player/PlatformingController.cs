@@ -27,6 +27,7 @@ namespace Core.Player
         Transform _platformTarget;
         Vector2 _platformOffset;
 
+
         //holdingJump is used while the player is jumping, jumped is when the player has finished their jump.
         bool _holdingJump = false, _jumped = false;
 
@@ -35,6 +36,7 @@ namespace Core.Player
         public bool FindGround { get => _findGround; private set => _findGround = value; }
         public bool TouchingRoof { get => _touchingRoof; private set => _touchingRoof = value; }
         public PlayerInput PlayerInput { get => _playerInput; private set => _playerInput = value; }
+        [field: SerializeField] public Transform FollowTransform { get; private set; }
 
         bool _allowFriction = false;
 

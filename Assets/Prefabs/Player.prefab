@@ -288,6 +288,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 68
   groundCheckSize: {x: 0.43, y: 0.05}
+  <FollowTransform>k__BackingField: {fileID: 416284507136183027}
 --- !u!114 &6419258818573561547
 MonoBehaviour:
   m_ObjectHideFlags: 0

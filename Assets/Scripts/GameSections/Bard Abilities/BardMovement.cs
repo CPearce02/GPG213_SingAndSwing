@@ -1,5 +1,8 @@
 using UnityEngine;
 using Structs;
+using Events;
+using Core.Player;
+using System;
 
 public class BardMovement : MonoBehaviour
 {
@@ -17,6 +20,17 @@ public class BardMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
     }
+
+    private void OnEnable()
+    {
+        GameEvents.onSendPlayerEvent += SetPlayer;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.onSendPlayerEvent += SetPlayer;
+    }
+
 
     private void FixedUpdate()
     {
@@ -36,5 +50,7 @@ public class BardMovement : MonoBehaviour
             rb.velocity = Vector2.zero;
         }
     }
+
+    private void SetPlayer(PlatformingController player) => _playerTransform = player.FollowTransform;
 
 }
