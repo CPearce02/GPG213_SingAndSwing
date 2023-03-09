@@ -6,9 +6,7 @@ namespace Scoring.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "MultiplierState", menuName = "Multiplier/New MultiplierState", order = 0)]
     public class MultiplierData : ScriptableObject
-    { 
-        private static readonly int Multiplier = Animator.StringToHash("Multiplier");
-        
+    {
         [field:SerializeField] public MultiplierState CurrentMultiplier { get; private set; } = MultiplierState.One;
         
         // We need some events that tell the UI to update the multiplier
