@@ -144,8 +144,13 @@ namespace Core.Player
         {
             _dead = true;
             _controller.enabled = false;
-            _rb.simulated = false;
+            _rb.drag = 2;
+        }
+
+        void DeathParticles()
+        {
             deathParticles.Invoke();
         }
+        
     }
 }

@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using Core.Player;
+using Structs;
 using UnityEngine;
 
 namespace Enemies
@@ -14,6 +15,8 @@ namespace Enemies
         [ReadOnly] public Transform player, directionTransform;
         [ReadOnly] public float bulletSpeed;
         Rigidbody2D rb;
+        
+        public ParticleEvent onBulletDestroyParticle;
 
         void Start()
         {
@@ -43,13 +46,14 @@ namespace Enemies
         //You can change this function to give the bullet cool effects or whatever
         void DestroyBullet()
         {
+            onBulletDestroyParticle.Invoke();
             Destroy(gameObject);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             collision.TryGetComponent(out PlatformingController player);
-            if (player) DestroyBullet();
+            if (player) DestroyBullet(); 
         }
     }
 }

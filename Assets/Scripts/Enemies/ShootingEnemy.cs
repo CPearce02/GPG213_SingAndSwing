@@ -1,83 +1,89 @@
 using System.Collections;
-using System.Collections.Generic;
-using Enemies;
+using Structs;
 using UnityEngine;
 
-public class ShootingEnemy : MonoBehaviour
+namespace Enemies
 {
-    [Header("Prefabs")]
-    public GameObject bullet;
-    public Transform directionTransform;
-    [HideInInspector] public Transform player;
-    public PhysicsMaterial2D bounceMaterial;
-
-    [Header("Properties")]
-    public bool aimAtPlayer = false;
-    public float fireRate = 1f;
-    public float bulletSpeed = 10f;
-    public float homingTime = 1f;
-
-    bool countingDownShoot = false;
-
-    public enum ShootState
+    public class ShootingEnemy : MonoBehaviour
     {
-        ConstantDirection,
-        Homing,
-        Gravity,
-        Bouncing
-    }
+        [Header("Prefabs")]
+        public GameObject bullet;
+        public Transform directionTransform;
+        [HideInInspector] public Transform player;
+        public PhysicsMaterial2D bounceMaterial;
 
-    public ShootState shootState;
+        [Header("Properties")]
+        public bool aimAtPlayer = false;
+        public float fireRate = 1f;
+        public float bulletSpeed = 10f;
+        public float homingTime = 1f;
 
-    void Update()
-    {
-        if(aimAtPlayer) DirectionToPlayer();
-
-        if (!aimAtPlayer)
-        {
-            if (!countingDownShoot) StartCoroutine(DelayShoot());
-        } else
-        {
-            if (!countingDownShoot && player != null) StartCoroutine(DelayShoot());
-        }
-    }
-
-    void Shoot()
-    {
-        GameObject clonedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-        Rigidbody2D rb = clonedBullet.GetComponent<Rigidbody2D>();
-        ProjectileController bManager = clonedBullet.AddComponent<ProjectileController>();
-        Collider2D coll = clonedBullet.GetComponent<Collider2D>();
-
-        rb.isKinematic = true;
-        coll.isTrigger = true;
-
-        if (player != null) bManager.player = player;
-        if(shootState == ShootState.Homing) bManager.homingTime = homingTime;
-        bManager.bulletSpeed = bulletSpeed;
-        bManager.directionTransform = directionTransform;
+        bool countingDownShoot = false;
         
-        Physics2D.IgnoreCollision(coll, GetComponent<Collider2D>());
-
-        if (shootState == ShootState.Gravity || shootState == ShootState.Bouncing)
+        
+        public enum ShootState
         {
-            coll.isTrigger = false;
-            rb.isKinematic = false;
+            ConstantDirection,
+            Homing,
+            Gravity,
+            Bouncing
         }
 
-        if(shootState == ShootState.Bouncing) rb.sharedMaterial = bounceMaterial;
-    }
+        public ShootState shootState;
+        [SerializeField] ParticleEvent onBulletDestroyParticle;
 
-    void DirectionToPlayer()
-    {
-        if(player != null) directionTransform.position = player.transform.position;
-    }
+        void Update()
+        {
+            if(aimAtPlayer) DirectionToPlayer();
 
-    IEnumerator DelayShoot()
-    {
-        countingDownShoot = true;
-        yield return new WaitForSeconds(fireRate);
-        countingDownShoot = false;
-        Shoot();
+            if (!aimAtPlayer)
+            {
+                if (!countingDownShoot) StartCoroutine(DelayShoot());
+            } else
+            {
+                if (!countingDownShoot && player != null) StartCoroutine(DelayShoot());
+            }
+        }
+
+        void Shoot()
+        {
+            GameObject clonedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+            Rigidbody2D rb = clonedBullet.GetComponent<Rigidbody2D>();
+            ProjectileController bManager = clonedBullet.AddComponent<ProjectileController>();
+            bManager.onBulletDestroyParticle = onBulletDestroyParticle;
+            bManager.onBulletDestroyParticle.Transform = clonedBullet.transform;
+            Collider2D coll = clonedBullet.GetComponent<Collider2D>();
+
+            rb.isKinematic = true;
+            coll.isTrigger = true;
+
+            if (player != null) bManager.player = player;
+            if(shootState == ShootState.Homing) bManager.homingTime = homingTime;
+            bManager.bulletSpeed = bulletSpeed;
+            bManager.directionTransform = directionTransform;
+        
+            Physics2D.IgnoreCollision(coll, GetComponent<Collider2D>());
+
+            if (shootState == ShootState.Gravity || shootState == ShootState.Bouncing)
+            {
+                coll.isTrigger = false;
+                rb.isKinematic = false;
+            }
+
+            if(shootState == ShootState.Bouncing) rb.sharedMaterial = bounceMaterial;
+        }
+
+        void DirectionToPlayer()
+        {
+            if(player != null) directionTransform.position = player.transform.position;
+        }
+
+        IEnumerator DelayShoot()
+        {
+            countingDownShoot = true;
+            yield return new WaitForSeconds(fireRate);
+            countingDownShoot = false;
+            Shoot();
+        }
     }
 }

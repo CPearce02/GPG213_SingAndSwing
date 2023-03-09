@@ -474,7 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f697dd63619041e47ad9fc19aedb2d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 4767656718564846575, guid: afe1515f585c6824bb875d7b2f747092, type: 3}
+  bullet: {fileID: 472631743756809970, guid: 1b2fc909374dc3a4a93a81c7b396bced, type: 3}
   directionTransform: {fileID: 1111095981373803867}
   player: {fileID: 0}
   bounceMaterial: {fileID: 6200000, guid: d374b8edcf4dc524996cdc968feefe14, type: 2}
@@ -483,6 +483,11 @@ MonoBehaviour:
   bulletSpeed: 5
   homingTime: 3
   shootState: 0
+  onBulletDestroyParticle:
+    <Transform>k__BackingField: {fileID: 0}
+    <Particle>k__BackingField: {fileID: 4862367670183223577, guid: fe93907a5421d26418ebe2281cc25bcf, type: 3}
+    <DoParticles>k__BackingField: 1
+    <Color>k__BackingField: {r: 0.24313726, g: 0.2901961, b: 0.4627451, a: 1}
 --- !u!1 &7927758874592291250
 GameObject:
   m_ObjectHideFlags: 0
