@@ -1,4 +1,5 @@
 using Events;
+using Structs;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -27,6 +28,7 @@ namespace Core.Player
         Transform _platformTarget;
         Vector2 _platformOffset;
 
+        [SerializeField] JumpData finalJumpForce;
 
         //holdingJump is used while the player is jumping, jumped is when the player has finished their jump.
         bool _holdingJump = false, _jumped = false;
@@ -46,7 +48,6 @@ namespace Core.Player
             _rb = GetComponent<Rigidbody2D>();
             PlayerInput = GetComponent<PlayerInput>();
         }
-
 
         private void Update()
         {
@@ -116,12 +117,24 @@ namespace Core.Player
             if (isPressingJump && _jumped == false)
             {
                 //If the player wasn't already jumping, and they are on the ground, let them call the jump function.
-                if (Grounded && !_holdingJump) _holdingJump = true;
+                if (Grounded && !_holdingJump)
+                {
+                    finalJumpForce.lastGroundedYPos = transform.position.y;
 
-                if (_holdingJump) Jump();
+                    finalJumpForce.JumpForce = 0;
+
+                    _holdingJump = true;
+                }
+
+                if (_holdingJump)
+                {
+                    Jump();
+                }
 
                 if (transform.position.y > _relativeJumpHeight || TouchingRoof)
                 {
+                    if (!_jumped) finalJumpForce.JumpForce = CalculateJumpForce(transform.position.y - finalJumpForce.lastGroundedYPos);
+
                     _holdingJump = false; //Stop the player from continuing their jump if they finish their jump.
                     _jumped = true; //Prevent bunnyhopping.
                 }
@@ -129,6 +142,8 @@ namespace Core.Player
 
             if (!isPressingJump)
             {
+                if(_holdingJump) finalJumpForce.JumpForce = CalculateJumpForce(transform.position.y - finalJumpForce.lastGroundedYPos);
+
                 //Stop the player from continuing their jump if they let go of the jump key.
                 _holdingJump = false;
 
@@ -137,6 +152,8 @@ namespace Core.Player
                 else _jumped = true;
             }
         }
+
+        float CalculateJumpForce(float jumpHeight, float gravity = 25f) { return Mathf.Sqrt(2 * jumpHeight * gravity); }
 
         void Jump()
         {
@@ -147,6 +164,8 @@ namespace Core.Player
         //Public void so it can be called in other scripts such as a jump pad.
         public void AddJump(float jumpHeight = 0)
         {
+            finalJumpForce.JumpForce = jumpHeight;
+
             _rb.velocity = new Vector2(_rb.velocity.x, 0);
             _rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
         }
