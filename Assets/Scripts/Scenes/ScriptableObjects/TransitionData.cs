@@ -16,7 +16,7 @@ namespace Scenes.ScriptableObjects
         [Header("Transition Settings")]
         [SerializeField] public Sprite transitionImage;
         [SerializeField] public float speed = 1f;
-        [SerializeField] public float progress = 1f;
+        [field: SerializeField] public float Progress { get; set; } = 1f;
         [SerializeField] public Material material;
         [SerializeField] public float transitionInDelay = 1f, transitionOutDelay = 0.25f;
 
@@ -51,12 +51,12 @@ namespace Scenes.ScriptableObjects
             switch (nextTransitionState)
             {
                 case TransitionState.In:
-                    progress = 0;
-                    material.SetFloat(CutOff, progress - 0.1f);
+                    Progress = 0;
+                    material.SetFloat(CutOff, Progress - 0.1f);
                     break;
                 case TransitionState.Out:
-                    progress = 1;
-                    material.SetFloat(CutOff, progress + 0.1f);
+                    Progress = 1;
+                    material.SetFloat(CutOff, Progress + 0.1f);
                     break;
                 default:
                     break;
@@ -66,9 +66,9 @@ namespace Scenes.ScriptableObjects
         public IEnumerator TransitionInCoroutine(float initialDelaySeconds = 0f)
         {
             yield return new WaitForSeconds(initialDelaySeconds == 0 ? transitionInDelay : initialDelaySeconds);
-            while (progress < 1f)
+            while (Progress < 1f)
             {
-                progress += Time.deltaTime * speed;
+                Progress += Time.deltaTime * speed;
                 SetCutOff();
                 yield return null;
             }
@@ -79,9 +79,9 @@ namespace Scenes.ScriptableObjects
         public IEnumerator TransitionOutCoroutine(float initialDelaySeconds = 0f)
         {
             yield return new WaitForSeconds(initialDelaySeconds == 0 ? transitionInDelay : initialDelaySeconds);
-            while (progress > 0f)
+            while (Progress > 0f)
             {
-                progress -= Time.deltaTime * speed;
+                Progress -= Time.deltaTime * speed;
                 SetCutOff();
                 yield return null;
             }
@@ -94,7 +94,7 @@ namespace Scenes.ScriptableObjects
         private void SetCutOff()
         {
             var transitionOffset = nextTransitionState == TransitionState.In ? 0.1f : -0.1f;
-            material.SetFloat(CutOff, progress + transitionOffset);
+            material.SetFloat(CutOff, Progress + transitionOffset);
         }
 
     }

@@ -39,21 +39,21 @@ namespace Scenes
 
         void TransitionIn()
         {
-            transitionData.progress = 0;
+            transitionData.Progress = 0;
             transitionData.isTransitioning = true;
             StartCoroutine(transitionData.TransitionInCoroutine());
         }
 
         void TransitionIn(Scene scene, LoadSceneMode mode)
         {
-            transitionData.progress = 0;
+            transitionData.Progress = 0;
             transitionData.isTransitioning = true;
             StartCoroutine(transitionData.TransitionInCoroutine());
         }
 
         void TransitionOut()
         {
-            transitionData.progress = 1f;
+            transitionData.Progress = 1f;
             transitionData.isTransitioning = true;
             StartCoroutine(transitionData.TransitionOutCoroutine());
         }
