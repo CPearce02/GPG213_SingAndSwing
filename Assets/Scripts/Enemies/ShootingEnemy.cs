@@ -61,7 +61,12 @@ namespace Enemies
             if(shootState == ShootState.Homing) bManager.homingTime = homingTime;
             bManager.bulletSpeed = bulletSpeed;
             bManager.directionTransform = directionTransform;
-        
+
+            // point the bullet towards the directionTransform
+            Vector2 direction = (directionTransform.position - transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            clonedBullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -angle));
+
             Physics2D.IgnoreCollision(coll, GetComponent<Collider2D>());
 
             if (shootState == ShootState.Gravity || shootState == ShootState.Bouncing)
