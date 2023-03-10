@@ -3130,6 +3130,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerUI
       objectReference: {fileID: 0}
+    - target: {fileID: 2454089145137463962, guid: 75b023e24496586439b4445e888066e2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454089145137463962, guid: 75b023e24496586439b4445e888066e2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454089145137463962, guid: 75b023e24496586439b4445e888066e2, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454089145137463962, guid: 75b023e24496586439b4445e888066e2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454089145137463962, guid: 75b023e24496586439b4445e888066e2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -56
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454089145137463962, guid: 75b023e24496586439b4445e888066e2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -24.000008
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75b023e24496586439b4445e888066e2, type: 3}
 --- !u!1 &2121315461
