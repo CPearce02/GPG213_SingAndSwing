@@ -13,7 +13,7 @@ public class BardSingleplayerAnimator : MonoBehaviour
 
     Rigidbody2D _rb;
     SpriteRenderer _bardSprite;
-    Animator _animator;
+    [SerializeField] Animator _animator;
     BardController _bardController;
 
     Vector2 _lastPos;

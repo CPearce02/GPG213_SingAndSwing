@@ -123,6 +123,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 480301594331138783}
     m_Modifications:
+    - target: {fileID: 1062610517530896435, guid: da90ddb66b91c2c4085d575dc48b5a42, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1062610517530896435, guid: da90ddb66b91c2c4085d575dc48b5a42, type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1062610517667821152, guid: da90ddb66b91c2c4085d575dc48b5a42, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -218,6 +226,26 @@ PrefabInstance:
     - target: {fileID: 1461632658285919331, guid: da90ddb66b91c2c4085d575dc48b5a42, type: 3}
       propertyPath: m_Name
       value: HealthSlider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7799954007831680816, guid: da90ddb66b91c2c4085d575dc48b5a42, type: 3}
+      propertyPath: sliderFillColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7799954007831680816, guid: da90ddb66b91c2c4085d575dc48b5a42, type: 3}
+      propertyPath: sliderFillColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7799954007831680816, guid: da90ddb66b91c2c4085d575dc48b5a42, type: 3}
+      propertyPath: sliderFillColor.r
+      value: 0.06132126
+      objectReference: {fileID: 0}
+    - target: {fileID: 7799954007831680816, guid: da90ddb66b91c2c4085d575dc48b5a42, type: 3}
+      propertyPath: sliderWarningValue
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7799954007831680816, guid: da90ddb66b91c2c4085d575dc48b5a42, type: 3}
+      propertyPath: updateSpeedSeconds
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da90ddb66b91c2c4085d575dc48b5a42, type: 3}

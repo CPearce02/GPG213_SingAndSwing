@@ -14,6 +14,7 @@ namespace Enemies
         float _originalHomingTime = 0;
         [ReadOnly] public Transform player, directionTransform;
         [ReadOnly] public float bulletSpeed;
+        [SerializeField] private float rotationOffset = 180f;
         Rigidbody2D rb;
         
         public ParticleEvent onBulletDestroyParticle;
@@ -41,6 +42,14 @@ namespace Enemies
 
             if (bulletAliveTime > 0) bulletAliveTime -= Time.deltaTime;
             else DestroyBullet();
+            
+            RotateInDirectionOfVelocity();
+        }
+
+        private void RotateInDirectionOfVelocity()
+        {
+            float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + rotationOffset));
         }
 
         //You can change this function to give the bullet cool effects or whatever
