@@ -214,6 +214,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8226912907385199645, guid: 3549d698f3e39e142a8f3c129bc0b92c, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8226912907385199646, guid: 3549d698f3e39e142a8f3c129bc0b92c, type: 3}
       propertyPath: m_Name
       value: TransitionManager
@@ -234,6 +238,10 @@ PrefabInstance:
     - target: {fileID: 480301593807239516, guid: 75b023e24496586439b4445e888066e2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 480301594331138782, guid: 75b023e24496586439b4445e888066e2, type: 3}
+      propertyPath: m_Camera
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 480301594331138783, guid: 75b023e24496586439b4445e888066e2, type: 3}
       propertyPath: m_Pivot.x
@@ -322,6 +330,10 @@ PrefabInstance:
     - target: {fileID: 480301594331138786, guid: 75b023e24496586439b4445e888066e2, type: 3}
       propertyPath: m_Name
       value: PlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454089145137463962, guid: 75b023e24496586439b4445e888066e2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -24
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75b023e24496586439b4445e888066e2, type: 3}
