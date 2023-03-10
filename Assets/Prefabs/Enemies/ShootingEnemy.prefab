@@ -495,11 +495,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f697dd63619041e47ad9fc19aedb2d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 472631743756809970, guid: 1b2fc909374dc3a4a93a81c7b396bced, type: 3}
+  projectile: {fileID: 472631743756809970, guid: 1b2fc909374dc3a4a93a81c7b396bced, type: 3}
   directionTransform: {fileID: 1111095981373803867}
   player: {fileID: 0}
   bounceMaterial: {fileID: 6200000, guid: d374b8edcf4dc524996cdc968feefe14, type: 2}
   aimAtPlayer: 0
+  countingDownShoot: 0
   fireRate: 1
   bulletSpeed: 5
   homingTime: 3

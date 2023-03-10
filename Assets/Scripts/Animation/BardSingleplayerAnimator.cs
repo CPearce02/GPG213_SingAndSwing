@@ -1,100 +1,101 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Core.Player;
 using Events;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
-public class BardSingleplayerAnimator : MonoBehaviour
+namespace Animation
 {
-    [SerializeField][ReadOnly] private Transform playerTransform;
-    [SerializeField][ReadOnly] private PlayerInput playerInput;
-
-    Rigidbody2D _rb;
-    SpriteRenderer _bardSprite;
-    [SerializeField] Animator _animator;
-    BardController _bardController;
-
-    Vector2 _lastPos;
-
-    private static readonly int Jump = Animator.StringToHash("Jump");
-    private static readonly int Grounded = Animator.StringToHash("Grounded");
-    private static readonly int Moving = Animator.StringToHash("Moving");
-    private static readonly int Falling = Animator.StringToHash("Falling");
-
-    void Awake()
+    public class BardSingleplayerAnimator : MonoBehaviour
     {
-        _bardSprite = GetComponent<SpriteRenderer>();
-        _rb = GetComponentInParent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
-        _bardController = GetComponentInParent<BardController>();
-    }
+        [SerializeField][ReadOnly] private Transform playerTransform;
+        [SerializeField][ReadOnly] private PlayerInput playerInput;
 
-    private void Start() => GameEvents.onRequestPlayerEvent?.Invoke();
+        Rigidbody2D _rb;
+        SpriteRenderer _bardSprite;
+        [FormerlySerializedAs("_animator")] [SerializeField] Animator animator;
+        BardController _bardController;
 
-    private void OnEnable()
-    {
-        GameEvents.onSendPlayerEvent += SetPlayer;
-    }
+        Vector2 _lastPos;
 
-    private void OnDisable()
-    {
-        GameEvents.onSendPlayerEvent -= SetPlayer;
-        if (playerInput != null)
-            playerInput.actions["Jump"].performed -= SetJump;
-    }
+        private static readonly int Jump = Animator.StringToHash("Jump");
+        private static readonly int Grounded = Animator.StringToHash("Grounded");
+        private static readonly int Moving = Animator.StringToHash("Moving");
+        private static readonly int Falling = Animator.StringToHash("Falling");
 
-    private void SetPlayer(PlatformingController player)
-    {
-        playerInput = player.PlayerInput;
-        playerTransform = player.transform;
-        playerInput.actions["Jump"].performed += SetJump;
-    }
-
-    void Update()
-    {
-        FlipSprite();
-        SetFalling();
-        SetRunning();
-
-        _animator.SetBool(Grounded, _bardController.Grounded);
-    }
-
-    private void LateUpdate()
-    {
-        _lastPos = transform.position;
-    }
-
-    void FlipSprite()
-    {
-        float _distanceFromPlayer = playerTransform.position.x - transform.position.x;
-
-        if (_distanceFromPlayer >= 0) _bardSprite.flipX = false;
-        else _bardSprite.flipX = true;
-    }
-
-    void SetFalling()
-    {
-        if (transform.position.y < _lastPos.y - 0.1f) _animator.SetBool(Falling, true);
-        else _animator.SetBool(Falling, false);
-    }
-
-    void SetRunning()
-    {
-        if (transform.position.x > _lastPos.x + 0.1f || transform.position.x < _lastPos.x - 0.1f)
+        void Awake()
         {
-            if (!_bardController.Grounded) return;
-            _animator.SetBool(Moving, true);
+            _bardSprite = GetComponent<SpriteRenderer>();
+            _rb = GetComponentInParent<Rigidbody2D>();
+            animator = GetComponent<Animator>();
+            _bardController = GetComponentInParent<BardController>();
         }
-        else
-        {
-            _animator.SetBool(Moving, false);
-        }
-    }
 
-    void SetJump(InputAction.CallbackContext context)
-    {
-        if (_bardController.Grounded && context.performed) _animator.SetTrigger(Jump);
+        private void Start() => GameEvents.onRequestPlayerEvent?.Invoke();
+
+        private void OnEnable()
+        {
+            GameEvents.onSendPlayerEvent += SetPlayer;
+        }
+
+        private void OnDisable()
+        {
+            GameEvents.onSendPlayerEvent -= SetPlayer;
+            if (playerInput != null)
+                playerInput.actions["Jump"].performed -= SetJump;
+        }
+
+        private void SetPlayer(PlatformingController player)
+        {
+            playerInput = player.PlayerInput;
+            playerTransform = player.transform;
+            playerInput.actions["Jump"].performed += SetJump;
+        }
+
+        void Update()
+        {
+            FlipSprite();
+            SetFalling();
+            SetRunning();
+
+            animator.SetBool(Grounded, _bardController.Grounded);
+        }
+
+        private void LateUpdate()
+        {
+            _lastPos = transform.position;
+        }
+
+        void FlipSprite()
+        {
+            float distanceFromPlayer = playerTransform.position.x - transform.position.x;
+
+            if (distanceFromPlayer >= 0) _bardSprite.flipX = false;
+            else _bardSprite.flipX = true;
+        }
+
+        void SetFalling()
+        {
+            if (transform.position.y < _lastPos.y - 0.1f) animator.SetBool(Falling, true);
+            else animator.SetBool(Falling, false);
+        }
+
+        void SetRunning()
+        {
+            if (transform.position.x > _lastPos.x + 0.1f || transform.position.x < _lastPos.x - 0.1f)
+            {
+                if (!_bardController.Grounded) return;
+                animator.SetBool(Moving, true);
+            }
+            else
+            {
+                animator.SetBool(Moving, false);
+            }
+        }
+
+        void SetJump(InputAction.CallbackContext context)
+        {
+            if (_bardController.Grounded && context.performed) animator.SetTrigger(Jump);
+        }
     }
 }

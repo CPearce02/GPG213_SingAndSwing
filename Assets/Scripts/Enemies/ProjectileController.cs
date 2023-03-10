@@ -12,22 +12,29 @@ namespace Enemies
 
         [ReadOnly] public float homingTime = 0;
         float _originalHomingTime = 0;
-        [ReadOnly] public Transform player, directionTransform;
-        [ReadOnly] public float bulletSpeed;
+        [field: ReadOnly, SerializeField] public Transform Player { get; set; }
+        [field: ReadOnly, SerializeField] public Transform DirectionTransform { get; set; }
+        [field: ReadOnly, SerializeField] public float BulletSpeed { get; set; }
         [SerializeField] private float rotationOffset = 180f;
-        Rigidbody2D rb;
-        
+        public Rigidbody2D Rb { get; private set; }
+        public Collider2D Collider { get; private set; }
         public ParticleEvent onBulletDestroyParticle;
+
+        private void Awake()
+        {
+            Rb = GetComponent<Rigidbody2D>();
+            Collider = GetComponent<Collider2D>();
+        }
 
         void Start()
         {
             _originalHomingTime = homingTime;
-            rb = GetComponent<Rigidbody2D>();
+           
             bulletAliveTime += homingTime;
 
-            if (!player || homingTime == 0)
+            if (!Player || homingTime == 0)
             {
-                rb.velocity = bulletSpeed * (directionTransform.position - transform.position).normalized;
+                Rb.velocity = BulletSpeed * (DirectionTransform.position - transform.position).normalized;
             }
         }
 
@@ -37,7 +44,7 @@ namespace Enemies
             {
                 _originalHomingTime -= Time.deltaTime;
 
-                if (player != null) rb.velocity = bulletSpeed * (player.position - transform.position).normalized;
+                if (Player != null) Rb.velocity = BulletSpeed * (Player.position - transform.position).normalized;
             }
 
             if (bulletAliveTime > 0) bulletAliveTime -= Time.deltaTime;
@@ -48,7 +55,7 @@ namespace Enemies
 
         private void RotateInDirectionOfVelocity()
         {
-            float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(Rb.velocity.y, Rb.velocity.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + rotationOffset));
         }
 
