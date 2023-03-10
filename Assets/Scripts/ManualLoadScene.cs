@@ -1,17 +1,16 @@
 using Core.Player;
-using GameSections.Platforming;
+using Levels.ScriptableObjects.Sections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEditor;
 
 public class ManualLoadScene : MonoBehaviour
 {
-    public string sceneName;
+    [SerializeField] private LevelSectionData section;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         col.TryGetComponent(out PlatformingController player);
 
-        if (player) SceneManager.LoadScene(sceneName);
+        if (player) SceneManager.LoadScene(section.Scene);
     }
 }
