@@ -41,6 +41,7 @@ namespace Events
         public static NewCombo onNewCombo;
         public static ComboFinished onComboFinish;
         public static AimStart onAimStart;
+  
         #endregion
 
         #region UI Events

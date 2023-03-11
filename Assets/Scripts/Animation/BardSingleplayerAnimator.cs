@@ -1,3 +1,4 @@
+using Core.Bard.Abilities;
 using Core.Player;
 using Events;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace Animation
     {
         [SerializeField][ReadOnly] private Transform playerTransform;
         [SerializeField][ReadOnly] private PlayerInput playerInput;
+        [SerializeField] private PlayerInput bardInput;
 
         Rigidbody2D _rb;
         SpriteRenderer _bardSprite;
@@ -22,10 +24,12 @@ namespace Animation
         private static readonly int Grounded = Animator.StringToHash("Grounded");
         private static readonly int Moving = Animator.StringToHash("Moving");
         private static readonly int Falling = Animator.StringToHash("Falling");
+        private static readonly int IsSinging = Animator.StringToHash("IsSinging");
 
         void Awake()
         {
             _bardSprite = GetComponent<SpriteRenderer>();
+            bardInput = GetComponentInParent<PlayerInput>();
             _rb = GetComponentInParent<Rigidbody2D>();
             animator = GetComponent<Animator>();
             _bardController = GetComponentInParent<BardController>();
@@ -36,8 +40,20 @@ namespace Animation
         private void OnEnable()
         {
             GameEvents.onSendPlayerEvent += SetPlayer;
+            bardInput.actions["Aim"].performed += SetSinging;
+            bardInput.actions["Aim"].canceled += EndSinging;
         }
 
+        private void EndSinging(InputAction.CallbackContext context)
+        {
+            animator.SetBool(IsSinging, false);
+        }
+
+        private void SetSinging(InputAction.CallbackContext context)
+        {
+            if (context.performed) animator.SetBool(IsSinging, true);
+        }
+        
         private void OnDisable()
         {
             GameEvents.onSendPlayerEvent -= SetPlayer;
