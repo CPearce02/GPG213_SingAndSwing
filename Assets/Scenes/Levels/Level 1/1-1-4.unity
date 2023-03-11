@@ -2771,11 +2771,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
---- !u!4 &1365350117 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6419258818573561545, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
-  m_PrefabInstance: {fileID: 6419258818536261500}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1504854748
 GameObject:
   m_ObjectHideFlags: 0
@@ -3584,14 +3579,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8162570258018312774, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8162570258677425959, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1365350117}
     - target: {fileID: 8162570258677425968, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
       propertyPath: m_Name
       value: Bard
