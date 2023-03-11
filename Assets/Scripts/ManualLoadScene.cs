@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ManualLoadScene : MonoBehaviour
 {
-    [SerializeField] private LevelSectionData section;
+    [SerializeField] private SectionData section;
 
     private void OnTriggerEnter2D(Collider2D col)
     {

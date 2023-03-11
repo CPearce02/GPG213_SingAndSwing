@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &5370825 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8162570258677425958, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
-  m_PrefabInstance: {fileID: 1925156574}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &321057181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -297,11 +286,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4740390284480006754, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00029543473
+      value: -0.00028493922
       objectReference: {fileID: 0}
     - target: {fileID: 4740390284480006754, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.9642225e-15
+      value: -4.7878643e-15
       objectReference: {fileID: 0}
     - target: {fileID: 4740390284480006754, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3076,11 +3065,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
---- !u!1 &1460310734 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 48146140179462914, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
-  m_PrefabInstance: {fileID: 1925156574}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1495480815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3421,22 +3405,6 @@ PrefabInstance:
     - target: {fileID: 8162570258677425969, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8693929486551417900, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
-      propertyPath: cursor
-      value: 
-      objectReference: {fileID: 1460310734}
-    - target: {fileID: 8693929486551417900, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
-      propertyPath: _bardInput
-      value: 
-      objectReference: {fileID: 5370825}
-    - target: {fileID: 8693929486551417900, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
-      propertyPath: rotationSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 9108170369569505532, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
-      propertyPath: m_Name
-      value: Radius
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
@@ -4698,11 +4666,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6009364978798124481, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00029543473
+      value: -0.00028493922
       objectReference: {fileID: 0}
     - target: {fileID: 6009364978798124481, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.9642225e-15
+      value: -4.7878643e-15
       objectReference: {fileID: 0}
     - target: {fileID: 6419258818573561545, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: m_RootOrder

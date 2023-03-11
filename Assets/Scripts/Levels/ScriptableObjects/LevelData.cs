@@ -13,21 +13,21 @@ namespace Levels.ScriptableObjects
         [field: SerializeField] public string LevelName { get; private set; }
         [field: SerializeField] public string LevelDescription { get; private set; }
         [field: SerializeField] public int LevelNumber { get; private set; }
-        [field: SerializeField] public List<LevelSectionData> LevelSections { get; private set; }
+        [field: SerializeField] public List<SectionData> LevelSections { get; private set; }
 
-        [SerializeField] private LevelSectionData currentSection;
+        [SerializeField] private SectionData currentSection;
 
-        [SerializeField] private LevelSectionData nextSection;
+        [SerializeField] private SectionData nextSection;
 
         [SerializeField] LevelState levelState = LevelState.Inactive;
 
-        public LevelSectionData CurrentSection
+        public SectionData CurrentSection
         {
             get => currentSection;
             private set => currentSection = value;
         }
 
-        public LevelSectionData NextSection
+        public SectionData NextSection
         {
             get => nextSection;
             private set => nextSection = value;
@@ -43,7 +43,7 @@ namespace Levels.ScriptableObjects
 
         public LevelState GetLevelState() => levelState;
 
-        private void SetCurrentSection(LevelSectionData section = null)
+        private void SetCurrentSection(SectionData section = null)
         {
             if (currentSection == null)
             {
@@ -68,7 +68,7 @@ namespace Levels.ScriptableObjects
             nextSection = LevelSections[LevelSections.IndexOf(CurrentSection) + 1];
         }
 
-        LevelSectionData FindCurrentSection() => LevelSections.Find(l => l.Scene == SceneManager.GetActiveScene().name);
+        SectionData FindCurrentSection() => LevelSections.Find(l => l.Scene == SceneManager.GetActiveScene().name);
 
         #endregion
     }

@@ -29,9 +29,11 @@ namespace Animation
         void Awake()
         {
             _bardSprite = GetComponent<SpriteRenderer>();
-            bardInput = GetComponentInParent<PlayerInput>();
+            if(bardInput == null)
+                bardInput = GetComponentInParent<PlayerInput>();
+            if(animator == null)
+                animator = GetComponent<Animator>();
             _rb = GetComponentInParent<Rigidbody2D>();
-            animator = GetComponent<Animator>();
             _bardController = GetComponentInParent<BardController>();
         }
 
@@ -59,6 +61,9 @@ namespace Animation
             GameEvents.onSendPlayerEvent -= SetPlayer;
             if (playerInput != null)
                 playerInput.actions["Jump"].performed -= SetJump;
+            
+            bardInput.actions["Aim"].performed -= SetSinging;
+            bardInput.actions["Aim"].canceled -= EndSinging;
         }
 
         private void SetPlayer(PlatformingController player)

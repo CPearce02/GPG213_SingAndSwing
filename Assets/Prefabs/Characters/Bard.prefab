@@ -194,8 +194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 10
-  cursor: {fileID: 0}
-  _bardInput: {fileID: 0}
+  cursor: {fileID: 48146140179462914}
+  _bardInput: {fileID: 8162570258677425958}
 --- !u!1 &8162570258018312774
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,8 +546,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
   playerInput: {fileID: 0}
-  bardInput: {fileID: 0}
-  animator: {fileID: 0}
+  bardInput: {fileID: 8162570258677425958}
+  animator: {fileID: 9020621663002551673}
 --- !u!1 &9108170369569505532
 GameObject:
   m_ObjectHideFlags: 0

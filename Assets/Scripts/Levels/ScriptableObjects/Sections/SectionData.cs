@@ -5,7 +5,8 @@ using UnityEditor;
 
 namespace Levels.ScriptableObjects.Sections
 {
-    public abstract class LevelSectionData : ScriptableObject
+    [CreateAssetMenu(fileName = "SectionData", menuName = "Levels/Sections/New Section Data", order = 0)]
+    public class SectionData : ScriptableObject
     {
         [field: SerializeField] public string SectionName { get; private set; }
         [field: SerializeField] public string SectionDescription { get; private set; }
