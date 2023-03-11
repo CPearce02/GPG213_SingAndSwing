@@ -1,28 +1,20 @@
-using UnityEngine;
-using Structs;
 using Enemies;
+using Structs;
+using UnityEngine;
 
-public class DestroyProjectiles : MonoBehaviour
+namespace Core.Bard
 {
-    [SerializeField] ParticleEvent takeDamageParticle;
-
-    // Start is called before the first frame update
-    void Start()
+    public class DestroyProjectiles : MonoBehaviour
     {
-        
-    }
+        [SerializeField] ParticleEvent destroyProjectileParticle;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.TryGetComponent<ProjectileController>(out ProjectileController pc))
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            pc.DestroyBullet();
+            if(collision.TryGetComponent<ProjectileController>(out ProjectileController pc))
+            {
+                pc.DestroyBullet();
+                destroyProjectileParticle.Invoke();
+            }
         }
     }
 }
