@@ -13,8 +13,13 @@ namespace Core.Bard
         [SerializeField] Transform[] spawnPositions;
         private int _index;
         private int _noteIndex = 0;
+        
+        [Header("State colours")]
+        [SerializeField] private Color successColour = new();
+        [SerializeField] private Color baseColour = new();
+        [SerializeField] private Color failColour = new();
 
-        [SerializeField] public List<GameObject> spawnedNotes = new ();
+        [SerializeField] public List<SpriteRenderer> spawnedNotes = new ();
 
         private ComboManager cm;
 
@@ -42,7 +47,7 @@ namespace Core.Bard
             if (cm.CurrentEnemy != GetComponentInParent<Enemy>() || cm.CurrentEnemy.canBeDestroyed == true) return;
             foreach (ComboValues value in combo.ComboValues)
             {
-                GameObject note = Instantiate(ComboDictionary.instance.comboPrefabDictionary[value], spawnPositions[_index].position, Quaternion.identity);
+                SpriteRenderer note = Instantiate(ComboDictionary.instance.comboPrefabDictionary[value], spawnPositions[_index].position, Quaternion.identity);
                 note.transform.parent = gameObject.transform;
                 spawnedNotes.Add(note);
                 _index++;
@@ -60,14 +65,14 @@ namespace Core.Bard
             else if (value == spawnedNotes[_noteIndex].GetComponent<ComboNoteManager>().value)
             {
                 //Correct note - update index and color
-                spawnedNotes[_noteIndex].GetComponent<SpriteRenderer>().color = Color.green;
+                spawnedNotes[_noteIndex].GetComponent<SpriteRenderer>().color = successColour;
                 _noteIndex++;
             }
             else
             {
                 //Incorrect - reset index and flash colors
                 _noteIndex = 0;
-                foreach (GameObject note in spawnedNotes)
+                foreach (SpriteRenderer note in spawnedNotes)
                 {
                     StartCoroutine(FlashColour(note));
                 }
@@ -76,18 +81,18 @@ namespace Core.Bard
     
         private void ClearComboNotes()
         {
-            foreach (GameObject note in spawnedNotes)
+            foreach (SpriteRenderer note in spawnedNotes)
             {
-                Destroy(note);
+                Destroy(note.gameObject);
             }
             spawnedNotes.Clear();
         }
 
-        IEnumerator FlashColour(GameObject note)
+        IEnumerator FlashColour(SpriteRenderer note)
         {
-            note.GetComponent<SpriteRenderer>().color = Color.red;
+            note.color = failColour;
             yield return new WaitForSeconds(0.25f);
-            note.GetComponent<SpriteRenderer>().color = Color.white;
+            note.color = baseColour;
         }
     }
 }

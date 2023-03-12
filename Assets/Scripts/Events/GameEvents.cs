@@ -8,9 +8,6 @@ namespace Events
 {
     public static class GameEvents
     {
-
-
-
         #region Player Events
         public delegate void PlayerKill();
         public delegate void PlayerTakeDamage(int amount);

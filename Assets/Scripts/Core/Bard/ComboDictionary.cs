@@ -9,16 +9,16 @@ namespace Core.Bard
     {
         public static ComboDictionary instance;
 
-        public Dictionary<ComboValues, GameObject> comboPrefabDictionary = new ();
+        public Dictionary<ComboValues, SpriteRenderer> comboPrefabDictionary = new ();
 
-        [SerializeField] private GameObject[] comboValuePrefabs;
+        [SerializeField] private SpriteRenderer[] comboValuePrefabs;
         private void Awake()
         {
             // Loop through each enum value and corresponding prefab
             for (int i = 0; i < Enum.GetValues(typeof(ComboValues)).Length; i++)
             {
                 ComboValues comboValue = (ComboValues)i;
-                GameObject comboPrefab = comboValuePrefabs[i];
+                SpriteRenderer comboPrefab = comboValuePrefabs[i];
 
                 // Add the enum value and prefab to the dictionary
                 comboPrefabDictionary.Add(comboValue, comboPrefab);
