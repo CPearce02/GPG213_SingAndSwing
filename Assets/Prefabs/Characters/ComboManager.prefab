@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5104715039921127644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5104715039921127645}
+  - component: {fileID: 5104715039921127647}
+  - component: {fileID: 2562198797992438862}
+  - component: {fileID: 7189111860669930141}
+  m_Layer: 2
+  m_Name: ComboManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5104715039921127645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5104715039921127644}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.43, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &5104715039921127647
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5104715039921127644}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.5, y: -0.5}
+  serializedVersion: 2
+  m_Radius: 3.6307042
+--- !u!114 &2562198797992438862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5104715039921127644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9c86a9cc763154fb460f7bcbc8d61c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCombo: {fileID: 0}
+  expectedNote: 0
+  comboIndex: 0
+  timeFrame: 5
+--- !u!114 &7189111860669930141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5104715039921127644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9111f0e80ae1db4fbb43b01fe21523f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comboValuePrefabs:
+  - {fileID: 7828973434459927576, guid: 573458d3a5a1ff341b0bd040531d9d24, type: 3}
+  - {fileID: 3919149647645796723, guid: 89cf57dbd3f8d4d4dae60a571232ffbd, type: 3}
+  - {fileID: 6351745205431247839, guid: 9ca2881bf0842cc4e977c2a8b592c920, type: 3}
+  - {fileID: 1637419987333582159, guid: 0d869ab9f8ef0104fa89432704df3155, type: 3}

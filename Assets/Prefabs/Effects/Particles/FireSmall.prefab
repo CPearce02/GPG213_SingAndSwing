@@ -35,6 +35,10 @@ PrefabInstance:
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 120
       objectReference: {fileID: 0}
+    - target: {fileID: 713316429960442785, guid: f981bcef9684a6a4487b5d9e4e5815af, type: 3}
+      propertyPath: m_MaxParticleSize
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 713316429960442787, guid: f981bcef9684a6a4487b5d9e4e5815af, type: 3}
       propertyPath: m_RootOrder
       value: 0
