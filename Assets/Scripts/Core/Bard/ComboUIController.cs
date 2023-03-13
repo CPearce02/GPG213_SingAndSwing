@@ -11,6 +11,7 @@ namespace Core.Bard
     public class ComboUIController : MonoBehaviour
     {
         [SerializeField] Transform[] spawnPositions;
+        [SerializeField] Transform oneSpawnPoint;
         private int _index;
         private int _noteIndex = 0;
         
@@ -45,13 +46,7 @@ namespace Core.Bard
         private void DisplayComboNotes(Combo combo)
         {
             if (cm.CurrentEnemy != GetComponentInParent<Enemy>() || cm.CurrentEnemy.canBeDestroyed == true) return;
-            foreach (ComboValues value in combo.ComboValues)
-            {
-                SpriteRenderer note = Instantiate(ComboDictionary.instance.comboPrefabDictionary[value], spawnPositions[_index].position, Quaternion.identity);
-                note.transform.parent = gameObject.transform;
-                spawnedNotes.Add(note);
-                _index++;
-            }
+            StartCoroutine(SpawnNote(combo));
             _index = 0;
             _noteIndex = 0;
         }
@@ -81,6 +76,7 @@ namespace Core.Bard
     
         private void ClearComboNotes()
         {
+            StopAllCoroutines();
             foreach (SpriteRenderer note in spawnedNotes)
             {
                 Destroy(note.gameObject);
@@ -93,6 +89,18 @@ namespace Core.Bard
             note.color = failColour;
             yield return new WaitForSeconds(0.25f);
             note.color = baseColour;
+        }
+
+        IEnumerator SpawnNote(Combo combo)
+        {
+            foreach (ComboValues value in combo.ComboValues)
+            {
+                SpriteRenderer note = Instantiate(ComboDictionary.instance.comboPrefabDictionary[value], oneSpawnPoint.position, Quaternion.identity);
+                note.transform.parent = gameObject.transform;
+                spawnedNotes.Add(note);
+                _index++;
+                yield return new WaitForSeconds(0.5f);
+            }
         }
     }
 }

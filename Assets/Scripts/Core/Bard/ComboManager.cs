@@ -18,6 +18,19 @@ namespace Core.Bard
         public float timeFrame = 5f;
         private float _sequenceStartTime = 0f;
 
+        [Header("SlowMo")]
+        [SerializeField] private float slowMotionTimeScale;
+        private float _startTimeScale;
+        private float _startFixedDeltaTime;
+
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            _startTimeScale = Time.timeScale;
+            _startFixedDeltaTime = Time.fixedDeltaTime;
+        }
+
         private void OnEnable()
         {
             GameEvents.onNewCombo += ComboStart;
@@ -30,10 +43,6 @@ namespace Core.Bard
             GameEvents.onNewCombo -= ComboStart;
             GameEvents.onButtonPressed -= CheckComboValue;
             GameEvents.onComboFinish -= ComboFinished;
-        }
-        // Start is called before the first frame update
-        void Start()
-        {
         }
 
         // Update is called once per frame
@@ -78,12 +87,14 @@ namespace Core.Bard
             _sequenceStartTime = Time.time;
             _hasStarted = true;
             comboIndex = 0;
-
+            SlowDownTime();
         }
 
         private void ComboFinished()
         {
-            if(_noArmour && CurrentEnemy != null)
+            ResetTime();
+
+            if (_noArmour && CurrentEnemy != null)
             {
                 CurrentEnemy.canBeDestroyed = true;
             }
@@ -94,8 +105,7 @@ namespace Core.Bard
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            //if (collision.gameObject.tag == "Enemy" && currentCombo == null) //tryget 
-            if (collision.TryGetComponent<Enemy>(out Enemy enemyComponent) && currentCombo == null) //tryget 
+            if (collision.TryGetComponent<Enemy>(out Enemy enemyComponent) && currentCombo == null) 
             {
                 CurrentEnemy = enemyComponent;
                 _noArmour = false;
@@ -112,6 +122,17 @@ namespace Core.Bard
             {
                 GameEvents.onComboFinish?.Invoke();
             }
+        }
+
+        private void SlowDownTime()
+        {
+            Time.timeScale = slowMotionTimeScale;
+            Time.fixedDeltaTime = _startFixedDeltaTime * slowMotionTimeScale;
+        }
+        private void ResetTime()
+        {
+            Time.timeScale = _startTimeScale;
+            Time.fixedDeltaTime = _startFixedDeltaTime;
         }
     }
 }
