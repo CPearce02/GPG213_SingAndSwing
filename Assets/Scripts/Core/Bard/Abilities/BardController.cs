@@ -13,12 +13,24 @@ namespace Core.Bard.Abilities
         public LayerMask ignoreLayers;
 
         private PlayerInput _bardInput;
+        private bool _singleplayer;
 
-        //particleEvent 
+
+        [Header("SlowMo")]
+        [SerializeField] private float slowMotionTimeScale;
+        private float _startTimeScale;
+        private float _startFixedDeltaTime;
+
 
         void Start()
         {
+            _startTimeScale = Time.timeScale;
+            _startFixedDeltaTime = Time.fixedDeltaTime;
+
             _bardInput = GetComponent<PlayerInput>();
+            if (!_singleplayer) return;
+            _bardInput.actions["SlowDownButton"].performed += ctx => SlowDownTime();
+            _bardInput.actions["SlowDownButton"].canceled += ctx => ResetTime();
         }
 
         void Update()
@@ -46,9 +58,27 @@ namespace Core.Bard.Abilities
         {
             GameEvents.onAimStart?.Invoke(_bardInput.actions["Aim"].ReadValue<Vector2>());
         }
-
+        
+        private void OnSlowDownButton()
+        {
+            GameEvents.onSlowDownStart?.Invoke();
+        }
         void GroundCheck() => Grounded = Physics2D.BoxCast(groundCheckTransform.position, groundCheckSize, 0f, Vector2.down, 0.1f, ~ignoreLayers);
 
         private void OnDrawGizmosSelected() => Gizmos.DrawWireCube(groundCheckTransform.position, groundCheckSize);
+
+        private void SlowDownTime()
+        {
+            //Debug.Log("Slow");
+            Time.timeScale = slowMotionTimeScale;
+            Time.fixedDeltaTime = _startFixedDeltaTime * slowMotionTimeScale;
+        }
+
+        private void ResetTime()
+        {
+            //Debug.Log("Reset");
+            Time.timeScale = _startTimeScale;
+            Time.fixedDeltaTime = _startFixedDeltaTime;
+        }
     }
 }

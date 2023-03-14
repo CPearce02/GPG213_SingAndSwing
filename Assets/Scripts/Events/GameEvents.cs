@@ -33,11 +33,13 @@ namespace Events
         public delegate void NewCombo(Combo combo);
         public delegate void ComboFinished();
         public delegate void AimStart(Vector2 directon);
+        public delegate void SlowDownStart();
 
         public static ButtonPressed onButtonPressed;
         public static NewCombo onNewCombo;
         public static ComboFinished onComboFinish;
         public static AimStart onAimStart;
+        public static SlowDownStart onSlowDownStart;
   
         #endregion
 

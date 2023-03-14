@@ -2,6 +2,7 @@ using Core.ScriptableObjects;
 using Enemies;
 using Enums;
 using Events;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Core.Bard
@@ -9,27 +10,19 @@ namespace Core.Bard
     public class ComboManager : MonoBehaviour
     {
         [SerializeField] private Combo currentCombo;
+
         public Enemy CurrentEnemy { get; private set;}
         [SerializeField][ReadOnly] private ComboValues expectedNote;
         public int comboIndex;
         private bool _noArmour;
         private bool _hasStarted;
 
+        [Header("Timer")]
         public float timeFrame = 5f;
         private float _sequenceStartTime = 0f;
 
-        [Header("SlowMo")]
-        [SerializeField] private float slowMotionTimeScale;
-        private float _startTimeScale;
-        private float _startFixedDeltaTime;
+        [SerializeField] public List<SpriteRenderer> spawnedNotes = new();
 
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            _startTimeScale = Time.timeScale;
-            _startFixedDeltaTime = Time.fixedDeltaTime;
-        }
 
         private void OnEnable()
         {
@@ -87,13 +80,10 @@ namespace Core.Bard
             _sequenceStartTime = Time.time;
             _hasStarted = true;
             comboIndex = 0;
-            SlowDownTime();
         }
 
         private void ComboFinished()
         {
-            ResetTime();
-
             if (_noArmour && CurrentEnemy != null)
             {
                 CurrentEnemy.canBeDestroyed = true;
@@ -122,17 +112,6 @@ namespace Core.Bard
             {
                 GameEvents.onComboFinish?.Invoke();
             }
-        }
-
-        private void SlowDownTime()
-        {
-            Time.timeScale = slowMotionTimeScale;
-            Time.fixedDeltaTime = _startFixedDeltaTime * slowMotionTimeScale;
-        }
-        private void ResetTime()
-        {
-            Time.timeScale = _startTimeScale;
-            Time.fixedDeltaTime = _startFixedDeltaTime;
         }
     }
 }

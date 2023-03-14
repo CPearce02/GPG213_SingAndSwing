@@ -10,10 +10,11 @@ namespace Core.Bard
 {
     public class ComboUIController : MonoBehaviour
     {
-        [SerializeField] Transform[] spawnPositions;
-        [SerializeField] Transform oneSpawnPoint;
-        private int _index;
+        [SerializeField] Transform spawnPosition;
+        [SerializeField] Transform endPosition;
         private int _noteIndex = 0;
+        private bool _comboStarted;
+        private Combo currentCombo;
         
         [Header("State colours")]
         [SerializeField] private Color successColour = new();
@@ -23,6 +24,11 @@ namespace Core.Bard
         [SerializeField] public List<SpriteRenderer> spawnedNotes = new ();
 
         private ComboManager cm;
+
+        void Start()
+        {
+            cm = FindObjectOfType<ComboManager>();
+        }
 
         private void OnEnable()
         {
@@ -38,17 +44,22 @@ namespace Core.Bard
             GameEvents.onComboFinish -= ClearComboNotes;
         }
 
-        void Start()
+        private void Update()
         {
-            cm = FindObjectOfType<ComboManager>();
+            if (_comboStarted || spawnedNotes.Count == 0) return;
+            if (Vector3.Distance(spawnedNotes[0].gameObject.transform.position, endPosition.position) < 0.1f)
+            {
+                spawnedNotes[0].gameObject.transform.position = spawnPosition.position;
+            }
         }
 
         private void DisplayComboNotes(Combo combo)
         {
             if (cm.CurrentEnemy != GetComponentInParent<Enemy>() || cm.CurrentEnemy.canBeDestroyed == true) return;
-            StartCoroutine(SpawnNote(combo));
-            _index = 0;
+            _comboStarted = false;
             _noteIndex = 0;
+            currentCombo = combo;
+            SpawnNote(currentCombo.ComboValues[_noteIndex]);
         }
 
         private void UpdateComboNotes(ComboValues value)
@@ -59,9 +70,12 @@ namespace Core.Bard
             }
             else if (value == spawnedNotes[_noteIndex].GetComponent<ComboNoteManager>().value)
             {
-                //Correct note - update index and color
+                //Correct note - update index and color and then spawn next note
                 spawnedNotes[_noteIndex].GetComponent<SpriteRenderer>().color = successColour;
                 _noteIndex++;
+                SpawnNote(currentCombo.ComboValues[_noteIndex]);
+                _comboStarted = true;
+
             }
             else
             {
@@ -76,7 +90,9 @@ namespace Core.Bard
     
         private void ClearComboNotes()
         {
-            StopAllCoroutines();
+            //Stop spawning notes
+            currentCombo = null;
+
             foreach (SpriteRenderer note in spawnedNotes)
             {
                 Destroy(note.gameObject);
@@ -91,16 +107,19 @@ namespace Core.Bard
             note.color = baseColour;
         }
 
-        IEnumerator SpawnNote(Combo combo)
+        private void SpawnNote(ComboValues value)
         {
-            foreach (ComboValues value in combo.ComboValues)
-            {
-                SpriteRenderer note = Instantiate(ComboDictionary.instance.comboPrefabDictionary[value], oneSpawnPoint.position, Quaternion.identity);
-                note.transform.parent = gameObject.transform;
-                spawnedNotes.Add(note);
-                _index++;
-                yield return new WaitForSeconds(0.5f);
-            }
+            //foreach (ComboValues value in combo.ComboValues)
+            //{
+            //    SpriteRenderer note = Instantiate(ComboDictionary.instance.comboPrefabDictionary[value], spawnPositions[_index].position, Quaternion.identity);
+            //    note.transform.parent = gameObject.transform;
+            //    spawnedNotes.Add(note);
+            //    _index++;
+            //}
+
+            SpriteRenderer note = Instantiate(ComboDictionary.instance.comboPrefabDictionary[value], spawnPosition.position, Quaternion.identity);
+            note.transform.parent = gameObject.transform;
+            spawnedNotes.Add(note);
         }
     }
 }

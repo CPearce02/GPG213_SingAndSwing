@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7828973434459927576, guid: a6ad607996ee294408a6da22d555620d, type: 3}
       propertyPath: m_Name
-      value: BaseComboButton
+      value: ComboValue1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6ad607996ee294408a6da22d555620d, type: 3}

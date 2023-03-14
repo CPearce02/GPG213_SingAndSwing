@@ -47,7 +47,6 @@ namespace Core.Bard
             {
                 _Radius.SetActive(false);
             }
-        
         }
 
         private void RotateTowards()

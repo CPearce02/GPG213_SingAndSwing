@@ -71,6 +71,15 @@ public partial class @BardControlActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SlowDownButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""180e468c-fa1c-44cf-8fbd-cbc8dfb504ea"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -205,6 +214,17 @@ public partial class @BardControlActions : IInputActionCollection2, IDisposable
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bc07a72e-f70d-4a40-8097-383dce7d60d3"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""SlowDownButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -279,6 +299,7 @@ public partial class @BardControlActions : IInputActionCollection2, IDisposable
         m_Player_Button3 = m_Player.FindAction("Button3", throwIfNotFound: true);
         m_Player_Button4 = m_Player.FindAction("Button4", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
+        m_Player_SlowDownButton = m_Player.FindAction("SlowDownButton", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -343,6 +364,7 @@ public partial class @BardControlActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Button3;
     private readonly InputAction m_Player_Button4;
     private readonly InputAction m_Player_Aim;
+    private readonly InputAction m_Player_SlowDownButton;
     public struct PlayerActions
     {
         private @BardControlActions m_Wrapper;
@@ -352,6 +374,7 @@ public partial class @BardControlActions : IInputActionCollection2, IDisposable
         public InputAction @Button3 => m_Wrapper.m_Player_Button3;
         public InputAction @Button4 => m_Wrapper.m_Player_Button4;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
+        public InputAction @SlowDownButton => m_Wrapper.m_Player_SlowDownButton;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -376,6 +399,9 @@ public partial class @BardControlActions : IInputActionCollection2, IDisposable
                 @Aim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
                 @Aim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
                 @Aim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @SlowDownButton.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlowDownButton;
+                @SlowDownButton.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlowDownButton;
+                @SlowDownButton.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlowDownButton;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -395,6 +421,9 @@ public partial class @BardControlActions : IInputActionCollection2, IDisposable
                 @Aim.started += instance.OnAim;
                 @Aim.performed += instance.OnAim;
                 @Aim.canceled += instance.OnAim;
+                @SlowDownButton.started += instance.OnSlowDownButton;
+                @SlowDownButton.performed += instance.OnSlowDownButton;
+                @SlowDownButton.canceled += instance.OnSlowDownButton;
             }
         }
     }
@@ -451,5 +480,6 @@ public partial class @BardControlActions : IInputActionCollection2, IDisposable
         void OnButton3(InputAction.CallbackContext context);
         void OnButton4(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
+        void OnSlowDownButton(InputAction.CallbackContext context);
     }
 }
