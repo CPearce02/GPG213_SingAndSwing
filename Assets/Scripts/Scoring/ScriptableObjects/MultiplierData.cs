@@ -34,7 +34,5 @@ namespace Scoring.ScriptableObjects
         public void Decrement() => DecreaseMultiplier();
         
         public void Reset() => ResetMultiplier();
-        
-    
     }
 }
