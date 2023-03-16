@@ -19,7 +19,7 @@ namespace Levels.ScriptableObjects
 
         [SerializeField] private SectionData nextSection;
 
-        [SerializeField] LevelState levelState = LevelState.Inactive;
+        // [SerializeField] LevelState levelState = LevelState.Inactive;
 
         public SectionData CurrentSection
         {
@@ -39,9 +39,9 @@ namespace Levels.ScriptableObjects
 
         public void Step() => SetCurrentSection(nextSection);
 
-        public void SetLevelState(LevelState state) => levelState = state;
+        // public void SetLevelState(LevelState state) => levelState = state;
 
-        public LevelState GetLevelState() => levelState;
+        // public LevelState GetLevelState() => levelState;
 
         private void SetCurrentSection(SectionData section = null)
         {
