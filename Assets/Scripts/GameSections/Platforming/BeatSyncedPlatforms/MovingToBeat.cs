@@ -7,10 +7,22 @@ using DG.Tweening;
 public class MovingToBeat : MonoBehaviour
 {
     Vector2 _initialPos;
-    [SerializeField] Vector2 movePos;
-    [SerializeField] float moveTime;
+    [SerializeField] Transform movePos;
+    [SerializeField] float moveTime = 0.2f;
     BeatListener beatListener;
     bool _moved;
+
+    private void OnValidate()
+    {
+        if(movePos == null)
+        {
+            GameObject directionObj = new GameObject();
+            directionObj.transform.SetParent(transform);
+            directionObj.transform.position = transform.position;
+            directionObj.name = "directionObj";
+            movePos = directionObj.transform;
+        }
+    }
 
     private void Start()
     {
@@ -28,7 +40,7 @@ public class MovingToBeat : MonoBehaviour
     {
         if(_moved)
         {
-            transform.DOMove(movePos, moveTime);
+            transform.DOMove(movePos.position, moveTime);
             _moved = false;
             return;
         }
@@ -43,6 +55,6 @@ public class MovingToBeat : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawLine(transform.position, movePos);
+        Gizmos.DrawLine(transform.position, movePos.position);
     }
 }

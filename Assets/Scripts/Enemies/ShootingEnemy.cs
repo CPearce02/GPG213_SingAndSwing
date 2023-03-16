@@ -16,6 +16,7 @@ namespace Enemies
         [Header("Properties")]
         [SerializeField] bool aimAtPlayer;
         [SerializeField] bool countingDownShoot;
+        [SerializeField] bool disableUpdate = false;
         [SerializeField] private float fireRate = 1f;
         [SerializeField] private float bulletSpeed = 10f;
         [SerializeField] private float homingTime = 1f;
@@ -34,7 +35,7 @@ namespace Enemies
         {
             if(aimAtPlayer) DirectionToPlayer();
 
-            Shooting();
+            if (!disableUpdate) Shooting();
         }
 
         private void Shooting()
@@ -49,7 +50,7 @@ namespace Enemies
             }
         }
 
-        void Shoot()
+        public void Shoot()
         {
             if(projectile == null) return;
             

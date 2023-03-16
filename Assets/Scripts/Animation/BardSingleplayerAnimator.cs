@@ -22,7 +22,7 @@ namespace Animation
 
         private static readonly int Jump = Animator.StringToHash("Jump");
         private static readonly int Grounded = Animator.StringToHash("Grounded");
-        private static readonly int Moving = Animator.StringToHash("Moving");
+        private static readonly int XVelocity = Animator.StringToHash("XVelocity");
         private static readonly int Falling = Animator.StringToHash("Falling");
         private static readonly int IsSinging = Animator.StringToHash("IsSinging");
 
@@ -103,15 +103,8 @@ namespace Animation
 
         void SetRunning()
         {
-            if (transform.position.x > _lastPos.x + 0.1f || transform.position.x < _lastPos.x - 0.1f)
-            {
-                if (!_bardController.Grounded) return;
-                animator.SetBool(Moving, true);
-            }
-            else
-            {
-                animator.SetBool(Moving, false);
-            }
+            if(_rb.velocity.x > 0.1f || _rb.velocity.x < -0.1f) animator.SetFloat(XVelocity, 1);
+            else animator.SetFloat(XVelocity, 0);
         }
 
         void SetJump(InputAction.CallbackContext context)

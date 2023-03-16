@@ -9,6 +9,7 @@ public class BeatListener : MonoBehaviour
 {
     [Tooltip("Toggles this platform, after the set amount of beats have happened")]
     [field: SerializeField] public int BeatInterval { get; private set; } = 1;
+    [SerializeField] bool inverted;
     int _beatsDone = 0;
     [SerializeField] UnityEvent onBeatEvent;
 
@@ -20,6 +21,11 @@ public class BeatListener : MonoBehaviour
     private void OnDisable()
     {
         GameEvents.onBeatFiredEvent -= CheckBeats;
+    }
+
+    private void Start()
+    {
+        if (inverted) onBeatEvent?.Invoke();
     }
 
     void AddBeats() => _beatsDone++;

@@ -10,9 +10,9 @@ public class OnOffPlatform : MonoBehaviour
     [SerializeField] Color offColor = Color.grey;
     Collider2D _coll;
     SpriteRenderer _spriteRenderer;
-    [SerializeField] bool inverted;
     bool _toggled = false;
     bool _collidingWithPlayer = false;
+    int _initialLayer;
 
     private void Start()
     {
@@ -21,7 +21,7 @@ public class OnOffPlatform : MonoBehaviour
 
         _onColor = _spriteRenderer.color;
 
-        if (inverted) TogglePlatform();
+        _initialLayer = gameObject.layer;
     }
 
     public void TogglePlatform()
@@ -37,7 +37,7 @@ public class OnOffPlatform : MonoBehaviour
         //Toggle on
         if (!_toggled)
         {
-            if(!_collidingWithPlayer) EnablePlatform();
+            EnablePlatform();
             _toggled = true;
             return;
         }
@@ -45,8 +45,13 @@ public class OnOffPlatform : MonoBehaviour
 
     void EnablePlatform()
     {
-        if (_coll != null) _coll.enabled = true;
-        if (_coll != null) _coll.isTrigger = false;
+        if (!_collidingWithPlayer)
+        {
+            if (_coll != null) _coll.enabled = true;
+            if (_coll != null) _coll.isTrigger = false;
+            gameObject.layer = _initialLayer;
+        }
+
         if (_spriteRenderer != null) _spriteRenderer.color = _onColor;
     }
 
@@ -55,6 +60,9 @@ public class OnOffPlatform : MonoBehaviour
         if (_coll != null) _coll.enabled = false;
         if (_coll != null) _coll.isTrigger = true;
         if (_coll != null) _coll.enabled = true;
+
+        gameObject.layer = 2;
+
         if (_spriteRenderer != null) _spriteRenderer.color = offColor;
     }
 
@@ -67,6 +75,5 @@ public class OnOffPlatform : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         _collidingWithPlayer = false;
-        if(_toggled) EnablePlatform();
     }
 }

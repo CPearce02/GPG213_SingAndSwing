@@ -165,6 +165,7 @@ MonoBehaviour:
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 68
+  slowMotionTimeScale: 0
 --- !u!114 &2917675255978650672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,7 +257,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1435491373, guid: 6436c7e34983f2148a36c2910a79a840, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -7,6 +7,6 @@ namespace Sound.ScriptableObjects
     public class MusicData : ScriptableObject
     {
         public List<AudioClip> musicIntensities = new List<AudioClip>();
-        [field: SerializeField] public float BPM { get; private set; }
+        [field: SerializeField] public float BPM { get; private set; } = 1;
     }
 }
