@@ -1,3 +1,4 @@
+using Core.Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class OnOffPlatform : MonoBehaviour
     SpriteRenderer _spriteRenderer;
     [SerializeField] bool inverted;
     bool _toggled = false;
+    bool _collidingWithPlayer = false;
 
     private void Start()
     {
@@ -35,7 +37,7 @@ public class OnOffPlatform : MonoBehaviour
         //Toggle on
         if (!_toggled)
         {
-            EnablePlatform();
+            if(!_collidingWithPlayer) EnablePlatform();
             _toggled = true;
             return;
         }
@@ -44,12 +46,27 @@ public class OnOffPlatform : MonoBehaviour
     void EnablePlatform()
     {
         if (_coll != null) _coll.enabled = true;
+        if (_coll != null) _coll.isTrigger = false;
         if (_spriteRenderer != null) _spriteRenderer.color = _onColor;
     }
 
     void DisablePlatform()
     {
         if (_coll != null) _coll.enabled = false;
+        if (_coll != null) _coll.isTrigger = true;
+        if (_coll != null) _coll.enabled = true;
         if (_spriteRenderer != null) _spriteRenderer.color = offColor;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        collision.transform.TryGetComponent(out PlatformingController player);
+        if (player) _collidingWithPlayer = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        _collidingWithPlayer = false;
+        if(_toggled) EnablePlatform();
     }
 }
