@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class BeatListener : MonoBehaviour
 {
     [Tooltip("Toggles this platform, after the set amount of beats have happened")]
-    [SerializeField] int beatInterval = 1;
+    [field: SerializeField] public int BeatInterval { get; private set; } = 1;
     int _beatsDone = 0;
     [SerializeField] UnityEvent onBeatEvent;
 
@@ -28,7 +28,7 @@ public class BeatListener : MonoBehaviour
     {
         AddBeats();
 
-        if (_beatsDone >= beatInterval)
+        if (_beatsDone >= BeatInterval)
         {
             onBeatEvent?.Invoke();
             _beatsDone = 0;

@@ -8,7 +8,7 @@ public class MusicManager : MonoBehaviour
 {
     [SerializeField] MusicData musicData;
     bool _functionFired = false;
-    public float SecondsPerBeat { get; private set; }
+    public static float SecondsPerBeat { get; private set; }
     AudioSource _audioSource;
 
     private void Awake()
