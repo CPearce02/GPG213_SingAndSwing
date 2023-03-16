@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Levels.ScriptableObjects
 {
@@ -10,14 +11,14 @@ namespace Levels.ScriptableObjects
     {
         [SerializeField] List<LevelData> levels = new List<LevelData>();
         [field: SerializeField] public LevelData CurrentLevel { get; private set; }
-        
+
         public List<LevelData> Levels
         {
             get => levels;
             set
             {
                 levels = value;
-                
+
                 // This may or maynot be helpful or work, it's just so that we can see the names of the levels in the inspector
                 for (int i = 0; i < value.Count; i++)
                 {
@@ -26,40 +27,55 @@ namespace Levels.ScriptableObjects
             }
         }
 
+        private void OnDisable()
+        {
+            Reset();
+        }
+
         #region Methods
-        
+
         public LevelData GetLevel(int levelNumber) => levels[levelNumber];
-        
+
         public LevelData GetLevel(string levelName) => levels.Find(l => l.LevelName == levelName);
-        
+
         public LevelData GetNextLevel() => levels[levels.IndexOf(CurrentLevel) + 1];
-        
+
         public LevelData GetCurrentLevel() => CurrentLevel;
-        
+
+        public void SetCurrentLevel()
+        {
+            CurrentLevel = levels.Find(l => l.LevelSections.Find(s => s.Scene == SceneManager.GetActiveScene().name));
+        }
+
+        public void Reset()
+        {
+            CurrentLevel = null;
+        }
+
         public int GetLevelCount() => levels.Count;
-        
+
         void SetLevelName(int levelNumber, string levelName) => levels[levelNumber].name = levelName;
-        
 
         #endregion
-        
-        #if UNITY_EDITOR
-        
+
+#if UNITY_EDITOR
+
         List<LevelData> GetLevels()
         {
             List<LevelData> findAllLevels = AssetDatabase.FindAssets("t:LevelData")
                 .Select(AssetDatabase.GUIDToAssetPath)
                 .Select(AssetDatabase.LoadAssetAtPath<LevelData>)
+                .OrderBy(l => l.ID)
                 .ToList();
             return findAllLevels;
         }
-        
+
         [ContextMenu("Update Levels")]
         void UpdateLevels()
         {
             Levels = GetLevels();
         }
-        #endif
-        
+#endif
+
     }
 }
