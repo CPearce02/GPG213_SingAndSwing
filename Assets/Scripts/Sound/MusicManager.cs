@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sound.ScriptableObjects;
+using Events;
 
 public class MusicManager : MonoBehaviour
 {
     [SerializeField] MusicData musicData;
     bool _functionFired = false;
-    [SerializeField] float secondsPerBeat;
+    public float SecondsPerBeat { get; private set; }
     AudioSource _audioSource;
 
     private void Awake()
@@ -16,7 +17,7 @@ public class MusicManager : MonoBehaviour
         _audioSource.clip = musicData.musicIntensities[0];
         _audioSource.Play();
 
-        secondsPerBeat = 60 / musicData.BPM;
+        SecondsPerBeat = 60 / musicData.BPM;
     }
 
     void Update()
@@ -27,8 +28,9 @@ public class MusicManager : MonoBehaviour
     IEnumerator FireBeat()
     {
         _functionFired = true;
-        yield return new WaitForSeconds(secondsPerBeat);
+        yield return new WaitForSeconds(SecondsPerBeat);
         //Do something in sync with the beat
+        GameEvents.onBeatFiredEvent?.Invoke();
         _functionFired = false;
     }
 }

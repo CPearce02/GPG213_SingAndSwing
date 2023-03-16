@@ -28,6 +28,11 @@ namespace Events
         public static SendPlayer onSendPlayerEvent;
         #endregion
 
+        #region Music Events
+        public delegate void BeatFired();
+        public static BeatFired onBeatFiredEvent;
+        #endregion
+
         #region Combos
         public delegate void ButtonPressed(ComboValues comboValue);
         public delegate void NewCombo(Combo combo);
