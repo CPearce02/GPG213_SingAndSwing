@@ -155,7 +155,7 @@ namespace Core.Player
 
             if (!isPressingJump)
             {
-                if(_holdingJump) finalJumpForce.JumpForce = CalculateJumpForce(transform.position.y - finalJumpForce.lastGroundedYPos);
+                if (_holdingJump) finalJumpForce.JumpForce = CalculateJumpForce(transform.position.y - finalJumpForce.lastGroundedYPos);
 
                 //Stop the player from continuing their jump if they let go of the jump key.
                 _holdingJump = false;
