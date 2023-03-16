@@ -13,7 +13,7 @@ namespace Core.Bard.Abilities
         public LayerMask ignoreLayers;
 
         private PlayerInput _bardInput;
-        private bool _singleplayer;
+        [SerializeField]private bool _singleplayer;
 
 
         [Header("SlowMo")]

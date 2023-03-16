@@ -16,4 +16,12 @@ public class ActivatorController : MonoBehaviour
         
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        //if(collision.tag == "Note")
+        //{
+        //    collision.GetComponent<SpriteRenderer>().enabled = false;
+        //} 
+    }
+
 }

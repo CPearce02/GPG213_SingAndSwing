@@ -316,6 +316,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.9369
       objectReference: {fileID: 0}
+    - target: {fileID: 3942734849853894875, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4258162325279711910, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -428,40 +432,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 6148049322407487821, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.33709
-      objectReference: {fileID: 0}
-    - target: {fileID: 6148049322407487821, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.33709
-      objectReference: {fileID: 0}
-    - target: {fileID: 6148049322407487821, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.33709
-      objectReference: {fileID: 0}
-    - target: {fileID: 6148049322407487821, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6148049322407487821, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941497547239374, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
-      propertyPath: endPosition
-      value: 
-      objectReference: {fileID: 1411745043}
     - target: {fileID: 6402941497547239374, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
       propertyPath: _singleplayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6402941497547239374, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
       propertyPath: oneSpawnPoint
-      value: 
-      objectReference: {fileID: 1826722452}
-    - target: {fileID: 6402941497547239374, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
-      propertyPath: spawnPosition
       value: 
       objectReference: {fileID: 1826722452}
     - target: {fileID: 6402941497547239374, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
@@ -946,11 +922,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 19.45008, y: 1.9887066}
   m_EdgeRadius: 0
---- !u!4 &1411745043 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6496938711961957789, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
-  m_PrefabInstance: {fileID: 1278664061}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1523240084 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8420515323855349191, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
@@ -1037,6 +1008,14 @@ PrefabInstance:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 243455610}
+    - target: {fileID: 3484274401630586220, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
+      propertyPath: _singleplayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484274401630586220, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
+      propertyPath: slowMotionTimeScale
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4614326780271415974, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
       propertyPath: m_Layer
       value: 6

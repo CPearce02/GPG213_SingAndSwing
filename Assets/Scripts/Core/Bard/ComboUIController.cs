@@ -14,7 +14,8 @@ namespace Core.Bard
         [SerializeField] Transform endPosition;
         private int _noteIndex = 0;
         private bool _comboStarted;
-        private Combo currentCombo;
+        private ComboValues _noteToSpawn;
+        private Combo _currentCombo;
         
         [Header("State colours")]
         [SerializeField] private Color successColour = new();
@@ -23,11 +24,14 @@ namespace Core.Bard
 
         [SerializeField] public List<SpriteRenderer> spawnedNotes = new ();
 
-        private ComboManager cm;
+        private ComboManager _cm;
+        private Enemy _enemy;
+        private bool _canBeSpawned;
 
         void Start()
         {
-            cm = FindObjectOfType<ComboManager>();
+            _cm = FindObjectOfType<ComboManager>();
+            _enemy = GetComponentInParent<Enemy>();
         }
 
         private void OnEnable()
@@ -46,20 +50,34 @@ namespace Core.Bard
 
         private void Update()
         {
-            if (_comboStarted || spawnedNotes.Count == 0) return;
-            if (Vector3.Distance(spawnedNotes[0].gameObject.transform.position, endPosition.position) < 0.1f)
+            if (_enemy.canBeDestroyed)
             {
-                spawnedNotes[0].gameObject.transform.position = spawnPosition.position;
+                gameObject.SetActive(false);
+                return;
+            }
+            if (_comboStarted || spawnedNotes.Count == 0) 
+            {
+                for (int i = 0; i < spawnedNotes.Count; i++)
+                {
+                    if (Vector3.Distance(spawnedNotes[i].gameObject.transform.position, endPosition.position) < 0.1f)
+                    {
+                        spawnedNotes[i].gameObject.SetActive(false);
+                    }
+                }
+            }
+            else
+            {
+                RepeatFirstNote();
             }
         }
 
         private void DisplayComboNotes(Combo combo)
         {
-            if (cm.CurrentEnemy != GetComponentInParent<Enemy>() || cm.CurrentEnemy.canBeDestroyed == true) return;
+            if (_cm.CurrentEnemy != GetComponentInParent<Enemy>() || _cm.CurrentEnemy.canBeDestroyed == true) return;
             _comboStarted = false;
             _noteIndex = 0;
-            currentCombo = combo;
-            SpawnNote(currentCombo.ComboValues[_noteIndex]);
+            _currentCombo = combo;
+            SpawnNote(_currentCombo.ComboValues[_noteIndex]);
         }
 
         private void UpdateComboNotes(ComboValues value)
@@ -73,9 +91,9 @@ namespace Core.Bard
                 //Correct note - update index and color and then spawn next note
                 spawnedNotes[_noteIndex].GetComponent<SpriteRenderer>().color = successColour;
                 _noteIndex++;
-                SpawnNote(currentCombo.ComboValues[_noteIndex]);
+                if (_noteIndex >= _currentCombo.ComboValues.Count) return;
+                SpawnNote(_currentCombo.ComboValues[_noteIndex]);
                 _comboStarted = true;
-
             }
             else
             {
@@ -91,8 +109,7 @@ namespace Core.Bard
         private void ClearComboNotes()
         {
             //Stop spawning notes
-            currentCombo = null;
-
+            _currentCombo = null;
             foreach (SpriteRenderer note in spawnedNotes)
             {
                 Destroy(note.gameObject);
@@ -105,6 +122,15 @@ namespace Core.Bard
             note.color = failColour;
             yield return new WaitForSeconds(0.25f);
             note.color = baseColour;
+            ClearComboNotes();
+        }
+
+        private void RepeatFirstNote()
+        {
+            if (Vector3.Distance(spawnedNotes[0].gameObject.transform.position, endPosition.position) < 0.1f)
+            {
+                spawnedNotes[0].gameObject.transform.position = spawnPosition.position;
+            }
         }
 
         private void SpawnNote(ComboValues value)
@@ -117,9 +143,36 @@ namespace Core.Bard
             //    _index++;
             //}
 
-            SpriteRenderer note = Instantiate(ComboDictionary.instance.comboPrefabDictionary[value], spawnPosition.position, Quaternion.identity);
-            note.transform.parent = gameObject.transform;
-            spawnedNotes.Add(note);
+
+            _noteToSpawn = value;
+            Debug.Log(value);
+        }
+
+        public void SpawnOnBeat()
+        {
+            if (_cm.CurrentEnemy != GetComponentInParent<Enemy>() || _cm.CurrentEnemy.canBeDestroyed == true || _currentCombo == null) return;
+
+            foreach (SpriteRenderer note in spawnedNotes)
+            {
+                if (_noteToSpawn == note.GetComponent<ComboNoteManager>().value)
+                {
+                    _canBeSpawned = false;
+                }
+                else
+                {
+                    _canBeSpawned = true;
+                }
+            }
+
+            //if not then spawn it
+            if(spawnedNotes.Count == 0 || _canBeSpawned)
+            {
+                SpriteRenderer note = Instantiate(ComboDictionary.instance.comboPrefabDictionary[_noteToSpawn], spawnPosition.position, Quaternion.identity);
+                note.transform.parent = gameObject.transform;
+                spawnedNotes.Add(note);
+                return;
+            }
+
         }
     }
 }
