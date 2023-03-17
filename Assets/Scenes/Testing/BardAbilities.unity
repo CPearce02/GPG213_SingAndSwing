@@ -1010,7 +1010,7 @@ PrefabInstance:
       objectReference: {fileID: 243455610}
     - target: {fileID: 3484274401630586220, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
       propertyPath: _singleplayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3484274401630586220, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
       propertyPath: slowMotionTimeScale

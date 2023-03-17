@@ -6,7 +6,7 @@ namespace Core.Bard
     public class ComboNoteManager : MonoBehaviour
     {
         public ComboValues value;
-        public float _speed = 2f;
+        public float _speed;
         //private Vector3 _initialPos;
 
         private void Start()

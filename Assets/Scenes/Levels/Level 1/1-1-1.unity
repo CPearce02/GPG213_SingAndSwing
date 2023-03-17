@@ -196,7 +196,7 @@ Transform:
   - {fileID: 809452782}
   - {fileID: 87076023}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &214402239 stripped
 Transform:
@@ -236,7 +236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4767656718564846560, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35.32
+      value: -3.94
       objectReference: {fileID: 0}
     - target: {fileID: 4767656718564846560, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
       propertyPath: m_LocalPosition.y
@@ -298,17 +298,13 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.405
       objectReference: {fileID: 0}
-    - target: {fileID: 6496938711961957789, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.46
-      objectReference: {fileID: 0}
     - target: {fileID: 8910137021526680622, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
       propertyPath: inverted
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8910137021526680622, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
       propertyPath: <BeatInterval>k__BackingField
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
@@ -2941,7 +2937,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5324295586460373433, guid: ac5ce0d8c1f83574797d64327312f335, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5324295586460373433, guid: ac5ce0d8c1f83574797d64327312f335, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3525,7 +3521,7 @@ Transform:
   - {fileID: 4767656720026358285}
   - {fileID: 4767656720021154395}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1925156574
 PrefabInstance:
@@ -3546,6 +3542,14 @@ PrefabInstance:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1365350117}
+    - target: {fileID: 3484274401630586220, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
+      propertyPath: _singleplayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484274401630586220, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
+      propertyPath: slowMotionTimeScale
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8162570258677425968, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
       propertyPath: m_Name
       value: Bard
@@ -3752,7 +3756,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 977564903478405254, guid: 3f9c8b93ecb76814db78a364589ce724, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 977564903478405254, guid: 3f9c8b93ecb76814db78a364589ce724, type: 3}
       propertyPath: m_LocalPosition.x

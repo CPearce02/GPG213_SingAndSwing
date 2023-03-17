@@ -27,6 +27,7 @@ namespace Core.Bard
         private ComboManager _cm;
         private Enemy _enemy;
         private bool _canBeSpawned;
+        private float _increasedSpeed = 6f;
 
         void Start()
         {
@@ -67,7 +68,7 @@ namespace Core.Bard
             }
             else
             {
-                RepeatFirstNote();
+                SlowDownFirstNote();
             }
         }
 
@@ -125,11 +126,16 @@ namespace Core.Bard
             ClearComboNotes();
         }
 
-        private void RepeatFirstNote()
+        private void SlowDownFirstNote()
         {
+            //Start Timer - Once the first note reaches the end of the bar then end combo
+            spawnedNotes[0].GetComponent<ComboNoteManager>()._speed = 2f;
             if (Vector3.Distance(spawnedNotes[0].gameObject.transform.position, endPosition.position) < 0.1f)
             {
-                spawnedNotes[0].gameObject.transform.position = spawnPosition.position;
+                //spawnedNotes[0].gameObject.transform.position = spawnPosition.position;
+
+                //timer complete
+                GameEvents.onComboFinish?.Invoke();
             }
         }
 
@@ -142,8 +148,7 @@ namespace Core.Bard
             //    spawnedNotes.Add(note);
             //    _index++;
             //}
-
-
+            //_increasedSpeed ++;
             _noteToSpawn = value;
             Debug.Log(value);
         }
@@ -152,8 +157,11 @@ namespace Core.Bard
         {
             if (_cm.CurrentEnemy != GetComponentInParent<Enemy>() || _cm.CurrentEnemy.canBeDestroyed == true || _currentCombo == null) return;
 
+            //check to see if note is already spawned
             foreach (SpriteRenderer note in spawnedNotes)
             {
+                note.GetComponent<ComboNoteManager>()._speed += _increasedSpeed;
+
                 if (_noteToSpawn == note.GetComponent<ComboNoteManager>().value)
                 {
                     _canBeSpawned = false;

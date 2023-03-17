@@ -17,9 +17,9 @@ namespace Core.Bard
         private bool _noArmour;
         private bool _hasStarted;
 
-        [Header("Timer")]
-        public float timeFrame = 5f;
-        private float _sequenceStartTime = 0f;
+        //[Header("Timer")]
+        //public float timeFrame = 5f;
+        //private float _sequenceStartTime = 0f;
 
         [SerializeField] public List<SpriteRenderer> spawnedNotes = new();
 
@@ -77,7 +77,7 @@ namespace Core.Bard
         private void ComboStart(Combo combo)
         {
             //start timer
-            _sequenceStartTime = Time.time;
+            //_sequenceStartTime = Time.time;
             _hasStarted = true;
             comboIndex = 0;
         }
