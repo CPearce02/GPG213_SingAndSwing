@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Core.ScriptableObjects;
 using Enemies;
 using Enums;
@@ -27,7 +28,7 @@ namespace Core.Bard
         private ComboManager _cm;
         private Enemy _enemy;
         private bool _canBeSpawned;
-        private float _increasedSpeed = 6f;
+        private float _increasedSpeed;
 
         void Start()
         {
@@ -70,6 +71,7 @@ namespace Core.Bard
             {
                 SlowDownFirstNote();
             }
+
         }
 
         private void DisplayComboNotes(Combo combo)
@@ -148,16 +150,16 @@ namespace Core.Bard
             //    spawnedNotes.Add(note);
             //    _index++;
             //}
-            //_increasedSpeed ++;
+            _increasedSpeed ++;
             _noteToSpawn = value;
-            Debug.Log(value);
+            //Debug.Log(value);
         }
 
         public void SpawnOnBeat()
         {
             if (_cm.CurrentEnemy != GetComponentInParent<Enemy>() || _cm.CurrentEnemy.canBeDestroyed == true || _currentCombo == null) return;
 
-            //check to see if note is already spawned
+            //check to see if note is already spawned and update speed
             foreach (SpriteRenderer note in spawnedNotes)
             {
                 note.GetComponent<ComboNoteManager>()._speed += _increasedSpeed;

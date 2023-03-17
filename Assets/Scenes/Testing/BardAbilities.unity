@@ -441,6 +441,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1826722452}
     - target: {fileID: 6402941497547239374, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
+      propertyPath: _increasedSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402941497547239374, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
       propertyPath: onespawnPositions
       value: 
       objectReference: {fileID: 1826722452}
