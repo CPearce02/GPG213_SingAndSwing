@@ -225,6 +225,17 @@ public partial class @BardControlActions : IInputActionCollection2, IDisposable
                     ""action"": ""SlowDownButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""649ce03a-4431-4369-ade0-11b1c3247943"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlowDownButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
