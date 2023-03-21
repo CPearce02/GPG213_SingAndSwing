@@ -32,7 +32,7 @@ namespace Core.Bard.Abilities
             _bardInput.actions["SlowDownButton"].performed += ctx => SlowDownTime();
             _bardInput.actions["SlowDownButton"].canceled += ctx => ResetTime();
         }
-
+        
         void Update()
         {
             GroundCheck();

@@ -165,6 +165,7 @@ MonoBehaviour:
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 68
+  _singleplayer: 0
   slowMotionTimeScale: 0
 --- !u!114 &2917675255978650672
 MonoBehaviour:
@@ -378,6 +379,10 @@ PrefabInstance:
       propertyPath: _bardInput
       value: 
       objectReference: {fileID: 8162570258677425958}
+    - target: {fileID: 1283195011342353050, guid: db3d58e792296f8469d067573cff2c1f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 4210021203808481301, guid: db3d58e792296f8469d067573cff2c1f, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -487,6 +492,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
