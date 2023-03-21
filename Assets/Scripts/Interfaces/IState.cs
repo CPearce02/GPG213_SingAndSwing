@@ -1,6 +1,12 @@
-public interface IState
+using UnityEngine;
+
+namespace Interfaces
 {
-    public void EnterState(IState state);
-    public void UpdateState(IState state);
-    public void ExitState(IState state);
+    public interface IState
+    {
+        void Enter(EnemyMovementManager enemy);
+        void Execute(EnemyMovementManager enemy = null);
+        void Exit();
+        void OnTriggerEnter2D(Collider2D other);
+    }
 }

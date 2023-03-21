@@ -17,7 +17,7 @@ namespace Enemies
 
         private void OnCollisionEnter2D(Collision2D collision) => HandleCollision2D(collision);
 
-        private void OnTriggerEnter2D(Collider2D collider) => HandleCollision2D(collider);
+        // private void OnTriggerEnter2D(Collider2D collider) => HandleCollision2D(collider);
 
         private void HandleCollision2D(Collider2D collider)
         {

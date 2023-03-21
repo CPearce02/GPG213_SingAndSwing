@@ -7,7 +7,7 @@ namespace Enemies.ScriptableObjects
     public class EnemyData : ScriptableObject
     {
         public string enemyName;
-
+        public float moveSpeed;
         public Sprite enemySprite;
         public Sprite enemyAttackSprite;
 

@@ -1,11 +1,12 @@
 using System.Collections;
 using Enums;
+using Interfaces;
 using Structs;
 using UnityEngine;
 
 namespace Enemies
 {
-    public class ShootingEnemy : MonoBehaviour
+    public class ShootingEnemy : MonoBehaviour, ITarget
     {
         [Header("Prefabs")] 
         [SerializeField] private GameObject projectile;
@@ -97,6 +98,16 @@ namespace Enemies
             yield return new WaitForSeconds(fireRate);
             countingDownShoot = false;
             Shoot();
+        }
+
+        public void SetTarget(Transform target)
+        {
+            player = target;
+        }
+
+        public void RemoveTarget()
+        {
+            player = null;
         }
     }
 }
