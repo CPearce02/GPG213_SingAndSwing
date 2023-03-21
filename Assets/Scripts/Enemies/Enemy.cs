@@ -16,19 +16,7 @@ namespace Enemies
         [SerializeField] ParticleEvent takeDamageParticle;
 
         private void OnCollisionEnter2D(Collision2D collision) => HandleCollision2D(collision);
-
-        // private void OnTriggerEnter2D(Collider2D collider) => HandleCollision2D(collider);
-
-        private void HandleCollision2D(Collider2D collider)
-        {
-            var attackable = collider.gameObject.TryGetComponent<IAttackable>(out var attackableComponent);
-            if (!attackable) return;
-
-            //Stops enemies from attacking each other
-            collider.TryGetComponent(out PlatformingController player);
-            if(player) attackableComponent.TakeDamage(damage); Debug.Log($"{player} took {damage}");
-        }
-    
+        
         private void HandleCollision2D(Collision2D collision)
         {
             var attackable = collision.gameObject.TryGetComponent<IAttackable>(out var attackableComponent);
@@ -41,7 +29,7 @@ namespace Enemies
 
         public void TakeDamage(int amount)
         {
-            if (canBeDestroyed == false) return;
+            if (!canBeDestroyed) return;
             GameEvents.onScreenShakeEvent?.Invoke(Strength.Low, .2f);
             GameEvents.onMultiplierIncreaseEvent?.Invoke();
             takeDamageParticle.Invoke();

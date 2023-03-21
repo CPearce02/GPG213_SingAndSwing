@@ -3,10 +3,10 @@ using Enemies.ScriptableObjects;
 using Interfaces;
 using UnityEngine;
 
-public class EnemyMovementManager : MonoBehaviour
+public class EnemyStateMachine : MonoBehaviour
 {
     [SerializeField] public EnemyData enemyData;
-    public IState CurrentState { get; set; }
+    IState CurrentState { get; set; }
     [field: SerializeField] public Rigidbody2D Rb { get; private set; }
     [SerializeField][ReadOnly] string stateName;
     
@@ -22,7 +22,7 @@ public class EnemyMovementManager : MonoBehaviour
         stateName = CurrentState.ToString();
     }
 
-    private void ChangeState(IState newState)
+    public void ChangeState(IState newState)
     {
         if (CurrentState != null)
         {

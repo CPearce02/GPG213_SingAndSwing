@@ -6,13 +6,13 @@ namespace Enemies.EnemyStates
 {
     public class IdleState : IState
     {
-        private EnemyMovementManager _enemy;
-        public void Enter(EnemyMovementManager enemy)
+        private EnemyStateMachine _enemy;
+        public void Enter(EnemyStateMachine enemy)
         {
             this._enemy = enemy;
         }
 
-        public void Execute(EnemyMovementManager enemy)
+        public void Execute(EnemyStateMachine enemy)
         {
             
         }
@@ -28,8 +28,7 @@ namespace Enemies.EnemyStates
             
             if(!player) return;
 
-            _enemy.CurrentState = new ChaseState(player.transform);
-            
+            _enemy.ChangeState(new ChaseState(player.transform));
         }
     }
 }
