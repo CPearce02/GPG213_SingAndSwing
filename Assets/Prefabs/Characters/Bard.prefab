@@ -181,6 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followObj: {fileID: 0}
   speed: 1000
+  friction: 1.25
   followRange: 0.5
   relocateSpeed: 15
   relocateRange: 8
