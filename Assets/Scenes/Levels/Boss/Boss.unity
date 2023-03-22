@@ -7651,7 +7651,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2917675255978650672, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
       propertyPath: friction
-      value: 1.05
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 2917675255978650672, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
       propertyPath: followObj

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-[RequireComponent(typeof(BeatListener))]
+[RequireComponent(typeof(BeatListener))] [RequireComponent(typeof(Rigidbody2D))]
 public class MovingToBeat : MonoBehaviour
 {
     Vector2 _initialPos;
+    Rigidbody2D _rb;
     [SerializeField] Transform movePos;
     [SerializeField] float moveTime = 0.2f;
     BeatListener beatListener;
@@ -28,6 +29,7 @@ public class MovingToBeat : MonoBehaviour
     {
         _initialPos = transform.position;
         beatListener = GetComponent<BeatListener>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -40,14 +42,14 @@ public class MovingToBeat : MonoBehaviour
     {
         if(_moved)
         {
-            transform.DOMove(movePos.position, moveTime);
+            _rb.DOMove(movePos.position, moveTime);
             _moved = false;
             return;
         }
 
         if(!_moved)
         {
-            transform.DOMove(_initialPos, moveTime);
+            _rb.DOMove(_initialPos, moveTime);
             _moved = true;
             return;
         }
