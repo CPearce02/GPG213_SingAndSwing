@@ -1,5 +1,4 @@
-﻿using System;
-using Interfaces;
+﻿using Interfaces;
 using UnityEngine;
 
 namespace Enemies.EnemyStates
@@ -42,9 +41,5 @@ namespace Enemies.EnemyStates
             _retreatTime = 0;
         }
 
-        public void OnTriggerEnter2D(Collider2D other)
-        {
-        }
-        
     }
 }

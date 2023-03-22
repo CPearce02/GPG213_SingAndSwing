@@ -1,5 +1,4 @@
-﻿using System;
-using Core.Player;
+﻿using Core.Player;
 using Interfaces;
 using UnityEngine;
 
@@ -27,7 +26,6 @@ namespace Enemies.EnemyStates
                 var hit = Physics2D.OverlapCircle(enemy.transform.position, enemy.enemyData.attackRange, enemy.PlayerLayer);
                 if (hit != null && hit.TryGetComponent(out PlatformingController player))
                 {
-                    
                     Debug.Log("Enemy is attacking");
                     enemy.animator.SetTrigger(Attack);
                     _hasAttacked = true;
