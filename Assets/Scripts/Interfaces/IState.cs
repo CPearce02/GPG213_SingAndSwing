@@ -1,4 +1,4 @@
-using UnityEngine;
+using Enemies;
 
 namespace Interfaces
 {
@@ -7,6 +7,5 @@ namespace Interfaces
         void Enter(EnemyStateMachine enemy);
         void Execute(EnemyStateMachine enemy = null);
         void Exit();
-        void OnTriggerEnter2D(Collider2D other);
     }
 }

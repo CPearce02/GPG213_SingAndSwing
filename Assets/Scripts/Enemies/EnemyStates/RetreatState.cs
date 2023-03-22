@@ -1,4 +1,5 @@
-﻿using Interfaces;
+﻿using System;
+using Interfaces;
 using UnityEngine;
 
 namespace Enemies.EnemyStates
@@ -24,7 +25,11 @@ namespace Enemies.EnemyStates
         {
             _retreatTime -= Time.deltaTime;
             if(_retreatTime > 0)
-                enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, _playerTransform.position, -enemy.enemyData.moveSpeed * Time.deltaTime);
+            {
+                enemy.animator.CrossFade("Move", 0);
+                enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, _playerTransform.position,
+                    -enemy.enemyData.moveSpeed * Time.deltaTime);
+            }
             else
             {
                 _enemy.ChangeState(new ChaseState(_playerTransform));
@@ -34,10 +39,12 @@ namespace Enemies.EnemyStates
 
         public void Exit()
         {
+            _retreatTime = 0;
         }
 
         public void OnTriggerEnter2D(Collider2D other)
         {
         }
+        
     }
 }

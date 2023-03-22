@@ -3,40 +3,42 @@ using Enemies.ScriptableObjects;
 using Interfaces;
 using UnityEngine;
 
-public class EnemyStateMachine : MonoBehaviour
+namespace Enemies
 {
-    [SerializeField] public EnemyData enemyData;
-    IState CurrentState { get; set; }
-    [field: SerializeField] public Rigidbody2D Rb { get; private set; }
-    [SerializeField][ReadOnly] string stateName;
-    
-    void Start()
+    public class EnemyStateMachine : MonoBehaviour
     {
-        Rb = GetComponent<Rigidbody2D>();
-        ChangeState(new IdleState());
-    }
-    
-    void Update()
-    {
-        CurrentState.Execute(this);   
-        stateName = CurrentState.ToString();
-    }
+        IState CurrentState { get; set; }
+        [SerializeField][ReadOnly] string stateName;
+        
+        [Header("Settings")]
+        [SerializeField] public EnemyData enemyData;
+        public Animator animator;
+        [field:SerializeField] public Rigidbody2D Rb { get; private set; }
+        [field:SerializeField] public LayerMask PlayerLayer { get; private set; }
 
-    public void ChangeState(IState newState)
-    {
-        if (CurrentState != null)
+        void Start()
         {
-            CurrentState.Exit();
+            Rb = GetComponent<Rigidbody2D>();
+            ChangeState(new IdleState());
+        }
+    
+        void Update()
+        {
+            CurrentState.Execute(this);   
+            stateName = CurrentState.ToString();
         }
 
-        CurrentState = newState;
-        CurrentState.Enter(this);
-    }
+        public void ChangeState(IState newState)
+        {
+            if (CurrentState != null)
+            {
+                CurrentState.Exit();
+            }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        CurrentState.OnTriggerEnter2D(other);
-    }
+            CurrentState = newState;
+            CurrentState.Enter(this);
+        }
 
-    
+
+    }
 }

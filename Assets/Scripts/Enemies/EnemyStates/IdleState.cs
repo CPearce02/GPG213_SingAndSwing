@@ -1,4 +1,5 @@
-﻿using Core.Player;
+﻿using System;
+using Core.Player;
 using Interfaces;
 using UnityEngine;
 
@@ -14,21 +15,18 @@ namespace Enemies.EnemyStates
 
         public void Execute(EnemyStateMachine enemy)
         {
-            
+            enemy.animator.CrossFade("Idle", 0);
+
+            var hit = Physics2D.OverlapCircle(enemy.transform.position, enemy.enemyData.triggerRange, enemy.PlayerLayer);
+            if (hit != null && hit.TryGetComponent(out PlatformingController player))
+            {
+                _enemy.ChangeState(new ChaseState(player.transform));
+            }        
         }
 
         public void Exit()
         {
             
-        }
-
-        public void OnTriggerEnter2D(Collider2D other)
-        {
-            other.TryGetComponent(out PlatformingController player);
-            
-            if(!player) return;
-
-            _enemy.ChangeState(new ChaseState(player.transform));
         }
     }
 }

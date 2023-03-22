@@ -8,6 +8,7 @@ namespace Enemies.ScriptableObjects
     {
         public string enemyName;
         public float moveSpeed;
+        public float triggerRange;
         public float attackRange;
         public float retreatTime;
         public Sprite enemySprite;

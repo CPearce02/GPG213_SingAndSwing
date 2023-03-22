@@ -1,4 +1,5 @@
-﻿using Interfaces;
+﻿using System;
+using Interfaces;
 using UnityEngine;
 
 namespace Enemies.EnemyStates
@@ -6,7 +7,8 @@ namespace Enemies.EnemyStates
     public class ChaseState : IState
     {
         private Transform _playerTransform;
-        
+        Vector2 _directionOfTravel;
+
         public ChaseState(Transform playerTransform)
         {
             this._playerTransform = playerTransform;
@@ -19,9 +21,15 @@ namespace Enemies.EnemyStates
 
         public void Execute(EnemyStateMachine enemy)
         {
-            enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, _playerTransform.position, enemy.enemyData.moveSpeed * Time.deltaTime);
+            enemy.animator.CrossFade("Move", 0);
+            _directionOfTravel = _playerTransform.position - enemy.transform.position;
+
+            _directionOfTravel = _directionOfTravel.normalized;
+
+            enemy.Rb.AddForce(_directionOfTravel * (enemy.enemyData.moveSpeed * 10 * Time.fixedDeltaTime));
             if(Vector2.Distance(enemy.transform.position, _playerTransform.position) < enemy.enemyData.attackRange)
             {
+                enemy.Rb.velocity = Vector2.zero;
                 enemy.ChangeState(new AttackState());
             }
         }
@@ -29,9 +37,6 @@ namespace Enemies.EnemyStates
         public void Exit()
         {
         }
-
-        public void OnTriggerEnter2D(Collider2D other)
-        {
-        }
+        
     }
 }
