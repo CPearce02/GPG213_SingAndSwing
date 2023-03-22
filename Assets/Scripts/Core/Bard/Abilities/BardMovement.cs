@@ -9,6 +9,7 @@ public class BardMovement : MonoBehaviour
     PlatformingController _knightController;
     public Transform followObj;
     public float speed = 10f;
+    [Tooltip("1 for no friction, 2 for LOTS of friction.")][Range(1, 2)] [SerializeField] float friction = 1.5f;
     public float followRange = 0.5f;
     public float relocateSpeed = 15f, relocateRange = 3f;
     private Rigidbody2D _rb;
@@ -47,7 +48,7 @@ public class BardMovement : MonoBehaviour
     {
         if (_distanceX > followRange || _distanceX < -followRange)
             _rb.AddForce(new Vector2(_distanceX * speed * Time.fixedDeltaTime, 0));
-        else _rb.velocity = new Vector2(_rb.velocity.x / 1.5f, _rb.velocity.y);
+        else _rb.velocity = new Vector2(_rb.velocity.x / friction, _rb.velocity.y);
 
         //For the original rubber bandy movement, do "else if (_knightController.Grounded)", instead of the else seen here.
     }
