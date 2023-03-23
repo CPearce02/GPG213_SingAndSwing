@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44c326ce48264a54a946f67cce7c44b9, type: 3}
-  m_Name: 1-4
+  m_Name: 2-2-3
   m_EditorClassIdentifier: 
-  <SectionName>k__BackingField: Level 1 1-4
-  <SectionDescription>k__BackingField: 
-  <Scene>k__BackingField: 1-4
-  sceneAsset: {fileID: 102900000, guid: e9ee1cfccc066e148b10261f2f1be805, type: 3}
+  <SectionName>k__BackingField: Level 2-2-3
+  <SectionDescription>k__BackingField: Secret
+  <Scene>k__BackingField: 2-2-3
+  sceneAsset: {fileID: 102900000, guid: 92feeeec358ec9c40b7f2926a5dc74de, type: 3}
+  <Enemies>k__BackingField: []

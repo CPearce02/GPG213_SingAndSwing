@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44c326ce48264a54a946f67cce7c44b9, type: 3}
-  m_Name: 1-1
+  m_Script: {fileID: 11500000, guid: 3c8dff8c034337147bafb2ce19224065, type: 3}
+  m_Name: Level2Music
   m_EditorClassIdentifier: 
-  <SectionName>k__BackingField: Level1 1-1
-  <SectionDescription>k__BackingField: 
-  <Scene>k__BackingField: 1-1
-  sceneAsset: {fileID: 102900000, guid: 6dcfc06f1061bdc4893cb735b9009719, type: 3}
+  musicIntensities:
+  - {fileID: 8300000, guid: de4f31c1c9624124d85a4fd8ab35c1fe, type: 3}
+  - {fileID: 8300000, guid: 82bdbfb382f6aad479fa1f51613d2840, type: 3}
+  <BPM>k__BackingField: 116

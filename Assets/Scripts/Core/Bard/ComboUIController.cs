@@ -80,7 +80,7 @@ namespace Core.Bard
             _comboStarted = false;
             _noteIndex = 0;
             _currentCombo = combo;
-            SpawnNote(_currentCombo.ComboValues[_noteIndex]);
+            if (_currentCombo != null) SpawnNote(_currentCombo.ComboValues[_noteIndex]);
         }
 
         private void UpdateComboNotes(ComboValues value)

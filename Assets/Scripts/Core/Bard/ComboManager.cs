@@ -100,9 +100,13 @@ namespace Core.Bard
                 CurrentEnemy = enemyComponent;
                 _noArmour = false;
                 if (enemyComponent.enemyData == null) return;
-                currentCombo = CurrentEnemy.enemyData.Combo; 
-                GameEvents.onNewCombo?.Invoke(currentCombo);
-                expectedNote = currentCombo.ComboValues[0];
+                currentCombo = CurrentEnemy.enemyData.Combo;
+
+                if (currentCombo != null)
+                {
+                    GameEvents.onNewCombo?.Invoke(currentCombo);
+                    expectedNote = currentCombo.ComboValues[0];
+                }
             }
         }
 

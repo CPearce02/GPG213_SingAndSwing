@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6537bb01757476d865c99954409e897, type: 3}
+  m_Name: LevelData 2
+  m_EditorClassIdentifier: 
+  <ID>k__BackingField: 2
+  <LevelName>k__BackingField: Level 2
+  <LevelDescription>k__BackingField: Dungeon
+  <LevelNumber>k__BackingField: 2
+  <LevelSections>k__BackingField:
+  - {fileID: 11400000, guid: 5bbc7a99827e4444083ea16395433097, type: 2}
+  - {fileID: 11400000, guid: 29be9534526052f4ea2d32d47d155760, type: 2}
+  - {fileID: 11400000, guid: f484693a1e076d240a8b2f778ee5a590, type: 2}
+  - {fileID: 11400000, guid: ba84c902415359b4ca73231127d8f5c3, type: 2}
+  currentSection: {fileID: 11400000, guid: 5bbc7a99827e4444083ea16395433097, type: 2}
+  nextSection: {fileID: 11400000, guid: 29be9534526052f4ea2d32d47d155760, type: 2}

@@ -30,7 +30,7 @@ namespace Enemies
 
         private void Start()
         {
-            damage = enemyData.damageAmount;
+            if(enemyData != null) damage = enemyData.damageAmount;
             Destroyable?.Invoke(CanBeDestroyed);
         }
 

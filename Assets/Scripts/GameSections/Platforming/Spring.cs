@@ -7,6 +7,10 @@ namespace GameSections.Platforming
     {
         public float springHeight = 15f;
         // @Greg whos a naughty boy
-        private void OnCollisionEnter2D(Collision2D collision) { if (collision.transform.tag == "Player") collision.transform.GetComponent<PlatformingController>().AddJump(springHeight); }
+        private void OnCollisionEnter2D(Collision2D collision) 
+        {
+            collision.transform.TryGetComponent(out PlatformingController platformingController);
+            if (platformingController) collision.transform.GetComponent<PlatformingController>().AddJump(springHeight); 
+        }
     }
 }
