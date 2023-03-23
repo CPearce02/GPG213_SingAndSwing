@@ -21,7 +21,7 @@ namespace Core.Bard
         // Update is called once per frame
         void Update()
         {
-            if (_ep.canBeDestroyed)
+            if (_ep.CanBeDestroyed)
             {
                 _sr.color = Color.red;
             }

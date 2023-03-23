@@ -82,7 +82,7 @@ public class ComboManager : MonoBehaviour
     {
         if(noArmour && currentEnemy != null)
         {
-            currentEnemy.canBeDestroyed = true;
+            currentEnemy.CanBeDestroyed = true;
         }
         currentCombo = null;
         hasStarted = false;

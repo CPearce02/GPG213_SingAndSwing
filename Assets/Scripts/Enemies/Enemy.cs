@@ -1,3 +1,4 @@
+using System;
 using Core.Player;
 using Enemies.ScriptableObjects;
 using Enums;
@@ -12,13 +13,44 @@ namespace Enemies
     {
         public EnemyData enemyData;
         public int damage = 10;
-        public bool canBeDestroyed = false;
+        [SerializeField] private bool canBeDestroyed;
+        [SerializeField] bool doesDamageOnCollision = true;
         [SerializeField] ParticleEvent takeDamageParticle;
+        public event Action<bool> Destroyable;
+
+        public bool CanBeDestroyed
+        {
+            get => canBeDestroyed;
+            set
+            {
+                canBeDestroyed = value; 
+                Destroyable?.Invoke(CanBeDestroyed);   
+            }
+        }
+
+        private void Start()
+        {
+            damage = enemyData.damageAmount;
+        }
+
+        // private void OnGUI()
+        // {
+        //     // i want a button
+        //     if (GUI.Button(new Rect(10, 10, 100, 30), "Destroy"))
+        //     {
+        //         if (CanBeDestroyed)
+        //             CanBeDestroyed = false;
+        //         else 
+        //             CanBeDestroyed = true;
+        //     }
+        // }
 
         private void OnCollisionEnter2D(Collision2D collision) => HandleCollision2D(collision);
         
         private void HandleCollision2D(Collision2D collision)
-        {
+        { 
+            if(!doesDamageOnCollision) return;
+            
             var attackable = collision.gameObject.TryGetComponent<IAttackable>(out var attackableComponent);
             if (!attackable) return;
 
@@ -29,7 +61,7 @@ namespace Enemies
 
         public void TakeDamage(int amount)
         {
-            if (!canBeDestroyed) return;
+            if (!CanBeDestroyed) return;
             GameEvents.onScreenShakeEvent?.Invoke(Strength.Low, .2f);
             GameEvents.onMultiplierIncreaseEvent?.Invoke();
             takeDamageParticle.Invoke();

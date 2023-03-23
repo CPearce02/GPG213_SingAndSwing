@@ -52,7 +52,7 @@ namespace Core.Bard
 
         private void Update()
         {
-            if (_enemy.canBeDestroyed)
+            if (_enemy.CanBeDestroyed)
             {
                 gameObject.SetActive(false);
                 return;
@@ -76,7 +76,7 @@ namespace Core.Bard
 
         private void DisplayComboNotes(Combo combo)
         {
-            if (_cm.CurrentEnemy != GetComponentInParent<Enemy>() || _cm.CurrentEnemy.canBeDestroyed == true) return;
+            if (_cm.CurrentEnemy != GetComponentInParent<Enemy>() || _cm.CurrentEnemy.CanBeDestroyed == true) return;
             _comboStarted = false;
             _noteIndex = 0;
             _currentCombo = combo;
@@ -157,7 +157,7 @@ namespace Core.Bard
 
         public void SpawnOnBeat()
         {
-            if (_cm.CurrentEnemy != GetComponentInParent<Enemy>() || _cm.CurrentEnemy.canBeDestroyed == true || _currentCombo == null) return;
+            if (_cm.CurrentEnemy != GetComponentInParent<Enemy>() || _cm.CurrentEnemy.CanBeDestroyed == true || _currentCombo == null) return;
 
             //check to see if note is already spawned and update speed
             foreach (SpriteRenderer note in spawnedNotes)

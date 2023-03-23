@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GameSections.Platforming
+namespace Core
 {
     public class AttackAnimationController : MonoBehaviour
     {
@@ -11,12 +11,7 @@ namespace GameSections.Platforming
         {
             _animator = GetComponent<Animator>();
         }
-
-        void Update()
-        {
-            if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("knight_attack")) DisableHitbox();
-        }
-
+        
         void EnableHitbox() => coll.enabled = true;
         void DisableHitbox() => coll.enabled = false;
     }

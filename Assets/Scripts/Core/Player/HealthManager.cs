@@ -4,7 +4,6 @@ using Structs;
 using UnityEngine;
 using Interfaces;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 namespace Core.Player
 {
@@ -13,8 +12,11 @@ namespace Core.Player
         [SerializeField] [ReadOnly] private int health;
         [SerializeField] private CharacterData playerStats;
         [SerializeField] Transform respawnPosition;
+        
+        [Header("Effects")]
         [SerializeField] ParticleEvent deathParticles;
-        [SerializeField] private CameraShakeEvent takeDamageCameraShake;
+        [SerializeField] ParticleEvent damageParticles;
+        [SerializeField] CameraShakeEvent takeDamageCameraShake;
         
         PlatformingController _controller;
         Rigidbody2D _rb;
@@ -86,6 +88,7 @@ namespace Core.Player
             
             Health -= amount;
             takeDamageCameraShake.Invoke();
+            damageParticles.Invoke();
             GameEvents.onMultiplierDecreaseEvent.Invoke();
         }
         

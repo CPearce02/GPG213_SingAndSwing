@@ -1,12 +1,24 @@
+using Enemies;
+using Enemies.ScriptableObjects;
 using Interfaces;
 using UnityEngine;
 
-namespace Core.Player
+namespace Core
 {
-    public class PlayerAttack : MonoBehaviour
+    public class Attack : MonoBehaviour
     {
+        [SerializeField] private EnemyData enemyData;
         public int damageAmount = 20;
-        
+
+        private void Start()
+        {
+            if(GetComponentInParent<Enemy>())
+            {
+                enemyData = GetComponentInParent<Enemy>().enemyData;
+                if (enemyData) damageAmount = enemyData.damageAmount;
+            }
+        }
+
         private void OnTriggerEnter2D(Collider2D collider) => HandleCollision2D(collider);
 
         private void HandleCollision2D(Collider2D collider)

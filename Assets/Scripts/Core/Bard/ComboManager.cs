@@ -86,7 +86,7 @@ namespace Core.Bard
         {
             if (_noArmour && CurrentEnemy != null)
             {
-                CurrentEnemy.canBeDestroyed = true;
+                CurrentEnemy.CanBeDestroyed = true;
             }
             currentCombo = null;
             _hasStarted = false;

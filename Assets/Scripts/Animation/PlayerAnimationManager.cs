@@ -24,8 +24,8 @@ namespace Animation
         private static readonly int Dead = Animator.StringToHash("Dead");
 
         #region Animations
-        private static readonly int DeathAnim = Animator.StringToHash("knight_death");
-        private static readonly int AttackAnim = Animator.StringToHash("knight_attack");
+        private static readonly int DeathAnim = Animator.StringToHash("Death");
+        private static readonly int AttackAnim = Animator.StringToHash("Attack");
 
         #endregion
 
