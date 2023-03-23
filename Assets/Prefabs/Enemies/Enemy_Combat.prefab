@@ -98,6 +98,7 @@ MonoBehaviour:
   enemyData: {fileID: 0}
   damage: 100
   canBeDestroyed: 0
+  doesDamageOnCollision: 1
   takeDamageParticle:
     <Transform>k__BackingField: {fileID: 4767656718564846560}
     <Particle>k__BackingField: {fileID: 4862367670183223577, guid: fe93907a5421d26418ebe2281cc25bcf, type: 3}
