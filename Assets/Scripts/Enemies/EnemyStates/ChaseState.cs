@@ -27,7 +27,8 @@ namespace Enemies.EnemyStates
             _directionOfTravel = _directionOfTravel.normalized;
 
             enemy.Rb.AddForce(_directionOfTravel * (enemy.enemyData.moveSpeed * 10 * Time.fixedDeltaTime));
-            if(Vector2.Distance(enemy.transform.position, _playerTransform.position) < enemy.enemyData.attackRange)
+            if (Vector2.Distance(enemy.transform.position, _playerTransform.position) <
+                enemy.enemyData.attackRange - enemy.enemyData.attackRange * .5f) 
             {
                 enemy.Rb.velocity = Vector2.zero;
                 enemy.ChangeState(new AttackState());

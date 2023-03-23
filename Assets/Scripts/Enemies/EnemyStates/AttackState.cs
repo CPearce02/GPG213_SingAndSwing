@@ -36,7 +36,7 @@ namespace Enemies.EnemyStates
             
             if (_hasAttacked && enemy.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
             {
-                Debug.Log("has attacked and is in attack anim");
+                // Debug.Log("has attacked and is in attack anim");
                 if( enemy.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
                     _enemy.ChangeState(new RetreatState(playerTransform, this._enemy));
