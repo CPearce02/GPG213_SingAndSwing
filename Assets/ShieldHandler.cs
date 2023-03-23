@@ -5,42 +5,34 @@ using UnityEngine;
 public class ShieldHandler : MonoBehaviour
 {
     SpriteRenderer _spriteRenderer;
-    Material _material;
     [SerializeField] Enemy enemy;
+    [Header("Material Settings")]
+    [SerializeField] Material defaultMaterial;
+    [SerializeField] Material shieldMaterial;
+    [Header("Particle Settings")]
     [SerializeField] ParticleEvent particleEvent;
-    [SerializeField] private Color shieldColor;
     
-    private static readonly int OutlineThickness = Shader.PropertyToID("_OutlineThickness");
-    private static readonly int Colour = Shader.PropertyToID("_Colour");
-
     private void Awake()
     {
         if(enemy == null) enemy = GetComponentInParent<Enemy>();
-    }
-
-    void Start()
-    {
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _material = _spriteRenderer.material;
-        _material.SetColor(Colour, shieldColor);
     }
 
     private void OnEnable()
     {
         if (enemy == null) return;
-        enemy.Destroyable += ExplodeShield;
+        enemy.Destroyable += SetMaterial;
     }
 
     private void OnDisable()
     {
         if (enemy == null) return;
-        enemy.Destroyable -= ExplodeShield;
+        enemy.Destroyable -= SetMaterial;
     }
     
-    void ExplodeShield(bool canBeDestroyed)
+    void SetMaterial(bool canBeDestroyed)
     {
-        if(_material != null)
-            _material.SetFloat(OutlineThickness, canBeDestroyed ? 0 : 1);
+        _spriteRenderer.material = canBeDestroyed ? defaultMaterial : shieldMaterial;
 
         if(canBeDestroyed)
             particleEvent.Invoke();

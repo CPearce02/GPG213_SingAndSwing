@@ -36,7 +36,6 @@ namespace Enemies
 
         // private void OnGUI()
         // {
-        //     // i want a button
         //     if (GUI.Button(new Rect(10, 10, 100, 30), "Destroy"))
         //     {
         //         if (CanBeDestroyed)

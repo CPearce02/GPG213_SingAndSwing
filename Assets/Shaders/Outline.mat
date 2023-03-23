@@ -61,7 +61,7 @@ Material:
     - _AnimationSpeed: 0.25
     - _OutlineThickness: 1
     m_Colors:
-    - _Colour: {r: 0, g: 0.5112834, b: 0.57434916, a: 1}
+    - _Colour: {r: 0.53333336, g: 0.9137255, b: 0.94509804, a: 1}
     - _Offset: {r: 1, g: 0, b: 0, a: 0}
     - _OutlineColour: {r: 0.1882353, g: 0.7921569, b: 0.8666667, a: 1}
     - _Vector2: {r: 1, g: 0, b: 0, a: 0}

@@ -77,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4767656718564846575, guid: afe1515f585c6824bb875d7b2f747092, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: EnemyMover
       objectReference: {fileID: 0}
     - target: {fileID: 4767656719195334698, guid: afe1515f585c6824bb875d7b2f747092, type: 3}
       propertyPath: m_Sprite
@@ -240,9 +240,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 2332113700691211889}
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  shieldMaterial: {fileID: 2100000, guid: c217f3a71123e90448b3e02f14c8fa29, type: 2}
   particleEvent:
     <Transform>k__BackingField: {fileID: 2332113701306299828}
-    <Particle>k__BackingField: {fileID: 4862367670183223577, guid: fe93907a5421d26418ebe2281cc25bcf, type: 3}
+    <Particle>k__BackingField: {fileID: 3225780557320092108, guid: c3c12a6c2ec74ff4ca28c7b12e66969f, type: 3}
     <DoParticles>k__BackingField: 1
     <Color>k__BackingField: {r: 0.53333336, g: 0.9137255, b: 0.94509804, a: 1}
 --- !u!1001 &7095222789559468166
