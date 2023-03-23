@@ -16,6 +16,8 @@ MonoBehaviour:
   <LevelName>k__BackingField: Level 1
   <LevelDescription>k__BackingField: Overworld
   <LevelNumber>k__BackingField: 1
-  <LevelSections>k__BackingField: []
-  currentSection: {fileID: 0}
-  nextSection: {fileID: 0}
+  <LevelSections>k__BackingField:
+  - {fileID: 11400000, guid: d3a9d8237311a6d4b9ce47ef0b4ab7fc, type: 2}
+  - {fileID: 11400000, guid: 7c78ab6c5f6da7e4f8bf83635d46c2b5, type: 2}
+  currentSection: {fileID: 11400000, guid: d3a9d8237311a6d4b9ce47ef0b4ab7fc, type: 2}
+  nextSection: {fileID: 11400000, guid: 7c78ab6c5f6da7e4f8bf83635d46c2b5, type: 2}
