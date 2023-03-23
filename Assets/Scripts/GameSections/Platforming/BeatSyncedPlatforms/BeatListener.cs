@@ -11,7 +11,7 @@ public class BeatListener : MonoBehaviour
     [field: SerializeField] public int BeatInterval { get; private set; } = 1;
     [SerializeField] bool inverted;
     int _beatsDone = 0;
-    [SerializeField] UnityEvent onBeatEvent;
+    [SerializeField] public UnityEvent onBeatEvent;
 
     private void OnEnable()
     {

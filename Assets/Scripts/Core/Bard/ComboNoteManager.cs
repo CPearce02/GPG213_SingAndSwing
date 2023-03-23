@@ -7,13 +7,16 @@ namespace Core.Bard
     {
         public ComboValues value;
         public float _speed;
-        //private Vector3 _initialPos;
 
         private void Start()
         {
-            //_initialPos = transform.position;
         }
         private void Update()
+        {
+            MoveNote();
+        }
+        
+        private void MoveNote()
         {
             transform.Translate(Vector2.left * _speed * Time.deltaTime);
         }
