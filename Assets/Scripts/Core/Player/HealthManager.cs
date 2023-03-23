@@ -148,6 +148,7 @@ namespace Core.Player
             _dead = true;
             _controller.enabled = false;
             _rb.drag = 2;
+            DeathParticles();
         }
 
         void DeathParticles()

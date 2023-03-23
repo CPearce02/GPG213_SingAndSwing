@@ -59,6 +59,10 @@ PrefabInstance:
       propertyPath: CollisionModule.enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4862367670183223577, guid: fe93907a5421d26418ebe2281cc25bcf, type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4862367670183223579, guid: fe93907a5421d26418ebe2281cc25bcf, type: 3}
       propertyPath: m_Name
       value: ShieldExplode
