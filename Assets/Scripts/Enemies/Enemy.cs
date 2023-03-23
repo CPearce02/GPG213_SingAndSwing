@@ -27,7 +27,7 @@ namespace Enemies
                 Destroyable?.Invoke(CanBeDestroyed);   
             }
         }
-
+        
         private void Start()
         {
             if(enemyData != null) damage = enemyData.damageAmount;
@@ -39,9 +39,9 @@ namespace Enemies
         //     if (GUI.Button(new Rect(10, 10, 100, 30), "Destroy"))
         //     {
         //         if (CanBeDestroyed)
-        //             CanBeDestroyed = false;
+        //             SetCanBeDestroyed(false);
         //         else 
-        //             CanBeDestroyed = true;
+        //             SetCanBeDestroyed(true);
         //     }
         // }
 
@@ -67,5 +67,8 @@ namespace Enemies
             takeDamageParticle.Invoke();
             Destroy(gameObject);
         }
+        
+        public void SetCanBeDestroyed(bool value) => CanBeDestroyed = value;
+
     }
 }

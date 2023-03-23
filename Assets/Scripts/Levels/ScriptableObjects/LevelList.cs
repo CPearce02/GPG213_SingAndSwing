@@ -35,6 +35,8 @@ namespace Levels.ScriptableObjects
         #region Methods
 
         public LevelData GetLevel(int levelNumber) => levels[levelNumber];
+        
+        public int GetLevelNumber(LevelData level) => levels.IndexOf(level);
 
         public LevelData GetLevel(string levelName) => levels.Find(l => l.LevelName == levelName);
 

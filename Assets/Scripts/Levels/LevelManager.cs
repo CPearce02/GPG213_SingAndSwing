@@ -10,6 +10,7 @@ namespace Levels
     {
         [SerializeField] private LevelList levels;
         [SerializeField] private LevelData level;
+        [SerializeField] private LevelData nextLevel;
         [SerializeField][ReadOnly] private SectionData currentSection;
 
         private void Awake()
@@ -21,6 +22,7 @@ namespace Levels
         private void Start()
         {
             currentSection = level.LevelSections.Find(s => s.Scene == SceneManager.GetActiveScene().name);
+            nextLevel = levels.GetNextLevel();
         }
 
         private void OnEnable()

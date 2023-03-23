@@ -35,12 +35,16 @@ namespace Events
 
         #region Combos
         public delegate void ButtonPressed(ComboValues comboValue);
+        public delegate void CorrectButtonPressed();
+        public delegate void WrongButtonPressed();
         public delegate void NewCombo(Combo combo);
         public delegate void ComboFinished();
         public delegate void AimStart(Vector2 directon);
         public delegate void SlowDownStart();
 
         public static ButtonPressed onButtonPressed;
+        public static CorrectButtonPressed onCorrectButtonPressed;
+        public static WrongButtonPressed onWrongButtonPressed;
         public static NewCombo onNewCombo;
         public static ComboFinished onComboFinish;
         public static AimStart onAimStart;
