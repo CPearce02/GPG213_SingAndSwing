@@ -31,6 +31,7 @@ namespace Enemies
         private void Start()
         {
             damage = enemyData.damageAmount;
+            Destroyable?.Invoke(CanBeDestroyed);
         }
 
         // private void OnGUI()
