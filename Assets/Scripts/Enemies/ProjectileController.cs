@@ -2,6 +2,7 @@ using System.ComponentModel;
 using Core.Player;
 using Structs;
 using UnityEngine;
+using Interfaces;
 
 namespace Enemies
 {
@@ -69,7 +70,13 @@ namespace Enemies
         private void OnTriggerEnter2D(Collider2D collision)
         {
             collision.TryGetComponent(out PlatformingController player);
-            if (player) DestroyBullet(); 
+            if (player) {
+                 var attackable = collision.gameObject.TryGetComponent<IAttackable>(out var attackableComponent);
+                if (!attackable) return;
+
+            //Stops enemies from attacking each other
+                attackableComponent.TakeDamage(15);
+                DestroyBullet(); }
         }
     }
 }
