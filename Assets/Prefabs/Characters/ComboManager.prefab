@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5104715039921127647}
   - component: {fileID: 2562198797992438862}
   - component: {fileID: 7189111860669930141}
+  - component: {fileID: 4729270215436195712}
   m_Layer: 2
   m_Name: ComboManager
   m_TagString: Untagged
@@ -64,8 +65,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCombo: {fileID: 0}
   expectedNote: 0
-  comboIndex: 0
-  timeFrame: 5
+  _comboIndex: 0
+  spawnedNotes: []
+  _originalSpeed: 2
 --- !u!114 &7189111860669930141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,3 +85,20 @@ MonoBehaviour:
   - {fileID: 2843626703137017588, guid: c5fc24ea9689be043a411fe61672d347, type: 3}
   - {fileID: 2843626703137017588, guid: 7a6e1f3cd1d552f4995e0ac38c740f81, type: 3}
   - {fileID: 2843626703137017588, guid: fe9d4583e2e7edd47861e9ff1f7d283f, type: 3}
+--- !u!114 &4729270215436195712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5104715039921127644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16387d78f534c7c4baca08669d1cdb57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <BeatInterval>k__BackingField: 1
+  inverted: 0
+  onBeatEvent:
+    m_PersistentCalls:
+      m_Calls: []

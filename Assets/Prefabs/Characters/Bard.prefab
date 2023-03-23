@@ -165,8 +165,8 @@ MonoBehaviour:
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 68
-  _singleplayer: 0
-  slowMotionTimeScale: 0
+  _singleplayer: 1
+  slowMotionTimeScale: 0.5
 --- !u!114 &2917675255978650672
 MonoBehaviour:
   m_ObjectHideFlags: 0
