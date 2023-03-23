@@ -39,9 +39,9 @@ namespace Enemies
         //     if (GUI.Button(new Rect(10, 10, 100, 30), "Destroy"))
         //     {
         //         if (CanBeDestroyed)
-        //             CanBeDestroyed = false;
+        //             SetCanBeDestroyed(false);
         //         else 
-        //             CanBeDestroyed = true;
+        //             SetCanBeDestroyed(true);
         //     }
         // }
 
