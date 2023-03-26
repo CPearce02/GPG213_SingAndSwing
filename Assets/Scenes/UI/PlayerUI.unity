@@ -327,6 +327,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4541080319634359509, guid: 75b023e24496586439b4445e888066e2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.89393
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541080319634359509, guid: 75b023e24496586439b4445e888066e2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.89393
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541080319634359509, guid: 75b023e24496586439b4445e888066e2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.89393
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541080319634359509, guid: 75b023e24496586439b4445e888066e2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 6.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541080319634359509, guid: 75b023e24496586439b4445e888066e2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -9.37
+      objectReference: {fileID: 0}
     - target: {fileID: 4541080320530683215, guid: 75b023e24496586439b4445e888066e2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

@@ -13,24 +13,11 @@ namespace Core.Bard.Abilities
         public LayerMask ignoreLayers;
 
         private PlayerInput _bardInput;
-        [SerializeField]private bool _singleplayer;
-
-
-        [Header("SlowMo")]
-        [SerializeField] private float slowMotionTimeScale;
-        private float _startTimeScale;
-        private float _startFixedDeltaTime;
 
 
         void Start()
         {
-            _startTimeScale = Time.timeScale;
-            _startFixedDeltaTime = Time.fixedDeltaTime;
 
-            _bardInput = GetComponent<PlayerInput>();
-            if (!_singleplayer) return;
-            _bardInput.actions["SlowDownButton"].performed += ctx => SlowDownTime();
-            _bardInput.actions["SlowDownButton"].canceled += ctx => ResetTime();
         }
         
         void Update()
@@ -67,18 +54,5 @@ namespace Core.Bard.Abilities
 
         private void OnDrawGizmosSelected() => Gizmos.DrawWireCube(groundCheckTransform.position, groundCheckSize);
 
-        private void SlowDownTime()
-        {
-            //Debug.Log("Slow");
-            Time.timeScale = slowMotionTimeScale;
-            Time.fixedDeltaTime = _startFixedDeltaTime * slowMotionTimeScale;
-        }
-
-        private void ResetTime()
-        {
-            //Debug.Log("Reset");
-            Time.timeScale = _startTimeScale;
-            Time.fixedDeltaTime = _startFixedDeltaTime;
-        }
     }
 }

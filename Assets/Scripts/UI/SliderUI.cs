@@ -14,6 +14,8 @@ namespace UI
         
         Coroutine _sliderAnimationCoroutine;
         private float oldValue;
+        private float deltaTime;
+
         private void Awake()
         {
             if (slider == null)
@@ -21,6 +23,7 @@ namespace UI
                 slider = GetComponentInChildren<Slider>();
             }
 
+            deltaTime = Time.deltaTime;
         }
 
         protected void ChangeSlider(float normalisedValue)
@@ -41,7 +44,8 @@ namespace UI
             float elapsed = 0f;
             while (elapsed < updateSpeedSeconds)
             {
-                elapsed += Time.deltaTime;
+                //elapsed += Time.deltaTime; (Had to change this - slow mo messed with it)
+                elapsed += deltaTime;
                 slider.value = Mathf.Lerp(preChangedPercent, normalisedValueFloat, elapsed / updateSpeedSeconds);
                 yield return null;
             }

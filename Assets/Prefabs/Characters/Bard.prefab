@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 8162570258677425958}
   - component: {fileID: 3484274401630586220}
   - component: {fileID: 2917675255978650672}
+  - component: {fileID: 7739237648701342661}
   m_Layer: 6
   m_Name: Bard
   m_TagString: Player
@@ -165,8 +166,6 @@ MonoBehaviour:
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 68
-  _singleplayer: 1
-  slowMotionTimeScale: 0.5
 --- !u!114 &2917675255978650672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +184,22 @@ MonoBehaviour:
   followRange: 0.5
   relocateSpeed: 15
   relocateRange: 8
+--- !u!114 &7739237648701342661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8162570258677425968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c144c673057bbea48b932c49b3673b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _singleplayer: 1
+  slowMotionTimeScale: 0.1
+  _maxMana: 25
+  _currentMana: 0
 --- !u!1 &8162570259291630726
 GameObject:
   m_ObjectHideFlags: 0
