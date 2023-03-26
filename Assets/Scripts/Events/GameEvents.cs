@@ -55,9 +55,10 @@ namespace Events
         #region UI Events
         public delegate void SetValue(int value);
         public delegate void PlayerHealthUIChange(float normalisedCurrentHealth);
-
+        public delegate void PlayerManaUIChange(float normalisedCurrentMana);
         public static SetValue onSetHealthCountEvent;
         public static PlayerHealthUIChange onPlayerHealthUIChangeEvent;
+        public static PlayerManaUIChange onPlayerManaUIChangeEvent;
         #endregion
 
         #region Effects

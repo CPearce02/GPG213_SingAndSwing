@@ -239,10 +239,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 480301594331138782, guid: 75b023e24496586439b4445e888066e2, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 480301594331138783, guid: 75b023e24496586439b4445e888066e2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -331,9 +327,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerUI
       objectReference: {fileID: 0}
-    - target: {fileID: 2454089145137463962, guid: 75b023e24496586439b4445e888066e2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -24
+    - target: {fileID: 4541080320530683215, guid: 75b023e24496586439b4445e888066e2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541080320530683215, guid: 75b023e24496586439b4445e888066e2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75b023e24496586439b4445e888066e2, type: 3}
