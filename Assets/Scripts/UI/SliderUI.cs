@@ -23,6 +23,9 @@ namespace UI
                 slider = GetComponentInChildren<Slider>();
             }
 
+        }
+        private void Start()
+        {
             deltaTime = Time.deltaTime;
         }
 
