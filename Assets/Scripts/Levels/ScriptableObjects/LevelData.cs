@@ -62,7 +62,7 @@ namespace Levels.ScriptableObjects
             if (LevelSections.IndexOf(CurrentSection) + 1 > LevelSections.Count - 1)
             {
                 NextSection = null;
-                Debug.Log("No more sections");
+                Debug.LogError("No more sections");
                 return;
             }
             nextSection = LevelSections[LevelSections.IndexOf(CurrentSection) + 1];

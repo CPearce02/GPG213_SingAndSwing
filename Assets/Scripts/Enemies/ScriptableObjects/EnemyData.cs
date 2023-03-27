@@ -1,4 +1,5 @@
 using Core.ScriptableObjects;
+using Enums;
 using UnityEngine;
 
 namespace Enemies.ScriptableObjects
@@ -6,6 +7,7 @@ namespace Enemies.ScriptableObjects
     [CreateAssetMenu (fileName = "New Enemy", menuName = "Enemy")]
     public class EnemyData : ScriptableObject
     {
+        public EnemyType type;
         public string enemyName;
         public float moveSpeed;
         public float triggerRange;
