@@ -19,6 +19,8 @@ namespace Enemies
         void Start()
         {
             Rb = GetComponent<Rigidbody2D>();
+            
+            // if enemyData.type is Boss, then change state to BossIdleState else change state to IdleState
             ChangeState(new IdleState());
         }
     
