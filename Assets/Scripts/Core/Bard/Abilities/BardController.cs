@@ -17,9 +17,9 @@ namespace Core.Bard.Abilities
 
         void Start()
         {
-
+            _bardInput = GetComponent<PlayerInput>();
         }
-        
+
         void Update()
         {
             GroundCheck();
