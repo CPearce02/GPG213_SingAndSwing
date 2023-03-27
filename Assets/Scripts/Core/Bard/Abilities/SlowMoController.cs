@@ -1,9 +1,7 @@
+using Events;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Events;
-using System.Threading;
 
 namespace Core.Bard
 {
@@ -17,7 +15,7 @@ namespace Core.Bard
         private float _startFixedDeltaTime;
 
         [SerializeField] private int _maxMana;
-        [SerializeField][ReadOnly] private int _currentMana;
+        [SerializeField] [ReadOnly] private int _currentMana;
 
         public int Mana
         {
@@ -38,38 +36,41 @@ namespace Core.Bard
 
         void Start()
         {
+            //Set Time
             _startTimeScale = Time.timeScale;
             _startFixedDeltaTime = Time.fixedDeltaTime;
-
+            //Set Mana
             Mana = _maxMana;
-
+            //Set Bard Input
             _bardInput = GetComponent<PlayerInput>();
             if (!_singleplayer) return;
             _bardInput.actions["SlowDownButton"].performed += ctx => SlowDownTime();
-            _bardInput.actions["SlowDownButton"].canceled += ctx => ResetTime();
+            _bardInput.actions["SlowDownButton"].canceled += ctx => ResetMana();
         }
 
         private void SlowDownTime()
         {
-            //Debug.Log("Slow");
             Time.timeScale = slowMotionTimeScale;
             Time.fixedDeltaTime = _startFixedDeltaTime * slowMotionTimeScale;
-
             StartCoroutine("DecreaseMana");
         }
 
         private void ResetTime()
         {
-            //Debug.Log("Reset");
             Time.timeScale = _startTimeScale;
             Time.fixedDeltaTime = _startFixedDeltaTime;
+        }
 
+        private void ResetMana()
+        {
+            ResetTime();
             StartCoroutine("IncreaseMana");
         }
 
         IEnumerator DecreaseMana()
         {
-            while (_currentMana != 0)
+            StopCoroutine("IncreaseMana");
+            while (_currentMana > 0)
             {
                 Mana -= 1;
                 yield return new WaitForSeconds(0.01f);
@@ -79,7 +80,7 @@ namespace Core.Bard
         IEnumerator IncreaseMana()
         {
             StopCoroutine("DecreaseMana");
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             while(_currentMana != _maxMana)
             {
                 Mana += 1;
