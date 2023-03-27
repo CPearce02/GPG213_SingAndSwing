@@ -52,7 +52,7 @@ namespace Core.Bard
         {
             Time.timeScale = slowMotionTimeScale;
             Time.fixedDeltaTime = _startFixedDeltaTime * slowMotionTimeScale;
-            ControlMana("DecreaseMana", "IncreaseMana");
+            StartCoroutine("DecreaseMana");
         }
 
         private void ResetTime()
@@ -64,17 +64,12 @@ namespace Core.Bard
         private void ResetMana()
         {
             ResetTime();
-            ControlMana("IncreaseMana", "DecreaseMana");
-        }
-
-        private void ControlMana(string start, string stop)
-        {
-            StopCoroutine(stop);
-            StartCoroutine(start);
+            StartCoroutine("IncreaseMana");
         }
 
         IEnumerator DecreaseMana()
         {
+            StopCoroutine("IncreaseMana");
             while (_currentMana > 0)
             {
                 Mana -= 1;
@@ -84,7 +79,7 @@ namespace Core.Bard
 
         IEnumerator IncreaseMana()
         {
-            //StopCoroutine("DecreaseMana");
+            StopCoroutine("DecreaseMana");
             yield return new WaitForSeconds(0.5f);
             while(_currentMana != _maxMana)
             {
