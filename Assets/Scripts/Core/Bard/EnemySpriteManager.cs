@@ -17,18 +17,5 @@ namespace Core.Bard
             _ep = GetComponentInParent<Enemy>();
             //originalColor = sr.color;
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-            if (_ep.CanBeDestroyed)
-            {
-                _sr.color = Color.red;
-            }
-            else
-            {
-                _sr.color = Color.cyan;
-            }
-        }
     }
 }
