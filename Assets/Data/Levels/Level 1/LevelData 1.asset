@@ -19,5 +19,7 @@ MonoBehaviour:
   <LevelSections>k__BackingField:
   - {fileID: 11400000, guid: d3a9d8237311a6d4b9ce47ef0b4ab7fc, type: 2}
   - {fileID: 11400000, guid: 7c78ab6c5f6da7e4f8bf83635d46c2b5, type: 2}
+  - {fileID: 11400000, guid: e8bc3757a9dcbab4391454d8523b26a9, type: 2}
+  - {fileID: 11400000, guid: e2a1564dda59a984ea3e8e2b86d849eb, type: 2}
   currentSection: {fileID: 11400000, guid: d3a9d8237311a6d4b9ce47ef0b4ab7fc, type: 2}
   nextSection: {fileID: 11400000, guid: 7c78ab6c5f6da7e4f8bf83635d46c2b5, type: 2}
