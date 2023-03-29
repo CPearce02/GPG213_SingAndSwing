@@ -10,7 +10,6 @@ namespace Core
 
         private void Start()
         {
-
             if(GetComponentInParent<Enemy>())
             {
                 enemyData = GetComponentInParent<Enemy>().enemyData;
@@ -21,6 +20,5 @@ namespace Core
                 }
             }
         }
-
     }
 }

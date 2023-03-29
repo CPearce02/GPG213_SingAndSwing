@@ -204,6 +204,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 28792094753008475, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 454248980910712286, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444886546074430437, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: enemyData
+      value: 
+      objectReference: {fileID: 11400000, guid: 685f7a2a303895342aae777566433ff2, type: 2}
     - target: {fileID: 7767946816732133653, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -252,6 +264,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 7767946816732133659, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: enemyData
+      value: 
+      objectReference: {fileID: 11400000, guid: 685f7a2a303895342aae777566433ff2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
 --- !u!4 &1085797557 stripped
