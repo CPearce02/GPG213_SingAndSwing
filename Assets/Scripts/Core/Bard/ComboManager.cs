@@ -12,6 +12,14 @@ namespace Core.Bard
     {
         private BeatListener _bl;
         
+        private AudioSource _au;
+
+        [Header("Audio")]
+        [SerializeField] private AudioClip _guitarChord;
+        [SerializeField] private AudioClip _failGuitarChord;
+        private float _originalPitch;
+
+        
         [Header("Enemy Data")]
         [SerializeField] private Combo currentCombo;
         [SerializeField][ReadOnly] private ComboValues expectedNote;
@@ -32,6 +40,8 @@ namespace Core.Bard
         {
             _increasedSpeed = _originalSpeed;
             _bl = GetComponent<BeatListener>();
+            _au = GetComponent<AudioSource>();
+            _originalPitch = _au.pitch;
         }
         private void OnEnable()
         {
@@ -88,11 +98,15 @@ namespace Core.Bard
 
         private void CheckComboValue(ComboValues value)
         {
+            if(currentEnemy == null) return;
             if (value == expectedNote)
             {
                 //Increase and set the next note
                 _comboIndex++;
-                            _noteToBePressed = null;
+                _noteToBePressed = null;
+                GameEvents.onCorrectButtonPressed?.Invoke();
+                if(_comboIndex == 1) _au.pitch = _originalPitch;
+                PlayGuitar();
 
                 if (_comboIndex >= currentCombo.ComboValues.Count)
                 {
@@ -103,7 +117,6 @@ namespace Core.Bard
                 else
                 {
                     //Correct Note Pressed - Update UI, Spawn Next Note, Increase Speed, DecreaseTimer;
-                    GameEvents.onCorrectButtonPressed?.Invoke();
                     _increasedSpeed += 2f;
                     _canSpawn = true;
                     expectedNote = currentCombo.ComboValues[_comboIndex];
@@ -113,6 +126,8 @@ namespace Core.Bard
             {
                 //Incorrect Note pressed
                 GameEvents.onWrongButtonPressed?.Invoke();
+                PlayFailGuitar();
+
                 //Reset Index, Speed & Timer
                 _comboIndex = 0;
                 _increasedSpeed = _originalSpeed;
@@ -134,11 +149,16 @@ namespace Core.Bard
 
         private void ComboFinished()
         {
+            if (currentEnemy == null) return;
             //Check to see if combo is complete 
             if (_noArmour && currentEnemy != null)
             {
                 //Set can be destory method to true 
                 currentEnemy.SetCanBeDestroyed(true);
+            }
+            else
+            {
+                PlayFailGuitar();
             }
 
             //Clear enemy data and spawn position
@@ -209,8 +229,23 @@ namespace Core.Bard
 
         IEnumerator DelaySpawn()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1.25f);
             _canSpawn = true;
+
         } 
+
+        private void PlayGuitar()
+        {
+            _au.clip = _guitarChord;
+            _au.pitch += 0.5f;
+            _au.Play();
+        }
+
+        private void PlayFailGuitar()
+        {
+            _au.clip = _failGuitarChord;
+            _au.pitch = 1f;
+            _au.Play();
+        }
     }
 }
