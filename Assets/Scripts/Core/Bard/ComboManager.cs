@@ -92,7 +92,7 @@ namespace Core.Bard
             //Set the current enemy and set the spawn position
             if (collision.TryGetComponent<Enemy>(out Enemy enemyComponent) && currentCombo == null)
             {
-                if(!enemyComponent.CanBeDestroyed) SetCurrentEnemy(enemyComponent);
+                if(!enemyComponent.CanBeDestroyed && enemyComponent.enemyData != null) SetCurrentEnemy(enemyComponent);
             }
         }
 
