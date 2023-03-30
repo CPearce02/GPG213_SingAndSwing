@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 4767656719195334699}
   - component: {fileID: 4767656719195334698}
   - component: {fileID: 8019868224009738783}
+  - component: {fileID: 2646141446262636774}
   m_Layer: 0
   m_Name: GFX
   m_TagString: Untagged
@@ -209,6 +210,26 @@ MonoBehaviour:
     <Particle>k__BackingField: {fileID: 4862367670183223577, guid: fe93907a5421d26418ebe2281cc25bcf, type: 3}
     <DoParticles>k__BackingField: 1
     <Color>k__BackingField: {r: 0.61960787, g: 0.5686275, b: 0.54901963, a: 1}
+--- !u!95 &2646141446262636774
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4767656719195334696}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: db0a94aa4e8d32945b1e0b2f44af74a3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1001 &5029282382272882168
 PrefabInstance:
   m_ObjectHideFlags: 0
