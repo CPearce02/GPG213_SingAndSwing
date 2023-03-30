@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeleBoss_Death
+  m_Name: Death
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -99,7 +99,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeleBoss_Charge_Start
+  m_Name: Ability1_Start
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -148,7 +148,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeleBoss_Horde_Spawn
+  m_Name: Ability2_Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -197,7 +197,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeleBoss_AOE
+  m_Name: AOE_Attack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -224,7 +224,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeleBoss_Horde_Start
+  m_Name: Ability2_Start
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -366,7 +366,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeleBoss_Recharge
+  m_Name: Recharge
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -393,7 +393,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeleBoss_Interupt
+  m_Name: Interupt
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -442,7 +442,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeleBoss_Charging
+  m_Name: Ability1_Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -535,7 +535,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeleBoss_Move
+  m_Name: Move
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -583,7 +583,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeleBoss_Charge_Bite
+  m_Name: Ability1_End
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -610,7 +610,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeleBoss_Start_Move
+  m_Name: Start_Move
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -659,7 +659,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeleBoss_Horde_End
+  m_Name: Ability2_End
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -786,10 +786,10 @@ AnimatorStateMachine:
     m_Position: {x: 480, y: 570, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4261103862522596866}
-    m_Position: {x: 480, y: 180, z: 0}
+    m_Position: {x: 480, y: 210, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 889945836437705905}
-    m_Position: {x: 480, y: 370, z: 0}
+    m_Position: {x: 480, y: 410, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6197746296083354235}
     m_Position: {x: 480, y: 120, z: 0}
@@ -807,7 +807,7 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 200, y: 440, z: 0}
+  m_AnyStatePosition: {x: 210, y: 420, z: 0}
   m_EntryPosition: {x: 260, y: 50, z: 0}
   m_ExitPosition: {x: 770, y: 450, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
@@ -841,7 +841,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeleBoss_Stunned
+  m_Name: Stunned
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
