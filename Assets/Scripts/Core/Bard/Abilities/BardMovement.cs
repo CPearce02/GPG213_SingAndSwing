@@ -3,22 +3,24 @@ using Structs;
 using Events;
 using Core.Player;
 using System;
+using System.Linq.Expressions;
 
 public class BardMovement : MonoBehaviour
 {
     PlatformingController _knightController;
     public Transform followObj;
-    public float speed = 10f;
-    [Tooltip("1 for no friction, 2 for LOTS of friction.")][Range(1, 2)] [SerializeField] float friction = 1.5f;
-    public float followRange = 0.5f;
-    public float relocateSpeed = 15f, relocateRange = 3f;
-    private Rigidbody2D _rb;
-    float _distanceX, _distance;
+    public float speed = 1000f;
+    [Tooltip("1 for no slowdown, 2 for LOTS of friction.")][Range(1, 2)] [SerializeField] float slowdownSpeed = 1.5f;
+    public float followRange = 0.5f, maxRange = 3f;
+    Rigidbody2D _rb;
+    float _distance;
+    Vector2 _direction;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
+
 
     private void OnEnable()
     {
@@ -28,52 +30,41 @@ public class BardMovement : MonoBehaviour
     private void OnDisable()
     {
         GameEvents.onSendPlayerEvent -= SetPlayer;
-        _knightController.JumpEvent -= BardJump;
     }
 
     private void Update()
     {
-        _distance = Vector2.Distance(followObj.position, transform.position);
-        _distanceX = followObj.position.x - transform.position.x;
+        _distance = Vector2.Distance(transform.position, followObj.position);
+        _direction = (followObj.position - transform.position).normalized;
 
-        CheckRelocate();
+        SpeedLimitAdjuster();
     }
 
     private void FixedUpdate()
     {
-        MoveBard();
+        if (_distance > followRange || _distance < -followRange)
+        {
+            _rb.AddForce(_direction * speed * Time.fixedDeltaTime);
+        }
+        else _rb.velocity /= slowdownSpeed;
+
+        if (_distance > maxRange || _distance < -maxRange)
+        {
+            _rb.AddForce(_direction * speed * 5 * Time.fixedDeltaTime);
+        }
     }
 
-    void MoveBard()
+    void SpeedLimitAdjuster()
     {
-        if (_distanceX > followRange || _distanceX < -followRange)
-            _rb.AddForce(new Vector2(_distanceX * speed * Time.fixedDeltaTime, 0));
-        else _rb.velocity = new Vector2(_rb.velocity.x / friction, _rb.velocity.y);
+        if (_rb.velocity.x > _knightController.speedLimit) _rb.velocity = new Vector2(_knightController.speedLimit, _rb.velocity.y);
+        if (_rb.velocity.x < -_knightController.speedLimit) _rb.velocity = new Vector2(-_knightController.speedLimit, _rb.velocity.y);
 
-        //For the original rubber bandy movement, do "else if (_knightController.Grounded)", instead of the else seen here.
-    }
-
-    public void BardJump()
-    {
-        _rb.velocity = new Vector2(_rb.velocity.x, 0);
-        _rb.AddForce(transform.up * _knightController.JumpSpeed, ForceMode2D.Impulse);
-    }
-
-    void CheckRelocate()
-    {
-        if (_distance > relocateRange) RelocateBard();
-    }
-
-    void RelocateBard()
-    {
-        transform.position = followObj.position;
-        _rb.velocity = Vector2.zero;
+        if (_rb.velocity.y > _knightController.speedLimit) _rb.velocity = new Vector2(_rb.velocity.x, _knightController.speedLimit);
+        if (_rb.velocity.y < -_knightController.speedLimit) _rb.velocity = new Vector2(_rb.velocity.x, -_knightController.speedLimit);
     }
 
     private void SetPlayer(PlatformingController player)
     {
         _knightController = player;
-
-        _knightController.JumpEvent += BardJump;
     }
 }
