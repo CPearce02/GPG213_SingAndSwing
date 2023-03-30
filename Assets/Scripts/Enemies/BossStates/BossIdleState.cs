@@ -15,10 +15,11 @@ namespace Enemies.BossStates
 
         public void Execute(EnemyStateMachine enemy)
         {
+            //If player is within range 
             var hit = Physics2D.OverlapCircle(enemy.transform.position, enemy.enemyData.triggerRange, enemy.PlayerLayer);
             if (hit != null && hit.TryGetComponent(out PlatformingController player))
             {
-                //_enemy.ChangeState(new BossAimState());
+                _enemy.ChangeState(new BossAimState(player.transform));
             }
         }
 
