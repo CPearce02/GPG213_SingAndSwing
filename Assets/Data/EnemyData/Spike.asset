@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6445c4779c2bbd46b935640def41edc, type: 3}
   m_Name: Spike
   m_EditorClassIdentifier: 
-  enemyName: Skull
+  type: 0
+  enemyName: Spike
   moveSpeed: 3
   triggerRange: 8
   attackRange: 3

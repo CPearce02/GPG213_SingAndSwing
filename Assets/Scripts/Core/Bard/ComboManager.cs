@@ -181,9 +181,9 @@ namespace Core.Bard
         private void SetCurrentEnemy(Enemy _enemyComponent)
         {
             //Set the enemy data
+            if (_enemyComponent.enemyData == null) return;
             currentEnemy = _enemyComponent;
             _noArmour = false;
-            if (_enemyComponent.enemyData == null) return;
             currentCombo = currentEnemy.enemyData.Combo;
             expectedNote = currentCombo.ComboValues[0];
 
