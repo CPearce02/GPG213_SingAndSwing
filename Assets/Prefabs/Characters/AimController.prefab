@@ -194,6 +194,8 @@ MonoBehaviour:
   _endSingingVoice: {fileID: 8300000, guid: 1a2dc8b4bbe09e94095294db3402557e, type: 3}
   rotationSpeed: 10
   cursor: {fileID: 8712202377766178483}
+  _maxMana: 50
+  _currentMana: 0
 --- !u!82 &2946323982208781612
 AudioSource:
   m_ObjectHideFlags: 0

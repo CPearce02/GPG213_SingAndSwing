@@ -33,10 +33,18 @@ namespace Core.Bard
                 var normalisedMana = Mana / (float)_maxMana;
                 GameEvents.onPlayerManaUIChangeEvent?.Invoke(normalisedMana);
 
-                if (_currentMana == 0)
+                if (_currentMana > 5)
+                {
+                    if(!_bardInput.inputIsActive)
+                    {
+                        //Reactivate input controls when mana is available
+                        _bardInput.ActivateInput();
+                    }
+                }
+                else if (_currentMana == 0)
                 {
                     // Stop singing
-                    
+                    _bardInput.DeactivateInput();
                     //Debug.Log("No more mana");
                 }
             }

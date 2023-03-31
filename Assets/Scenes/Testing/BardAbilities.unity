@@ -1099,10 +1099,6 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7739237648701342661, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
-      propertyPath: _maxTimer
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 8162570258018312774, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
       propertyPath: m_Layer
       value: 2
@@ -1175,10 +1171,6 @@ PrefabInstance:
       propertyPath: bard
       value: 
       objectReference: {fileID: 1792980372}
-    - target: {fileID: 8693929486551417900, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
-      propertyPath: _maxMana
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 8693929486551417900, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
       propertyPath: _bardInput
       value: 

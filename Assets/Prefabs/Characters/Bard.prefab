@@ -178,10 +178,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c144c673057bbea48b932c49b3673b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _singleplayer: 1
   slowMotionTimeScale: 0.1
-  _maxMana: 25
-  _currentMana: 0
+  _maxTimer: 25
+  _currentTimeRemaining: 0
 --- !u!114 &1377113673846175409
 MonoBehaviour:
   m_ObjectHideFlags: 0
