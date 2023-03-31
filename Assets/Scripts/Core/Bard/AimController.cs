@@ -1,3 +1,4 @@
+using System.Collections;
 using Events;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -20,9 +21,35 @@ namespace Core.Bard
         private Vector3 _cursorPosition;
         private GameObject _Radius;
 
+        [Header("Mana")]
+        [SerializeField] private int _maxMana;
+        [SerializeField][ReadOnly] private int _currentMana;
+        public int Mana
+        {
+            get => _currentMana;
+            private set
+            {
+                _currentMana = Mathf.Clamp(value, 0, _maxMana);
+                var normalisedMana = Mana / (float)_maxMana;
+                GameEvents.onPlayerManaUIChangeEvent?.Invoke(normalisedMana);
+
+                if (_currentMana == 0)
+                {
+                    // Stop singing
+                    
+                    //Debug.Log("No more mana");
+                }
+            }
+        }
+
         void Start()
         {
+            //Set Mana
+            Mana = _maxMana;
+            //Set Cursor
             cursor = GameObject.Find("CursorToWorld");
+
+            //Assign 
             _au = GetComponent<AudioSource>();
             _Radius = GameObject.Find("Radius");
             _bardInput = GetComponentInParent<PlayerInput>();
@@ -84,6 +111,7 @@ namespace Core.Bard
             _au.loop = true;
             PlayAudio(_singingVoice);
             _isSinging = true;
+            StartCoroutine("DecreaseMana");
         }
 
         private void EndSinging()
@@ -91,11 +119,29 @@ namespace Core.Bard
             _au.loop = false;
             PlayAudio(_endSingingVoice);
             _isSinging = false;
+            StartCoroutine("IncreaseMana");
         }
-        //void SetBardInput()
-        //{
 
-        //}
+        IEnumerator DecreaseMana()
+        {
+            StopCoroutine("IncreaseMana");
+            while (_currentMana > 0)
+            {
+                Mana -= 1;
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+
+        IEnumerator IncreaseMana()
+        {
+            StopCoroutine("DecreaseMana");
+            yield return new WaitForSeconds(0.5f);
+            while (_currentMana != _maxMana)
+            {
+                Mana += 1;
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
     }
 }
 

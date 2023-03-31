@@ -8,27 +8,26 @@ namespace Core.Bard
     public class SlowMoController : MonoBehaviour
     {
         private PlayerInput _bardInput;
-        [SerializeField] private bool _singleplayer;
 
         [SerializeField] private float slowMotionTimeScale;
         private float _startTimeScale;
         private float _startFixedDeltaTime;
 
-        [SerializeField] private int _maxMana;
-        [SerializeField] [ReadOnly] private int _currentMana;
+        [SerializeField] private int _maxTimer;
+        [SerializeField] [ReadOnly] private int _currentTimeRemaining;
 
-        public int Mana
+        public int Timer
         {
-            get => _currentMana;
+            get => _currentTimeRemaining;
             private set
             {
-                _currentMana = Mathf.Clamp(value, 0, _maxMana);
-                var normalisedMana = Mana / (float)_maxMana;
-                GameEvents.onPlayerManaUIChangeEvent?.Invoke(normalisedMana);
+                _currentTimeRemaining = Mathf.Clamp(value, 0, _maxTimer);
+                var normalisedTimer = Timer / (float)_maxTimer;
+                GameEvents.onPlayerTimerUIChangeEvent?.Invoke(normalisedTimer);
 
-                if (_currentMana == 0)
+                if (_currentTimeRemaining == 0)
                 {
-                    ResetTime();
+                    SetOriginalTime();
                     //Debug.Log("No more mana");
                 }
             }
@@ -40,50 +39,54 @@ namespace Core.Bard
             _startTimeScale = Time.timeScale;
             _startFixedDeltaTime = Time.fixedDeltaTime;
             //Set Mana
-            Mana = _maxMana;
+            Timer = _maxTimer;
             //Set Bard Input
             _bardInput = GetComponent<PlayerInput>();
-            if (!_singleplayer) return;
             _bardInput.actions["SlowDownButton"].performed += ctx => SlowDownTime();
-            _bardInput.actions["SlowDownButton"].canceled += ctx => ResetMana();
+            _bardInput.actions["SlowDownButton"].canceled += ctx => ResetTimer();
         }
 
         private void SlowDownTime()
         {
             Time.timeScale = slowMotionTimeScale;
             Time.fixedDeltaTime = _startFixedDeltaTime * slowMotionTimeScale;
-            StartCoroutine("DecreaseMana");
+            StartCoroutine("DecreaseTime");
+
+            //visually change screen - increase chrome 
         }
 
-        private void ResetTime()
+        private void SetOriginalTime()
         {
             Time.timeScale = _startTimeScale;
             Time.fixedDeltaTime = _startFixedDeltaTime;
+
+            //visually change screen - reset chrome 
+
         }
 
-        private void ResetMana()
+        private void ResetTimer()
         {
-            ResetTime();
-            StartCoroutine("IncreaseMana");
+            SetOriginalTime();
+            StartCoroutine("IncreaseTime");
         }
 
-        IEnumerator DecreaseMana()
+        IEnumerator DecreaseTime()
         {
-            StopCoroutine("IncreaseMana");
-            while (_currentMana > 0)
+            StopCoroutine("IncreaseTime");
+            while (_currentTimeRemaining > 0)
             {
-                Mana -= 1;
+                Timer -= 1;
                 yield return new WaitForSeconds(0.01f);
             }
         }
 
-        IEnumerator IncreaseMana()
+        IEnumerator IncreaseTime()
         {
-            StopCoroutine("DecreaseMana");
+            StopCoroutine("DecreaseTime");
             yield return new WaitForSeconds(0.5f);
-            while(_currentMana != _maxMana)
+            while(_currentTimeRemaining != _maxTimer)
             {
-                Mana += 1;
+                Timer += 1;
                 yield return new WaitForSeconds(0.1f);
             }
         }

@@ -19,6 +19,7 @@ namespace Core.Bard
         private void MoveNote()
         {
             transform.Translate(Vector2.left * _speed * Time.deltaTime);
+            //DOTWEEN
         }
     }
 }

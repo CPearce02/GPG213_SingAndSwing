@@ -60,7 +60,7 @@ namespace Core.Bard
 
         private void Update()
         {
-            //Don't display combo UI if can be destroyed
+            //Don't display combo UI if can be destroyed - UPDATE TO TURN ON UI WHEN ENEMY NEAR BY - TURN OFF WHEN ENEMY NOT WITHIN RANGE?
             if (_enemy.CanBeDestroyed)
             {
                 gameObject.SetActive(false);

@@ -187,7 +187,7 @@ namespace Core.Bard
             currentCombo = currentEnemy.enemyData.Combo;
             expectedNote = currentCombo.ComboValues[0];
 
-            //Set the spawn position for the notes
+            //Set the spawn position for the notes - UPDATE - SPAWN AT UI PIVOT POINTS 
             if (_spawnPosition != null) return;
             _spawnPosition = currentEnemy.gameObject.GetComponentInChildren<ComboUIController>().spawnPosition;
             _endPosition = currentEnemy.gameObject.GetComponentInChildren<ComboUIController>().endPosition;
