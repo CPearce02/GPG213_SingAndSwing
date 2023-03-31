@@ -42,14 +42,14 @@ public class MovingToBeat : MonoBehaviour
     {
         if(_moved)
         {
-            _rb.DOMove(movePos.position, moveTime);
+            _rb.DOMove(movePos.position, moveTime).SetUpdate(UpdateType.Fixed);
             _moved = false;
             return;
         }
 
         if(!_moved)
         {
-            _rb.DOMove(_initialPos, moveTime);
+            _rb.DOMove(_initialPos, moveTime).SetUpdate(UpdateType.Fixed);
             _moved = true;
             return;
         }
