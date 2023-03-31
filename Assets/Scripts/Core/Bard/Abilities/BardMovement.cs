@@ -56,8 +56,6 @@ public class BardMovement : MonoBehaviour
 
     void SpeedLimitAdjuster()
     {
-        if (_distance >= maxRange || _distance <= -maxRange) return;
-
         if (_rb.velocity.x > _knightController.speedLimit) _rb.velocity = new Vector2(_knightController.speedLimit, _rb.velocity.y);
         if (_rb.velocity.x < -_knightController.speedLimit) _rb.velocity = new Vector2(-_knightController.speedLimit, _rb.velocity.y);
 
