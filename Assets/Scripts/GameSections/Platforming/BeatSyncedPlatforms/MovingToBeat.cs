@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using static UnityEditor.Experimental.GraphView.GraphView;
+using Core.Player;
 
 [RequireComponent(typeof(BeatListener))] [RequireComponent(typeof(Rigidbody2D))]
 public class MovingToBeat : MonoBehaviour
@@ -12,6 +14,7 @@ public class MovingToBeat : MonoBehaviour
     [SerializeField] float moveTime = 0.2f;
     BeatListener beatListener;
     bool _moved;
+    FixedJoint2D joint;
 
     private void OnValidate()
     {
