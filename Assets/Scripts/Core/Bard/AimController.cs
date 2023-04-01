@@ -61,23 +61,25 @@ namespace Core.Bard
             _au = GetComponent<AudioSource>();
             _Radius = GameObject.Find("Radius");
             _bardInput = GetComponentInParent<PlayerInput>();
-            _bardInput.actions["Aim"].performed += ctx => StartSinging();
-            _bardInput.actions["Aim"].canceled += ctx => EndSinging();
+         
         }
 
         private void OnEnable()
         {
             GameEvents.onAimStart += AimTowards;
+            _bardInput.actions["Aim"].performed += StartSinging;
+            _bardInput.actions["Aim"].canceled +=  EndSinging;
         }
 
         private void OnDisable()
         {
             GameEvents.onAimStart -= AimTowards;
+            _bardInput.actions["Aim"].performed -= StartSinging;
+            _bardInput.actions["Aim"].canceled -=  EndSinging;
         }
 
         private void AimTowards(Vector2 direction)
         {
-            //cursorPosition = new Vector3(_bardInput.actions["Aim"].ReadValue<Vector2>().x, _bardInput.actions["Aim"].ReadValue<Vector2>().y, 10);
             _cursorPosition = new Vector3(direction.x, direction.y, 0);
         }
 
@@ -113,7 +115,7 @@ namespace Core.Bard
             _au.Play();
         }
 
-        private void StartSinging()
+        private void StartSinging(InputAction.CallbackContext ctx)
         {
             if(_isSinging) return ;
             _au.loop = true;
@@ -122,7 +124,7 @@ namespace Core.Bard
             StartCoroutine("DecreaseMana");
         }
 
-        private void EndSinging()
+        private void EndSinging(InputAction.CallbackContext ctx)
         {
             _au.loop = false;
             PlayAudio(_endSingingVoice);
