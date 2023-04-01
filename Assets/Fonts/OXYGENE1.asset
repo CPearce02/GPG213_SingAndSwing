@@ -57,9 +57,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: OXYGENE1
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: -542371274
   material: {fileID: -5090442402603522692}
-  materialHashCode: 0
+  materialHashCode: -498391722
   m_Version: 1.1.0
   m_SourceFontFileGUID: 493da7b87619edc47ab8097115848944
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 493da7b87619edc47ab8097115848944, type: 3}
