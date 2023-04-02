@@ -424,8 +424,8 @@ MonoBehaviour:
     <Color>k__BackingField: {r: 0.61960787, g: 0.35686275, b: 0.33333334, a: 1}
   shakeOnAttack:
     strength: 0
-    duration: 0
-    doShake: 0
+    duration: 0.1
+    doShake: 1
 --- !u!114 &630065929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,11 +515,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8561150750363626587, guid: 6e61b2e906b49b7498d1de4b58fa69ec, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00032399452
+      value: -0.00032391897
       objectReference: {fileID: 0}
     - target: {fileID: 8561150750363626587, guid: 6e61b2e906b49b7498d1de4b58fa69ec, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 5.574774e-12
+      value: 5.5734744e-12
       objectReference: {fileID: 0}
     - target: {fileID: 8561150750363626587, guid: 6e61b2e906b49b7498d1de4b58fa69ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
