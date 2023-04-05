@@ -15,7 +15,7 @@ namespace Animation
 
         Rigidbody2D _rb;
         SpriteRenderer _bardSprite;
-        [FormerlySerializedAs("_animator")] [SerializeField] Animator animator;
+        [SerializeField] Animator animator;
         BardController _bardController;
 
         Vector2 _lastPos;
@@ -109,7 +109,8 @@ namespace Animation
 
         void SetJump(InputAction.CallbackContext context)
         {
-            if (_bardController.Grounded && context.performed) animator.SetTrigger(Jump);
+            if (animator != null) 
+                if (_bardController.Grounded && context.performed) animator.SetTrigger(Jump);
         }
     }
 }

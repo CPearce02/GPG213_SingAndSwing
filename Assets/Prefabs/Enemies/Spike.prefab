@@ -51,6 +51,7 @@ MonoBehaviour:
   enemyData: {fileID: 0}
   damage: 100
   canBeDestroyed: 0
+  doesDamageOnCollision: 1
   takeDamageParticle:
     <Transform>k__BackingField: {fileID: 472631743756809981}
     <Particle>k__BackingField: {fileID: 4862367670183223577, guid: fe93907a5421d26418ebe2281cc25bcf, type: 3}
@@ -242,7 +243,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1294640716966835280}
-  - component: {fileID: 2053342129846252243}
   m_Layer: 0
   m_Name: ComboUI
   m_TagString: Untagged
@@ -269,24 +269,6 @@ Transform:
   m_Father: {fileID: 472631743756809981}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2053342129846252243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4855071208304829631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 505c614900bd56340809670b5ce1f40c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPositions:
-  - {fileID: 4604740345652573825}
-  - {fileID: 9204573160001961915}
-  - {fileID: 8792789383371792177}
-  - {fileID: 2201413325542434944}
-  spawnedNotes: []
 --- !u!1 &6419419685866830075
 GameObject:
   m_ObjectHideFlags: 0

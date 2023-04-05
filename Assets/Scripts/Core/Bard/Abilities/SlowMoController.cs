@@ -41,12 +41,23 @@ namespace Core.Bard
             //Set Mana
             Timer = _maxTimer;
             //Set Bard Input
-            _bardInput = GetComponent<PlayerInput>();
-            _bardInput.actions["SlowDownButton"].performed += ctx => SlowDownTime();
-            _bardInput.actions["SlowDownButton"].canceled += ctx => ResetTimer();
         }
 
-        private void SlowDownTime()
+        private void OnEnable()
+        {
+            _bardInput = GetComponent<PlayerInput>();
+
+            _bardInput.actions["SlowDownButton"].performed += SlowDownTime;
+            _bardInput.actions["SlowDownButton"].canceled += ResetTimer;
+        }
+
+        private void OnDisable()
+        {
+            _bardInput.actions["SlowDownButton"].performed -= SlowDownTime;
+            _bardInput.actions["SlowDownButton"].canceled -= ResetTimer;
+        }
+
+        private void SlowDownTime(InputAction.CallbackContext callbackContext)
         {
             Time.timeScale = slowMotionTimeScale;
             Time.fixedDeltaTime = _startFixedDeltaTime * slowMotionTimeScale;
@@ -64,7 +75,7 @@ namespace Core.Bard
 
         }
 
-        private void ResetTimer()
+        private void ResetTimer(InputAction.CallbackContext callbackContext)
         {
             SetOriginalTime();
             StartCoroutine("IncreaseTime");
