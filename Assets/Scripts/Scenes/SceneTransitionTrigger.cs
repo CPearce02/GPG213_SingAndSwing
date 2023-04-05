@@ -2,7 +2,6 @@ using Events;
 using UnityEngine;
 using Animation;
 using Core.Player;
-using GameSections.Platforming;
 
 namespace Scenes
 {

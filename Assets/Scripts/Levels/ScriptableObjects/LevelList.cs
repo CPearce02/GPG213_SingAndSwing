@@ -19,7 +19,6 @@ namespace Levels.ScriptableObjects
             {
                 levels = value;
 
-                // This may or maynot be helpful or work, it's just so that we can see the names of the levels in the inspector
                 for (int i = 0; i < value.Count; i++)
                 {
                     SetLevelName(i, value[i].LevelName);
@@ -41,6 +40,8 @@ namespace Levels.ScriptableObjects
         public LevelData GetLevel(string levelName) => levels.Find(l => l.LevelName == levelName);
 
         public LevelData GetNextLevel() => levels[levels.IndexOf(CurrentLevel) + 1];
+        
+        public bool IsLastLevel() => levels.IndexOf(CurrentLevel) == levels.Count - 1;
 
         public LevelData GetCurrentLevel() => CurrentLevel;
 
@@ -62,7 +63,7 @@ namespace Levels.ScriptableObjects
 
 #if UNITY_EDITOR
 
-        List<LevelData> GetLevels()
+        List<LevelData> GetAllLevels()
         {
             List<LevelData> findAllLevels = AssetDatabase.FindAssets("t:LevelData")
                 .Select(AssetDatabase.GUIDToAssetPath)
@@ -75,7 +76,7 @@ namespace Levels.ScriptableObjects
         [ContextMenu("Update Levels")]
         void UpdateLevels()
         {
-            Levels = GetLevels();
+            Levels = GetAllLevels();
         }
 #endif
 

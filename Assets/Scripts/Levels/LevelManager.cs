@@ -22,7 +22,15 @@ namespace Levels
         private void Start()
         {
             currentSection = level.LevelSections.Find(s => s.Scene == SceneManager.GetActiveScene().name);
-            nextLevel = levels.GetNextLevel();
+
+            CheckLastLevel();
+        }
+
+        private void CheckLastLevel()
+        {
+            if (!levels.IsLastLevel())
+                nextLevel = levels.GetNextLevel();
+            else nextLevel = null;
         }
 
         private void OnEnable()
@@ -35,11 +43,12 @@ namespace Levels
             GameEvents.onLevelLoadEvent -= LoadLevel;
             levels.Reset();
         }
+        
 
         private void LoadLevel()
         {
             // if the section is the last section in the level then load the next level
-            if (currentSection == level.LevelSections[level.LevelSections.Count - 1])
+            if (level.IsLastSection())
             {
                 SceneManager.LoadScene(nextLevel.LevelSections[0].Scene);
             }

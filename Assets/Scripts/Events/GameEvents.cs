@@ -24,8 +24,11 @@ namespace Events
         #region Utility Events
         public delegate void RequestPlayer();
         public delegate void SendPlayer(PlatformingController player);
+        public delegate void SendFollowObject(Transform transform);
+        
         public static RequestPlayer onRequestPlayerEvent;
         public static SendPlayer onSendPlayerEvent;
+        public static SendFollowObject onSendFollowObjectEvent;
         #endregion
 
         #region Music Events

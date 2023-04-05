@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6501268906475180871}
-  - component: {fileID: 6318751173674931652}
   m_Layer: 8
   m_Name: ComboUI
   m_TagString: Untagged
@@ -36,24 +35,6 @@ Transform:
   m_Father: {fileID: 5566864129859047914}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6318751173674931652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 625706731540972456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 505c614900bd56340809670b5ce1f40c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPositions:
-  - {fileID: 8370234086566498710}
-  - {fileID: 3779487631930071212}
-  - {fileID: 3587145848437209126}
-  - {fileID: 6143653981561999255}
-  spawnedNotes: []
 --- !u!1 &677592851219111251
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +459,7 @@ MonoBehaviour:
   enemyData: {fileID: 0}
   damage: 100
   canBeDestroyed: 1
+  doesDamageOnCollision: 1
   takeDamageParticle:
     <Transform>k__BackingField: {fileID: 5566864129859047914}
     <Particle>k__BackingField: {fileID: 4862367670183223577, guid: fe93907a5421d26418ebe2281cc25bcf, type: 3}
@@ -501,6 +483,7 @@ MonoBehaviour:
   bounceMaterial: {fileID: 6200000, guid: d374b8edcf4dc524996cdc968feefe14, type: 2}
   aimAtPlayer: 0
   countingDownShoot: 0
+  disableUpdate: 0
   fireRate: 1
   bulletSpeed: 5
   homingTime: 3

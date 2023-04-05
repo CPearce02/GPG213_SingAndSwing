@@ -45,32 +45,30 @@ namespace Levels.ScriptableObjects
 
         private void SetCurrentSection(SectionData section = null)
         {
-            if (currentSection == null)
-            {
-                CurrentSection = FindCurrentSection();
-            }
-            else if (section != FindCurrentSection())
-            {
-                CurrentSection = FindCurrentSection();
-            }
-            else
+            if (section != null)
             {
                 CurrentSection = section;
             }
-
+            else 
+            {
+                CurrentSection = FindCurrentSection();
+            }
+            
             SetNextSection();
         }
 
         void SetNextSection()
         {
-            if (LevelSections.IndexOf(CurrentSection) + 1 > LevelSections.Count - 1)
+            if (IsLastSection())
             {
                 NextSection = null;
-                Debug.LogError("No more sections");
+                Debug.Log("No more sections");
                 return;
             }
-            nextSection = LevelSections[LevelSections.IndexOf(CurrentSection) + 1];
+            NextSection = LevelSections[LevelSections.IndexOf(CurrentSection) + 1];
         }
+        
+        public bool IsLastSection() => currentSection == LevelSections[^1];
 
         SectionData FindCurrentSection() => LevelSections.Find(l => l.Scene == SceneManager.GetActiveScene().name);
 
