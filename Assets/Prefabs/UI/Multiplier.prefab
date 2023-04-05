@@ -5092,17 +5092,17 @@ MonoBehaviour:
   - strength: 1
     duration: 0.5
     doShake: 1
-  - strength: 0
+  - strength: 2
     duration: 0.75
     doShake: 1
-  - strength: 0
+  - strength: 2
     duration: 1
     doShake: 1
-  - strength: 0
+  - strength: 2
     duration: 1.25
     doShake: 1
-  - strength: 3
-    duration: 1
+  - strength: 4
+    duration: 2
     doShake: 1
 --- !u!223 &7552741890631450359
 Canvas:
