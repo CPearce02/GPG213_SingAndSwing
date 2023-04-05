@@ -24,6 +24,9 @@ namespace Core.Bard
         [Header("Mana")]
         [SerializeField] private int _maxMana;
         [SerializeField][ReadOnly] private int _currentMana;
+
+        private float _increaseManaSpeed = 0.1f;
+        private float _decreaseManaSpeed;
         public int Mana
         {
             get => _currentMana;
@@ -35,16 +38,17 @@ namespace Core.Bard
 
                 if (_currentMana > 5)
                 {
-                    if(!_bardInput.inputIsActive)
+                    if(!_bardInput.actions["Aim"].enabled)
                     {
                         //Reactivate input controls when mana is available
-                        _bardInput.ActivateInput();
+                        _bardInput.actions["Aim"].Enable();
+
                     }
                 }
                 else if (_currentMana == 0)
                 {
                     // Stop singing
-                    _bardInput.DeactivateInput();
+                    _bardInput.actions["Aim"].Disable();
                     //Debug.Log("No more mana");
                 }
             }
@@ -60,8 +64,7 @@ namespace Core.Bard
             //Assign 
             _au = GetComponent<AudioSource>();
             _Radius = GameObject.Find("Radius");
-            _bardInput = GetComponentInParent<PlayerInput>();
-         
+            _bardInput = GetComponentInParent<PlayerInput>();         
         }
 
         private void OnEnable()
@@ -69,6 +72,8 @@ namespace Core.Bard
             GameEvents.onAimStart += AimTowards;
             _bardInput.actions["Aim"].performed += StartSinging;
             _bardInput.actions["Aim"].canceled +=  EndSinging;
+            _bardInput.actions["SlowDownButton"].performed += ctx => _increaseManaSpeed = 0.01f;
+            _bardInput.actions["SlowDownButton"].canceled += ctx => _increaseManaSpeed = 0.1f;
         }
 
         private void OnDisable()
@@ -76,6 +81,8 @@ namespace Core.Bard
             GameEvents.onAimStart -= AimTowards;
             _bardInput.actions["Aim"].performed -= StartSinging;
             _bardInput.actions["Aim"].canceled -=  EndSinging;
+            _bardInput.actions["SlowDownButton"].performed -= ctx => _increaseManaSpeed = 0.01f;
+            _bardInput.actions["SlowDownButton"].canceled -= ctx => _increaseManaSpeed = 0.1f;
         }
 
         private void AimTowards(Vector2 direction)
@@ -149,7 +156,7 @@ namespace Core.Bard
             while (_currentMana != _maxMana)
             {
                 Mana += 1;
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(_increaseManaSpeed);
             }
         }
     }

@@ -46,6 +46,8 @@ namespace Core.Bard
             _bardInput.actions["SlowDownButton"].canceled += ctx => ResetTimer();
         }
 
+
+
         private void SlowDownTime()
         {
             Time.timeScale = slowMotionTimeScale;
