@@ -38,8 +38,17 @@ namespace Levels
 
         private void LoadLevel()
         {
-            SceneManager.LoadScene(level.NextSection.Scene);
-            level.Step();
+            // if the section is the last section in the level then load the next level
+            if (currentSection == level.LevelSections[level.LevelSections.Count - 1])
+            {
+                SceneManager.LoadScene(nextLevel.LevelSections[0].Scene);
+            }
+            else
+            {
+                SceneManager.LoadScene(level.NextSection.Scene);
+                level.Step();
+            }
+           
         }
     }
 }

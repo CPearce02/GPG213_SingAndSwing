@@ -49,7 +49,11 @@ namespace Levels.ScriptableObjects
             {
                 CurrentSection = FindCurrentSection();
             }
-            else if (section != null)
+            else if (section != FindCurrentSection())
+            {
+                CurrentSection = FindCurrentSection();
+            }
+            else
             {
                 CurrentSection = section;
             }

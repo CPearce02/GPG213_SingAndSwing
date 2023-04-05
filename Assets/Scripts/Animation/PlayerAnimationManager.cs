@@ -95,5 +95,7 @@ namespace Animation
             _animator.SetBool(Dead, healthManager.Dead);
             if (healthManager.Dead) _animator.CrossFade(DeathAnim, 0, 0);
         }
+        
+        public Animator GetAnimator() => _animator;
     }
 }
