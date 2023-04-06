@@ -3,7 +3,6 @@ using Core.Player;
 using Events;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace Animation
 {
@@ -45,16 +44,6 @@ namespace Animation
             bardInput.actions["Aim"].performed += SetSinging;
             bardInput.actions["Aim"].canceled += EndSinging;
         }
-
-        private void EndSinging(InputAction.CallbackContext context)
-        {
-            animator.SetBool(IsSinging, false);
-        }
-
-        private void SetSinging(InputAction.CallbackContext context)
-        {
-            if (context.performed) animator.SetBool(IsSinging, true);
-        }
         
         private void OnDisable()
         {
@@ -64,6 +53,16 @@ namespace Animation
             
             bardInput.actions["Aim"].performed -= SetSinging;
             bardInput.actions["Aim"].canceled -= EndSinging;
+        }
+
+        private void EndSinging(InputAction.CallbackContext context)
+        {
+            animator.SetBool(IsSinging, false);
+        }
+
+        private void SetSinging(InputAction.CallbackContext context)
+        {
+            if (context.performed) animator.SetBool(IsSinging, true);
         }
 
         private void SetPlayer(PlatformingController player)
@@ -82,8 +81,20 @@ namespace Animation
             animator.SetBool(Grounded, _bardController.Grounded);
         }
 
-        private void LateUpdate()
+        private void FixedUpdate()
         {
+            if (playerInput)
+            {
+                if (!_bardController.Grounded)
+                {
+                    _rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+                }
+                else 
+                {
+                    _rb.interpolation = RigidbodyInterpolation2D.None;
+                }
+            }
+                
             _lastPos = transform.position;
         }
 
@@ -109,8 +120,10 @@ namespace Animation
 
         void SetJump(InputAction.CallbackContext context)
         {
-            if (animator != null) 
+            if (animator != null)
+            {
                 if (_bardController.Grounded && context.performed) animator.SetTrigger(Jump);
+            }
         }
     }
 }

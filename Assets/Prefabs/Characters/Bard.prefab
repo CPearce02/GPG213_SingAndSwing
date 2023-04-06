@@ -85,13 +85,13 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.2
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: eed9512ce8d924546aa3cc7291b1a0f1, type: 2}
   m_Interpolate: 2
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!61 &8162570258677425976
 BoxCollider2D:
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheckTransform: {fileID: 4842891636118993682}
-  groundCheckSize: {x: 0.42, y: 0.05}
+  groundCheckSize: {x: 1, y: -0.05}
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 68

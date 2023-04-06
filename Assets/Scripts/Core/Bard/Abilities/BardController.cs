@@ -50,9 +50,9 @@ namespace Core.Bard.Abilities
         {
             GameEvents.onSlowDownStart?.Invoke();
         }
-        void GroundCheck() => Grounded = Physics2D.BoxCast(groundCheckTransform.position, groundCheckSize, 0f, Vector2.down, 0.1f, ~ignoreLayers);
+        void GroundCheck() => Grounded = Physics2D.CircleCast(groundCheckTransform.position, groundCheckSize.x, Vector2.down, groundCheckSize.y, ~ignoreLayers);
 
-        private void OnDrawGizmosSelected() => Gizmos.DrawWireCube(groundCheckTransform.position, groundCheckSize);
+        private void OnDrawGizmosSelected() => Gizmos.DrawWireSphere(groundCheckTransform.position + new Vector3(0, groundCheckSize.y, 0), groundCheckSize.x);
 
     }
 }

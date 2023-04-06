@@ -51,13 +51,13 @@ namespace Core.Bard.Abilities
         {
             if (_distance > followRange || _distance < -followRange)
             {
-                _rb.AddForce(_direction * speed * Time.fixedDeltaTime);
+                _rb.AddForce(_direction * (speed * Time.fixedDeltaTime));
             }
             else _rb.velocity /= slowdownSpeed;
 
             if (_distance > maxRange || _distance < -maxRange)
             {
-                _rb.AddForce(_direction * speed * 5 * Time.fixedDeltaTime);
+                _rb.AddForce(_direction * (speed * 5 * Time.fixedDeltaTime));
             }
         }
 
