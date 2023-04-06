@@ -10,7 +10,7 @@ namespace Scenes
 {
     public class TransitionController : MonoBehaviour
     {
-        [SerializeField] private LevelData level;
+        // [SerializeField] private LevelData level;
         [SerializeField] TransitionData transitionData;
         [ReadOnly][SerializeField] private Image sprite;
         
