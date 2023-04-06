@@ -1,8 +1,7 @@
 using Core.Player;
-using Events;
 using UnityEngine;
 
-namespace Core
+namespace Events
 {
     public class PlayerSendController : MonoBehaviour
     {
