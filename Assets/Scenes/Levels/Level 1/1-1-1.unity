@@ -13906,38 +13906,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2714224322660409396, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
-      propertyPath: m_LookaheadTime
-      value: 0.355
-      objectReference: {fileID: 0}
-    - target: {fileID: 2714224322660409396, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
-      propertyPath: m_VerticalDamping
-      value: 5.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2714224322660409396, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
-      propertyPath: m_LookaheadSmoothing
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2714224322660409396, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
-      propertyPath: m_TrackedObjectOffset.y
-      value: -0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 6009364978027588876, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
-      propertyPath: m_YDamping
-      value: 1.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 6009364978798124480, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
-      propertyPath: m_Lens.ModeOverride
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6009364978798124481, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.99971247
-      objectReference: {fileID: 0}
-    - target: {fileID: 6009364978798124481, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.023979297
-      objectReference: {fileID: 0}
     - target: {fileID: 6419258818573561545, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: m_RootOrder
       value: 4
