@@ -1,79 +1,81 @@
 using Core.Player;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-[RequireComponent(typeof(BeatListener))]
-public class OnOffPlatform : MonoBehaviour
+namespace GameSections.Platforming.BeatSyncedPlatforms
 {
-    Color _onColor;
-    [SerializeField] Color offColor = Color.grey;
-    Collider2D _coll;
-    SpriteRenderer _spriteRenderer;
-    bool _toggled = false;
-    bool _collidingWithPlayer = false;
-    int _initialLayer;
-
-    private void Start()
+    [RequireComponent(typeof(BeatListener))]
+    public class OnOffPlatform : MonoBehaviour
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _coll = GetComponent<Collider2D>();
+        [FormerlySerializedAs("_onColor")] [SerializeField] Color onColor;
+        [SerializeField] Color offColor = Color.grey;
+        Collider2D _collider;
+        SpriteRenderer _spriteRenderer;
+        bool _toggled = false;
+        bool _collidingWithPlayer = false;
+        int _initialLayer;
 
-        _onColor = _spriteRenderer.color;
-
-        _initialLayer = gameObject.layer;
-    }
-
-    public void TogglePlatform()
-    {
-        //Toggle off
-        if(_toggled)
+        private void Start()
         {
-            DisablePlatform();
-            _toggled = false;
-            return;
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _collider = GetComponent<Collider2D>();
+
+            onColor = _spriteRenderer.color;
+
+            _initialLayer = gameObject.layer;
         }
 
-        //Toggle on
-        if (!_toggled)
+        public void TogglePlatform()
         {
-            EnablePlatform();
-            _toggled = true;
-            return;
-        }
-    }
+            //Toggle off
+            if(_toggled)
+            {
+                DisablePlatform();
+                _toggled = false;
+                return;
+            }
 
-    void EnablePlatform()
-    {
-        if (!_collidingWithPlayer)
+            //Toggle on
+            if (!_toggled)
+            {
+                EnablePlatform();
+                _toggled = true;
+                return;
+            }
+        }
+
+        void EnablePlatform()
         {
-            if (_coll != null) _coll.enabled = true;
-            if (_coll != null) _coll.isTrigger = false;
-            gameObject.layer = _initialLayer;
+            if (!_collidingWithPlayer)
+            {
+                if (_collider != null) _collider.enabled = true;
+                if (_collider != null) _collider.isTrigger = false;
+                gameObject.layer = _initialLayer;
+            }
+
+            if (_spriteRenderer != null) _spriteRenderer.color = onColor;
         }
 
-        if (_spriteRenderer != null) _spriteRenderer.color = _onColor;
-    }
+        void DisablePlatform()
+        {
+            if (_collider != null) _collider.enabled = false;
+            if (_collider != null) _collider.isTrigger = true;
+            if (_collider != null) _collider.enabled = true;
 
-    void DisablePlatform()
-    {
-        if (_coll != null) _coll.enabled = false;
-        if (_coll != null) _coll.isTrigger = true;
-        if (_coll != null) _coll.enabled = true;
+            gameObject.layer = 2;
 
-        gameObject.layer = 2;
+            if (_spriteRenderer != null) _spriteRenderer.color = offColor;
+        }
 
-        if (_spriteRenderer != null) _spriteRenderer.color = offColor;
-    }
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            collision.transform.TryGetComponent(out PlatformingController player);
+            if (player) _collidingWithPlayer = true;
+        }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        collision.transform.TryGetComponent(out PlatformingController player);
-        if (player) _collidingWithPlayer = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        _collidingWithPlayer = false;
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            _collidingWithPlayer = false;
+        }
     }
 }
