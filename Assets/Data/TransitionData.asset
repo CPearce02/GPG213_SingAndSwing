@@ -13,12 +13,26 @@ MonoBehaviour:
   m_Name: TransitionData
   m_EditorClassIdentifier: 
   nextTransitionState: 1
-  color: {r: 0.89411765, g: 0.29411766, b: 0.20784314, a: 1}
+  color: {r: 0.24313726, g: 0.21568628, b: 0.3019608, a: 1}
   isTransitioning: 0
-  transitionImage: {fileID: 21300000, guid: 5cd04c33c55cac446ad437f12ad50698, type: 3}
+  transitionImage: {fileID: 21300000, guid: e1a40b1a9a19ddd4591e8dc2c3c13f44, type: 3}
   speed: 1
-  <Progress>k__BackingField: 1.0019761
+  <Progress>k__BackingField: 1.0014437
   material: {fileID: 2100000, guid: ea177412641f0a4489c8a6a17b87d071, type: 2}
   transitionInDelay: 1
   transitionOutDelay: 1
+  transitionImages:
+  - {fileID: 21300000, guid: edd8c483cf9f53648b306b3b44e02158, type: 3}
+  - {fileID: 21300000, guid: 5533a9ce687f8064594304a03d770ea8, type: 3}
+  - {fileID: 21300000, guid: b727a52f7d08f7b44a3aec1eb1aab499, type: 3}
+  - {fileID: 21300000, guid: 2b2db6440e0f6464cbbe7f94107aec44, type: 3}
+  - {fileID: 21300000, guid: e1a40b1a9a19ddd4591e8dc2c3c13f44, type: 3}
+  - {fileID: 21300000, guid: 9d4b336e0141016419c7625990d29e8b, type: 3}
+  - {fileID: 21300000, guid: 87380351b3119434381aea263ed80c86, type: 3}
+  - {fileID: 21300000, guid: 5cd04c33c55cac446ad437f12ad50698, type: 3}
+  - {fileID: 21300000, guid: 32d54bc74d1e2724eb9d0f29fb5ae3c8, type: 3}
+  - {fileID: 21300000, guid: 0b921ea68f728544484a8ab4d124becc, type: 3}
+  - {fileID: 21300000, guid: 0b921ea68f728544484a8ab4d124becc, type: 3}
+  - {fileID: 21300000, guid: a5e16ef21061c634eb942b2661580109, type: 3}
+  - {fileID: 21300000, guid: 6ec13eabd0cbfe4428d7b12d8370ae13, type: 3}
   testingControls: 0

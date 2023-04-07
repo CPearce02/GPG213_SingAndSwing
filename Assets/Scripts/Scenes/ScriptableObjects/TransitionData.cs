@@ -2,6 +2,8 @@ using System.Collections;
 using Enums;
 using Events;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UIElements;
 
 namespace Scenes.ScriptableObjects
 {
@@ -19,6 +21,8 @@ namespace Scenes.ScriptableObjects
         [field: SerializeField] public float Progress { get; set; } = 1f;
         [SerializeField] public Material material;
         [SerializeField] public float transitionInDelay = 1f, transitionOutDelay = 0.25f;
+
+        [FormerlySerializedAs("images")] [SerializeField] private Sprite[] transitionImages;
 
         [Header("Testing Only")]
         [SerializeField] public bool testingControls = false;
@@ -42,8 +46,9 @@ namespace Scenes.ScriptableObjects
             SetStateValues();
 
             if (transitionImage == null) return;
-
-            material.SetTexture(MainTex, transitionImage.texture);
+            int randomTexture = Random.Range(0, transitionImages.Length);
+            transitionImage = transitionImages[randomTexture];
+            material.SetTexture(MainTex, transitionImages[randomTexture].texture);
         }
 
         public void SetStateValues()
