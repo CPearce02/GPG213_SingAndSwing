@@ -203,6 +203,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b9eba414e1a5f469c3bcfef6df13c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 11400000, guid: 57f00e80fd11f4c4f8902e3f727c9fc3, type: 2}
   transitionData: {fileID: 11400000, guid: 62e3ff47bc8168b4c868951beab7432e, type: 2}
   sprite: {fileID: 0}
