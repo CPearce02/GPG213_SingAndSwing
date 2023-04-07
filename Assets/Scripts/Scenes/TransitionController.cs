@@ -31,11 +31,11 @@ namespace Scenes
             SceneManager.sceneLoaded -= TransitionIn;
         }
 
-        // The mouse controls are for testing only
-        private void Update()
-        {
-            TestTransition();
-        }
+        // // The mouse controls are for testing only
+        // private void Update()
+        // {
+        //     TestTransition();
+        // }
 
         void TransitionIn()
         {
