@@ -12,10 +12,7 @@ namespace Scenes
     {
         // [SerializeField] private LevelData level;
         [SerializeField] TransitionData transitionData;
-        [ReadOnly][SerializeField] private Image sprite;
         
-        private void Awake() => sprite = GetComponent<Image>();
-
         private void Start() => transitionData.Init();
         
         private void OnEnable()
