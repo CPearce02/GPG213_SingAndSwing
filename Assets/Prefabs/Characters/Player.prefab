@@ -304,8 +304,10 @@ GameObject:
   - component: {fileID: 6419258818656474042}
   - component: {fileID: 514009650263695910}
   - component: {fileID: 630065929}
+  - component: {fileID: 8612233445786958497}
+  - component: {fileID: 1214684918272868574}
   m_Layer: 6
-  m_Name: GFX
+  m_Name: FX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -452,6 +454,129 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coll: {fileID: 1964873662}
+--- !u!114 &8612233445786958497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6419258818656474046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 874f1021f5b35014fad3e31cd74aff9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstepSounds:
+  - {fileID: 8300000, guid: 859ef481b9511e24e8d95c70520e1434, type: 3}
+  - {fileID: 8300000, guid: 4ac931559427b4143b65255050841b86, type: 3}
+  - {fileID: 8300000, guid: 496b24bebb0f2904ca84c6d9a426c857, type: 3}
+  - {fileID: 8300000, guid: 1100af3557242d8478373bc1fc043901, type: 3}
+  - {fileID: 8300000, guid: 57fc73bb30ec3e7468ede617734aa126, type: 3}
+  - {fileID: 8300000, guid: 8b0bd73cccdb7aa4fb8183ee3fe9eb98, type: 3}
+  - {fileID: 8300000, guid: 4823c9c4ff2058e4281ec91733ac75e1, type: 3}
+  - {fileID: 8300000, guid: b05958c32eda1b741868c50dc9e9526f, type: 3}
+  jumpSounds:
+  - {fileID: 8300000, guid: f1d51b79825385f4da3dfae06d4ede76, type: 3}
+  - {fileID: 8300000, guid: 9217682fbff89d24cad267e53d172949, type: 3}
+  - {fileID: 8300000, guid: c6a34605020965f43b8518eb278cd9f8, type: 3}
+  - {fileID: 8300000, guid: 0fa46f467919b95488ae14093fca5b90, type: 3}
+  audioSource: {fileID: 1214684918272868574}
+--- !u!82 &1214684918272868574
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6419258818656474046}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.4
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6419258819617880468
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,6 +615,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6419258818573561545}
     m_Modifications:
+    - target: {fileID: 1361066466802119506, guid: 6e61b2e906b49b7498d1de4b58fa69ec, type: 3}
+      propertyPath: mNoiseOffsets.x
+      value: 76.52771
+      objectReference: {fileID: 0}
+    - target: {fileID: 1361066466802119506, guid: 6e61b2e906b49b7498d1de4b58fa69ec, type: 3}
+      propertyPath: mNoiseOffsets.y
+      value: 783.3467
+      objectReference: {fileID: 0}
+    - target: {fileID: 1361066466802119506, guid: 6e61b2e906b49b7498d1de4b58fa69ec, type: 3}
+      propertyPath: mNoiseOffsets.z
+      value: -483.0564
+      objectReference: {fileID: 0}
     - target: {fileID: 8561150750363626585, guid: 6e61b2e906b49b7498d1de4b58fa69ec, type: 3}
       propertyPath: m_Name
       value: CM vcam1
