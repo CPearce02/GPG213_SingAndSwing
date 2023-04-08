@@ -1,4 +1,5 @@
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Core.Player
 {
@@ -7,6 +8,8 @@ namespace Core.Player
     {
         [SerializeReference] AudioClip[] footstepSounds;
         [SerializeReference] AudioClip[] jumpSounds;
+        [SerializeReference] AudioClip[] landingSounds;
+        [SerializeReference] AudioClip[] attackSounds;
         [SerializeReference] AudioSource audioSource;
 
         private void Awake()
@@ -14,16 +17,18 @@ namespace Core.Player
             audioSource = GetComponent<AudioSource>();
         }
 
-        void PlayFootstepSound()
-        {
-            var randomIndex = Random.Range(0, footstepSounds.Length - 1);
-            audioSource.PlayOneShot(footstepSounds[randomIndex]);
-        }
+        void PlayFootstepSound() => GetRandomClipFromListAndPlay(footstepSounds);
 
-        void PlayJumpSound()
+        void PlayJumpSound() => GetRandomClipFromListAndPlay(jumpSounds);
+        
+        void PlayLandingSound() => GetRandomClipFromListAndPlay(landingSounds);
+
+        void PlayAttackSound() => GetRandomClipFromListAndPlay(attackSounds);
+
+        void GetRandomClipFromListAndPlay(AudioClip[] array)
         {
-            var randomIndex = Random.Range(0, jumpSounds.Length - 1);
-            audioSource.PlayOneShot(jumpSounds[randomIndex]);
+            var randomIndex = Random.Range(0, array.Length);
+            audioSource.PlayOneShot(array[randomIndex]);
         }
     }
 }

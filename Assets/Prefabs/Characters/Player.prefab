@@ -477,6 +477,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9217682fbff89d24cad267e53d172949, type: 3}
   - {fileID: 8300000, guid: c6a34605020965f43b8518eb278cd9f8, type: 3}
   - {fileID: 8300000, guid: 0fa46f467919b95488ae14093fca5b90, type: 3}
+  landingSounds:
+  - {fileID: 8300000, guid: e9f8cf29df78fad4e98f1038b78bc05c, type: 3}
+  attackSounds:
+  - {fileID: 8300000, guid: 672a3b5944685234c9fb39eb9a00f97c, type: 3}
+  - {fileID: 8300000, guid: c8b44504125eb544b8876d18f39846d4, type: 3}
   audioSource: {fileID: 1214684918272868574}
 --- !u!82 &1214684918272868574
 AudioSource:
