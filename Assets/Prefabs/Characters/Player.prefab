@@ -467,14 +467,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   footstepSounds:
-  - {fileID: 8300000, guid: 859ef481b9511e24e8d95c70520e1434, type: 3}
-  - {fileID: 8300000, guid: 4ac931559427b4143b65255050841b86, type: 3}
-  - {fileID: 8300000, guid: 496b24bebb0f2904ca84c6d9a426c857, type: 3}
-  - {fileID: 8300000, guid: 1100af3557242d8478373bc1fc043901, type: 3}
-  - {fileID: 8300000, guid: 57fc73bb30ec3e7468ede617734aa126, type: 3}
-  - {fileID: 8300000, guid: 8b0bd73cccdb7aa4fb8183ee3fe9eb98, type: 3}
-  - {fileID: 8300000, guid: 4823c9c4ff2058e4281ec91733ac75e1, type: 3}
-  - {fileID: 8300000, guid: b05958c32eda1b741868c50dc9e9526f, type: 3}
+  - {fileID: 8300000, guid: b49d918f763762540bee503701bcd670, type: 3}
+  - {fileID: 8300000, guid: 819d2d7f9fb9ac64c94a4a1ceab63db9, type: 3}
+  - {fileID: 8300000, guid: ab198eeb901c0084da7619db7ce944fc, type: 3}
+  - {fileID: 8300000, guid: 94f13eafeb908ab4abb9207a59c3ac84, type: 3}
+  - {fileID: 8300000, guid: d49a308ca925ee54ea8bb4ef517dc0ad, type: 3}
   jumpSounds:
   - {fileID: 8300000, guid: f1d51b79825385f4da3dfae06d4ede76, type: 3}
   - {fileID: 8300000, guid: 9217682fbff89d24cad267e53d172949, type: 3}
@@ -493,7 +490,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.665
   m_Pitch: 1
   Loop: 0
   Mute: 0
