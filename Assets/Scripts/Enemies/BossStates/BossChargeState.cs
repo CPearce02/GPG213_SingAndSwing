@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 
 namespace Enemies.BossStates
 {
-    public class BossChargeState : MonoBehaviour, IState
+    public class BossChargeState : IState
     {
         private Vector2 _directionToCharge;
 

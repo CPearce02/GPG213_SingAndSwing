@@ -17,19 +17,11 @@ namespace Enemies
         [field:SerializeField] public Rigidbody2D Rb { get; private set; }
         [field:SerializeField] public LayerMask PlayerLayer { get; private set; }
 
-        void Start()
+        private void Awake() => Rb = GetComponent<Rigidbody2D>();
+
+        public virtual void Start()
         {
-            Rb = GetComponent<Rigidbody2D>();
-            
-            // if enemyData.type is Boss, then change state to BossIdleState else change state to IdleState
-            if(enemyData.type == Enums.EnemyType.Boss)
-            {
-                ChangeState(new BossIdleState());
-            }
-            else
-            {
-                ChangeState(new IdleState());
-            }
+            ChangeState(new IdleState());
         }
     
         void Update()

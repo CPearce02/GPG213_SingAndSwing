@@ -3,6 +3,7 @@
     public enum EnemyType
     {
         Enemy,
-        Boss
+        Boss,
+        Static
     }
 }
