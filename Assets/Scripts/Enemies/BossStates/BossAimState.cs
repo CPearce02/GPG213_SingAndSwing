@@ -10,6 +10,7 @@ namespace Enemies.BossStates
         private Transform _playerTransform;
         Vector2 _directionOfTravel;
         private BossEnemyStateMachine _enemy;
+        float decideAttackTime;
         private int _attackType = 1;
 
         public BossAimState(Transform playerTransform)
@@ -20,20 +21,29 @@ namespace Enemies.BossStates
         public void Enter(EnemyStateMachine enemy)
         {
             this._enemy = enemy as BossEnemyStateMachine;
+            if (_enemy != null) decideAttackTime = _enemy.decideAttackTime;
             //_attackType = Random.Range(1, 4);
         }
 
         public void Execute(EnemyStateMachine enemy)
         {
-            if (_playerTransform == null)
+            if(decideAttackTime > 0)
             {
-                Debug.Log("Player was not found");
+                decideAttackTime -= Time.deltaTime;
+                return;
             }
             
+            decideAttackTime = _enemy.decideAttackTime;
+
             //Aim towards player 
             _directionOfTravel = _playerTransform.position - enemy.transform.position;
             _directionOfTravel = _directionOfTravel.normalized;
 
+            DecideAttack();
+        }
+
+        private void DecideAttack()
+        {
             //CHOOSE ATTACK
             switch (_attackType)
             {

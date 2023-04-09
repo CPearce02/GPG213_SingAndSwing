@@ -277,6 +277,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 833268692, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: canBeStunned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 833268692, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: decideAttackTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 833268692, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: stunCoolDownTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7767946816732133652, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
       propertyPath: m_Size.x
       value: 0.5

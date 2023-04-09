@@ -7,6 +7,7 @@ namespace Enemies
     {
         public Transform target;
         public bool canBeStunned;
+        public float decideAttackTime;
         [SerializeField] float stunCoolDownTime;
         float originalStunCoolDownTime;
 
