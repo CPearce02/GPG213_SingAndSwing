@@ -6,11 +6,11 @@ namespace Enemies.BossStates
 {
     public class BossIdleState : IState
     {
-        private EnemyStateMachine _enemy;
+        private BossEnemyStateMachine _enemy;
 
         public void Enter(EnemyStateMachine enemy)
         {
-            this._enemy = enemy;
+            this._enemy = enemy as BossEnemyStateMachine;
         }
 
         public void Execute(EnemyStateMachine enemy)
@@ -21,7 +21,9 @@ namespace Enemies.BossStates
             var hit = Physics2D.OverlapCircle(enemy.transform.position, enemy.enemyData.triggerRange, enemy.PlayerLayer);
             if (hit != null && hit.TryGetComponent(out PlatformingController player))
             {
-                _enemy.ChangeState(new BossAimState(player.transform));
+                var transform = player.transform;
+                _enemy.target = transform;
+                _enemy.ChangeState(new BossAimState(transform));
             }
         }
 

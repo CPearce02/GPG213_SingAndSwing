@@ -9,7 +9,7 @@ namespace Enemies.BossStates
 {
     public class BossStunState : IState
     {
-        private EnemyStateMachine _enemy;
+        private BossEnemyStateMachine _enemy;
         private Transform _playerTransform;
         float _stunTime;
         
@@ -22,7 +22,7 @@ namespace Enemies.BossStates
 
         public void Enter(EnemyStateMachine enemy)
         {
-            this._enemy = enemy;
+            this._enemy = enemy as BossEnemyStateMachine;
             _stunTime = enemy.enemyData.retreatTime;
             CameraShakeEvent cameraShakeEvent = new CameraShakeEvent(Strength.High, 0.5f, true);
             cameraShakeEvent.Invoke();
@@ -30,13 +30,12 @@ namespace Enemies.BossStates
 
         public void Execute(EnemyStateMachine enemy)
         {
-            enemy.animator.CrossFade(Stunned, 0);
             //Stun animation
-            Debug.Log("STUNNED");
             // Wait with timer
             if(_stunTime > 0)
             {
                 _stunTime -= Time.deltaTime;
+                enemy.animator.CrossFade(Stunned, 0);
             }
             else
             {

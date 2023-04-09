@@ -15,7 +15,6 @@ namespace Enemies.BossStates
         private bool hasHit;
         private bool doCharge;
         
-        
         static readonly int Ability1Start = Animator.StringToHash("Ability1_Start");
         static readonly int Ability1Idle = Animator.StringToHash("Ability1_Idle");
         static readonly int Ability1End = Animator.StringToHash("Ability1_End");
@@ -66,12 +65,21 @@ namespace Enemies.BossStates
                 else if (hit.TryGetComponent(out TilemapCollider2D environment))
                 {
                     Debug.Log("Hit wall");
-
+                    
                     //stop
                     enemy.Rb.velocity = Vector2.zero;
                     //stunned
-                    enemy.ChangeState(new BossStunState(_playerTransform));
+                    var boss = enemy as BossEnemyStateMachine;
+                    if (boss == null) return;
+                    if(boss.canBeStunned)
+                    {
+                        boss.canBeStunned = false;
+                        enemy.Rb.velocity = Vector2.zero;
+
+                        enemy.ChangeState(new BossStunState(_playerTransform));
+                    }
                 }
+                
             }
 
             FromIdleToEnd(enemy);
@@ -102,7 +110,8 @@ namespace Enemies.BossStates
 
         public void Exit()
         {
-
+            hasHit = false;
+            doCharge = false;
         }
     }
 }

@@ -7,5 +7,13 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Skull
-  m_Controller: {fileID: 9100000, guid: 4c2e5b9154c637343ba9102e0a271a27, type: 2}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: 3b3c1fd0e1fb7ac45ab19642866650b7, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 1664d6e5580adcc4b9cb4bcaf82d5acb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1664d6e5580adcc4b9cb4bcaf82d5acb, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2d6f10c037c33d94cac17e1bb12ce1d3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2d6f10c037c33d94cac17e1bb12ce1d3, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 93c0afaca924ee748962fc9f5fdcebb7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 93c0afaca924ee748962fc9f5fdcebb7, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: aeb6ced94cc192c49af49a80d5eb956a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: aeb6ced94cc192c49af49a80d5eb956a, type: 2}

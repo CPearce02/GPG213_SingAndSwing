@@ -23,7 +23,7 @@ namespace Enemies
             ChangeState(new IdleState());
         }
     
-        void Update()
+        public virtual void Update()
         {
             CurrentState.Execute(this);   
             stateName = CurrentState.ToString();

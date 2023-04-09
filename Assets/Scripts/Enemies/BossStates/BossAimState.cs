@@ -9,7 +9,7 @@ namespace Enemies.BossStates
     {
         private Transform _playerTransform;
         Vector2 _directionOfTravel;
-        private EnemyStateMachine _enemy;
+        private BossEnemyStateMachine _enemy;
         private int _attackType = 1;
 
         public BossAimState(Transform playerTransform)
@@ -19,7 +19,7 @@ namespace Enemies.BossStates
 
         public void Enter(EnemyStateMachine enemy)
         {
-            this._enemy = enemy;
+            this._enemy = enemy as BossEnemyStateMachine;
             //_attackType = Random.Range(1, 4);
         }
 

@@ -7,7 +7,7 @@ namespace Enemies.BossStates
     public class BossRetreatState : IState
     {
         private Transform _playerTransform;
-        private EnemyStateMachine _enemy;
+        private BossEnemyStateMachine _enemy;
         float _retreatTime;
         public BossRetreatState(Transform playerTransform)
         {
@@ -28,9 +28,10 @@ namespace Enemies.BossStates
             // }
             
             
-            _retreatTime -= Time.deltaTime;
+            
             if (_retreatTime > 0)
             {
+                _retreatTime -= Time.deltaTime;
                 enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, _playerTransform.position,
                     -enemy.enemyData.moveSpeed * Time.deltaTime);
             }
