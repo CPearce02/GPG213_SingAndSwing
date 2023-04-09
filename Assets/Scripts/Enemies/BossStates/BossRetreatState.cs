@@ -16,20 +16,27 @@ namespace Enemies.BossStates
         public void Enter(EnemyStateMachine enemy)
         {
             _retreatTime = enemy.enemyData.retreatTime;
+            enemy.animator.CrossFade("Start_Move", 0);
         }
 
         public void Execute(EnemyStateMachine enemy)
         {
+            // var distance = Vector2.Distance(enemy.transform.position, _playerTransform.position);
+            // if (distance > enemy.enemyData.triggerRange)
+            // {
+            //     _enemy.ChangeState(new BossAimState(_playerTransform));
+            // }
+            
+            
             _retreatTime -= Time.deltaTime;
             if (_retreatTime > 0)
             {
-                //enemy.animator.CrossFade("Move", 0);
                 enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, _playerTransform.position,
                     -enemy.enemyData.moveSpeed * Time.deltaTime);
             }
             else
             {
-                //_enemy.ChangeState(new BossAimState(_playerTransform));
+                enemy.ChangeState(new BossAimState(_playerTransform));
             }
         }
 

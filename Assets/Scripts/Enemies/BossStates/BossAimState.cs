@@ -25,6 +25,11 @@ namespace Enemies.BossStates
 
         public void Execute(EnemyStateMachine enemy)
         {
+            if (_playerTransform == null)
+            {
+                Debug.Log("Player was not found");
+            }
+            
             //Aim towards player 
             _directionOfTravel = _playerTransform.position - enemy.transform.position;
             _directionOfTravel = _directionOfTravel.normalized;
@@ -54,7 +59,7 @@ namespace Enemies.BossStates
 
 
             //Charge
-            _enemy.ChangeState(new BossChargeState(_directionOfTravel));
+            _enemy.ChangeState(new BossChargeState(_directionOfTravel, _playerTransform));
         }
         
     }

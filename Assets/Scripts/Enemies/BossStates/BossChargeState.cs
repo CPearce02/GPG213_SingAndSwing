@@ -2,6 +2,7 @@ using Core.Player;
 using Enemies;
 using Interfaces;
 using System.Linq.Expressions;
+using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -10,41 +11,92 @@ namespace Enemies.BossStates
     public class BossChargeState : IState
     {
         private Vector2 _directionToCharge;
+        Transform _playerTransform;
+        private bool hasHit;
+        private bool doCharge;
+        
+        
+        static readonly int Ability1Start = Animator.StringToHash("Ability1_Start");
+        static readonly int Ability1Idle = Animator.StringToHash("Ability1_Idle");
+        static readonly int Ability1End = Animator.StringToHash("Ability1_End");
 
-        public BossChargeState(Vector2 direction)
+
+        public BossChargeState(Vector2 direction, Transform playerTransform)
         {
             this._directionToCharge = direction;
+            this._playerTransform = playerTransform;
         }
         public void Enter(EnemyStateMachine enemy)
-        {
-           
+        { 
+            enemy.animator.CrossFade(Ability1Start, 0);
         }
 
         public void Execute(EnemyStateMachine enemy)
         {
-            //Charge towards player direction - Charge until it hits something 
-            enemy.Rb.AddForce(_directionToCharge * (enemy.enemyData.moveSpeed * 100 * Time.fixedDeltaTime));
-
-            //Check to see what the boss hit 
-            var hit = Physics2D.OverlapCircle(enemy.transform.position, 1f);
-            if (hit != null && hit.TryGetComponent(out PlatformingController player))
+            if(!doCharge && enemy.animator.GetCurrentAnimatorStateInfo(0).IsName("Ability1_Start"))
             {
-                Debug.Log("Hitplayer");
-                
-                //Deal damage to player 
-
-                //Retreat away 
-                enemy.ChangeState(new BossRetreatState(player.transform));
+                if (enemy.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                {
+                    doCharge = true;
+                }
             }
-            //hit the environment
-            else if (hit!= null && hit.TryGetComponent(out TilemapCollider2D environment))
+            
+            if(!hasHit && doCharge) 
             {
-                Debug.Log("Hit wall");
+                //Charge towards player direction - Charge until it hits something 
+                enemy.Rb.AddForce(_directionToCharge * (enemy.enemyData.moveSpeed * 100 * Time.fixedDeltaTime));
+                enemy.animator.CrossFade(Ability1Idle, 0);
 
-                //stop
+                //Check to see what the boss hit 
+                var hit = Physics2D.OverlapCircle(enemy.transform.position, enemy.enemyData.attackRange);
+                if (hit.TryGetComponent(out HealthManager player))
+                {
+                    if (hasHit)
+                        return;
+
+                    Debug.Log("Hitplayer");
+                    _playerTransform = player.transform;
+                    enemy.Rb.velocity = Vector2.zero;
+                    hasHit = true;
+                    //Deal damage to player 
+
+                    //Retreat away 
+                }
+                //hit the environment
+                else if (hit.TryGetComponent(out TilemapCollider2D environment))
+                {
+                    Debug.Log("Hit wall");
+
+                    //stop
+                    enemy.Rb.velocity = Vector2.zero;
+                    //stunned
+                    enemy.ChangeState(new BossStunState(_playerTransform));
+                }
+            }
+
+            FromIdleToEnd(enemy);
+
+            FromEndToExit(enemy);
+        }
+
+        private void FromEndToExit(EnemyStateMachine enemy)
+        {
+            if (hasHit && enemy.animator.GetCurrentAnimatorStateInfo(0).IsName("Ability1_End"))
+            {
+                if (enemy.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                {
+                    enemy.Rb.velocity = Vector2.zero;
+                    enemy.ChangeState(new BossRetreatState(_playerTransform));
+                }
+            }
+        }
+
+        private void FromIdleToEnd(EnemyStateMachine enemy)
+        {
+            if (hasHit && enemy.animator.GetCurrentAnimatorStateInfo(0).IsName("Ability1_Idle"))
+            {
                 enemy.Rb.velocity = Vector2.zero;
-                //stunned
-                enemy.ChangeState(new BossStunState());
+                enemy.animator.CrossFade(Ability1End, 0);
             }
         }
 

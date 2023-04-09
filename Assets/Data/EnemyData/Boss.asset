@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   enemyName: BlueBoi
-  moveSpeed: 10
-  triggerRange: 8
+  moveSpeed: 4
+  triggerRange: 6
   attackRange: 3
   retreatTime: 1
-  enemySprite: {fileID: -1091802608, guid: ad14064cff0bcb74a955aac128ac097c, type: 3}
+  enemySprite: {fileID: 1794998897, guid: 97b9411147ee5bb478dddfc330a79780, type: 3}
   enemyAttackSprite: {fileID: 0}
   damageAmount: 15
   healthAmount: 200

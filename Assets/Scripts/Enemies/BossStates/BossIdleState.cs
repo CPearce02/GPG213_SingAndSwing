@@ -15,6 +15,8 @@ namespace Enemies.BossStates
 
         public void Execute(EnemyStateMachine enemy)
         {
+            _enemy.animator.CrossFade("Idle", 0);
+
             //If player is within range 
             var hit = Physics2D.OverlapCircle(enemy.transform.position, enemy.enemyData.triggerRange, enemy.PlayerLayer);
             if (hit != null && hit.TryGetComponent(out PlatformingController player))
