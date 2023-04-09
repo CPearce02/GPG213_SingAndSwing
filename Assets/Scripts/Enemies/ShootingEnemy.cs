@@ -109,5 +109,7 @@ namespace Enemies
         {
             player = null;
         }
+
+        public void SetDisableUpdate(bool value) => disableUpdate = value; 
     }
 }

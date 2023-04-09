@@ -47,7 +47,7 @@ namespace Enemies.BossStates
                 enemy.animator.CrossFade(Ability1Idle, 0);
 
                 //Check to see what the boss hit 
-                var hit = Physics2D.OverlapCircle(enemy.transform.position, enemy.enemyData.attackRange);
+                var hit = Physics2D.OverlapCircle(enemy.transform.position, enemy.enemyData.attackRange - 1);
                 if (hit.TryGetComponent(out HealthManager player))
                 {
                     if (hasHit)

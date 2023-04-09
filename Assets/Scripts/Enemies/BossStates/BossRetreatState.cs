@@ -25,9 +25,7 @@ namespace Enemies.BossStates
             // if (distance > enemy.enemyData.triggerRange)
             // {
             //     _enemy.ChangeState(new BossAimState(_playerTransform));
-            // }
-            
-            
+            // }         
             
             if (_retreatTime > 0)
             {
