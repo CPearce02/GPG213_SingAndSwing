@@ -4,6 +4,8 @@ using Structs;
 using UnityEngine;
 using Interfaces;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 namespace Core.Player
 {
@@ -17,6 +19,8 @@ namespace Core.Player
         [SerializeField] ParticleEvent deathParticles;
         [SerializeField] ParticleEvent damageParticles;
         [SerializeField] CameraShakeEvent takeDamageCameraShake;
+
+        [SerializeField] VolumeProfile volumeProfile;
         
         PlatformingController _controller;
         Rigidbody2D _rb;
@@ -65,6 +69,14 @@ namespace Core.Player
             respawnPosition = transform;
 
             _controller = GetComponent<PlatformingController>();
+
+            volumeProfile.TryGet(out Vignette vignette);
+
+            if (vignette)
+            {
+                vignette.color.Override(Color.black);
+                vignette.intensity.Override(0.3f);
+            }
         }
 
         private void Start()
@@ -122,12 +134,32 @@ namespace Core.Player
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
+        IEnumerator DamageEffect()
+        {
+            volumeProfile.TryGet(out Vignette vignette);
+
+            if (vignette)
+            {
+                vignette.color.Override(Color.red);
+                vignette.intensity.Override(0.5f);
+            }
+
+            yield return new WaitForSeconds(1f);
+
+            if (vignette)
+            {
+                vignette.color.Override(Color.black);
+                vignette.intensity.Override(0.3f);
+            }
+        }
+
         //Linked to the interface IAttackable
         public void TakeDamage(int amount)
         {
             if (_dead) return;
             Debug.Log($"{amount} in damage was taken by the player");
             ReduceHealth(amount);
+            StartCoroutine(DamageEffect());
 
             if (health <= 0)
             {
