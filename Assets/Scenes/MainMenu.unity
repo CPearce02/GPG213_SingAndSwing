@@ -552,7 +552,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press [ESC] to Skip
+  m_text: Press Any key to Skip
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2caa83d5dfaff3b42b9fd49dcf89242d, type: 2}
   m_sharedMaterial: {fileID: -5090442402603522692, guid: 2caa83d5dfaff3b42b9fd49dcf89242d, type: 2}
@@ -2838,7 +2838,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!114 &1919549924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2929,7 +2929,7 @@ MonoBehaviour:
     m_SingletonActionBindings:
     - m_Name: 
       m_Id: 8050cb7e-960e-4260-aae4-356969cd96e3
-      m_Path: <Keyboard>/escape
+      m_Path: <Keyboard>/anyKey
       m_Interactions: 
       m_Processors: 
       m_Groups: 
