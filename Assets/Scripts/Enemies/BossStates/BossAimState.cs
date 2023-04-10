@@ -11,7 +11,7 @@ namespace Enemies.BossStates
         Vector2 _directionOfTravel;
         private BossEnemyStateMachine _enemy;
         float decideAttackTime;
-        private int _attackType = 2;
+        private int _attackType = 1;
 
 
         public BossAimState(Transform playerTransform)
@@ -26,11 +26,11 @@ namespace Enemies.BossStates
             //how many hits were taken - see current health then determine which attack to use? - // maybe it checks if it has it's sheild?
             if(_enemy.GetComponent<Enemy>().CanBeDestroyed)
             {
-                _attackType = 1;
+                _attackType = 2;
             }
             else
             {
-                _attackType = 2;
+                _attackType = 1;
             }
         }
 
@@ -65,6 +65,7 @@ namespace Enemies.BossStates
                     break;
                 case 3:
                     //Hoard
+                    _enemy.ChangeState(new BossHoardState());
                     break;
             }
         }
