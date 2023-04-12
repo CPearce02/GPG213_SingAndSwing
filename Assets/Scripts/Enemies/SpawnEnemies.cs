@@ -45,6 +45,6 @@ public class SpawnEnemies : MonoBehaviour
             yield return new WaitForSeconds(0.25f);
             enemy.GetComponent<EnemyStateMachine>().enabled = true;
         }
-         canSpawn = false;
+        canSpawn = false;
     }
 }

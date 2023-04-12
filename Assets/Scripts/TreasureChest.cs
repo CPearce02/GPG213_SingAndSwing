@@ -12,12 +12,12 @@ public class TreasureChest : MonoBehaviour
     {
         collision.transform.TryGetComponent(out PlatformingController player);
 
-        if (player) StartCoroutine(EndGameSequence(player));
+        if (player) StartCoroutine(EndGameSequence());
     }
 
-    IEnumerator EndGameSequence(PlatformingController player)
+    IEnumerator EndGameSequence()
     {
-        GameEvents.onPlayerFreezeEvent?.Invoke(player);
+        GameEvents.onPlayerFreezeEvent?.Invoke();
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(nextScene);
     }

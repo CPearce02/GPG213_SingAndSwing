@@ -1,6 +1,7 @@
 using Events;
 using Structs;
 using System;
+using Animation;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -51,10 +52,11 @@ namespace Core.Player
             PlayerInput = GetComponent<PlayerInput>();
             JumpSpeed = playerStats.JumpSpeed;
         }
-
+        
         private void OnEnable()
         {
             JumpEvent += Jump;
+
         }
 
         private void OnDisable()

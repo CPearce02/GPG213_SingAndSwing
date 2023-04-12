@@ -14,7 +14,7 @@ namespace Events
         public delegate void PlayerHeal(int amount);
         public delegate void PlayerDied();
         public delegate void PlayerRespawn(float delaySeconds = 0, Transform positionToRespawn = null);
-        public delegate void PlayerFreeze(PlatformingController player);
+        public delegate void PlayerFreeze();
 
         public static PlayerHeal onPlayerHealedEvent;
         public static PlayerKill onPlayerKillEvent;
