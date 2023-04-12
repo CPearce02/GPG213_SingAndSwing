@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Enemies;
 using UnityEngine.Serialization;
-
+using Enemies.EnemyStates;
 
 public class SpawnEnemies : MonoBehaviour
 {
@@ -12,39 +12,24 @@ public class SpawnEnemies : MonoBehaviour
     private List<GameObject> spawnedEnemies = new();
 
     private int spawnLimit = 3;
-    [FormerlySerializedAs("_canSpawn")] public bool canSpawn;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(!canSpawn)
-        {
-
-        }
-        else
-        {
-            StartCoroutine(SpawnEnemy());
-        }
-    }
-
 
     public void SetSpawnAmount(int value) => spawnLimit = value;
 
-    IEnumerator SpawnEnemy()
+    public void StartSpawning(Transform target) => StartCoroutine(SpawnEnemy(target));
+    
+    IEnumerator SpawnEnemy(Transform target)
     {
-        if (spawnedEnemies.Count <=  spawnLimit)
+        while(spawnedEnemies.Count < spawnLimit)
         {
+            yield return new WaitForSeconds(1f);
             var enemy = Instantiate(_enemyPrefab, transform.position, Quaternion.identity);
             spawnedEnemies.Add(enemy);
-            enemy.GetComponent<EnemyStateMachine>().enabled = false;
-            enemy.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 300);
-            yield return new WaitForSeconds(0.25f);
-            enemy.GetComponent<EnemyStateMachine>().enabled = true;
+            enemy.GetComponent<EnemyStateMachine>().ChangeState(new ChaseState(target));
+
+            if(spawnedEnemies.Count >= spawnLimit)
+            {   
+                yield break;
+            }
         }
-        canSpawn = false;
     }
 }

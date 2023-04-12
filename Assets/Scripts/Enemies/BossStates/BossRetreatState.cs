@@ -12,6 +12,7 @@ namespace Enemies.BossStates
         public void Enter(EnemyStateMachine enemy)
         {
             _enemy = enemy as BossEnemyStateMachine;
+            if (_enemy == null) return;
             _retreatTime = enemy.enemyData.retreatTime;
             enemy.animator.CrossFade("Start_Move", 0);
         }

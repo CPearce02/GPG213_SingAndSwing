@@ -10,20 +10,19 @@ namespace Enemies.BossStates
 
         private ShootingEnemy _shootingEnemy;
 
-        private float _retreatTime = 4f;
         private Transform _aimDirection;
-        private Quaternion _initialRotation;
-        private Vector3 _centrePosition = new Vector3(0.5f, 3, 0);
+        private Vector3 _centrePosition;
 
         private float _shootingTime = 5f;
         private bool _inPosition;
-        private bool _beenHit;
 
         public void Enter(EnemyStateMachine enemy)
         {
             this._enemy = enemy as BossEnemyStateMachine;
+            if (_enemy == null) return;
             _shootingEnemy = _enemy.GetComponentInChildren<ShootingEnemy>();
             _aimDirection = _shootingEnemy.transform;
+            _centrePosition = _enemy.positions[0].position;
         }
 
         public void Execute(EnemyStateMachine enemy)
@@ -38,35 +37,25 @@ namespace Enemies.BossStates
                 _inPosition = true;
             }
             if(!_inPosition) return;
-            
-            //Check if the player has hit the boss
-            if(!_beenHit)
+
+            //Start/Continue Shooting for 5 seconds
+            if (_shootingTime > 0)
             {
-                //Start/Continue Shooting for 5 seconds
-                if(_shootingTime > 0)
-                {
-                    _shootingTime -= Time.deltaTime;
-                    SpawnProjectiles();
-                }
-                else
-                {
-                    //Start Recharging 
-                    enemy.ChangeState(new BossRechargeShieldState());
-                }
+                _shootingTime -= Time.deltaTime;
+                SpawnProjectiles();
             }
             else
             {
-                //Interupted
-                enemy.ChangeState(new BossInterruptedState());
+                //Start Recharging 
+                enemy.ChangeState(new BossRechargeShieldState());
             }
+            
         }
 
         public void Exit()
         {
             //Stop Shooting 
             _shootingEnemy.SetDisableUpdate(true);
-            //Reset Paramaters - Do I have to do this? 
-            _beenHit = false;
             _inPosition = false;
         }
 

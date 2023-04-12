@@ -9,18 +9,20 @@ namespace Enemies.BossStates
     {
         private BossEnemyStateMachine _enemy;
         float decideAttackTime;
-        private int _attackType = 1;
+        private int _attackType = 3;
 
 
         public void Enter(EnemyStateMachine enemy)
         {
             this._enemy = enemy as BossEnemyStateMachine;
             if (_enemy != null) decideAttackTime = _enemy.decideAttackTime;
-            //how many hits were taken - see current health then determine which attack to use? - // maybe it checks if it has it's sheild?
+
+            //If it has no shield then it chooses between Projectile or Hoard
             if(_enemy.GetComponent<Enemy>().CanBeDestroyed)
             {
-                _attackType = 2;
+                _attackType = Random.Range(2,4);
             }
+            //Else charge
             else
             {
                 _attackType = 1;

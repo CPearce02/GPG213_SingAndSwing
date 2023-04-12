@@ -17,6 +17,7 @@ namespace Enemies.BossStates
         public void Enter(EnemyStateMachine enemy)
         {
             this._enemy = enemy as BossEnemyStateMachine;
+            if (_enemy == null) return;
             _stunTime = enemy.enemyData.retreatTime;
             CameraShakeEvent cameraShakeEvent = new CameraShakeEvent(Strength.High, 0.5f, true);
             cameraShakeEvent.Invoke();

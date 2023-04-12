@@ -9,7 +9,8 @@ namespace Enemies.BossStates
 
         public void Enter(EnemyStateMachine enemy)
         {
-            this._enemy = enemy as BossEnemyStateMachine;   
+            this._enemy = enemy as BossEnemyStateMachine;
+            if (_enemy == null) return;
         }
 
         public void Execute(EnemyStateMachine enemy)

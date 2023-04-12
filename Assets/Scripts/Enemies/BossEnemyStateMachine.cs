@@ -13,6 +13,7 @@ namespace Enemies
         [SerializeField] float stunCoolDownTime;
         private float originalStunCoolDownTime;
         [field:SerializeField] public bool HasBeenActivated { get; private set; }
+        public Transform[] positions;
 
         public override void Start()
         {

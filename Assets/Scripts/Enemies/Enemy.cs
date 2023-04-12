@@ -17,6 +17,8 @@ namespace Enemies
         [SerializeField] bool doesDamageOnCollision = true;
         [SerializeField] ParticleEvent takeDamageParticle;
         public event Action<bool> Destroyable;
+        public event Action BossTakeDamage;
+        public event Action BossDeath;
 
         public bool CanBeDestroyed
         {
@@ -28,13 +30,8 @@ namespace Enemies
             }
         }
 
-        public event Action BossTakeDamage;
-        public event Action BossDeath;
-
         private int maxEnemyHealth;
-
         private int enemyhealth;
-
         public int EnemyHealth
         {
             get => enemyhealth;

@@ -7,55 +7,61 @@ namespace Enemies.BossStates
     {
         private BossEnemyStateMachine _enemy;
         private SpawnEnemies _spawnEnemies;
-        private Vector3 _centrePosition = new Vector3(0.5f, 3, 0);
+        private Vector3 _closestPosition;
         private bool _inPosition;
-    
+        private float closestDistance = Mathf.Infinity;
         private bool _spawned;
-        private float _spawningTime = 3;
+        private float _spawningTime = 4;
 
         public void Enter(EnemyStateMachine enemy)
         {
             this._enemy = enemy as BossEnemyStateMachine;
-            
             if(_enemy == null) return;
-            
             _spawnEnemies = _enemy.GetComponentInChildren<SpawnEnemies>();
         }
 
         public void Execute(EnemyStateMachine enemy)
         {
             //Get into Position
-            MoveToCentre();
+            FindAndMoveIntoPosition();
             if (!_inPosition) return;
-            if (!_spawned)
+
+            //Once in position - Start Spawning 
+            if (_spawningTime > 0)
             {
                 //Start Spawning
-                _spawnEnemies.canSpawn = true;
+                _spawningTime -= Time.deltaTime;
+                if(_spawned) return;
+                _spawnEnemies.StartSpawning(_enemy.target);
                 _spawned = true;
             }
+            //Then Dissappear 
             else
             {
-                //Disappear
+                enemy.ChangeState(new BossDisappearState());
             }
-
         }
 
         public void Exit()
         {
-            _spawnEnemies.canSpawn = false;
             _spawned = false;
         }
-        private void MoveToCentre()
-        {
-            if (_enemy.transform.position != _centrePosition && !_inPosition)
-            {
-                _enemy.transform.position = Vector2.MoveTowards(_enemy.transform.position, _centrePosition, _enemy.enemyData.moveSpeed * Time.deltaTime);
-            }
-            else
-            {
-                _inPosition = true;
-            }
-        }
 
+        private void FindAndMoveIntoPosition()
+        {
+            //Find closest Postion
+            foreach (Transform position in _enemy.positions)
+            {
+                float distance = Vector3.Distance(_enemy.transform.position, position.transform.position);
+                if(distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    _closestPosition = position.position;
+                }
+            } 
+            //Move to it
+            _enemy.transform.position = Vector2.MoveTowards(_enemy.transform.position, _closestPosition, _enemy.enemyData.moveSpeed * Time.deltaTime);
+            _inPosition = true;
+        }
     }
 }
