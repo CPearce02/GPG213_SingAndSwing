@@ -252,7 +252,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -396,6 +396,18 @@ PrefabInstance:
     - target: {fileID: 1283195011342353050, guid: db3d58e792296f8469d067573cff2c1f, type: 3}
       propertyPath: m_LocalPosition.y
       value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1705079815586864780, guid: db3d58e792296f8469d067573cff2c1f, type: 3}
+      propertyPath: m_LightVolumeIntensity
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1705079815586864780, guid: db3d58e792296f8469d067573cff2c1f, type: 3}
+      propertyPath: m_PointLightInnerRadius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1705079815586864780, guid: db3d58e792296f8469d067573cff2c1f, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 8.38
       objectReference: {fileID: 0}
     - target: {fileID: 4210021203808481301, guid: db3d58e792296f8469d067573cff2c1f, type: 3}
       propertyPath: m_RootOrder
