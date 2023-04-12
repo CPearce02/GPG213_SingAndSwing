@@ -125,7 +125,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ea5de5c076fba4d47a5babeecaeff7a4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -145,13 +145,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 48116795, guid: 9efd9f13ad2f7054488306aef0c60472, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -240,9 +240,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1676202811576864946, guid: 356e05efd116baa41baae32f08e77624, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 1676202811576864947, guid: 356e05efd116baa41baae32f08e77624, type: 3}
       propertyPath: ShapeModule.type
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1676202811576864947, guid: 356e05efd116baa41baae32f08e77624, type: 3}
       propertyPath: ShapeModule.length
@@ -321,6 +325,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1676202811576864947, guid: 356e05efd116baa41baae32f08e77624, type: 3}
+      propertyPath: ShapeModule.placementMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1676202811576864947, guid: 356e05efd116baa41baae32f08e77624, type: 3}
       propertyPath: VelocityModule.x.minScalar
       value: 3
       objectReference: {fileID: 0}
@@ -336,6 +344,10 @@ PrefabInstance:
       propertyPath: ShapeModule.alignToDirection
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1676202811576864947, guid: 356e05efd116baa41baae32f08e77624, type: 3}
+      propertyPath: ShapeModule.m_SpriteRenderer
+      value: 
+      objectReference: {fileID: 472631744283620663}
     - target: {fileID: 1676202811576864947, guid: 356e05efd116baa41baae32f08e77624, type: 3}
       propertyPath: ForceModule.randomizePerFrame
       value: 1

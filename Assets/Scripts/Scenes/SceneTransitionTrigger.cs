@@ -15,7 +15,6 @@ namespace Scenes
 
             if (player)
             {
-                //This is really bad, but its 2 hours before friday and im tired so we'll fix it later - Greg
                 GameEvents.onPlayerFreezeEvent?.Invoke();
                 GameEvents.onSceneTransitionOutEvent?.Invoke();
             }
