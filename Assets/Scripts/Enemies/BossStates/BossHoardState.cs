@@ -30,7 +30,7 @@ namespace Enemies.BossStates
             if (!_spawned)
             {
                 //Start Spawning
-                _spawnEnemies._canSpawn = true;
+                _spawnEnemies.canSpawn = true;
                 _spawned = true;
             }
             else
@@ -42,7 +42,7 @@ namespace Enemies.BossStates
 
         public void Exit()
         {
-            _spawnEnemies._canSpawn = false;
+            _spawnEnemies.canSpawn = false;
             _spawned = false;
         }
         private void MoveToCentre()
