@@ -423,7 +423,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6955013242562254316}
-  - component: {fileID: 43418831085509793}
+  - component: {fileID: 6654690144800735624}
   - component: {fileID: 43418831085509794}
   - component: {fileID: 43418831085509795}
   - component: {fileID: 43418831085509792}
@@ -456,7 +456,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 40}
   m_SizeDelta: {x: 191.99971, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &43418831085509793
+--- !u!114 &6654690144800735624
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -465,7 +465,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8915551475015882858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0551ecc13484ef2904c6e3b8f370923, type: 3}
+  m_Script: {fileID: 11500000, guid: 3284a861fc4f4abfa252d8532d84ed74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 7011404635310132282}
