@@ -409,6 +409,10 @@ PrefabInstance:
       propertyPath: m_PointLightOuterRadius
       value: 8.38
       objectReference: {fileID: 0}
+    - target: {fileID: 2946323982208781612, guid: db3d58e792296f8469d067573cff2c1f, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4210021203808481301, guid: db3d58e792296f8469d067573cff2c1f, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -457,6 +461,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AimController
       objectReference: {fileID: 0}
+    - target: {fileID: 6979549900997493399, guid: db3d58e792296f8469d067573cff2c1f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c217f3a71123e90448b3e02f14c8fa29, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3d58e792296f8469d067573cff2c1f, type: 3}
 --- !u!4 &4764815780778804644 stripped
