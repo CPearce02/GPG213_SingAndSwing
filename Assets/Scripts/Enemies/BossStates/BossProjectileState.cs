@@ -64,6 +64,7 @@ namespace Enemies.BossStates
             _shootingEnemy.SetDisableUpdate(true);
             _aimDirection.rotation = _initialRotation;
             //If not has taken damage then set shield back on 
+            // This should be done in the boss  recharge shield state
             _enemy.GetComponent<Enemy>().SetCanBeDestroyed(false);
         }
 

@@ -1,4 +1,5 @@
 using Enemies.BossStates;
+using Events;
 using UnityEngine;
 
 namespace Enemies
@@ -9,8 +10,8 @@ namespace Enemies
         public bool canBeStunned;
         public float decideAttackTime;
         [SerializeField] float stunCoolDownTime;
-        float originalStunCoolDownTime;
-
+        private float originalStunCoolDownTime;
+        [field:SerializeField] public bool HasBeenActivated { get; private set; }
         public override void Start()
         {
             ChangeState(new BossIdleState());
@@ -23,7 +24,7 @@ namespace Enemies
 
             UpdateCanBeStunned();
         }
-
+        
         private void UpdateCanBeStunned()
         {
             if (!canBeStunned && stunCoolDownTime > 0)
@@ -36,6 +37,8 @@ namespace Enemies
                 stunCoolDownTime = originalStunCoolDownTime;
             }
         }
+        
+        public void SetHasBeenActivated() => HasBeenActivated = true;
 
         private void OnDrawGizmos()
         {

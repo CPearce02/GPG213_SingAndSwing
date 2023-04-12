@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3606c4959ab86c941ace7e67fec70bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: PlayerUI
+  playerUI: PlayerUI
+  bossUIPrefab: {fileID: 1312495030904595339, guid: a639d0bb72f5ab44bb8984b3322d4830, type: 3}

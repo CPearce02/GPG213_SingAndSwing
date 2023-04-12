@@ -7,7 +7,7 @@ namespace Enemies
 {
     public class EnemyStateMachine : MonoBehaviour
     {
-        IState CurrentState { get; set; }
+        protected IState CurrentState { get; set; }
         [SerializeField][ReadOnly] string stateName;
         
         [Header("Settings")]

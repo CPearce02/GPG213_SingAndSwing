@@ -1,3 +1,5 @@
+using Enemies.ScriptableObjects;
+using Events;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,12 +7,37 @@ namespace UI
 {
     public class UIManager : MonoBehaviour
     {
-        public string sceneToLoad;
+        [SerializeField] string playerUI;
+        [SerializeField] private BossUIHandler bossUIPrefab;
+        BossUIHandler bossUIInstance;
+        
         private void Awake()
         {
-            if(sceneToLoad != null)
-                SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
+            if(playerUI != null)
+                SceneManager.LoadScene(playerUI, LoadSceneMode.Additive);
+        }
+        
+        private void OnEnable()
+        {
+            GameEvents.onBossFightStartEvent += LoadBossUI;
+            GameEvents.onBossFightEndEvent += UnloadBossUI;
+        }
+        
+        private void OnDisable()
+        {
+            GameEvents.onBossFightStartEvent += LoadBossUI;
+            GameEvents.onBossFightEndEvent -= UnloadBossUI;
         }
 
+        private void UnloadBossUI()
+        {
+            Destroy(gameObject);
+        }
+
+        private void LoadBossUI(EnemyData enemyData)
+        {
+            bossUIInstance = Instantiate(bossUIPrefab);
+            bossUIInstance.SetEnemy(enemyData);
+        }
     }
 }

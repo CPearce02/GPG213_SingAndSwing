@@ -1,6 +1,7 @@
 using Interfaces;
 using UnityEngine;
 using Core.Player;
+using Events;
 
 namespace Enemies.BossStates
 {
@@ -23,6 +24,7 @@ namespace Enemies.BossStates
             {
                 var transform = player.transform;
                 _enemy.target = transform;
+                SendBossStarted();
                 _enemy.ChangeState(new BossAimState(transform));
             }
         }
@@ -30,6 +32,15 @@ namespace Enemies.BossStates
         public void Exit()
         {
 
+        }
+        
+        public void SendBossStarted()
+        {
+            if(_enemy.HasBeenActivated) return;
+
+            _enemy.SetHasBeenActivated();
+            GameEvents.onBossFightStartEvent?.Invoke(_enemy.enemyData);
+            // Debug.Log("Boss Fight Started");
         }
     }
 }
