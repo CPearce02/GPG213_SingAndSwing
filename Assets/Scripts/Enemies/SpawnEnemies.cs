@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Enemies;
+using UnityEngine.Serialization;
 
 
 public class SpawnEnemies : MonoBehaviour
@@ -11,7 +12,7 @@ public class SpawnEnemies : MonoBehaviour
     private List<GameObject> spawnedEnemies = new();
 
     private int spawnLimit = 3;
-    public bool _canSpawn;
+    [FormerlySerializedAs("_canSpawn")] public bool canSpawn;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,7 @@ public class SpawnEnemies : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!_canSpawn)
+        if(!canSpawn)
         {
 
         }
@@ -44,6 +45,6 @@ public class SpawnEnemies : MonoBehaviour
             yield return new WaitForSeconds(0.25f);
             enemy.GetComponent<EnemyStateMachine>().enabled = true;
         }
-         _canSpawn = false;
+        canSpawn = false;
     }
 }
