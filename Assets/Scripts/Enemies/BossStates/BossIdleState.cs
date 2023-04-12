@@ -25,7 +25,7 @@ namespace Enemies.BossStates
                 var transform = player.transform;
                 _enemy.target = transform;
                 SendBossStarted();
-                _enemy.ChangeState(new BossAimState(transform));
+                _enemy.ChangeState(new BossAimState());
             }
         }
 

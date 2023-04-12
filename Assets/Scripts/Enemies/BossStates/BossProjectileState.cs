@@ -1,11 +1,11 @@
 using Interfaces;
 using UnityEngine;
+using Events;
 
 namespace Enemies.BossStates
 {
     public class BossProjectileState : IState
     {
-        private Transform _playerTransform;
         private BossEnemyStateMachine _enemy;
 
         private ShootingEnemy _shootingEnemy;
@@ -17,19 +17,13 @@ namespace Enemies.BossStates
 
         private float _shootingTime = 5f;
         private bool _inPosition;
-
-        public BossProjectileState(Transform playerTransform){
-            this._playerTransform = playerTransform;
-        }
+        private bool _beenHit;
 
         public void Enter(EnemyStateMachine enemy)
         {
             this._enemy = enemy as BossEnemyStateMachine;
-            // _shootingEnemy = _enemy.GetComponentInChildren<ShootingEnemy>();
-            _shootingEnemy = _enemy.GetComponent<ShootingEnemy>();
+            _shootingEnemy = _enemy.GetComponentInChildren<ShootingEnemy>();
             _aimDirection = _shootingEnemy.transform;
-            _initialRotation = _aimDirection.rotation;
-
         }
 
         public void Execute(EnemyStateMachine enemy)
@@ -44,45 +38,44 @@ namespace Enemies.BossStates
                 _inPosition = true;
             }
             if(!_inPosition) return;
-
-            //Start Shooting for 5 seconds
-            if(_shootingTime > 0)
+            
+            //Check if the player has hit the boss
+            if(!_beenHit)
             {
-                _shootingTime -= Time.deltaTime;
-                SpawnProjectiles();
-                //MoveAway();
+                //Start/Continue Shooting for 5 seconds
+                if(_shootingTime > 0)
+                {
+                    _shootingTime -= Time.deltaTime;
+                    SpawnProjectiles();
+                }
+                else
+                {
+                    //Start Recharging 
+                    enemy.ChangeState(new BossRechargeShieldState());
+                }
             }
             else
             {
-                //Stop shooting
-                enemy.ChangeState(new BossRetreatState(_playerTransform));
+                //Interupted
+                enemy.ChangeState(new BossInterruptedState());
             }
         }
 
         public void Exit()
         {
+            //Stop Shooting 
             _shootingEnemy.SetDisableUpdate(true);
-            _aimDirection.rotation = _initialRotation;
-            //If not has taken damage then set shield back on 
-            // This should be done in the boss  recharge shield state
-            _enemy.GetComponent<Enemy>().SetCanBeDestroyed(false);
+            //Reset Paramaters - Do I have to do this? 
+            _beenHit = false;
+            _inPosition = false;
         }
 
         private void MoveToCentre()
         {
+            //FIND THE CENTRE TRANSFORM AND GO TO IT
             _enemy.transform.position = Vector2.MoveTowards(_enemy.transform.position, _centrePosition, _enemy.enemyData.moveSpeed * Time.deltaTime);
         }
-
-        //I cant decide whether I want the enemy to be stationary during this attack or not / if so then move away or towards ?  
-        private void MoveAway()
-        {
-            if (_retreatTime > 0)
-            {
-                _retreatTime -= Time.deltaTime;
-                _enemy.transform.position = Vector2.MoveTowards(_enemy.transform.position, _playerTransform.position,
-                    _enemy.enemyData.moveSpeed * Time.deltaTime);
-            }
-        }
+ 
 
         private void SpawnProjectiles()
         {

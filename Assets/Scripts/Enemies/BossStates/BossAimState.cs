@@ -7,17 +7,10 @@ namespace Enemies.BossStates
 {
     public class BossAimState : IState
     {
-        private Transform _playerTransform;
-        Vector2 _directionOfTravel;
         private BossEnemyStateMachine _enemy;
         float decideAttackTime;
         private int _attackType = 1;
 
-
-        public BossAimState(Transform playerTransform)
-        {
-            this._playerTransform = playerTransform;
-        }
 
         public void Enter(EnemyStateMachine enemy)
         {
@@ -44,10 +37,6 @@ namespace Enemies.BossStates
             
             decideAttackTime = _enemy.decideAttackTime;
 
-            //Aim towards player 
-            _directionOfTravel = _playerTransform.position - enemy.transform.position;
-            _directionOfTravel = _directionOfTravel.normalized;
-
             DecideAttack();
         }
 
@@ -57,11 +46,11 @@ namespace Enemies.BossStates
             switch (_attackType)
             {
                 case 1:
-                    _enemy.ChangeState(new BossChargeState(_directionOfTravel, _playerTransform));
-                        break;
+                    _enemy.ChangeState(new BossChargeState());
+                    break;
                 case 2:
                     //Projectile
-                    _enemy.ChangeState(new BossProjectileState(_playerTransform));
+                    _enemy.ChangeState(new BossProjectileState());
                     break;
                 case 3:
                     //Hoard

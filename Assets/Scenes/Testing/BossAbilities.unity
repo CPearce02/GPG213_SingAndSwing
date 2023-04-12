@@ -123,44 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &202396429 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7767946816732133658, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
-  m_PrefabInstance: {fileID: 1057666181}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &202396435 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7767946816732133653, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
   m_PrefabInstance: {fileID: 1057666181}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &202396436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 202396429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f697dd63619041e47ad9fc19aedb2d9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 9114964516396053925, guid: f2b3f32b5856f7e49abd75b53e8b572a, type: 3}
-  directionTransform: {fileID: 828007821}
-  player: {fileID: 0}
-  bounceMaterial: {fileID: 6200000, guid: d374b8edcf4dc524996cdc968feefe14, type: 2}
-  aimAtPlayer: 0
-  countingDownShoot: 0
-  disableUpdate: 1
-  fireRate: 0.05
-  bulletSpeed: 10
-  homingTime: 1
-  shootState: 0
-  onBulletDestroyParticle:
-    <Transform>k__BackingField: {fileID: 0}
-    <Particle>k__BackingField: {fileID: 0}
-    <DoParticles>k__BackingField: 0
-    <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &216525719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -550,7 +517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7767946816732133659, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
       propertyPath: canBeDestroyed
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
@@ -3997,13 +3964,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1804219752}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f697dd63619041e47ad9fc19aedb2d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 9114964516396053925, guid: f2b3f32b5856f7e49abd75b53e8b572a, type: 3}
-  directionTransform: {fileID: 1804219755}
+  directionTransform: {fileID: 828007821}
   player: {fileID: 0}
   bounceMaterial: {fileID: 6200000, guid: d374b8edcf4dc524996cdc968feefe14, type: 2}
   aimAtPlayer: 0

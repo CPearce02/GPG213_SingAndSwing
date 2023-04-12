@@ -11,7 +11,8 @@ namespace Enemies.BossStates
     public class BossChargeState : IState
     {
         private Vector2 _directionToCharge;
-        Transform _playerTransform;
+
+        private BossEnemyStateMachine _enemy;
         private bool hasHit;
         private bool doCharge;
         
@@ -19,15 +20,14 @@ namespace Enemies.BossStates
         static readonly int Ability1Idle = Animator.StringToHash("Ability1_Idle");
         static readonly int Ability1End = Animator.StringToHash("Ability1_End");
 
-
-        public BossChargeState(Vector2 direction, Transform playerTransform)
-        {
-            this._directionToCharge = direction;
-            this._playerTransform = playerTransform;
-        }
         public void Enter(EnemyStateMachine enemy)
         { 
             enemy.animator.CrossFade(Ability1Start, 0);
+            this._enemy = enemy as BossEnemyStateMachine;
+            
+            //Aim towards player 
+            _directionToCharge = _enemy.target.position - enemy.transform.position;
+            _directionToCharge = _directionToCharge.normalized;
         }
 
         public void Execute(EnemyStateMachine enemy)
@@ -54,12 +54,8 @@ namespace Enemies.BossStates
                         return;
 
                     Debug.Log("Hitplayer");
-                    _playerTransform = player.transform;
                     enemy.Rb.velocity = Vector2.zero;
                     hasHit = true;
-                    //Deal damage to player 
-
-                    //Retreat away 
                 }
                 //hit the environment
                 else if (hit.TryGetComponent(out TilemapCollider2D environment))
@@ -76,7 +72,7 @@ namespace Enemies.BossStates
                         boss.canBeStunned = false;
                         enemy.Rb.velocity = Vector2.zero;
 
-                        enemy.ChangeState(new BossStunState(_playerTransform));
+                        enemy.ChangeState(new BossStunState());
                     }
                 }
                 
@@ -94,7 +90,7 @@ namespace Enemies.BossStates
                 if (enemy.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
                     enemy.Rb.velocity = Vector2.zero;
-                    enemy.ChangeState(new BossRetreatState(_playerTransform));
+                    enemy.ChangeState(new BossRetreatState());
                 }
             }
         }

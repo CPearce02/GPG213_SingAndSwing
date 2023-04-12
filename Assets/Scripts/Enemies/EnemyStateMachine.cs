@@ -18,6 +18,7 @@ namespace Enemies
 
         private void Awake() => Rb = GetComponent<Rigidbody2D>();
 
+        
         public virtual void Start()
         {
             ChangeState(new IdleState());

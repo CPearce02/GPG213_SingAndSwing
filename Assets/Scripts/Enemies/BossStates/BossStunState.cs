@@ -10,15 +10,9 @@ namespace Enemies.BossStates
     public class BossStunState : IState
     {
         private BossEnemyStateMachine _enemy;
-        private Transform _playerTransform;
         float _stunTime;
         
         static readonly int Stunned = Animator.StringToHash("Stunned");
-        
-        public BossStunState(Transform playerTransform)
-        {
-            this._playerTransform = playerTransform;
-        }
 
         public void Enter(EnemyStateMachine enemy)
         {
@@ -39,11 +33,8 @@ namespace Enemies.BossStates
             }
             else
             {
-                _enemy.ChangeState(new BossAimState(_playerTransform));
+                _enemy.ChangeState(new BossAimState());
             }
-
-            //Idle state
-            //enemy.ChangeState(new BossIdleState());
         }
 
         public void Exit()

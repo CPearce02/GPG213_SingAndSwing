@@ -27,10 +27,51 @@ namespace Enemies
                 Destroyable?.Invoke(CanBeDestroyed);   
             }
         }
+
+        public event Action BossTakeDamage;
+        public event Action BossDeath;
+
+        private int maxEnemyHealth;
+
+        private int enemyhealth;
+
+        public int EnemyHealth
+        {
+            get => enemyhealth;
+            private set
+            {
+                enemyhealth = Mathf.Clamp(value, 0, maxEnemyHealth);
+                var normalisedHealth = EnemyHealth / (float)maxEnemyHealth;
+                //Send Boss Events
+                if(TryGetComponent<BossEnemyStateMachine>(out BossEnemyStateMachine bossEnemyStateMachine))
+                {
+                    GameEvents.onBossHealthUIChangeEvent?.Invoke(normalisedHealth);
+                    BossTakeDamage?.Invoke();
+                }
+                if (enemyhealth == 0)
+                {
+                    if (bossEnemyStateMachine)
+                    {
+                        GameEvents.onBossHealthUIChangeEvent?.Invoke(normalisedHealth);
+                        BossDeath?.Invoke();
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
+                        Debug.Log("Enemy died");
+                    }
+                }
+            }
+        }
         
         private void Start()
         {
-            if(enemyData != null) damage = enemyData.damageAmount;
+            if(enemyData != null)
+            {
+                damage = enemyData.damageAmount; 
+                enemyhealth = enemyData.healthAmount;
+                maxEnemyHealth = enemyhealth;
+            }
             Destroyable?.Invoke(CanBeDestroyed);
         }
 
@@ -62,10 +103,10 @@ namespace Enemies
         public void TakeDamage(int amount)
         {
             if (!CanBeDestroyed) return;
+            EnemyHealth -= amount;
             GameEvents.onScreenShakeEvent?.Invoke(Strength.Low, .2f);
             GameEvents.onMultiplierIncreaseEvent?.Invoke();
             takeDamageParticle.Invoke();
-            Destroy(gameObject);
         }
         
         public void SetCanBeDestroyed(bool value) => CanBeDestroyed = value;

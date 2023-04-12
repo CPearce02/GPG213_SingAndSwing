@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6445c4779c2bbd46b935640def41edc, type: 3}
-  m_Name: SkullBoss
+  m_Name: BoneWall
   m_EditorClassIdentifier: 
-  type: 1
-  enemyName: Nosferatu
-  moveSpeed: 2
-  triggerRange: 6
-  attackRange: 3
+  type: 0
+  enemyName: Bone Wall
+  moveSpeed: 0
+  triggerRange: 0
+  attackRange: 0
   retreatTime: 0
-  enemySprite: {fileID: 0}
+  enemySprite: {fileID: 692098045, guid: 324fb7c5ca6d40a4ca16fa5ccab02c43, type: 3}
   enemyAttackSprite: {fileID: 0}
-  damageAmount: 15
-  healthAmount: 250
-  <DamageType>k__BackingField: {fileID: 11400000, guid: ca5dc4a2e4862ec47af93bef06d77152, type: 2}
+  damageAmount: 20
+  healthAmount: 20
+  <DamageType>k__BackingField: {fileID: 0}
   <Combo>k__BackingField: {fileID: 0}

@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d778276522fef428737fef44b86d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 0}
+  enemyData: {fileID: 11400000, guid: a673048a8c581fc4b83fe51bd4a53f44, type: 2}
   damage: 100
   canBeDestroyed: 0
   doesDamageOnCollision: 1

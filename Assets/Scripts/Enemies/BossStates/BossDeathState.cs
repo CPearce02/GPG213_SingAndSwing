@@ -1,5 +1,6 @@
 ﻿using Events;
 using Interfaces;
+using UnityEngine;
 
 namespace Enemies.BossStates
 {
@@ -12,7 +13,7 @@ namespace Enemies.BossStates
 
         public void Execute(EnemyStateMachine enemy = null)
         {
-            
+            // Debug.Log("Boss Died!");
         }
 
         public void Exit()

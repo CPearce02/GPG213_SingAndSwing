@@ -6,16 +6,31 @@ namespace Enemies
 {
     public class BossEnemyStateMachine : EnemyStateMachine
     {
+        private Enemy enemy;
         public Transform target;
         public bool canBeStunned;
         public float decideAttackTime;
         [SerializeField] float stunCoolDownTime;
         private float originalStunCoolDownTime;
         [field:SerializeField] public bool HasBeenActivated { get; private set; }
+
         public override void Start()
         {
             ChangeState(new BossIdleState());
             originalStunCoolDownTime = stunCoolDownTime;
+        }
+        
+        private void OnEnable()
+        {
+            if(enemy == null) enemy = GetComponent<Enemy>();
+            enemy.BossTakeDamage += () => ChangeState(new BossInterruptedState());
+            enemy.BossDeath += () => ChangeState(new BossDeathState());
+        }
+
+        private void OnDisable()
+        {
+            enemy.BossTakeDamage -= () => ChangeState(new BossInterruptedState());
+            enemy.BossDeath -= () => ChangeState(new BossDeathState());
         }
         
         public override void Update()
@@ -23,6 +38,8 @@ namespace Enemies
             base.Update();
 
             UpdateCanBeStunned();
+
+
         }
         
         private void UpdateCanBeStunned()
@@ -39,7 +56,7 @@ namespace Enemies
         }
         
         public void SetHasBeenActivated() => HasBeenActivated = true;
-
+        
         private void OnDrawGizmos()
         {
             var tr = transform.position;
