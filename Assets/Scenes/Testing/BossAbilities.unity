@@ -453,6 +453,18 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 6.75
       objectReference: {fileID: 0}
+    - target: {fileID: 4740390284480006755, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
+      propertyPath: m_NormalizedViewPortRect.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740390284480006755, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740390284480006755, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
+      propertyPath: m_NormalizedViewPortRect.height
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4740390284480006757, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -579,6 +591,10 @@ PrefabInstance:
       propertyPath: positions.Array.data[3]
       value: 
       objectReference: {fileID: 311995568}
+    - target: {fileID: 833268692, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: <DisappearTime>k__BackingField
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5444886546010235456, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
       propertyPath: m_Enabled
       value: 1

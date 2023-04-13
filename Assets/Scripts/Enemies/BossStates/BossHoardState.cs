@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Enemies.BossStates
 {
-    public class BossHoardState: IState
+    public class BossHoardState : IState
     {
         private BossEnemyStateMachine _enemy;
         private SpawnEnemies _spawnEnemies;
@@ -16,8 +16,11 @@ namespace Enemies.BossStates
         public void Enter(EnemyStateMachine enemy)
         {
             this._enemy = enemy as BossEnemyStateMachine;
-            if(_enemy == null) return;
+            if (_enemy == null) return;
             _spawnEnemies = _enemy.GetComponentInChildren<SpawnEnemies>();
+            _enemy.animator.CrossFade("Start_Move", 0);
+
+
         }
 
         public void Execute(EnemyStateMachine enemy)
@@ -29,9 +32,10 @@ namespace Enemies.BossStates
             //Once in position - Start Spawning 
             if (_spawningTime > 0)
             {
+                enemy.animator.CrossFade("Ability2_Idle", 0);
                 //Start Spawning
                 _spawningTime -= Time.deltaTime;
-                if(_spawned) return;
+                if (_spawned) return;
                 _spawnEnemies.StartSpawning(_enemy.target);
                 _spawned = true;
             }
@@ -53,14 +57,16 @@ namespace Enemies.BossStates
             foreach (Transform position in _enemy.positions)
             {
                 float distance = Vector3.Distance(_enemy.transform.position, position.transform.position);
-                if(distance < closestDistance)
+                if (distance < closestDistance)
                 {
                     closestDistance = distance;
                     _closestPosition = position.position;
                 }
-            } 
+            }
             //Move to it
+
             _enemy.transform.position = Vector2.MoveTowards(_enemy.transform.position, _closestPosition, _enemy.enemyData.moveSpeed * Time.deltaTime);
+
             _inPosition = true;
         }
     }

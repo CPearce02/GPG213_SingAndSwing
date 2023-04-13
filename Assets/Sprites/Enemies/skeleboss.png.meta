@@ -1895,6 +1895,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: skeleboss_83
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6086299a1650b5c478a37766f450051e
+      internalID: -1821647781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleboss_84
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ec55157d64900b4b8c2c99e09aa0ca5
+      internalID: -2091993989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1938,6 +1980,8 @@ TextureImporter:
       skeleboss_65: -1094480252
       skeleboss_78: -561851555
       skeleboss_34: 491013651
+      skeleboss_83: -1821647781
+      skeleboss_84: -2091993989
       skeleboss_77: -1006027271
       skeleboss_11: 700605701
       skeleboss_4: 1479082930
