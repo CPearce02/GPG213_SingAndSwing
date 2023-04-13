@@ -36,8 +36,8 @@ namespace Enemies.BossStates
             {
                 _inPosition = true;
             }
-            if(!_inPosition) return;
-
+            if (!_inPosition) return;
+            enemy.animator.CrossFade("AOE_Attack", 0);
             //Start/Continue Shooting for 5 seconds
             if (_shootingTime > 0)
             {
@@ -49,7 +49,7 @@ namespace Enemies.BossStates
                 //Start Recharging 
                 enemy.ChangeState(new BossRechargeShieldState());
             }
-            
+
         }
 
         public void Exit()
@@ -64,7 +64,7 @@ namespace Enemies.BossStates
             //FIND THE CENTRE TRANSFORM AND GO TO IT
             _enemy.transform.position = Vector2.MoveTowards(_enemy.transform.position, _centrePosition, _enemy.enemyData.moveSpeed * Time.deltaTime);
         }
- 
+
 
         private void SpawnProjectiles()
         {
@@ -76,6 +76,6 @@ namespace Enemies.BossStates
             // Rotate the object around its own z-axis by the rotation angle
             _aimDirection.Rotate(0f, 0f, rotationAngle * 2);
         }
-    
+
     }
 }

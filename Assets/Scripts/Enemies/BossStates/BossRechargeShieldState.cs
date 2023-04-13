@@ -6,10 +6,12 @@ namespace Enemies.BossStates
     public class BossRechargeShieldState : IState
     {
         private BossEnemyStateMachine _enemy;
+        private Enemy _enemyComponent;
 
         public void Enter(EnemyStateMachine enemy)
         {
             this._enemy = enemy as BossEnemyStateMachine;
+            _enemyComponent = _enemy.GetComponent<Enemy>();
             if (_enemy == null) return;
         }
 
@@ -18,13 +20,13 @@ namespace Enemies.BossStates
             //Animation
 
             //When finish aninamtion - Turn on sheild 
-            _enemy.GetComponent<Enemy>().SetCanBeDestroyed(false);
+            _enemyComponent.SetCanBeDestroyed(false);
             enemy.ChangeState(new BossAimState());
         }
 
         public void Exit()
         {
-            
+
         }
     }
 }

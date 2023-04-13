@@ -8,17 +8,17 @@ namespace Enemies.BossStates
     {
         public void Enter(EnemyStateMachine enemy)
         {
-            GameEvents.onBossFightEndEvent?.Invoke();
         }
 
-        public void Execute(EnemyStateMachine enemy = null)
+        public void Execute(EnemyStateMachine enemy)
         {
+            enemy.animator.CrossFade("Death", 0);
             // Debug.Log("Boss Died!");
         }
 
         public void Exit()
         {
-            
+            GameEvents.onBossFightEndEvent?.Invoke();
         }
     }
 }

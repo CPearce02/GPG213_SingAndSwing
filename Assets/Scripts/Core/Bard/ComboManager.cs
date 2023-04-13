@@ -34,7 +34,7 @@ namespace Core.Bard
         void Update()
         {
             //Choose Enemy if there are multiple
-            if(enemies.Count < 1) return;
+            if (enemies.Count < 1) return;
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 if (_enemyIndex < enemies.Count - 1)
@@ -74,6 +74,7 @@ namespace Core.Bard
             {
                 if (enemy != _selectedEnemy)
                 {
+                    // this throws null exception
                     enemy.GetComponentInChildren<SpriteRenderer>().color = Color.white;
                 }
                 else

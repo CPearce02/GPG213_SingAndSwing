@@ -20,13 +20,15 @@ namespace Enemies
         public event Action BossTakeDamage;
         public event Action BossDeath;
 
+        private bool isBoss => enemyData.type == EnemyType.Boss;
+
         public bool CanBeDestroyed
         {
             get => canBeDestroyed;
             set
             {
-                canBeDestroyed = value; 
-                Destroyable?.Invoke(CanBeDestroyed);   
+                canBeDestroyed = value;
+                Destroyable?.Invoke(CanBeDestroyed);
             }
         }
 
@@ -40,14 +42,14 @@ namespace Enemies
                 enemyhealth = Mathf.Clamp(value, 0, maxEnemyHealth);
                 var normalisedHealth = EnemyHealth / (float)maxEnemyHealth;
                 //Send Boss Events
-                if(TryGetComponent<BossEnemyStateMachine>(out BossEnemyStateMachine bossEnemyStateMachine))
+                if (isBoss)
                 {
                     GameEvents.onBossHealthUIChangeEvent?.Invoke(normalisedHealth);
                     BossTakeDamage?.Invoke();
                 }
                 if (enemyhealth == 0)
                 {
-                    if (bossEnemyStateMachine)
+                    if (isBoss)
                     {
                         GameEvents.onBossHealthUIChangeEvent?.Invoke(normalisedHealth);
                         BossDeath?.Invoke();
@@ -60,12 +62,12 @@ namespace Enemies
                 }
             }
         }
-        
+
         private void Start()
         {
-            if(enemyData != null)
+            if (enemyData != null)
             {
-                damage = enemyData.damageAmount; 
+                damage = enemyData.damageAmount;
                 enemyhealth = enemyData.healthAmount;
                 maxEnemyHealth = enemyhealth;
             }
@@ -84,17 +86,17 @@ namespace Enemies
         // }
 
         private void OnCollisionEnter2D(Collision2D collision) => HandleCollision2D(collision);
-        
+
         private void HandleCollision2D(Collision2D collision)
-        { 
-            if(!doesDamageOnCollision) return;
-            
+        {
+            if (!doesDamageOnCollision) return;
+
             var attackable = collision.gameObject.TryGetComponent<IAttackable>(out var attackableComponent);
             if (!attackable) return;
 
             //Stops enemies from attacking each other
             collision.transform.TryGetComponent(out PlatformingController player);
-            if(player) attackableComponent.TakeDamage(damage); Debug.Log($"{player} took {damage}");
+            if (player) attackableComponent.TakeDamage(damage); Debug.Log($"{player} took {damage}");
         }
 
         public void TakeDamage(int amount)
@@ -105,7 +107,7 @@ namespace Enemies
             GameEvents.onMultiplierIncreaseEvent?.Invoke();
             takeDamageParticle.Invoke();
         }
-        
+
         public void SetCanBeDestroyed(bool value) => CanBeDestroyed = value;
 
     }

@@ -20995,5 +20995,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6739522127984029068, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
+      propertyPath: m_Intensity
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739522127984029068, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
+      propertyPath: m_LightVolumeIntensity
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739522127984029068, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
+      propertyPath: m_LightVolumeIntensityEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739522127984029068, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
+      propertyPath: m_ShadowVolumeIntensityEnabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
