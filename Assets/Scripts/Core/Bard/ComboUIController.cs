@@ -10,7 +10,7 @@ namespace Core.Bard
 {
     public class ComboUIController : MonoBehaviour
     {
-        [SerializeField] private Combo _currentCombo;
+        [SerializeField][ReadOnly] private Combo _currentCombo;
         private int _comboIndex;
 
         [SerializeField] private RectTransform _spawnPoint;
@@ -76,8 +76,8 @@ namespace Core.Bard
         
         private void SetCombo(Combo combo)
         {
-            ResetCombo();
             _currentCombo = combo;
+            ResetCombo();
             SpawnNote();
         }
         
@@ -89,6 +89,7 @@ namespace Core.Bard
             _noteToBePressed = note;
             _noteToBePressed.GetComponent<ComboNoteManager>().SetMoveDuration(_increasedSpeed);
             _expectedNote = _currentCombo.ComboValues[_comboIndex];
+            // if(note == null)SpawnNote();
         }
 
         private void CheckValueAndPosition(ComboValues value)
@@ -108,13 +109,17 @@ namespace Core.Bard
                 else
                 {
                     //Incorrect Postion
-                    DisplayWrongNotes();
+                    // DisplayWrongNotes();
+                    GameEvents.onComboFinish?.Invoke(false);
+                    GameEvents.onWrongButtonPressed?.Invoke();
                 }
             }
             //Incorrect Value
             else
             {
-                DisplayWrongNotes();
+                // DisplayWrongNotes();
+                GameEvents.onComboFinish?.Invoke(false);
+                GameEvents.onWrongButtonPressed?.Invoke();
             }
         }
 
@@ -149,7 +154,7 @@ namespace Core.Bard
         }
         IEnumerator DelaySpawn()
         {
-            yield return new WaitForSeconds(0.75f);
+            yield return new WaitForSeconds(1.25f);
             ResetCombo();
             SpawnNote();
         }
@@ -179,8 +184,10 @@ namespace Core.Bard
             if(complete)
             {
                 _comboIndex = 0;
-                _currentCombo = null;
-                ClearSpawnedNotes();
+                if(_currentCombo == null)
+                {
+                    ClearSpawnedNotes();
+                }
             }
             else
             {
@@ -194,7 +201,5 @@ namespace Core.Bard
             yield return new WaitForSeconds(0.5f);
             note.color = baseColour;
         }
-
-        
     }
 }

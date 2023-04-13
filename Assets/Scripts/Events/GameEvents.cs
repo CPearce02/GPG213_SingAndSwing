@@ -2,6 +2,7 @@ using Core.Player;
 using Core.ScriptableObjects;
 using Enemies.ScriptableObjects;
 using Enums;
+using Enemies;
 using Structs;
 using UnityEngine;
 
@@ -59,6 +60,7 @@ namespace Events
         #endregion
 
         #region UI Events
+        
         public delegate void SetValue(int value);
         public delegate void PlayerHealthUIChange(float normalisedCurrentHealth);
         public delegate void PlayerManaUIChange(float normalisedCurrentMana);
@@ -67,7 +69,10 @@ namespace Events
 
         public delegate void BossFightStart(EnemyData enemyData);
         public delegate void BossFightEnd();
-        
+
+        public delegate void TargetEnemy(Enemy enemy);
+
+        public static TargetEnemy onTargetEnemyEvent;
         public static SetValue onSetHealthCountEvent;
         public static PlayerHealthUIChange onPlayerHealthUIChangeEvent;
         public static PlayerManaUIChange onPlayerManaUIChangeEvent;

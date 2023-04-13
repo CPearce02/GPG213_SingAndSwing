@@ -1,53 +1,51 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Enemies;
-using Core.ScriptableObjects;
 using Events;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
+using Core.ScriptableObjects;
 
 namespace Core.Bard
 {
     public class ComboManager : MonoBehaviour
     {
         private Enemy _currentEnemy;
+        [SerializeField][ReadOnly] private Combo _currentEnemyCombo;
         public List<Enemy> _enemies = new List<Enemy>();
-        private int _comboListIndex;
+        [SerializeField][ReadOnly] private int _enemyListIndex = -1;
+
+        private AudioSource _au;
+
+        [Header("Audio")]
+        [SerializeField] private AudioClip _guitarChord;
+        [SerializeField] private AudioClip _failGuitarChord;
+        private float _originalPitch;
+        private bool _pitchSet;
 
         // Start is called before the first frame update
         void Start()
         {
-            
+            _au = GetComponent<AudioSource>();
+            _originalPitch = _au.pitch;
         }
 
         private void OnEnable()
         {
             GameEvents.onComboFinish += ComboFinished;
+            GameEvents.onCorrectButtonPressed += PlayGuitar;
+            GameEvents.onWrongButtonPressed += PlayFailGuitar;
         }        
 
         private void OnDisable()
         {
             GameEvents.onComboFinish -= ComboFinished;
+            GameEvents.onCorrectButtonPressed -= PlayGuitar;
+            GameEvents.onWrongButtonPressed -= PlayFailGuitar;
         }
 
         // Update is called once per frame
         void Update()
         {
-            //Choose Enemy if there are multiple
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                if (_comboListIndex < _enemies.Count - 1)
-                {
-                    _comboListIndex += 1;
-                }
-                else
-                {
-                    _comboListIndex = 0;
-                }
-                _currentEnemy = _enemies[_comboListIndex];
-                SetCombo(_enemies[_comboListIndex].enemyData.Combo);
-            }
+            
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -58,30 +56,7 @@ namespace Core.Bard
                 if (enemyComponent.enemyData.Combo != null && !_enemies.Contains(enemyComponent) && !enemyComponent.CanBeDestroyed)
                 {
                     _enemies.Add(enemyComponent);
-                    SetCombo(enemyComponent.enemyData.Combo);
-                    _currentEnemy = enemyComponent;
-                }
-            }
-        }
-
-        private void SetCombo(Combo _combo)
-        {
-            UpdateShader();
-            GameEvents.onNewCombo?.Invoke(_combo);
-        }
-
-        private void UpdateShader()
-        {
-            //Update Colour
-            foreach (Enemy enemy in _enemies)
-            {
-                if (enemy == _currentEnemy)
-                {
-                    enemy.GetComponentInChildren<SpriteRenderer>().color = Color.magenta;
-                }
-                else
-                {
-                    enemy.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                    if(_currentEnemy == null) SelectCurrent(enemyComponent);
                 }
             }
         }
@@ -90,15 +65,85 @@ namespace Core.Bard
         {
             if(completed)
             {
+                //Turn off sheild 
                 _currentEnemy.SetCanBeDestroyed(true);
+                //Turn off UI
+                _currentEnemy.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                //Remove from list 
                 _enemies.Remove(_currentEnemy);
-            }
-            else
-            {
-                //Play fail audio
+                _currentEnemy = null;
+                //Highlight next enemy
+                SendEnemy();
+                //Reset Pitch
+                _pitchSet = false;
             }
         }
 
+        public void SendEnemy()
+        {
+            // If there are no enemies, return
+            if (_enemies.Count == 0) return;
+
+            // If there is no selected enemy, select the first one
+            if (_enemyListIndex == -1)
+            {
+                SelectCurrent(_enemies[0]);
+                return;
+            }
+
+            // Deselect the current enemy
+            DeselectCurrent();
+
+            // Increment the selected index
+            _enemyListIndex++;
+
+            // Wrap around if we reached the end of the list
+            if (_enemyListIndex >= _enemies.Count)
+            {
+                _enemyListIndex = 0;
+            }
+
+            // Highlight the new selected enemy
+            SelectCurrent(_enemies[_enemyListIndex]);
+        }
+
+        private void DeselectCurrent()
+        {
+            if (_currentEnemy != null)
+            {
+                _currentEnemy.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                _currentEnemy = null;
+            }
+        }
+
+        private void SelectCurrent(Enemy _enemy)
+        {
+            //Set index
+            _enemyListIndex = _enemies.IndexOf(_enemy);
+            //Set Current Enemy
+            _currentEnemy = _enemy;
+            //Highlight Enemy
+            _enemy.GetComponentInChildren<SpriteRenderer>().color = Color.magenta;
+            GameEvents.onTargetEnemyEvent?.Invoke(_enemy);
+            //Send the Combo to UI
+            GameEvents.onNewCombo?.Invoke(_enemy.enemyData.Combo);
+        }
+
+        private void PlayGuitar()
+        {
+            if(!_pitchSet) {_au.pitch = _originalPitch; _pitchSet = true;}
+            _au.clip = _guitarChord;
+            _au.pitch += 0.5f;
+            _au.Play();
+        }
+
+        private void PlayFailGuitar()
+        {
+            _pitchSet = false;
+            _au.clip = _failGuitarChord;
+            _au.pitch = 1f;
+            _au.Play();        
+        }
     }
 }
 

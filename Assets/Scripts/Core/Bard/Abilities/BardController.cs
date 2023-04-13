@@ -14,10 +14,13 @@ namespace Core.Bard.Abilities
 
         private PlayerInput _bardInput;
 
+        private ComboManager _cm;
+
 
         void Start()
         {
             _bardInput = GetComponent<PlayerInput>();
+            _cm = GetComponentInChildren<ComboManager>();
         }
 
         void Update()
@@ -50,6 +53,12 @@ namespace Core.Bard.Abilities
         {
             GameEvents.onSlowDownStart?.Invoke();
         }
+
+        private void OnTargetEnemy()
+        {
+            _cm.SendEnemy();
+        }
+        
         void GroundCheck() => Grounded = Physics2D.CircleCast(groundCheckTransform.position, groundCheckSize.x, Vector2.down, groundCheckSize.y, ~ignoreLayers);
 
         private void OnDrawGizmosSelected() => Gizmos.DrawWireSphere(groundCheckTransform.position + new Vector3(0, groundCheckSize.y, 0), groundCheckSize.x);
