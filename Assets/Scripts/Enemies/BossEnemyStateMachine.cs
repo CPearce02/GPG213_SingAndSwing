@@ -38,14 +38,14 @@ namespace Enemies
         private void OnEnable()
         {
             if (enemy == null) enemy = GetComponent<Enemy>();
-            enemy.BossTakeDamage += () => ChangeState(new BossInterruptedState());
-            enemy.BossDeath += () => ChangeState(new BossDeathState());
+            enemy.BossTakeDamage += ForceInterruptState;
+            enemy.BossDeath += ForceDeathState;
         }
 
         private void OnDisable()
         {
-            enemy.BossTakeDamage -= () => ChangeState(new BossInterruptedState());
-            enemy.BossDeath -= () => ChangeState(new BossDeathState());
+            enemy.BossTakeDamage -= ForceInterruptState;
+            enemy.BossDeath -= ForceDeathState;
         }
 
         public override void Update()
@@ -67,6 +67,17 @@ namespace Enemies
                 stunCoolDownTime = originalStunCoolDownTime;
             }
         }
+        
+        void ForceInterruptState()
+        {
+            ChangeState(new BossInterruptedState());
+        }
+        
+        void ForceDeathState()
+        {
+            ChangeState(new BossDeathState());
+        }
+        
 
         public void SetHasBeenActivated() => HasBeenActivated = true;
 
