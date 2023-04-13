@@ -39,7 +39,7 @@ namespace Core.Bard
             GameEvents.onButtonPressed += CheckNotePosition;
             GameEvents.onCorrectButtonPressed += DisplayCorrectNote;
             GameEvents.onWrongButtonPressed += DisplayWrongNotes;
-            GameEvents.onComboFinish += ResetComboUI;
+            // GameEvents.onComboFinish += ResetComboUI;
         }
 
         private void OnDisable()
@@ -48,7 +48,7 @@ namespace Core.Bard
             GameEvents.onButtonPressed -= CheckNotePosition;
             GameEvents.onCorrectButtonPressed -= DisplayCorrectNote;
             GameEvents.onWrongButtonPressed -= DisplayWrongNotes;
-            GameEvents.onComboFinish -= ResetComboUI;
+            // GameEvents.onComboFinish -= ResetComboUI;
         }
 
         private void Update()

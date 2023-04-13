@@ -46,13 +46,13 @@ namespace Core.Bard
         private void OnEnable()
         {
             GameEvents.onButtonPressed += CheckComboValue;
-            GameEvents.onComboFinish += ComboFinished;
+            // GameEvents.onComboFinish += ComboFinished;
         }
 
         private void OnDisable()
         {
             GameEvents.onButtonPressed -= CheckComboValue;
-            GameEvents.onComboFinish -= ComboFinished;
+            // GameEvents.onComboFinish -= ComboFinished;
         }
 
         // Update is called once per frame
@@ -76,7 +76,7 @@ namespace Core.Bard
             //IF note to be pressed reaches end without being pressed then END COMBO
             if (_noteToBePressed != null && (Vector3.Distance(_noteToBePressed.gameObject.transform.position, _endPosition.position) < 0.1f))
             {
-                GameEvents.onComboFinish?.Invoke();
+                // GameEvents.onComboFinish?.Invoke();
             }
         }
 
@@ -105,7 +105,7 @@ namespace Core.Bard
                 {
                     //All notes pressed correctly - Combo Finished 
                     _noArmour = true;
-                    GameEvents.onComboFinish?.Invoke();
+                    // GameEvents.onComboFinish?.Invoke();
                 }
                 else
                 {

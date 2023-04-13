@@ -44,7 +44,7 @@ namespace Events
         public delegate void CorrectButtonPressed();
         public delegate void WrongButtonPressed();
         public delegate void NewCombo(Combo combo);
-        public delegate void ComboFinished();
+        public delegate void ComboFinished(bool complete);
         public delegate void AimStart(Vector2 directon);
         public delegate void SlowDownStart();
 

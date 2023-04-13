@@ -13,12 +13,30 @@ namespace Core.Bard
         private Image image;
         private float moveDistance = 47f;
         private float moveDuration = 6f;
+        Tween translate;
+
+        public bool _beenPressed;
 
         private void Start()
         {
             image = GetComponent<Image>();
-            image.rectTransform.DOAnchorPosX(-moveDistance, moveDuration)
-            .OnComplete(() => GameEvents.onComboFinish?.Invoke());
+            translate = image.rectTransform.DOAnchorPosX(-moveDistance, moveDuration)
+            .OnComplete(CheckIfPressed);
+        }
+
+        void OnDisable() {
+            translate.Kill();
+        }
+        private void CheckIfPressed()
+        {
+            if(_beenPressed)
+            {
+                
+            }
+            else
+            {
+                GameEvents.onComboFinish?.Invoke(false);
+            }
         }
     }
 }

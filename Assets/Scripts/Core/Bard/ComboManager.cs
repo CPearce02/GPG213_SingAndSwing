@@ -10,20 +10,20 @@ namespace Core.Bard
 {
     public class ComboManager : MonoBehaviour
     {
-        public List<Enemy> enemies = new List<Enemy>();
-        private Enemy _selectedEnemy;
-        private int _enemyIndex;
+        private Enemy _currentEnemy;
+        public List<Enemy> _enemies = new List<Enemy>();
+        private int _comboListIndex;
 
         // Start is called before the first frame update
         void Start()
         {
-            //Clear list before every level
-            enemies.Clear();
+            
         }
 
         private void OnEnable()
         {
-        }
+
+        }        
 
         private void OnDisable()
         {
@@ -34,21 +34,19 @@ namespace Core.Bard
         void Update()
         {
             //Choose Enemy if there are multiple
-            if (enemies.Count < 1) return;
-            if (Input.GetKeyDown(KeyCode.Tab))
+            if (_enemies.Count < 1) return;
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                if (_enemyIndex < enemies.Count - 1)
+                if (_comboListIndex < _enemies.Count - 1)
                 {
-                    _enemyIndex += 1;
+                    _comboListIndex += 1;
                 }
                 else
                 {
-                    _enemyIndex = 0;
+                    _comboListIndex = 0;
                 }
-                _selectedEnemy = enemies[_enemyIndex];
-                UpdateShader();
-                //Send Combo to UI
-                GameEvents.onNewCombo?.Invoke(enemies[_enemyIndex].enemyData.Combo);
+                _currentEnemy = _enemies[_comboListIndex];
+                SetCombo(_enemies[_comboListIndex].enemyData.Combo);
             }
         }
 
@@ -56,30 +54,33 @@ namespace Core.Bard
         {
             if (collision.TryGetComponent<Enemy>(out Enemy enemyComponent))
             {
-                if (enemyComponent.enemyData != null && !enemies.Contains(enemyComponent))
+                if (enemyComponent.enemyData.Combo != null && !_enemies.Contains(enemyComponent))
                 {
-                    enemies.Add(enemyComponent);
-                    _selectedEnemy = enemyComponent;
-                    UpdateShader();
-                    _enemyIndex += 1;
-                    GameEvents.onNewCombo?.Invoke(enemyComponent.enemyData.Combo);
+                    _enemies.Add(enemyComponent);
+                    SetCombo(enemyComponent.enemyData.Combo);
+                    _currentEnemy = enemyComponent;
                 }
             }
+        }
+
+        private void SetCombo(Combo _combo)
+        {
+            UpdateShader();
+            GameEvents.onNewCombo?.Invoke(_combo);
         }
 
         private void UpdateShader()
         {
             //Update Colour
-            foreach (Enemy enemy in enemies)
+            foreach (Enemy enemy in _enemies)
             {
-                if (enemy != _selectedEnemy)
+                if (enemy == _currentEnemy)
                 {
-                    // this throws null exception
-                    enemy.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                    enemy.GetComponentInChildren<SpriteRenderer>().color = Color.magenta;
                 }
                 else
                 {
-                    enemy.GetComponentInChildren<SpriteRenderer>().color = Color.magenta;
+                    enemy.GetComponentInChildren<SpriteRenderer>().color = Color.white;
                 }
             }
         }

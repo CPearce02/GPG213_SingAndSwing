@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &227319174 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8881780596523314076, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
-  m_PrefabInstance: {fileID: 1312436848}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &243455609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -214,6 +209,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyMover (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2332113700691211888, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2332113700691211889, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
       propertyPath: enemyData
       value: 
@@ -224,7 +223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2332113700691211903, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.0025673
+      value: 2.93
       objectReference: {fileID: 0}
     - target: {fileID: 2332113700691211903, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -291,7 +290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2332113700691211903, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.76
+      value: -3.85
       objectReference: {fileID: 0}
     - target: {fileID: 2332113700691211903, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -561,7 +560,7 @@ PrefabInstance:
     - target: {fileID: 6402941497547239374, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
       propertyPath: oneSpawnPoint
       value: 
-      objectReference: {fileID: 1826722452}
+      objectReference: {fileID: 0}
     - target: {fileID: 6402941497547239374, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
       propertyPath: _increasedSpeed
       value: 0
@@ -569,7 +568,7 @@ PrefabInstance:
     - target: {fileID: 6402941497547239374, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
       propertyPath: onespawnPositions
       value: 
-      objectReference: {fileID: 1826722452}
+      objectReference: {fileID: 0}
     - target: {fileID: 8420515323855349191, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
       propertyPath: m_Name
       value: Activator
@@ -670,7 +669,7 @@ PrefabInstance:
     - target: {fileID: 6402941497547239374, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
       propertyPath: oneSpawnPoint
       value: 
-      objectReference: {fileID: 227319174}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
 --- !u!1 &1334146868
@@ -1305,11 +1304,6 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 48146140179462914, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
   m_PrefabInstance: {fileID: 1557457240}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1826722452 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8881780596523314076, guid: 2fbb6f24be66c1e4c8b8f69b9c893d21, type: 3}
-  m_PrefabInstance: {fileID: 1278664061}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1851163386
 GameObject:
