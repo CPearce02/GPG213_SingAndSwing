@@ -13,6 +13,7 @@ namespace Enemies.BossStates
             this._enemy = enemy as BossEnemyStateMachine;
             _enemyComponent = _enemy.GetComponent<Enemy>();
             if (_enemy == null) return;
+            _enemy.animator.CrossFade("Recharge", 0);
         }
 
         public void Execute(EnemyStateMachine enemy)

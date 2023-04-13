@@ -9,42 +9,86 @@ public class BossDisappearState : IState
     private BossEnemyStateMachine _enemy;
 
     private SpriteRenderer _bossSpriteRenderer;
-    private float _disappearTime = 6f;
+    private Collider2D _bossCollider;
+    private float _disappearTime;
 
     public void Enter(EnemyStateMachine enemy)
     {
         this._enemy = enemy as BossEnemyStateMachine;
         if (_enemy == null) return;
-        _bossSpriteRenderer = _enemy.GetComponentInChildren<SpriteRenderer>();
-        _bossSpriteRenderer.enabled = false;
+
+        _disappearTime = _enemy.DisappearTime;
+        _bossSpriteRenderer = _enemy.SpriteRenderer;
+        _bossCollider = _enemy.MainCollider;
+
+        Disappear(enemy);
+
+        Debug.Log("Disappear");
     }
 
-    public void Execute(EnemyStateMachine enemy )
+
+    public void Execute(EnemyStateMachine enemy)
     {
-        if(_disappearTime > 0)
+        if (enemy.animator.GetCurrentAnimatorStateInfo(0).IsName("Disappear"))
+        {
+            if (enemy.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+            {
+                _bossSpriteRenderer.enabled = false;
+            }
+        }
+
+        if (_disappearTime > 0)
         {
             _disappearTime -= Time.deltaTime;
-
-            Vector2 _directionToCharge = _enemy.transform.position - _enemy.target.position;
-            // Check if there is a wall in front of the enemy
-            var hit = Physics2D.OverlapCircle(enemy.transform.position, enemy.enemyData.attackRange - 0.5f);
-            if(hit.TryGetComponent(out TilemapCollider2D environment))
-            {
-                //Change Direction
-                Debug.Log("Hit Wall");
-                _directionToCharge = -_directionToCharge;
-            }
-            //Retreat away
-            enemy.Rb.AddForce(_directionToCharge * (enemy.enemyData.moveSpeed * Time.fixedDeltaTime));
+            _bossCollider.enabled = false;
+            enemy.Rb.velocity = Vector2.zero;
         }
-        else
+
+        if (_disappearTime <= 0.001)
         {
-            enemy.ChangeState(new BossRechargeShieldState());
+            _bossSpriteRenderer.enabled = true;
+            _bossCollider.enabled = true;
+
+            Appear(enemy);
+        }
+
+        if (enemy.animator.GetCurrentAnimatorStateInfo(0).IsName("Appear"))
+        {
+            if (enemy.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+            {
+                enemy.ChangeState(new BossRechargeShieldState());
+            }
         }
     }
 
     public void Exit()
     {
-        _bossSpriteRenderer.enabled = true;
+        ResetAnimationStates();
     }
+
+    private static void Appear(EnemyStateMachine enemy)
+    {
+        if (enemy.animator.GetBool("Appear"))
+            return;
+
+        enemy.animator.SetBool("Appear", true);
+        enemy.animator.SetBool("Disappear", false);
+    }
+
+    private static void Disappear(EnemyStateMachine enemy)
+    {
+        if (enemy.animator.GetBool("Disappear"))
+            return;
+
+        enemy.animator.SetBool("Appear", false);
+        enemy.animator.SetBool("Disappear", true);
+    }
+
+    private void ResetAnimationStates()
+    {
+        _enemy.animator.SetBool("Appear", false);
+        _enemy.animator.SetBool("Disappear", false);
+    }
+
+
 }
