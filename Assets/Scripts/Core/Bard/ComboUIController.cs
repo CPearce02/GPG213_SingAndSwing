@@ -56,7 +56,7 @@ namespace Core.Bard
         // Update is called once per frame
         void Update()
         {
-            // DebugHitBox();
+            
         }
 
         private void DebugHitBox()
@@ -85,11 +85,11 @@ namespace Core.Bard
         {
             Image note = Instantiate(ComboDictionary.instance.comboPrefabDictionary[_currentCombo.ComboValues[_comboIndex]], _spawnPoint.position, Quaternion.identity);
             note.transform.SetParent(Notes.transform);
+            note.transform.localScale = new Vector3 (1,1,1);
             spawnedNotes.Add(note);
             _noteToBePressed = note;
             _noteToBePressed.GetComponent<ComboNoteManager>().SetMoveDuration(_increasedSpeed);
             _expectedNote = _currentCombo.ComboValues[_comboIndex];
-            // if(note == null)SpawnNote();
         }
 
         private void CheckValueAndPosition(ComboValues value)

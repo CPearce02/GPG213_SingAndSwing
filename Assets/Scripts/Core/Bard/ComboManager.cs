@@ -50,7 +50,7 @@ namespace Core.Bard
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.TryGetComponent<Enemy>(out Enemy enemyComponent))
+            if (collision.TryGetComponent<Enemy>(out Enemy enemyComponent) && enemyComponent.enemyData != null )
             {
                 //Check if the enemy has a combo, isn't already within the enemies list and if the enemy has a shield. 
                 if (enemyComponent.enemyData.Combo != null && !_enemies.Contains(enemyComponent) && !enemyComponent.CanBeDestroyed)
@@ -111,7 +111,7 @@ namespace Core.Bard
         {
             if (_currentEnemy != null)
             {
-                _currentEnemy.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                // _currentEnemy.GetComponentInChildren<SpriteRenderer>().color = Color.white;
                 _currentEnemy = null;
             }
         }
@@ -123,7 +123,7 @@ namespace Core.Bard
             //Set Current Enemy
             _currentEnemy = _enemy;
             //Highlight Enemy
-            _enemy.GetComponentInChildren<SpriteRenderer>().color = Color.magenta;
+            // _enemy.GetComponentInChildren<SpriteRenderer>().color = Color.magenta;
             GameEvents.onTargetEnemyEvent?.Invoke(_enemy);
             //Send the Combo to UI
             GameEvents.onNewCombo?.Invoke(_enemy.enemyData.Combo);

@@ -93,7 +93,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9c86a9cc763154fb460f7bcbc8d61c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies: []
+  _currentEnemyCombo: {fileID: 0}
+  _enemies: []
+  _enemyListIndex: -1
+  _guitarChord: {fileID: 8300000, guid: cd5654b707027c04e8ac4f65a908e8e7, type: 3}
+  _failGuitarChord: {fileID: 8300000, guid: 138cfc9925dc9184682f9765bb1990e8, type: 3}
 --- !u!82 &9005934252307240157
 AudioSource:
   m_ObjectHideFlags: 0
