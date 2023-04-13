@@ -12,7 +12,7 @@ namespace Core.Bard
 
         private Image image;
         private float moveDistance = 47f;
-        private float moveDuration = 6f;
+        private float moveDuration = 8f;
         Tween translate;
 
         public bool _beenPressed;
@@ -38,5 +38,7 @@ namespace Core.Bard
                 GameEvents.onComboFinish?.Invoke(false);
             }
         }
+
+        public void SetMoveDuration(float value) => moveDuration = value;
     }
 }

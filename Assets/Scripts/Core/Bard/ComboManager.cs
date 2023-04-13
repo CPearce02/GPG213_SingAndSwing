@@ -4,6 +4,7 @@ using UnityEngine;
 using Enemies;
 using Core.ScriptableObjects;
 using Events;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Core.Bard
@@ -22,19 +23,18 @@ namespace Core.Bard
 
         private void OnEnable()
         {
-
+            GameEvents.onComboFinish += ComboFinished;
         }        
 
         private void OnDisable()
         {
-
+            GameEvents.onComboFinish -= ComboFinished;
         }
 
         // Update is called once per frame
         void Update()
         {
             //Choose Enemy if there are multiple
-            if (_enemies.Count < 1) return;
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if (_comboListIndex < _enemies.Count - 1)
@@ -84,6 +84,20 @@ namespace Core.Bard
                 }
             }
         }
+
+        private void ComboFinished(bool completed)
+        {
+            if(completed)
+            {
+                _currentEnemy.SetCanBeDestroyed(true);
+                _enemies.Remove(_currentEnemy);
+            }
+            else
+            {
+                //Play fail audio
+            }
+        }
+
     }
 }
 

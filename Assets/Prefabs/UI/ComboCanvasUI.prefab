@@ -411,8 +411,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentCombo: {fileID: 0}
   _spawnPoint: {fileID: 6632184900814722991}
+  _hitBox: {fileID: 0}
   Notes: {fileID: 2900717772104595731}
   spawnedNotes: []
+  successColour: {r: 0, g: 0, b: 0, a: 0}
+  baseColour: {r: 0, g: 0, b: 0, a: 0}
+  failColour: {r: 0, g: 0, b: 0, a: 0}
+  _originalSpeed: 6
 --- !u!114 &7841413429850728347
 MonoBehaviour:
   m_ObjectHideFlags: 0
