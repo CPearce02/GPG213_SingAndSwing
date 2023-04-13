@@ -559,38 +559,6 @@ PrefabInstance:
       propertyPath: positions.Array.data[3]
       value: 
       objectReference: {fileID: 311995568}
-    - target: {fileID: 833268692, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
-      propertyPath: <InterruptTime>k__BackingField
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5444886546010235459, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
-      propertyPath: coll
-      value: 
-      objectReference: {fileID: 7026364941122264457, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
-    - target: {fileID: 7026364941122264457, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7767946816732133652, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
-      propertyPath: m_Size.x
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 7767946816732133652, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
-      propertyPath: m_Size.y
-      value: 2.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7767946816732133652, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7767946816732133652, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: eed9512ce8d924546aa3cc7291b1a0f1, type: 2}
-    - target: {fileID: 7767946816732133652, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.48
-      objectReference: {fileID: 0}
     - target: {fileID: 7767946816732133653, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
       propertyPath: m_RootOrder
       value: 0

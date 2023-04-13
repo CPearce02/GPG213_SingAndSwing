@@ -16,6 +16,7 @@ namespace Enemies
         [SerializeField] float stunCoolDownTime;
         [field: SerializeField] public float DisappearTime { get; private set; }
         [field: SerializeField] public float InterruptTime { get; private set; }
+        [field: SerializeField] public float ChargeSpeedMultiplier { get; private set; }
         [field: SerializeField] public bool HasBeenActivated { get; set; }
         [field: SerializeField] public bool CanBeStunned { get; set; }
         private float originalStunCoolDownTime;

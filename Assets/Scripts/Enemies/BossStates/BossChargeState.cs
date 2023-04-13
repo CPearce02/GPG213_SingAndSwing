@@ -33,9 +33,9 @@ namespace Enemies.BossStates
 
         public void Execute(EnemyStateMachine enemy)
         {
-            if(!doCharge && enemy.animator.GetCurrentAnimatorStateInfo(0).IsName("Ability1_Start"))
+            if(!doCharge && _enemy.animator.GetCurrentAnimatorStateInfo(0).IsName("Ability1_Start"))
             {
-                if (enemy.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                if (_enemy.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
                     doCharge = true;
                 }
@@ -44,20 +44,20 @@ namespace Enemies.BossStates
             if(!hasHit && doCharge) 
             {
                 //Charge towards player direction - Charge until it hits something 
-                enemy.Rb.AddForce(_directionToCharge * (enemy.enemyData.moveSpeed * 100 * Time.fixedDeltaTime));
-                enemy.animator.CrossFade(Ability1Idle, 0);
-
+                _enemy.Rb.AddForce(_directionToCharge * (_enemy.enemyData.moveSpeed * 10 * _enemy.ChargeSpeedMultiplier * Time.fixedDeltaTime));
+                _enemy.animator.CrossFade(Ability1Idle, 0);
+                
                 //Check to see what the boss hit 
-                var hit = Physics2D.OverlapCircle(enemy.transform.position, enemy.enemyData.attackRange);
+                var hit = Physics2D.OverlapCircle(_enemy.transform.position, _enemy.enemyData.attackRange);
                 if (hit.TryGetComponent(out HealthManager player))
                 {
                     if (hasHit)
                         return;
 
                     Debug.Log("Hitplayer");
-                    enemy.Rb.velocity = Vector2.zero;
+                    _enemy.Rb.velocity = Vector2.zero;
                     hasHit = true;
-                    player.TakeDamage(enemy.enemyData.damageAmount * 2);
+                    player.TakeDamage(_enemy.enemyData.damageAmount * 2);
                     
                     // player.GetComponent<Rigidbody2D>().AddForce(_directionToCharge * (enemy.Rb.velocity.x * 100 * Time.fixedDeltaTime), ForceMode2D.Impulse);
 
@@ -71,16 +71,16 @@ namespace Enemies.BossStates
                     if(!_enemy.CanBeStunned) return;
                     
                     _enemy.CanBeStunned = false;
-                    enemy.Rb.velocity = Vector2.zero;
+                    _enemy.Rb.velocity = Vector2.zero;
 
-                    enemy.ChangeState(new BossStunState());
+                    _enemy.ChangeState(new BossStunState());
                 }
                 
             }
 
-            FromIdleToEnd(enemy);
+            FromIdleToEnd(_enemy);
 
-            FromEndToExit(enemy);
+            FromEndToExit(_enemy);
         }
 
         private void FromEndToExit(EnemyStateMachine enemy)

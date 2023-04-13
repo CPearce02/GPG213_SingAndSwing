@@ -12,17 +12,17 @@ namespace Enemies.BossStates
         {
             this._enemy = enemy as BossEnemyStateMachine;
 
-            if (_enemy != null) _interruptWaitTime = _enemy.InterruptTime;
-            
-            _enemy.animator.CrossFade("Interrupted", 0);
+            if (_enemy != null)
+            {
+                _interruptWaitTime = _enemy.InterruptTime;
+
+                _enemy.animator.CrossFade("Interrupted", 0);
+            }
         }
 
         public void Execute(EnemyStateMachine enemy)
         {
-            Debug.Log("Interrupted");
-            //Animation
         
-
             if(_interruptWaitTime > 0 )
             {
                 _interruptWaitTime -= Time.deltaTime;
