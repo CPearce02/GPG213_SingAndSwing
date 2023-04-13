@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Fireball_Alt
+  m_Controller: {fileID: 9100000, guid: 14d03836b54939348917755e4d87b055, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 5ddf6b1a038088040b83f5d31ab77c2c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 72bcf6af76d8c9143aef6ff4e9740be4, type: 2}

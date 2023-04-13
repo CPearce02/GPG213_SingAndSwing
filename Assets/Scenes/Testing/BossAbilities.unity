@@ -559,6 +559,34 @@ PrefabInstance:
       propertyPath: positions.Array.data[3]
       value: 
       objectReference: {fileID: 311995568}
+    - target: {fileID: 1804219756, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: onBulletDestroyParticle.<Color>k__BackingField.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804219756, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: onBulletDestroyParticle.<Color>k__BackingField.b
+      value: 0.94509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804219756, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: onBulletDestroyParticle.<Color>k__BackingField.g
+      value: 0.9137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804219756, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: onBulletDestroyParticle.<Color>k__BackingField.r
+      value: 0.53333336
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804219756, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: onBulletDestroyParticle.<Particle>k__BackingField
+      value: 
+      objectReference: {fileID: 4862367670183223577, guid: fe93907a5421d26418ebe2281cc25bcf, type: 3}
+    - target: {fileID: 1804219756, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: onBulletDestroyParticle.<DoParticles>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444886546010235459, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: coll
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7767946816732133653, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
       propertyPath: m_RootOrder
       value: 0
