@@ -54,7 +54,8 @@ namespace Core.Bard
         {
             if (collision.TryGetComponent<Enemy>(out Enemy enemyComponent))
             {
-                if (enemyComponent.enemyData.Combo != null && !_enemies.Contains(enemyComponent))
+                //Check if the enemy has a combo, isn't already within the enemies list and if the enemy has a shield. 
+                if (enemyComponent.enemyData.Combo != null && !_enemies.Contains(enemyComponent) && !enemyComponent.CanBeDestroyed)
                 {
                     _enemies.Add(enemyComponent);
                     SetCombo(enemyComponent.enemyData.Combo);

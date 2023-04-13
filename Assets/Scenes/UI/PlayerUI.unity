@@ -484,6 +484,10 @@ PrefabInstance:
       value: 0.735849
       objectReference: {fileID: 0}
     - target: {fileID: 2428606963906854286, guid: fd5f21474403d2d4a9527a2e692d6ef0, type: 3}
+      propertyPath: _originalSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428606963906854286, guid: fd5f21474403d2d4a9527a2e692d6ef0, type: 3}
       propertyPath: successColour.a
       value: 1
       objectReference: {fileID: 0}

@@ -12,7 +12,7 @@ namespace Core.Bard
 
         private Image image;
         private float moveDistance = 47f;
-        private float moveDuration = 8f;
+        private float moveDuration = 3f;
         Tween translate;
 
         public bool _beenPressed;

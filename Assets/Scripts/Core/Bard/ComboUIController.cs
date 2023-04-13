@@ -25,7 +25,7 @@ namespace Core.Bard
 
         [Header("Speed")]
 
-        [SerializeField] private float _originalSpeed;
+        private float _originalSpeed = 3.25f;
         private float _increasedSpeed;
 
         private Image _noteToBePressed;
@@ -56,7 +56,7 @@ namespace Core.Bard
         // Update is called once per frame
         void Update()
         {
-            
+            // DebugHitBox();
         }
 
         private void DebugHitBox()
@@ -76,10 +76,7 @@ namespace Core.Bard
         
         private void SetCombo(Combo combo)
         {
-            if(_currentCombo != null)
-            {
-                ResetCombo();
-            }
+            ResetCombo();
             _currentCombo = combo;
             SpawnNote();
         }
@@ -90,17 +87,19 @@ namespace Core.Bard
             note.transform.SetParent(Notes.transform);
             spawnedNotes.Add(note);
             _noteToBePressed = note;
-            // _noteToBePressed.GetComponent<ComboNoteManager>().SetMoveDuration(_increasedSpeed);
+            _noteToBePressed.GetComponent<ComboNoteManager>().SetMoveDuration(_increasedSpeed);
             _expectedNote = _currentCombo.ComboValues[_comboIndex];
         }
 
         private void CheckValueAndPosition(ComboValues value)
         {
+
             //Correct Value
             if(value == _expectedNote)
             {
                 //Check Position - Is it within hitbox?
-                if(Vector2.Distance(_noteToBePressed.gameObject.GetComponent<RectTransform>().position,_hitBox.position) < 55)
+                // if(Vector2.Distance(_noteToBePressed.gameObject.GetComponent<RectTransform>().position,_hitBox.position) < 55)
+                if(RectTransformUtility.RectangleContainsScreenPoint(_hitBox,_noteToBePressed.gameObject.GetComponent<RectTransform>().position))
                 {
                     //Correct 
                     GameEvents.onCorrectButtonPressed?.Invoke();
@@ -132,9 +131,8 @@ namespace Core.Bard
             }
             else
             {
-                //Correct Note Pressed - Update UI, Spawn Next Note, Increase Speed, DecreaseTimer;
-                
-                _increasedSpeed -= 2f;
+                //Correct Note Pressed - Spawn Next Note, Increase Speed, DecreaseTimer;
+                _increasedSpeed -= 0.5f;
                 SpawnNote();
             }
         }
@@ -163,7 +161,6 @@ namespace Core.Bard
             _comboIndex = 0;
             //Reset Speed;
             _increasedSpeed = _originalSpeed;
-
         }
         private void ClearSpawnedNotes()
         {
