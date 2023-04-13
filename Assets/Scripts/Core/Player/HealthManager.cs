@@ -101,7 +101,7 @@ namespace Core.Player
             Health -= amount;
             takeDamageCameraShake.Invoke();
             damageParticles.Invoke();
-            GameEvents.onMultiplierDecreaseEvent.Invoke();
+            GameEvents.onMultiplierDecreaseEvent?.Invoke();
         }
         
         private void IncreaseHealth(int amount) => Health += amount;

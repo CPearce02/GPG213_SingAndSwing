@@ -65,18 +65,23 @@ namespace Enemies
             clonedBullet.onBulletDestroyParticle = onBulletDestroyParticle;
             clonedBullet.onBulletDestroyParticle.Transform = clonedBullet.transform;
             clonedBullet.Rb.isKinematic = true;
-            clonedBullet.Collider.isTrigger = true;
+            
 
             if (player != null) clonedBullet.Player = player;
             if (shootState == ShootState.Homing) clonedBullet.homingTime = homingTime;
             clonedBullet.BulletSpeed = bulletSpeed;
             clonedBullet.DirectionTransform = directionTransform;
-
-            Physics2D.IgnoreCollision(clonedBullet.Collider, _collider2D);
-            if (shootState == ShootState.Gravity || shootState == ShootState.Bouncing)
+            
+            if(clonedBullet.Collider)
             {
-                clonedBullet.Collider.isTrigger = false;
-                clonedBullet.Rb.isKinematic = false;
+                clonedBullet.Collider.isTrigger = true;
+
+                Physics2D.IgnoreCollision(clonedBullet.Collider, _collider2D);
+                if (shootState == ShootState.Gravity || shootState == ShootState.Bouncing)
+                {
+                    clonedBullet.Collider.isTrigger = false;
+                    clonedBullet.Rb.isKinematic = false;
+                }
             }
 
             if (shootState == ShootState.Bouncing) clonedBullet.Rb.sharedMaterial = bounceMaterial;

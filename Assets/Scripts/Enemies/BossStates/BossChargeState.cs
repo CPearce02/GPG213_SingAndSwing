@@ -15,6 +15,7 @@ namespace Enemies.BossStates
         private BossEnemyStateMachine _enemy;
         private bool hasHit;
         private bool doCharge;
+        private Collider2D[] collisions;
         
         static readonly int Ability1Start = Animator.StringToHash("Ability1_Start");
         static readonly int Ability1Idle = Animator.StringToHash("Ability1_Idle");
@@ -47,7 +48,7 @@ namespace Enemies.BossStates
                 enemy.animator.CrossFade(Ability1Idle, 0);
 
                 //Check to see what the boss hit 
-                var hit = Physics2D.OverlapCircle(enemy.transform.position, enemy.enemyData.attackRange - 1);
+                var hit = Physics2D.OverlapCircle(enemy.transform.position, enemy.enemyData.attackRange);
                 if (hit.TryGetComponent(out HealthManager player))
                 {
                     if (hasHit)
@@ -56,24 +57,23 @@ namespace Enemies.BossStates
                     Debug.Log("Hitplayer");
                     enemy.Rb.velocity = Vector2.zero;
                     hasHit = true;
+                    player.TakeDamage(enemy.enemyData.damageAmount * 2);
+                    
+                    // player.GetComponent<Rigidbody2D>().AddForce(_directionToCharge * (enemy.Rb.velocity.x * 100 * Time.fixedDeltaTime), ForceMode2D.Impulse);
+
                 }
                 //hit the environment
                 else if (hit.TryGetComponent(out TilemapCollider2D environment))
                 {
                     Debug.Log("Hit wall");
                     
-                    //stop
-                    enemy.Rb.velocity = Vector2.zero;
                     //stunned
-                    var boss = enemy as BossEnemyStateMachine;
-                    if (boss == null) return;
-                    if(boss.canBeStunned)
-                    {
-                        boss.canBeStunned = false;
-                        enemy.Rb.velocity = Vector2.zero;
+                    if(!_enemy.CanBeStunned) return;
+                    
+                    _enemy.CanBeStunned = false;
+                    enemy.Rb.velocity = Vector2.zero;
 
-                        enemy.ChangeState(new BossStunState());
-                    }
+                    enemy.ChangeState(new BossStunState());
                 }
                 
             }

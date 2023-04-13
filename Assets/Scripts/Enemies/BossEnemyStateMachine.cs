@@ -6,16 +6,20 @@ namespace Enemies
 {
     public class BossEnemyStateMachine : EnemyStateMachine
     {
-        private Enemy enemy;
+        
+        [Header("Boss Settings")]
+        [SerializeField] private Enemy enemy;
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
         [field: SerializeField] public Collider2D MainCollider { get; private set; }
-        public Transform target;
-        public bool canBeStunned;
+        [Header("Boss State")]
         public float decideAttackTime;
         [SerializeField] float stunCoolDownTime;
         [field: SerializeField] public float DisappearTime { get; private set; }
-        private float originalStunCoolDownTime;
+        [field: SerializeField] public float InterruptTime { get; private set; }
         [field: SerializeField] public bool HasBeenActivated { get; set; }
+        [field: SerializeField] public bool CanBeStunned { get; set; }
+        private float originalStunCoolDownTime;
+        public Transform target;
         public Transform[] positions;
 
         private void Awake()
@@ -52,13 +56,13 @@ namespace Enemies
 
         private void UpdateCanBeStunned()
         {
-            if (!canBeStunned && stunCoolDownTime > 0)
+            if (!CanBeStunned && stunCoolDownTime > 0)
             {
                 stunCoolDownTime -= Time.deltaTime;
             }
             else
             {
-                canBeStunned = true;
+                CanBeStunned = true;
                 stunCoolDownTime = originalStunCoolDownTime;
             }
         }
@@ -74,5 +78,6 @@ namespace Enemies
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(tr, enemyData.attackRange);
         }
+        
     }
 }
