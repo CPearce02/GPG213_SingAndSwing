@@ -2745,6 +2745,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 7, y: -5, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: -6, y: -4, z: 0}
     second:
       serializedVersion: 2
@@ -2987,7 +2997,7 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 9d0d1e481e072034bb493ca6caa3f963, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 95a7d55e9ae9ba241bd5c68ea26310cb, type: 2}
@@ -2996,7 +3006,7 @@ Tilemap:
   - m_RefCount: 12
     m_Data: {fileID: 11400000, guid: 5207f71b166e48141a80f6835d5ab511, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 1615985469, guid: 3c105f8228d668945a08b9100c49e991, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1503470316, guid: 3c105f8228d668945a08b9100c49e991, type: 3}
@@ -3005,7 +3015,7 @@ Tilemap:
   - m_RefCount: 12
     m_Data: {fileID: 1820689332, guid: 3c105f8228d668945a08b9100c49e991, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 28
+  - m_RefCount: 29
     m_Data:
       e00: 1
       e01: 0
@@ -3024,7 +3034,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 28
+  - m_RefCount: 29
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -3104,6 +3114,14 @@ PrefabInstance:
     - target: {fileID: 4740390284480006755, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
       propertyPath: orthographic size
       value: 5.625
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740390284480006755, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 0.99956447
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740390284480006755, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
+      propertyPath: m_NormalizedViewPortRect.height
+      value: 0.99840486
       objectReference: {fileID: 0}
     - target: {fileID: 4740390284480006757, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
       propertyPath: m_Name
