@@ -22,7 +22,12 @@ namespace Core.Bard
         [SerializeField] private Color successColour = new();
         [SerializeField] private Color baseColour = new();
         [SerializeField] private Color failColour = new();
-        
+
+        [Header("Speed")]
+
+        [SerializeField] private float _originalSpeed;
+        private float _increasedSpeed;
+
         private Image _noteToBePressed;
         private ComboValues _expectedNote;
 
@@ -31,18 +36,19 @@ namespace Core.Bard
         // Start is called before the first frame update
         void Start()
         {
+            _increasedSpeed = _originalSpeed;
         }
 
         private void OnEnable()
         {
-            GameEvents.onNewCombo += (combo) => {_currentCombo = combo; SpawnNote();};
+            GameEvents.onNewCombo += SetCombo;
             GameEvents.onButtonPressed += CheckValueAndPosition;
             GameEvents.onComboFinish +=  CheckComboComplete;
         }
 
         private void OnDisable()
         {
-            GameEvents.onNewCombo -= (combo) => { _currentCombo = combo; SpawnNote(); };
+            GameEvents.onNewCombo -= SetCombo;
             GameEvents.onButtonPressed -= CheckValueAndPosition;
             GameEvents.onComboFinish += CheckComboComplete;
         }
@@ -67,12 +73,24 @@ namespace Core.Bard
                 _noteToBePressed.color = Color.red;
             }
         }
+        
+        private void SetCombo(Combo combo)
+        {
+            if(_currentCombo != null)
+            {
+                ResetCombo();
+            }
+            _currentCombo = combo;
+            SpawnNote();
+        }
+        
         private void SpawnNote()
         {
             Image note = Instantiate(ComboDictionary.instance.comboPrefabDictionary[_currentCombo.ComboValues[_comboIndex]], _spawnPoint.position, Quaternion.identity);
             note.transform.SetParent(Notes.transform);
             spawnedNotes.Add(note);
             _noteToBePressed = note;
+            // _noteToBePressed.GetComponent<ComboNoteManager>().SetMoveDuration(_increasedSpeed);
             _expectedNote = _currentCombo.ComboValues[_comboIndex];
         }
 
@@ -91,7 +109,6 @@ namespace Core.Bard
                 else
                 {
                     //Incorrect Postion
-                    // GameEvents.onWrongButtonPressed?.Invoke();
                     DisplayWrongNotes();
                 }
             }
@@ -99,7 +116,6 @@ namespace Core.Bard
             else
             {
                 DisplayWrongNotes();
-                // GameEvents.onComboFinish?.Invoke(false);
             }
         }
 
@@ -117,18 +133,36 @@ namespace Core.Bard
             else
             {
                 //Correct Note Pressed - Update UI, Spawn Next Note, Increase Speed, DecreaseTimer;
-
-                //_increasedSpeed += 2f;
+                
+                _increasedSpeed -= 2f;
                 SpawnNote();
             }
         }
 
+        private void DisplayWrongNotes()
+        {
+            foreach (Image _note in spawnedNotes)
+            {
+                if (_note == null) return;
+                // StartCoroutine(FlashColour(_note));
+                _note.color = failColour;
+            }
+            StartCoroutine(DelaySpawn());
+        }
+        IEnumerator DelaySpawn()
+        {
+            yield return new WaitForSeconds(0.75f);
+            ResetCombo();
+            SpawnNote();
+        }
         private void ResetCombo()
         {
             //Remove all spawned notes
-            ClearSpawnedNotes();
+            if(spawnedNotes!=null)ClearSpawnedNotes();
             //Reset Combo index 
             _comboIndex = 0;
+            //Reset Speed;
+            _increasedSpeed = _originalSpeed;
 
         }
         private void ClearSpawnedNotes()
@@ -147,21 +181,14 @@ namespace Core.Bard
         {
             if(complete)
             {
-                
+                _comboIndex = 0;
+                _currentCombo = null;
+                ClearSpawnedNotes();
             }
             else
             {
                 DisplayWrongNotes();
             }
-        }
-
-        private void DisplayWrongNotes(){
-            foreach (Image _note in spawnedNotes)
-            {
-                if(_note == null) return;
-                StartCoroutine(FlashColour(_note));
-            }
-            StartCoroutine(DelaySpawn());
         }
 
         IEnumerator FlashColour(Image note)
@@ -171,11 +198,6 @@ namespace Core.Bard
             note.color = baseColour;
         }
 
-        IEnumerator DelaySpawn()
-        {
-            yield return new WaitForSeconds(1f);
-            ResetCombo();
-            SpawnNote();
-        }
+        
     }
 }

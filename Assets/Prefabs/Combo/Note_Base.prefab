@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
-  _speed: 0
+  _beenPressed: 0
 --- !u!1 &5170691623978858221
 GameObject:
   m_ObjectHideFlags: 0
