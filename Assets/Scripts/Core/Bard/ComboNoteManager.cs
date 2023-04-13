@@ -1,25 +1,24 @@
 using Enums;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
+using Events;
 
 namespace Core.Bard
 {
     public class ComboNoteManager : MonoBehaviour
     {
         public ComboValues value;
-        public float _speed;
+
+        private Image image;
+        private float moveDistance = 47f;
+        private float moveDuration = 6f;
 
         private void Start()
         {
-        }
-        private void Update()
-        {
-            MoveNote();
-        }
-        
-        private void MoveNote()
-        {
-            transform.Translate(Vector2.left * _speed * Time.deltaTime);
-            //DOTWEEN
+            image = GetComponent<Image>();
+            image.rectTransform.DOAnchorPosX(-moveDistance, moveDuration)
+            .OnComplete(() => GameEvents.onComboFinish?.Invoke());
         }
     }
 }

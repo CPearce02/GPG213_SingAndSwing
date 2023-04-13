@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5104715039921127645}
   - component: {fileID: 5104715039921127647}
-  - component: {fileID: 2562198797992438862}
+  - component: {fileID: 1836564959651011130}
   - component: {fileID: 7189111860669930141}
   - component: {fileID: 4729270215436195712}
   - component: {fileID: 5434525696154515015}
@@ -52,7 +52,7 @@ CircleCollider2D:
   m_Offset: {x: 0.5, y: -0.5}
   serializedVersion: 2
   m_Radius: 3.6307042
---- !u!114 &2562198797992438862
+--- !u!114 &1836564959651011130
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,13 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9c86a9cc763154fb460f7bcbc8d61c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guitarChord: {fileID: 8300000, guid: cd5654b707027c04e8ac4f65a908e8e7, type: 3}
-  _failGuitarChord: {fileID: 8300000, guid: 138cfc9925dc9184682f9765bb1990e8, type: 3}
-  currentCombo: {fileID: 0}
-  expectedNote: 0
-  _comboIndex: 0
-  spawnedNotes: []
-  _originalSpeed: 2
+  enemies: []
 --- !u!114 &7189111860669930141
 MonoBehaviour:
   m_ObjectHideFlags: 0
