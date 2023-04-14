@@ -14,13 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   enemyName: BlueBoi
+  enemySprite: {fileID: 1794998897, guid: 97b9411147ee5bb478dddfc330a79780, type: 3}
+  <Combo>k__BackingField: {fileID: 11400000, guid: 46e520199a450814d8d9c41c090a803e, type: 2}
   moveSpeed: 4
+  retreatTime: 1
   triggerRange: 6
   attackRange: 3
-  retreatTime: 1
-  enemySprite: {fileID: 1794998897, guid: 97b9411147ee5bb478dddfc330a79780, type: 3}
-  enemyAttackSprite: {fileID: 0}
   damageAmount: 15
+  attackCooldown: 0
   healthAmount: 200
-  <DamageType>k__BackingField: {fileID: 11400000, guid: 0d64c71eff7d8684ea9718a9c64813b0, type: 2}
-  <Combo>k__BackingField: {fileID: 11400000, guid: 46e520199a450814d8d9c41c090a803e, type: 2}
+  decisionTime: 2
+  stunTime: 1
+  stunCoolDown: 5
+  interruptTime: 0.25
+  interruptCoolDown: 10
+  chargeDamage: 30
+  chargeSpeedMultiplier: 6
+  chargeAttackSize: 1
+  disappearTime: 4

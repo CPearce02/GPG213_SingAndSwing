@@ -14,7 +14,7 @@ namespace Enemies.BossStates
 
             if (_enemy != null)
             {
-                _interruptWaitTime = _enemy.InterruptTime;
+                _interruptWaitTime = _enemy.enemyData.interruptTime;
 
                 _enemy.animator.CrossFade("Interrupted", 0);
             }
@@ -22,8 +22,8 @@ namespace Enemies.BossStates
 
         public void Execute(EnemyStateMachine enemy)
         {
-        
-            if(_interruptWaitTime > 0 )
+
+            if (_interruptWaitTime > 0)
             {
                 _interruptWaitTime -= Time.deltaTime;
                 //Stop any movement
@@ -34,7 +34,7 @@ namespace Enemies.BossStates
                 //Finish Animation & Return to Aim State
                 enemy.ChangeState(new BossAimState());
             }
-        
+
         }
 
         public void Exit()

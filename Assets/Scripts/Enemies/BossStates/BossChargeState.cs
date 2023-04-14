@@ -16,16 +16,16 @@ namespace Enemies.BossStates
         private bool hasHit;
         private bool doCharge;
         private Collider2D[] collisions;
-        
+
         static readonly int Ability1Start = Animator.StringToHash("Ability1_Start");
         static readonly int Ability1Idle = Animator.StringToHash("Ability1_Idle");
         static readonly int Ability1End = Animator.StringToHash("Ability1_End");
 
         public void Enter(EnemyStateMachine enemy)
-        { 
+        {
             enemy.animator.CrossFade(Ability1Start, 0);
             this._enemy = enemy as BossEnemyStateMachine;
-            
+
             //Aim towards player 
             _directionToCharge = _enemy.target.position - enemy.transform.position;
             _directionToCharge = _directionToCharge.normalized;
@@ -33,22 +33,22 @@ namespace Enemies.BossStates
 
         public void Execute(EnemyStateMachine enemy)
         {
-            if(!doCharge && _enemy.animator.GetCurrentAnimatorStateInfo(0).IsName("Ability1_Start"))
+            if (!doCharge && _enemy.animator.GetCurrentAnimatorStateInfo(0).IsName("Ability1_Start"))
             {
                 if (_enemy.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
                     doCharge = true;
                 }
             }
-            
-            if(!hasHit && doCharge) 
+
+            if (!hasHit && doCharge)
             {
                 //Charge towards player direction - Charge until it hits something 
-                _enemy.Rb.AddForce(_directionToCharge * (_enemy.enemyData.moveSpeed * 10 * _enemy.ChargeSpeedMultiplier * Time.fixedDeltaTime));
+                _enemy.Rb.AddForce(_directionToCharge * (_enemy.enemyData.moveSpeed * 10 * _enemy.enemyData.chargeSpeedMultiplier * Time.fixedDeltaTime));
                 _enemy.animator.CrossFade(Ability1Idle, 0);
-                
+
                 //Check to see what the boss hit 
-                var hit = Physics2D.OverlapCircle(_enemy.transform.position, _enemy.enemyData.attackRange);
+                var hit = Physics2D.OverlapCircle(_enemy.ChargeTransform.position, _enemy.enemyData.chargeAttackSize);
                 if (hit.TryGetComponent(out HealthManager player))
                 {
                     if (hasHit)
@@ -58,7 +58,7 @@ namespace Enemies.BossStates
                     _enemy.Rb.velocity = Vector2.zero;
                     hasHit = true;
                     player.TakeDamage(_enemy.enemyData.damageAmount * 2);
-                    
+
                     // player.GetComponent<Rigidbody2D>().AddForce(_directionToCharge * (enemy.Rb.velocity.x * 100 * Time.fixedDeltaTime), ForceMode2D.Impulse);
 
                 }
@@ -66,16 +66,16 @@ namespace Enemies.BossStates
                 else if (hit.TryGetComponent(out TilemapCollider2D environment))
                 {
                     Debug.Log("Hit wall");
-                    
+
                     //stunned
-                    if(!_enemy.CanBeStunned) return;
-                    
+                    if (!_enemy.CanBeStunned) return;
+
                     _enemy.CanBeStunned = false;
                     _enemy.Rb.velocity = Vector2.zero;
 
                     _enemy.ChangeState(new BossStunState());
                 }
-                
+
             }
 
             FromIdleToEnd(_enemy);

@@ -6,20 +6,16 @@ namespace Enemies
 {
     public class BossEnemyStateMachine : EnemyStateMachine
     {
-        
+
         [Header("Boss Settings")]
         [SerializeField] private Enemy enemy;
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
         [field: SerializeField] public Collider2D MainCollider { get; private set; }
+        [field: SerializeField] public Transform ChargeTransform { get; private set; }
         [Header("Boss State")]
-        public float decideAttackTime;
-        [SerializeField] float stunCoolDownTime;
-        [field: SerializeField] public float DisappearTime { get; private set; }
-        [field: SerializeField] public float InterruptTime { get; private set; }
-        [field: SerializeField] public float ChargeSpeedMultiplier { get; private set; }
+        [SerializeField][ReadOnly] float stunCoolDownTime;
         [field: SerializeField] public bool HasBeenActivated { get; set; }
         [field: SerializeField] public bool CanBeStunned { get; set; }
-        private float originalStunCoolDownTime;
         public Transform target;
         public Transform[] positions;
 
@@ -32,25 +28,27 @@ namespace Enemies
         public override void Start()
         {
             ChangeState(new BossIdleState());
-            originalStunCoolDownTime = stunCoolDownTime;
+            stunCoolDownTime = 0;
         }
 
         private void OnEnable()
         {
             if (enemy == null) enemy = GetComponent<Enemy>();
-            enemy.BossTakeDamage += ForceInterruptState;
+            // enemy.BossTakeDamage += ForceInterruptState;
             enemy.BossDeath += ForceDeathState;
         }
 
         private void OnDisable()
         {
-            enemy.BossTakeDamage -= ForceInterruptState;
+            // enemy.BossTakeDamage -= ForceInterruptState;
             enemy.BossDeath -= ForceDeathState;
         }
 
         public override void Update()
         {
             base.Update();
+
+            if (!HasBeenActivated) return;
 
             UpdateCanBeStunned();
         }
@@ -64,20 +62,16 @@ namespace Enemies
             else
             {
                 CanBeStunned = true;
-                stunCoolDownTime = originalStunCoolDownTime;
+                stunCoolDownTime = enemyData.stunCoolDown;
             }
         }
-        
-        void ForceInterruptState()
-        {
-            ChangeState(new BossInterruptedState());
-        }
-        
+
         void ForceDeathState()
         {
+            if (CurrentState is BossDeathState) return;
             ChangeState(new BossDeathState());
         }
-        
+
 
         public void SetHasBeenActivated() => HasBeenActivated = true;
 
@@ -86,10 +80,10 @@ namespace Enemies
             var tr = transform.position;
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(tr, enemyData.triggerRange);
-
+            //Charge Attack
             Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(tr, enemyData.attackRange);
+            Gizmos.DrawWireSphere(ChargeTransform.position, enemyData.chargeAttackSize);
         }
-        
+
     }
 }

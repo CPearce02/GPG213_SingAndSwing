@@ -4,25 +4,38 @@ using UnityEngine;
 
 namespace Enemies.ScriptableObjects
 {
-    [CreateAssetMenu (fileName = "New Enemy", menuName = "Enemy")]
+    [CreateAssetMenu(fileName = "New Enemy", menuName = "Enemy")]
     public class EnemyData : ScriptableObject
     {
+        [Header("General")]
         public EnemyType type;
         public string enemyName;
-        public float moveSpeed;
-        public float triggerRange;
-        public float attackRange;
-        public float retreatTime;
         public Sprite enemySprite;
-        public Sprite enemyAttackSprite;
-
-        public int damageAmount;
-
-        public int healthAmount;
-
-        [field: SerializeField] public DamageType DamageType { get; private set; }
-
+        [field: Header("Combo")]
         [field: SerializeField] public Combo Combo { get; private set; }
-
+        [Header("Movement")]
+        public float moveSpeed;
+        public float retreatTime;
+        public float triggerRange;
+        [Header("Attacking")]
+        public float attackRange;
+        public int damageAmount;
+        public float attackCooldown;
+        [Header("Health")]
+        public int healthAmount;
+        [Header("Logic")]
+        public float decisionTime;
+        [Header("Stun")]
+        public float stunTime;
+        public float stunCoolDown;
+        [Header("Interrupt")]
+        public float interruptTime;
+        public float interruptCoolDown;
+        [Header("Charge")]
+        public float chargeDamage;
+        public float chargeSpeedMultiplier;
+        public float chargeAttackSize;
+        [Header("Disappear")]
+        public float disappearTime;
     }
 }

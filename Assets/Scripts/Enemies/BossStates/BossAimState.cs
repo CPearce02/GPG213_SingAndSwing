@@ -15,12 +15,14 @@ namespace Enemies.BossStates
         public void Enter(EnemyStateMachine enemy)
         {
             this._enemy = enemy as BossEnemyStateMachine;
-            if (_enemy != null) decideAttackTime = _enemy.decideAttackTime;
+
+            if (_enemy != null)
+                decideAttackTime = _enemy.enemyData.decisionTime;
 
             //If it has no shield then it chooses between Projectile or Hoard
-            if(_enemy.GetComponent<Enemy>().CanBeDestroyed)
+            if (_enemy.GetComponent<Enemy>().CanBeDestroyed)
             {
-                _attackType = Random.Range(2,4);
+                _attackType = Random.Range(2, 4);
             }
             //Else charge
             else
@@ -31,13 +33,13 @@ namespace Enemies.BossStates
 
         public void Execute(EnemyStateMachine enemy)
         {
-            if(decideAttackTime > 0)
+            if (decideAttackTime > 0)
             {
                 decideAttackTime -= Time.deltaTime;
                 return;
             }
-            
-            decideAttackTime = _enemy.decideAttackTime;
+
+            decideAttackTime = _enemy.enemyData.decisionTime;
 
             DecideAttack();
         }
