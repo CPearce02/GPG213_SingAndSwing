@@ -31,6 +31,37 @@ Transform:
   m_Father: {fileID: 7026364941122264458}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1355889116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1355889117}
+  m_Layer: 7
+  m_Name: ChargeAttackLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1355889117
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355889116}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5, y: -1.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7767946816732133653}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1778820622
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,11 +188,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2332113700691211903, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2332113700691211903, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.79
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 2332113700691211903, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -329,16 +360,12 @@ MonoBehaviour:
   enemy: {fileID: 7767946816732133659}
   <SpriteRenderer>k__BackingField: {fileID: 7767946816151780063}
   <MainCollider>k__BackingField: {fileID: 7767946816732133652}
-  decideAttackTime: 2
+  <ChargeTransform>k__BackingField: {fileID: 1355889117}
   stunCoolDownTime: 5
-  <DisappearTime>k__BackingField: 4
-  <InterruptTime>k__BackingField: 0.25
-  <ChargeSpeedMultiplier>k__BackingField: 6
   <HasBeenActivated>k__BackingField: 0
   <CanBeStunned>k__BackingField: 0
   target: {fileID: 0}
   positions:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
