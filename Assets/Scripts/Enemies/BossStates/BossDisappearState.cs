@@ -17,7 +17,7 @@ public class BossDisappearState : IState
         this._enemy = enemy as BossEnemyStateMachine;
         if (_enemy == null) return;
 
-        _disappearTime = _enemy.DisappearTime;
+        _disappearTime = _enemy.enemyData.disappearTime;
         _bossSpriteRenderer = _enemy.SpriteRenderer;
         _bossCollider = _enemy.MainCollider;
 
