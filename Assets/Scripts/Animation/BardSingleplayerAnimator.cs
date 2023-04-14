@@ -28,9 +28,9 @@ namespace Animation
         void Awake()
         {
             _bardSprite = GetComponent<SpriteRenderer>();
-            if(bardInput == null)
+            if (bardInput == null)
                 bardInput = GetComponentInParent<PlayerInput>();
-            if(animator == null)
+            if (animator == null)
                 animator = GetComponent<Animator>();
             _rb = GetComponentInParent<Rigidbody2D>();
             _bardController = GetComponentInParent<BardController>();
@@ -44,13 +44,13 @@ namespace Animation
             bardInput.actions["Aim"].performed += SetSinging;
             bardInput.actions["Aim"].canceled += EndSinging;
         }
-        
+
         private void OnDisable()
         {
             GameEvents.onSendPlayerEvent -= SetPlayer;
             if (playerInput != null)
                 playerInput.actions["Jump"].performed -= SetJump;
-            
+
             bardInput.actions["Aim"].performed -= SetSinging;
             bardInput.actions["Aim"].canceled -= EndSinging;
         }
@@ -87,14 +87,14 @@ namespace Animation
             {
                 if (!_bardController.Grounded)
                 {
-                    _rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+                    _rb.interpolation = RigidbodyInterpolation2D.Extrapolate;
                 }
-                else 
+                else
                 {
                     _rb.interpolation = RigidbodyInterpolation2D.None;
                 }
             }
-                
+
             _lastPos = transform.position;
         }
 
@@ -114,7 +114,7 @@ namespace Animation
 
         void SetRunning()
         {
-            if(_rb.velocity.x > 0.1f || _rb.velocity.x < -0.1f) animator.SetFloat(XVelocity, 1);
+            if (_rb.velocity.x > 0.1f || _rb.velocity.x < -0.1f) animator.SetFloat(XVelocity, 1);
             else animator.SetFloat(XVelocity, 0);
         }
 
