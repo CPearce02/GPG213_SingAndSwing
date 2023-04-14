@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Level1Music
   m_EditorClassIdentifier: 
   musicIntensities:
-  - {fileID: 8300000, guid: d036c43da0d839440b8166ad1ffaaa07, type: 3}
-  <BPM>k__BackingField: 120
+  - {fileID: 8300000, guid: ad4a272bfa5b8dc44b39bf459cc3c86c, type: 3}
+  <BPM>k__BackingField: 96
