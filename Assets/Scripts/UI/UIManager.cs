@@ -10,19 +10,19 @@ namespace UI
         [SerializeField] string playerUI;
         [SerializeField] private BossUIHandler bossUIPrefab;
         BossUIHandler bossUIInstance;
-        
+
         private void Awake()
         {
-            if(playerUI != null)
+            if (playerUI != null)
                 SceneManager.LoadScene(playerUI, LoadSceneMode.Additive);
         }
-        
+
         private void OnEnable()
         {
             GameEvents.onBossFightStartEvent += LoadBossUI;
             GameEvents.onBossFightEndEvent += UnloadBossUI;
         }
-        
+
         private void OnDisable()
         {
             GameEvents.onBossFightStartEvent += LoadBossUI;
@@ -31,11 +31,12 @@ namespace UI
 
         private void UnloadBossUI()
         {
-            Destroy(gameObject);
+            Destroy(bossUIInstance.gameObject);
         }
 
         private void LoadBossUI(EnemyData enemyData)
         {
+            if (bossUIInstance != null) return;
             bossUIInstance = Instantiate(bossUIPrefab);
             bossUIInstance.SetEnemy(enemyData);
         }
