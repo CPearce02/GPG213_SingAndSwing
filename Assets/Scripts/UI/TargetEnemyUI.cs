@@ -9,9 +9,9 @@ public class TargetEnemyUI : MonoBehaviour
     private Enemy _currentTargetEnemy;
 
     // private Camera _cam;
-    [SerializeField] private Canvas _canvas;
+    // [SerializeField] private Canvas _canvas;
 
-    [SerializeField] private GameObject _comboUI;
+    // [SerializeField] private GameObject _comboUI;
     [SerializeField] private RectTransform _targetBorder;
 
     private Vector2 framePadding = new Vector2(20,20);
@@ -68,7 +68,7 @@ public class TargetEnemyUI : MonoBehaviour
 
     private void FollowTarget()
     {
-        Vector3 screenPos = _canvas.worldCamera.WorldToScreenPoint(_currentTargetEnemy.GetComponent<Transform>().position);
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(_currentTargetEnemy.GetComponent<Transform>().position);
         _targetBorder.position = screenPos;
     }
 }
