@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 1334146873}
   - component: {fileID: 1334146875}
   - component: {fileID: 1334146874}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4258,7 +4258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4797303714846075829, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6059500195652429505, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y

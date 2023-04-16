@@ -32,7 +32,7 @@ namespace Enemies.ScriptableObjects
         public float interruptTime;
         public float interruptCoolDown;
         [Header("Charge")]
-        public float chargeDamage;
+        public int chargeDamage;
         public float chargeSpeedMultiplier;
         public float chargeAttackSize;
         [Header("Disappear")]

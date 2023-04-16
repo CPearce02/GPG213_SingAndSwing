@@ -58,7 +58,7 @@ namespace Enemies.BossStates
                     break;
                 case 3:
                     //Hoard
-                    _enemy.ChangeState(new BossHoardState());
+                    _enemy.ChangeState(new BossHordeState());
                     break;
             }
         }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Enemies.BossStates
 {
-    public class BossHoardState : IState
+    public class BossHordeState : IState
     {
         private BossEnemyStateMachine _enemy;
         private SpawnEnemies _spawnEnemies;

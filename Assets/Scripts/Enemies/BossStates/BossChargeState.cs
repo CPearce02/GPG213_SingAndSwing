@@ -16,6 +16,7 @@ namespace Enemies.BossStates
         private bool hasHit;
         private bool doCharge;
         private Collider2D[] collisions;
+        private static LayerMask Mask => LayerMask.GetMask("Player") | LayerMask.GetMask("Environment");
 
         static readonly int Ability1Start = Animator.StringToHash("Ability1_Start");
         static readonly int Ability1Idle = Animator.StringToHash("Ability1_Idle");
@@ -25,6 +26,8 @@ namespace Enemies.BossStates
         {
             enemy.animator.CrossFade(Ability1Start, 0);
             this._enemy = enemy as BossEnemyStateMachine;
+            
+       
 
             //Aim towards player 
             _directionToCharge = _enemy.target.position - enemy.transform.position;
@@ -44,12 +47,12 @@ namespace Enemies.BossStates
             if (!hasHit && doCharge)
             {
                 //Charge towards player direction - Charge until it hits something 
-                _enemy.Rb.AddForce(_directionToCharge * (_enemy.enemyData.moveSpeed * 10 * _enemy.enemyData.chargeSpeedMultiplier * Time.fixedDeltaTime));
+                _enemy.Rb.AddForce(_directionToCharge * (_enemy.enemyData.moveSpeed * 5 * _enemy.enemyData.chargeSpeedMultiplier * Time.fixedDeltaTime));
                 _enemy.animator.CrossFade(Ability1Idle, 0);
 
                 //Check to see what the boss hit 
-                var hit = Physics2D.OverlapCircle(_enemy.ChargeTransform.position, _enemy.enemyData.chargeAttackSize);
-                if (hit.TryGetComponent(out HealthManager player))
+                var hit = Physics2D.OverlapCircle(_enemy.ChargeTransform.position, _enemy.enemyData.chargeAttackSize, Mask);
+                if (hit != null && hit.TryGetComponent(out HealthManager player))
                 {
                     if (hasHit)
                         return;
@@ -57,13 +60,12 @@ namespace Enemies.BossStates
                     Debug.Log("Hitplayer");
                     _enemy.Rb.velocity = Vector2.zero;
                     hasHit = true;
-                    player.TakeDamage(_enemy.enemyData.damageAmount * 2);
-
-                    // player.GetComponent<Rigidbody2D>().AddForce(_directionToCharge * (enemy.Rb.velocity.x * 100 * Time.fixedDeltaTime), ForceMode2D.Impulse);
-
+                    player.TakeDamage(_enemy.enemyData.chargeDamage);
+                    var playerRb = player.GetComponent<Rigidbody2D>();
+                    playerRb.velocity = Vector2.zero;
                 }
                 //hit the environment
-                else if (hit.TryGetComponent(out TilemapCollider2D environment))
+                else if (hit != null && hit.TryGetComponent(out TilemapCollider2D environment))
                 {
                     Debug.Log("Hit wall");
 
