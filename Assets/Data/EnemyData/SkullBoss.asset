@@ -13,14 +13,22 @@ MonoBehaviour:
   m_Name: SkullBoss
   m_EditorClassIdentifier: 
   type: 1
-  enemyName: Nosferatu
-  moveSpeed: 2
-  triggerRange: 6
+  enemyName: A Giant Necromancer's Severed Head
+  enemySprite: {fileID: 1794998897, guid: 97b9411147ee5bb478dddfc330a79780, type: 3}
+  <Combo>k__BackingField: {fileID: 11400000, guid: 46e520199a450814d8d9c41c090a803e, type: 2}
+  moveSpeed: 4
+  retreatTime: 1
+  triggerRange: 12
   attackRange: 3
-  retreatTime: 0
-  enemySprite: {fileID: 0}
-  enemyAttackSprite: {fileID: 0}
   damageAmount: 15
-  healthAmount: 250
-  <DamageType>k__BackingField: {fileID: 11400000, guid: ca5dc4a2e4862ec47af93bef06d77152, type: 2}
-  <Combo>k__BackingField: {fileID: 0}
+  attackCooldown: 0
+  healthAmount: 300
+  decisionTime: 2
+  stunTime: 1
+  stunCoolDown: 5
+  interruptTime: 0.25
+  interruptCoolDown: 10
+  chargeDamage: 30
+  chargeSpeedMultiplier: 6
+  chargeAttackSize: 1
+  disappearTime: 4
