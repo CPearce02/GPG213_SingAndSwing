@@ -2,6 +2,8 @@ using Events;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 namespace Core.Bard
 {
@@ -15,6 +17,9 @@ namespace Core.Bard
 
         [SerializeField] private int _maxTimer;
         [SerializeField] [ReadOnly] private int _currentTimeRemaining;
+
+        [SerializeField] VolumeProfile volumeProfile;
+        VolumeProfile _oldVolumeProfile;
 
         public int Timer
         {
@@ -41,6 +46,8 @@ namespace Core.Bard
             //Set Mana
             Timer = _maxTimer;
             //Set Bard Input
+
+            InitializeOldVolume();
         }
 
         private void OnEnable()
@@ -57,6 +64,60 @@ namespace Core.Bard
             _bardInput.actions["SlowDownButton"].canceled -= ResetTimer;
         }
 
+        void InitializeOldVolume()
+        {
+            volumeProfile.TryGet(out Vignette vignette);
+            volumeProfile.TryGet(out ChromaticAberration chrome);
+
+            _oldVolumeProfile = ScriptableObject.CreateInstance<VolumeProfile>();
+            _oldVolumeProfile.Add<Vignette>();
+            _oldVolumeProfile.Add<ChromaticAberration>();
+
+            _oldVolumeProfile.TryGet(out Vignette oldVignette);
+            _oldVolumeProfile.TryGet(out ChromaticAberration oldChrome);
+
+            oldVignette.color.Override((Color)vignette.color);
+            oldVignette.intensity.Override((float)vignette.intensity);
+            oldChrome.intensity.Override((float)chrome.intensity);
+        }
+
+        void SlowMoEffect()
+        {
+            volumeProfile.TryGet(out Vignette vignette);
+            volumeProfile.TryGet(out ChromaticAberration chrome);
+
+            if (vignette)
+            {
+                vignette.color.Override(Color.blue);
+                vignette.intensity.Override(0.5f);
+            }
+
+            if (chrome)
+            {
+                chrome.intensity.Override(0.5f);
+            }
+        }
+
+        void NoSlowMoEffect()
+        {
+            volumeProfile.TryGet(out Vignette vignette);
+            volumeProfile.TryGet(out ChromaticAberration chrome);
+
+            _oldVolumeProfile.TryGet(out Vignette oldVignette);
+            _oldVolumeProfile.TryGet(out ChromaticAberration oldChrome);
+
+            if (vignette)
+            {
+                vignette.color.Override((Color)oldVignette.color);
+                vignette.intensity.Override((float)oldVignette.intensity);
+            }
+
+            if (chrome)
+            {
+                chrome.intensity.Override((float)oldChrome.intensity);
+            }
+        }
+
         private void SlowDownTime(InputAction.CallbackContext callbackContext)
         {
             Time.timeScale = slowMotionTimeScale;
@@ -64,6 +125,7 @@ namespace Core.Bard
             StartCoroutine("DecreaseTime");
 
             //visually change screen - increase chrome 
+            SlowMoEffect();
         }
 
         private void SetOriginalTime()
@@ -72,7 +134,7 @@ namespace Core.Bard
             Time.fixedDeltaTime = _startFixedDeltaTime;
 
             //visually change screen - reset chrome 
-
+            NoSlowMoEffect();
         }
 
         private void ResetTimer(InputAction.CallbackContext callbackContext)

@@ -344,6 +344,7 @@ MonoBehaviour:
   slowMotionTimeScale: 0.1
   _maxTimer: 25
   _currentTimeRemaining: 0
+  volumeProfile: {fileID: 11400000, guid: e7ae1f92971db2449947456f40e509f5, type: 2}
 --- !u!114 &1377113673846175409
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ namespace Core.Player
         [SerializeField] CameraShakeEvent takeDamageCameraShake;
 
         [SerializeField] VolumeProfile volumeProfile;
+        VolumeProfile _oldVolumeProfile;
         
         PlatformingController _controller;
         Rigidbody2D _rb;
@@ -84,6 +85,21 @@ namespace Core.Player
             // GameEvents.onSetHealthCountEvent?.Invoke(Health);
             CreateSpawnpoint();
             _rb = GetComponent<Rigidbody2D>();
+
+            InitializeOldVolume();
+        }
+
+        void InitializeOldVolume()
+        {
+            volumeProfile.TryGet(out Vignette vignette);
+
+            _oldVolumeProfile = ScriptableObject.CreateInstance<VolumeProfile>();
+            _oldVolumeProfile.Add<Vignette>();
+
+            _oldVolumeProfile.TryGet(out Vignette oldVignette);
+
+            oldVignette.color.Override((Color)vignette.color);
+            oldVignette.intensity.Override((float)vignette.intensity);
         }
 
         void CreateSpawnpoint()
@@ -137,6 +153,7 @@ namespace Core.Player
         IEnumerator DamageEffect()
         {
             volumeProfile.TryGet(out Vignette vignette);
+            _oldVolumeProfile.TryGet(out Vignette oldVignette);
 
             if (vignette)
             {
@@ -148,8 +165,8 @@ namespace Core.Player
 
             if (vignette)
             {
-                vignette.color.Override(Color.black);
-                vignette.intensity.Override(0.3f);
+                vignette.color.Override((Color) oldVignette.color);
+                vignette.intensity.Override((float) oldVignette.intensity);
             }
         }
 
