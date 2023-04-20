@@ -143,6 +143,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1903370524}
     - target: {fileID: 1778820624, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: spawnLimit
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1778820624, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
       propertyPath: enemyPrefab
       value: 
       objectReference: {fileID: 6707594122339248265, guid: 816c5e1d5c2e13b47a2289b4396f6907, type: 3}

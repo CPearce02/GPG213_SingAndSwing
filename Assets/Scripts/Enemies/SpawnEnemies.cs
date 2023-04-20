@@ -11,7 +11,7 @@ namespace Enemies
 
         private List<GameObject> spawnedEnemies = new();
 
-        [SerializeField] int spawnLimit = 3;
+        [SerializeField] int spawnLimit = 4;
 
         public void SetSpawnAmount(int value) => spawnLimit = value;
 

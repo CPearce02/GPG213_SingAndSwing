@@ -19,8 +19,7 @@ namespace Enemies.BossStates
             if (_enemy == null) return;
             _spawnEnemies = _enemy.GetComponentInChildren<SpawnEnemies>();
             _enemy.animator.CrossFade("Start_Move", 0);
-
-
+            _spawnEnemies.ClearEnemyList();
         }
 
         public void Execute(EnemyStateMachine enemy)
@@ -49,7 +48,6 @@ namespace Enemies.BossStates
         public void Exit()
         {
             _spawned = false;
-            _spawnEnemies.ClearEnemyList();
         }
 
         private void FindAndMoveIntoPosition()
