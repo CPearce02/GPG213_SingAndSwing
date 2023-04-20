@@ -22,9 +22,9 @@ MonoBehaviour:
   attackRange: 3
   damageAmount: 15
   attackCooldown: 0
-  healthAmount: 600
+  healthAmount: 1000
   decisionTime: 1
-  stunTime: 1
+  stunTime: 0.5
   stunCoolDown: 5
   interruptTime: 0.25
   interruptCoolDown: 10
