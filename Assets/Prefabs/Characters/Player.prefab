@@ -860,6 +860,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AttackBox
       objectReference: {fileID: 0}
+    - target: {fileID: 8800234070652476243, guid: 0f17184e62c445c4b9e5d69e7c6c5ba1, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f17184e62c445c4b9e5d69e7c6c5ba1, type: 3}
 --- !u!4 &1964873661 stripped
