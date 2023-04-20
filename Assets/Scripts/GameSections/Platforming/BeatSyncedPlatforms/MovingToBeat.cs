@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 //using static UnityEditor.Experimental.GraphView.GraphView;
 using Core.Player;
+using Events;
 
 [RequireComponent(typeof(BeatListener))] [RequireComponent(typeof(Rigidbody2D))]
 public class MovingToBeat : MonoBehaviour
@@ -15,6 +16,7 @@ public class MovingToBeat : MonoBehaviour
     BeatListener beatListener;
     bool _moved;
     FixedJoint2D joint;
+    Tween forward, back;
 
     private void OnValidate()
     {
@@ -41,21 +43,37 @@ public class MovingToBeat : MonoBehaviour
         if (moveTime > MusicManager.SecondsPerBeat * beatListener.BeatInterval) moveTime = MusicManager.SecondsPerBeat * beatListener.BeatInterval;
     }
 
+    private void OnEnable()
+    {
+        GameEvents.onPlayerFreezeEvent += KillTweens;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.onPlayerFreezeEvent -= KillTweens;
+    }
+
     public void ToggleMove()
     {
         if(_moved)
         {
-            _rb.DOMove(movePos.position, moveTime).SetUpdate(UpdateType.Fixed);
+            forward = _rb.DOMove(movePos.position, moveTime).SetUpdate(UpdateType.Fixed);
             _moved = false;
             return;
         }
 
         if(!_moved)
         {
-            _rb.DOMove(_initialPos, moveTime).SetUpdate(UpdateType.Fixed);
+            back = _rb.DOMove(_initialPos, moveTime).SetUpdate(UpdateType.Fixed);
             _moved = true;
             return;
         }
+    }
+
+    void KillTweens()
+    {
+        forward.Kill();
+        back.Kill();
     }
 
     private void OnDrawGizmosSelected()
