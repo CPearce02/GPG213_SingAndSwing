@@ -22,8 +22,8 @@ MonoBehaviour:
   attackRange: 3
   damageAmount: 15
   attackCooldown: 0
-  healthAmount: 300
-  decisionTime: 2
+  healthAmount: 600
+  decisionTime: 1
   stunTime: 1
   stunCoolDown: 5
   interruptTime: 0.25
