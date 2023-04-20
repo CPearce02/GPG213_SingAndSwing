@@ -65,7 +65,7 @@ namespace Enemies.BossStates
             }
             //Move to it
 
-            _enemy.transform.position = Vector2.MoveTowards(_enemy.transform.position, _closestPosition, _enemy.enemyData.moveSpeed * Time.deltaTime);
+            _enemy.transform.position = Vector2.MoveTowards(_enemy.transform.position, _closestPosition, _enemy.enemyData.moveSpeed * 2 * Time.deltaTime);
 
             _inPosition = true;
         }
