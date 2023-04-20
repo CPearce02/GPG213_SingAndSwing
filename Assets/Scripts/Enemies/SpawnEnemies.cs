@@ -16,6 +16,8 @@ namespace Enemies
         public void SetSpawnAmount(int value) => spawnLimit = value;
 
         public void StartSpawning(Transform target) => StartCoroutine(SpawnEnemy(target));
+
+        public void ClearEnemyList() => spawnedEnemies.Clear();
     
         IEnumerator SpawnEnemy(Transform target)
         {
@@ -27,7 +29,7 @@ namespace Enemies
                 enemy.GetComponent<EnemyStateMachine>().ChangeState(new ChaseState(target));
 
                 if(spawnedEnemies.Count >= spawnLimit)
-                {   
+                {
                     yield break;
                 }
             }

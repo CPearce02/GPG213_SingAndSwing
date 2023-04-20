@@ -49,6 +49,7 @@ namespace Enemies.BossStates
         public void Exit()
         {
             _spawned = false;
+            _spawnEnemies.ClearEnemyList();
         }
 
         private void FindAndMoveIntoPosition()
