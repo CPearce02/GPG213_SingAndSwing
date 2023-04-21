@@ -12,7 +12,7 @@ namespace Scenes.ScriptableObjects
     {
         [Header("State")]
         [SerializeField] public TransitionState nextTransitionState;
-        [SerializeField] public Color color;
+        [SerializeField] private Color color;
         [SerializeField] public bool isTransitioning = false;
 
         [Header("Transition Settings")]
@@ -22,7 +22,8 @@ namespace Scenes.ScriptableObjects
         [SerializeField] public Material material;
         [SerializeField] public float transitionInDelay = 1f, transitionOutDelay = 0.25f;
 
-        [FormerlySerializedAs("images")] [SerializeField] private Sprite[] transitionImages;
+        [SerializeField] private Sprite[] transitionImages;
+        [SerializeField] private Color[] transitionColors;
 
         [Header("Testing Only")]
         [SerializeField] public bool testingControls = false;
@@ -31,14 +32,14 @@ namespace Scenes.ScriptableObjects
         private static readonly int MainColor = Shader.PropertyToID("_MainColor");
         private static readonly int MainTex = Shader.PropertyToID("_MainTex");
 
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         private void OnValidate()
         {
             nextTransitionState = TransitionState.In;
         }
-        
-        #endif
-        
+
+#endif
+
         public void Init()
         {
             material.SetColor(MainColor, color);
@@ -47,7 +48,10 @@ namespace Scenes.ScriptableObjects
 
             if (transitionImage == null) return;
             int randomTexture = Random.Range(0, transitionImages.Length);
+            int randomColor = Random.Range(0, transitionColors.Length);
             transitionImage = transitionImages[randomTexture];
+            color = transitionColors[randomColor];
+            material.SetColor(MainColor, color);
             material.SetTexture(MainTex, transitionImages[randomTexture].texture);
         }
 

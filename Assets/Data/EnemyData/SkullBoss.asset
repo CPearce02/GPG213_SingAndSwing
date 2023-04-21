@@ -22,13 +22,13 @@ MonoBehaviour:
   attackRange: 3
   damageAmount: 15
   attackCooldown: 0
-  healthAmount: 300
-  decisionTime: 2
-  stunTime: 1
+  healthAmount: 1000
+  decisionTime: 1
+  stunTime: 0.5
   stunCoolDown: 5
   interruptTime: 0.25
   interruptCoolDown: 10
   chargeDamage: 30
-  chargeSpeedMultiplier: 6
+  chargeSpeedMultiplier: 25
   chargeAttackSize: 1
   disappearTime: 4

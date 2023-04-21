@@ -15,7 +15,7 @@ namespace UI
         private Tween _scale;
         private Tween _resetScale;
         private Tween _fadeAndScale;
-  
+
         private void OnEnable()
         {
             button.Enable();
@@ -46,6 +46,6 @@ namespace UI
                 uiPrefab.SetActive(true);
             }
         }
-        
+
     }
 }

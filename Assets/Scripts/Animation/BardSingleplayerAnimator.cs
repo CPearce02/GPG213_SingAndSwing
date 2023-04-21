@@ -1,6 +1,8 @@
+using System;
 using Core.Bard.Abilities;
 using Core.Player;
 using Events;
+using Structs;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +18,8 @@ namespace Animation
         SpriteRenderer _bardSprite;
         [SerializeField] Animator animator;
         BardController _bardController;
+
+        [SerializeField] ParticleEvent deathParticles;
 
         Vector2 _lastPos;
 
@@ -43,6 +47,7 @@ namespace Animation
             GameEvents.onSendPlayerEvent += SetPlayer;
             bardInput.actions["Aim"].performed += SetSinging;
             bardInput.actions["Aim"].canceled += EndSinging;
+            GameEvents.onPlayerDiedEvent += SetDeath;
         }
 
         private void OnDisable()
@@ -53,23 +58,8 @@ namespace Animation
 
             bardInput.actions["Aim"].performed -= SetSinging;
             bardInput.actions["Aim"].canceled -= EndSinging;
-        }
+            GameEvents.onPlayerDiedEvent -= SetDeath;
 
-        private void EndSinging(InputAction.CallbackContext context)
-        {
-            animator.SetBool(IsSinging, false);
-        }
-
-        private void SetSinging(InputAction.CallbackContext context)
-        {
-            if (context.performed) animator.SetBool(IsSinging, true);
-        }
-
-        private void SetPlayer(PlatformingController player)
-        {
-            playerInput = player.PlayerInput;
-            playerTransform = player.transform;
-            playerInput.actions["Jump"].performed += SetJump;
         }
 
         void Update()
@@ -98,6 +88,25 @@ namespace Animation
             _lastPos = transform.position;
         }
 
+        private void EndSinging(InputAction.CallbackContext context)
+        {
+            animator.SetBool(IsSinging, false);
+        }
+
+
+        private void SetSinging(InputAction.CallbackContext context)
+        {
+            if (context.performed) animator.SetBool(IsSinging, true);
+        }
+
+        private void SetPlayer(PlatformingController player)
+        {
+            playerInput = player.PlayerInput;
+            playerTransform = player.transform;
+            playerInput.actions["Jump"].performed += SetJump;
+        }
+
+
         void FlipSprite()
         {
             float distanceFromPlayer = playerTransform.position.x - transform.position.x;
@@ -124,6 +133,12 @@ namespace Animation
             {
                 if (_bardController.Grounded && context.performed) animator.SetTrigger(Jump);
             }
+        }
+
+        private void SetDeath()
+        {
+            animator.CrossFade("bard_death", 0);
+            deathParticles.Invoke();
         }
     }
 }
