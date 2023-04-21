@@ -8247,11 +8247,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 472321106029217102, guid: c5fc24ea9689be043a411fe61672d347, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1.479
+      value: 1.1590003
       objectReference: {fileID: 0}
     - target: {fileID: 472321106029217102, guid: c5fc24ea9689be043a411fe61672d347, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.1400001
+      value: -0.38999987
       objectReference: {fileID: 0}
     - target: {fileID: 472321106029217102, guid: c5fc24ea9689be043a411fe61672d347, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -8470,11 +8470,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 472321106029217102, guid: fe9d4583e2e7edd47861e9ff1f7d283f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 3.31
+      value: 2.9900002
       objectReference: {fileID: 0}
     - target: {fileID: 472321106029217102, guid: fe9d4583e2e7edd47861e9ff1f7d283f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.1400001
+      value: -0.38999987
       objectReference: {fileID: 0}
     - target: {fileID: 2843626703137017588, guid: fe9d4583e2e7edd47861e9ff1f7d283f, type: 3}
       propertyPath: m_Color.b
@@ -8680,11 +8680,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 472321106029217102, guid: 7a6e1f3cd1d552f4995e0ac38c740f81, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2.42
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 472321106029217102, guid: 7a6e1f3cd1d552f4995e0ac38c740f81, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.14
+      value: -0.39
       objectReference: {fileID: 0}
     - target: {fileID: 2843626703137017588, guid: 7a6e1f3cd1d552f4995e0ac38c740f81, type: 3}
       propertyPath: m_Color.b
@@ -43205,11 +43205,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 472321106029217102, guid: 96a3e0a9033f31c45bef92c51e66f8d6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.616
+      value: 0.2960003
       objectReference: {fileID: 0}
     - target: {fileID: 472321106029217102, guid: 96a3e0a9033f31c45bef92c51e66f8d6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.1400001
+      value: -0.38999987
       objectReference: {fileID: 0}
     - target: {fileID: 2843626703137017588, guid: 96a3e0a9033f31c45bef92c51e66f8d6, type: 3}
       propertyPath: m_Color.b
