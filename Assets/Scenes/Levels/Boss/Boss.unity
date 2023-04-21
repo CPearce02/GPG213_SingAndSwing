@@ -199,6 +199,10 @@ PrefabInstance:
       value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 7767946816732133658, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767946816732133658, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -292,6 +296,10 @@ PrefabInstance:
     - target: {fileID: 556187988604103305, guid: 0a5fae0a2ab63274ea352a2cb2d1e6bd, type: 3}
       propertyPath: m_Name
       value: Spring
+      objectReference: {fileID: 0}
+    - target: {fileID: 556187988604103305, guid: 0a5fae0a2ab63274ea352a2cb2d1e6bd, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 556187988604103415, guid: 0a5fae0a2ab63274ea352a2cb2d1e6bd, type: 3}
       propertyPath: springHeight
@@ -3986,7 +3994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4680205815599778477, guid: df658ce187b23d4499ac8d669112a3b5, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4680205815599778479, guid: df658ce187b23d4499ac8d669112a3b5, type: 3}
       propertyPath: inverted
@@ -5550,7 +5558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4680205815599778477, guid: df658ce187b23d4499ac8d669112a3b5, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4680205815599778479, guid: df658ce187b23d4499ac8d669112a3b5, type: 3}
       propertyPath: <BeatInterval>k__BackingField
