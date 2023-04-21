@@ -484,6 +484,11 @@ MonoBehaviour:
   playerInput: {fileID: 0}
   bardInput: {fileID: 8162570258677425958}
   animator: {fileID: 9020621663002551673}
+  deathParticles:
+    <Transform>k__BackingField: {fileID: 8162570259291630727}
+    <Particle>k__BackingField: {fileID: 3424604424310546434, guid: fd092454b21b75b4dbca45883fd491a9, type: 3}
+    <DoParticles>k__BackingField: 1
+    <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &8668577502838584753
 PrefabInstance:
   m_ObjectHideFlags: 0
