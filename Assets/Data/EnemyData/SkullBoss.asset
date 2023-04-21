@@ -29,6 +29,6 @@ MonoBehaviour:
   interruptTime: 0.25
   interruptCoolDown: 10
   chargeDamage: 30
-  chargeSpeedMultiplier: 6
+  chargeSpeedMultiplier: 80
   chargeAttackSize: 1
   disappearTime: 4
