@@ -46,8 +46,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CutOff: 0.9945461
+    - _CutOff: 1.1004852
     - _EdgeSmoothing: 0
     m_Colors:
-    - _MainColor: {r: 0.654902, g: 0.24705882, b: 0.2509804, a: 1}
+    - _MainColor: {r: 0.95686275, g: 0.4862745, b: 0.14901961, a: 1}
   m_BuildTextureStacks: []
