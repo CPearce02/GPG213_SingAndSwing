@@ -52,13 +52,7 @@ namespace Core.Bard
             GameEvents.onButtonPressed -= CheckValueAndPosition;
             GameEvents.onComboFinish += CheckComboComplete;
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-            
-        }
-
+        
         private void DebugHitBox()
         {   
             if (_noteToBePressed == null) return;
@@ -83,6 +77,7 @@ namespace Core.Bard
         
         private void SpawnNote()
         {
+            if(_currentCombo == null) return;
             Image note = Instantiate(ComboDictionary.instance.comboPrefabDictionary[_currentCombo.ComboValues[_comboIndex]], _spawnPoint.position, Quaternion.identity);
             note.transform.SetParent(Notes.transform);
             note.transform.localScale = new Vector3 (1,1,1);
@@ -94,6 +89,7 @@ namespace Core.Bard
 
         private void CheckValueAndPosition(ComboValues value)
         {
+            if(_currentCombo == null) return;
 
             //Correct Value
             if(value == _expectedNote)
