@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Core.ScriptableObjects;
+using DG.Tweening;
 using Events;
 using UnityEngine.UI;
 using Enums;
@@ -30,8 +31,7 @@ namespace Core.Bard
 
         private Image _noteToBePressed;
         private ComboValues _expectedNote;
-
-        // private bool _noArmour;
+        
 
         // Start is called before the first frame update
         void Start()
@@ -50,9 +50,8 @@ namespace Core.Bard
         {
             GameEvents.onNewCombo -= SetCombo;
             GameEvents.onButtonPressed -= CheckValueAndPosition;
-            GameEvents.onComboFinish += CheckComboComplete;
+            GameEvents.onComboFinish -= CheckComboComplete;
         }
-        
         private void DebugHitBox()
         {   
             if (_noteToBePressed == null) return;
@@ -197,5 +196,6 @@ namespace Core.Bard
             yield return new WaitForSeconds(0.5f);
             note.color = baseColour;
         }
+        
     }
 }

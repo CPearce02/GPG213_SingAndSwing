@@ -443,6 +443,8 @@ GameObject:
   - component: {fileID: 2428606963906854286}
   - component: {fileID: 7841413429850728347}
   - component: {fileID: 3871353093393509290}
+  - component: {fileID: 2064731698118136629}
+  - component: {fileID: 8291244492651008948}
   m_Layer: 5
   m_Name: ComboReceiver
   m_TagString: Untagged
@@ -524,8 +526,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6cf352406d2f2a4780ab1c94564296c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _comboUI: {fileID: 0}
   _targetBorder: {fileID: 7114102511342871007}
+--- !u!114 &2064731698118136629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7678221200377642841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766bde1f840b4c5ea6c7372d1bb47fff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationDistance: 20
+  animationDuration: 0.2
+--- !u!225 &8291244492651008948
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7678221200377642841}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &8861501239728695340
 GameObject:
   m_ObjectHideFlags: 0

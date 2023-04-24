@@ -36,7 +36,7 @@ namespace Scenes
             _cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
             _canvas.worldCamera = _cam;
-            Debug.Log("New camera: " + _cam);
+            // Debug.Log("New camera: " + _cam);
         }
     }
 }
