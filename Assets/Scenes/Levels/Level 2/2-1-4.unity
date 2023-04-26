@@ -254,7 +254,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 82d92fd4fd046d04687eb2afd025039c, type: 2}
     - target: {fileID: 2332113700691211889, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
       propertyPath: canBeDestroyed
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2332113700691211903, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
       propertyPath: m_RootOrder

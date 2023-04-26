@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DamageFlash
+  m_Name: PlayerDamageFlash
   m_Shader: {fileID: -6465566751694194690, guid: 0f6c14e68b6a2034c94ff9ed70665a0e, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -38,7 +38,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _FlashAmount: 0.9
+    - _FlashAmount: 0
     - _FlashValue: 0
     m_Colors:
     - _FlashColour: {r: 0.5377358, g: 0.5250534, b: 0.5250534, a: 0.8235294}

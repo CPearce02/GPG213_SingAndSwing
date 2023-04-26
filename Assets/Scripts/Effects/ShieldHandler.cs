@@ -29,7 +29,6 @@ namespace Effects
         {
             if(enemy == null) enemy = GetComponentInParent<Enemy>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            defaultMaterial.SetFloat("_FlashAmount", 0);
         }
 
         private void OnEnable()
@@ -49,7 +48,8 @@ namespace Effects
         void SetMaterial(bool canBeDestroyed)
         {
             _spriteRenderer.material = canBeDestroyed ? defaultMaterial : shieldMaterial;
-
+            defaultMaterial.SetFloat("_FlashAmount", 0);
+    
             if(canBeDestroyed)
                 particleEvent.Invoke();
         }
