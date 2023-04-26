@@ -21,6 +21,8 @@ namespace Core.Bard
         [SerializeField] VolumeProfile volumeProfile;
         VolumeProfile _oldVolumeProfile;
 
+        private bool _slowMoStarted;
+
         public int Timer
         {
             get => _currentTimeRemaining;
@@ -32,7 +34,7 @@ namespace Core.Bard
 
                 if (_currentTimeRemaining == 0)
                 {
-                    SetOriginalTime();
+                    ResetTimer();
                     //Debug.Log("No more mana");
                 }
             }
@@ -53,15 +55,17 @@ namespace Core.Bard
         private void OnEnable()
         {
             _bardInput = GetComponent<PlayerInput>();
-
-            _bardInput.actions["SlowDownButton"].performed += SlowDownTime;
-            _bardInput.actions["SlowDownButton"].canceled += ResetTimer;
+            
+            GameEvents.onSlowDownStart  += SlowDownTime;
+            // _bardInput.actions["SlowDownButton"].performed += SlowDownTime;
+            // _bardInput.actions["SlowDownButton"].canceled += ResetTimer;
         }
 
         private void OnDisable()
         {
-            _bardInput.actions["SlowDownButton"].performed -= SlowDownTime;
-            _bardInput.actions["SlowDownButton"].canceled -= ResetTimer;
+            GameEvents.onSlowDownStart -= SlowDownTime;
+            // _bardInput.actions["SlowDownButton"].performed -= SlowDownTime;
+            // _bardInput.actions["SlowDownButton"].canceled -= ResetTimer;
         }
 
         void InitializeOldVolume()
@@ -118,14 +122,24 @@ namespace Core.Bard
             }
         }
 
-        private void SlowDownTime(InputAction.CallbackContext callbackContext)
+        private void SlowDownTime()
         {
-            Time.timeScale = slowMotionTimeScale;
-            Time.fixedDeltaTime = _startFixedDeltaTime * slowMotionTimeScale;
-            StartCoroutine("DecreaseTime");
+            if(!_slowMoStarted)
+            {
+                Time.timeScale = slowMotionTimeScale;
+                Time.fixedDeltaTime = _startFixedDeltaTime * slowMotionTimeScale;
+                StartCoroutine("DecreaseTime");
 
-            //visually change screen - increase chrome 
-            SlowMoEffect();
+                //visually change screen - increase chrome 
+                SlowMoEffect();
+                _slowMoStarted = true;
+            }
+            else
+            {
+                ResetTimer();
+                _slowMoStarted = false;
+            }
+            
         }
 
         private void SetOriginalTime()
@@ -137,7 +151,7 @@ namespace Core.Bard
             NoSlowMoEffect();
         }
 
-        private void ResetTimer(InputAction.CallbackContext callbackContext)
+        private void ResetTimer()
         {
             SetOriginalTime();
             StartCoroutine("IncreaseTime");

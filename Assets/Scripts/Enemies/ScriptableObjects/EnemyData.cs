@@ -12,7 +12,7 @@ namespace Enemies.ScriptableObjects
         public string enemyName;
         public Sprite enemySprite;
         [field: Header("Combo")]
-        [field: SerializeField] public Combo Combo { get; private set; }
+        [field: SerializeField] public Combo Combo;
         [Header("Movement")]
         public float moveSpeed;
         public float retreatTime;

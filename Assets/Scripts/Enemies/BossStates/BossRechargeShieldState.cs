@@ -1,5 +1,6 @@
 ﻿using Interfaces;
 using UnityEngine;
+using Effects;
 
 namespace Enemies.BossStates
 {
@@ -14,6 +15,10 @@ namespace Enemies.BossStates
             _enemyComponent = _enemy.GetComponent<Enemy>();
             if (_enemy == null) return;
             _enemy.animator.CrossFade("Recharge", 0);
+
+            //Choose new combo 
+            _enemy.enemyData.Combo = _enemy.comboList[Random.Range(0,_enemy.comboList.Length)];
+            _enemy.GetComponentInChildren<ShieldHandler>().ChangeColour(0);
         }
 
         public void Execute(EnemyStateMachine enemy)

@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 1
   enemyName: A Giant Necromancer's Severed Head
   enemySprite: {fileID: 1794998897, guid: 97b9411147ee5bb478dddfc330a79780, type: 3}
-  <Combo>k__BackingField: {fileID: 11400000, guid: 46e520199a450814d8d9c41c090a803e, type: 2}
+  Combo: {fileID: 11400000, guid: 46e520199a450814d8d9c41c090a803e, type: 2}
   moveSpeed: 4
   retreatTime: 1
   triggerRange: 12
