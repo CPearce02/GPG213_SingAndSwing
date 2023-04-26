@@ -1,5 +1,6 @@
 using System;
 using Core.Player;
+using Effects;
 using Enemies.ScriptableObjects;
 using Enums;
 using Events;
@@ -106,6 +107,8 @@ namespace Enemies
             GameEvents.onScreenShakeEvent?.Invoke(Strength.Low, .2f);
             GameEvents.onMultiplierIncreaseEvent?.Invoke();
             takeDamageParticle.Invoke();
+            
+            GetComponentInChildren<ShieldHandler>().CallDamageFlash();
         }
 
         public void SetCanBeDestroyed(bool value) => CanBeDestroyed = value;

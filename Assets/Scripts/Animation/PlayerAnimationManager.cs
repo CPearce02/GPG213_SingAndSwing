@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Core.Player;
 using GameSections.Platforming;
+using System.Collections;
 
 namespace Animation
 {
@@ -27,6 +28,11 @@ namespace Animation
         private static readonly int DeathAnim = Animator.StringToHash("Death");
         private static readonly int AttackAnim = Animator.StringToHash("Attack");
 
+        private Coroutine _playerDamageFlashCoroutine;
+        [SerializeField]private float _flashTime;
+
+        private Material _flashMaterial;
+
         #endregion
 
         void Awake()
@@ -36,6 +42,9 @@ namespace Animation
                 playerInput = GetComponentInParent<PlayerInput>();
 
             healthManager = GetComponentInParent<HealthManager>();
+            _flashMaterial = GetComponent<SpriteRenderer>().material;
+            _flashMaterial.SetFloat("_FlashAmount", 0);
+
         }
 
         private void OnEnable()
@@ -97,5 +106,23 @@ namespace Animation
         }
         
         public Animator GetAnimator() => _animator;
+
+        public void CallPlayerDamageFlash()
+        {
+            _playerDamageFlashCoroutine = StartCoroutine(DamageFlasher());
+        }
+
+        private IEnumerator DamageFlasher()
+        {
+            float currentFlashAmount = 0f;
+            float elapsedTime = 0f;
+            while (elapsedTime <= _flashTime)
+            {
+                elapsedTime += Time.fixedDeltaTime;
+                currentFlashAmount = Mathf.Lerp(1f, 0f, (elapsedTime / _flashTime));
+                _flashMaterial.SetFloat("_FlashAmount", currentFlashAmount);
+                yield return null;
+            }
+        }
     }
 }

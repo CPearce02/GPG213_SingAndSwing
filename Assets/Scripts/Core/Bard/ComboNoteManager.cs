@@ -24,9 +24,22 @@ namespace Core.Bard
             .OnComplete(CheckIfPressed);
         }
 
-        void OnDisable() {
+        void OnEnable()
+        {
+            GameEvents.onWrongButtonPressed += ChangeColour;
+
+        }
+        void OnDisable() 
+        {
+            GameEvents.onWrongButtonPressed -= ChangeColour;
             translate.Kill();
         }
+
+        private void ChangeColour()
+        {
+            GetComponent<Image>().color = Color.red;
+        }
+
         private void CheckIfPressed()
         {
             if(_beenPressed)
@@ -38,6 +51,8 @@ namespace Core.Bard
                 GameEvents.onComboFinish?.Invoke(false);
             }
         }
+
+
 
         public void SetMoveDuration(float value) => moveDuration = value;
     }

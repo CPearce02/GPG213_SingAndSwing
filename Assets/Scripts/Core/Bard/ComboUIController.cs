@@ -104,7 +104,6 @@ namespace Core.Bard
                 else
                 {
                     //Incorrect Postion
-                    // DisplayWrongNotes();
                     GameEvents.onComboFinish?.Invoke(false);
                     GameEvents.onWrongButtonPressed?.Invoke();
                 }
@@ -112,7 +111,6 @@ namespace Core.Bard
             //Incorrect Value
             else
             {
-                // DisplayWrongNotes();
                 GameEvents.onComboFinish?.Invoke(false);
                 GameEvents.onWrongButtonPressed?.Invoke();
             }
@@ -131,37 +129,12 @@ namespace Core.Bard
             }
             else
             {
-                //Correct Note Pressed - Spawn Next Note, Increase Speed, DecreaseTimer;
+                //Correct Note Pressed - Spawn Next Note, Increase Speed
                 _increasedSpeed -= 0.5f;
                 SpawnNote();
             }
         }
 
-        private void DisplayWrongNotes()
-        {
-            foreach (Image _note in spawnedNotes)
-            {
-                if (_note == null) return;
-                // StartCoroutine(FlashColour(_note));
-                _note.color = failColour;
-            }
-            StartCoroutine(DelaySpawn());
-        }
-        IEnumerator DelaySpawn()
-        {
-            yield return new WaitForSeconds(1.25f);
-            ResetCombo();
-            SpawnNote();
-        }
-        private void ResetCombo()
-        {
-            //Remove all spawned notes
-            if(spawnedNotes!=null)ClearSpawnedNotes();
-            //Reset Combo index 
-            _comboIndex = 0;
-            //Reset Speed;
-            _increasedSpeed = _originalSpeed;
-        }
         private void ClearSpawnedNotes()
         {
             foreach (Image _note in spawnedNotes)
@@ -176,25 +149,29 @@ namespace Core.Bard
 
         private void CheckComboComplete(bool complete)
         {
-            if(complete)
-            {
-                _comboIndex = 0;
-                if(_currentCombo == null)
-                {
-                    ClearSpawnedNotes();
-                }
-            }
-            else
-            {
-                DisplayWrongNotes();
-            }
+            // if(complete)
+            // {
+            //     _comboIndex = 0;
+            //     if(_currentCombo == null)
+            //     {
+            //         ClearSpawnedNotes();
+            //     }
+            // }
+            // else
+            // {
+                
+            // }
+            ResetCombo();
         }
 
-        IEnumerator FlashColour(Image note)
+        private void ResetCombo()
         {
-            note.color = failColour;
-            yield return new WaitForSeconds(0.5f);
-            note.color = baseColour;
+            //Remove all spawned notes
+            if (spawnedNotes != null) ClearSpawnedNotes();
+            //Reset Combo index 
+            _comboIndex = 0;
+            //Reset Speed;
+            _increasedSpeed = _originalSpeed;
         }
         
     }

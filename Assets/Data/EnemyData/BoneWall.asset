@@ -14,13 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   enemyName: Bone Wall
+  enemySprite: {fileID: 692098045, guid: 324fb7c5ca6d40a4ca16fa5ccab02c43, type: 3}
+  Combo: {fileID: 11400000, guid: bee749aa12db5404aa61867bf3009ac2, type: 2}
   moveSpeed: 0
+  retreatTime: 0
   triggerRange: 0
   attackRange: 0
-  retreatTime: 0
-  enemySprite: {fileID: 692098045, guid: 324fb7c5ca6d40a4ca16fa5ccab02c43, type: 3}
-  enemyAttackSprite: {fileID: 0}
   damageAmount: 20
-  healthAmount: 20
-  <DamageType>k__BackingField: {fileID: 0}
-  <Combo>k__BackingField: {fileID: 11400000, guid: bee749aa12db5404aa61867bf3009ac2, type: 2}
+  attackCooldown: 0
+  healthAmount: 150
+  decisionTime: 0
+  stunTime: 0
+  stunCoolDown: 0
+  interruptTime: 0
+  interruptCoolDown: 0
+  chargeDamage: 0
+  chargeSpeedMultiplier: 0
+  chargeAttackSize: 0
+  disappearTime: 0

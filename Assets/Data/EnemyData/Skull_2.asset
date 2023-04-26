@@ -14,13 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   enemyName: Skull 2
+  enemySprite: {fileID: -2022926031, guid: 1d3e163c9e468b54f9e64fb3277ee966, type: 3}
+  Combo: {fileID: 11400000, guid: 56cde7306c2f8214382c8c037062b6cd, type: 2}
   moveSpeed: 4
+  retreatTime: 2
   triggerRange: 8
   attackRange: 3
-  retreatTime: 2
-  enemySprite: {fileID: -2022926031, guid: 1d3e163c9e468b54f9e64fb3277ee966, type: 3}
-  enemyAttackSprite: {fileID: 21300000, guid: 80d11c419c78c16468619feca6ec9fcf, type: 3}
   damageAmount: 20
-  healthAmount: 30
-  <DamageType>k__BackingField: {fileID: 11400000, guid: ca5dc4a2e4862ec47af93bef06d77152, type: 2}
-  <Combo>k__BackingField: {fileID: 11400000, guid: 4a9bb869fe4b39240b53f8afc0592b9e, type: 2}
+  attackCooldown: 0
+  healthAmount: 60
+  decisionTime: 0
+  stunTime: 0
+  stunCoolDown: 0
+  interruptTime: 0
+  interruptCoolDown: 0
+  chargeDamage: 0
+  chargeSpeedMultiplier: 0
+  chargeAttackSize: 0
+  disappearTime: 0

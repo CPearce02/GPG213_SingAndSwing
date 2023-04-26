@@ -310,10 +310,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 2332113700691211889}
-  defaultMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  shieldMaterial: {fileID: 2100000, guid: c217f3a71123e90448b3e02f14c8fa29, type: 2}
+  defaultMaterial: {fileID: 2100000, guid: ea2cd4265cccff64ebbf3b137e5a21d3, type: 2}
+  shieldMaterial: {fileID: 2100000, guid: 041992901da93c94995d6f2bc0d5eedf, type: 2}
   particleEvent:
     <Transform>k__BackingField: {fileID: 2332113701306299828}
     <Particle>k__BackingField: {fileID: 3225780557320092108, guid: c3c12a6c2ec74ff4ca28c7b12e66969f, type: 3}
     <DoParticles>k__BackingField: 1
     <Color>k__BackingField: {r: 0.53333336, g: 0.9137255, b: 0.94509804, a: 1}
+  _flashTime: 0.2

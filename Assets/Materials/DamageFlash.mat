@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TransitionMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: baeff1c794204544a961460a8b55e4ba, type: 3}
+  m_Name: DamageFlash
+  m_Shader: {fileID: -6465566751694194690, guid: 0f6c14e68b6a2034c94ff9ed70665a0e, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -21,15 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 0b921ea68f728544484a8ab4d124becc, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTexture:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _TransitionTexture:
-        m_Texture: {fileID: 2800000, guid: 5cd04c33c55cac446ad437f12ad50698, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -46,8 +38,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CutOff: 1.1007419
-    - _EdgeSmoothing: 0
+    - _FlashAmount: 0
+    - _FlashValue: 0
     m_Colors:
-    - _MainColor: {r: 0.24313726, g: 0.2901961, b: 0.4627451, a: 1}
+    - _FlashColour: {r: 0.5377358, g: 0.5250534, b: 0.5250534, a: 0.8235294}
   m_BuildTextureStacks: []

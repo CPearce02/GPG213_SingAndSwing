@@ -6,6 +6,7 @@ using Interfaces;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using Animation;
 
 namespace Core.Player
 {
@@ -183,6 +184,9 @@ namespace Core.Player
                 Death();
                 Respawn(3f, respawnPosition);
             }
+
+            //FLASH
+            GetComponentInChildren<PlayerAnimationManager>().CallPlayerDamageFlash();
         }
 
         void Alive()
