@@ -72,8 +72,8 @@ namespace Core.Bard
             GameEvents.onAimStart += AimTowards;
             _bardInput.actions["Aim"].performed += StartSinging;
             _bardInput.actions["Aim"].canceled +=  EndSinging;
-            _bardInput.actions["SlowDownButton"].performed += ctx => _increaseManaSpeed = 0.01f;
-            _bardInput.actions["SlowDownButton"].canceled += ctx => _increaseManaSpeed = 0.1f;
+            _bardInput.actions["SlowDownButton"].performed += IncreaseSpeed;
+            _bardInput.actions["SlowDownButton"].canceled += DecreaseSpeed;
         }
 
         private void OnDisable()
@@ -81,8 +81,8 @@ namespace Core.Bard
             GameEvents.onAimStart -= AimTowards;
             _bardInput.actions["Aim"].performed -= StartSinging;
             _bardInput.actions["Aim"].canceled -=  EndSinging;
-            _bardInput.actions["SlowDownButton"].performed -= ctx => _increaseManaSpeed = 0.01f;
-            _bardInput.actions["SlowDownButton"].canceled -= ctx => _increaseManaSpeed = 0.1f;
+            _bardInput.actions["SlowDownButton"].performed -= IncreaseSpeed;
+            _bardInput.actions["SlowDownButton"].canceled -= DecreaseSpeed;
         }
 
         private void AimTowards(Vector2 direction)
@@ -103,6 +103,16 @@ namespace Core.Bard
             {
                 _Radius.SetActive(false);
             }
+        }
+
+        private void IncreaseSpeed(InputAction.CallbackContext cbx)
+        {
+            _increaseManaSpeed = 0.01f;
+        }
+
+        private void DecreaseSpeed(InputAction.CallbackContext cbx)
+        {
+            _increaseManaSpeed = 0.1f;
         }
 
         private void RotateTowards()

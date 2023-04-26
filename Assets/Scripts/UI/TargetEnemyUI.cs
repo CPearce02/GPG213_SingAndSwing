@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Events;
 using Enemies;
@@ -15,11 +13,6 @@ public class TargetEnemyUI : MonoBehaviour
     [SerializeField] private RectTransform _targetBorder;
 
     private Vector2 framePadding = new Vector2(20,20);
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     private void OnEnable()
     {

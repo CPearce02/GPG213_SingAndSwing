@@ -62,7 +62,7 @@ namespace Enemies.BossStates
         private void MoveToCentre()
         {
             //FIND THE CENTRE TRANSFORM AND GO TO IT
-            _enemy.transform.position = Vector2.MoveTowards(_enemy.transform.position, _centrePosition, _enemy.enemyData.moveSpeed * Time.deltaTime);
+            _enemy.transform.position = Vector2.MoveTowards(_enemy.transform.position, _centrePosition, _enemy.enemyData.moveSpeed * 2 * Time.deltaTime);
         }
 
 

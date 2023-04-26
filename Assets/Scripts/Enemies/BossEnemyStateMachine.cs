@@ -1,6 +1,7 @@
 using Enemies.BossStates;
 using Events;
 using UnityEngine;
+using Core.ScriptableObjects;
 
 namespace Enemies
 {
@@ -18,6 +19,8 @@ namespace Enemies
         [field: SerializeField] public bool CanBeStunned { get; set; }
         public Transform target;
         public Transform[] positions;
+
+        public Combo[] comboList;
 
         private void Awake()
         {

@@ -107,7 +107,7 @@ AudioSource:
   m_GameObject: {fileID: 8162570258018312774}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6450846580163681562, guid: 294a89a4e8475534995a012b831955f6, type: 2}
   m_audioClip: {fileID: 8300000, guid: cd5654b707027c04e8ac4f65a908e8e7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -484,6 +484,11 @@ MonoBehaviour:
   playerInput: {fileID: 0}
   bardInput: {fileID: 8162570258677425958}
   animator: {fileID: 9020621663002551673}
+  deathParticles:
+    <Transform>k__BackingField: {fileID: 8162570259291630727}
+    <Particle>k__BackingField: {fileID: 3424604424310546434, guid: fd092454b21b75b4dbca45883fd491a9, type: 3}
+    <DoParticles>k__BackingField: 1
+    <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &8668577502838584753
 PrefabInstance:
   m_ObjectHideFlags: 0

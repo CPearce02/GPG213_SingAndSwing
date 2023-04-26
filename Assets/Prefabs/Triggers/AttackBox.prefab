@@ -72,3 +72,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 20
+  collider: {fileID: 0}

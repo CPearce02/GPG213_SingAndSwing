@@ -26,8 +26,8 @@ namespace Enemies.BossStates
         {
             enemy.animator.CrossFade(Ability1Start, 0);
             this._enemy = enemy as BossEnemyStateMachine;
-            
-       
+
+
 
             //Aim towards player 
             _directionToCharge = _enemy.target.position - enemy.transform.position;
@@ -47,7 +47,7 @@ namespace Enemies.BossStates
             if (!hasHit && doCharge)
             {
                 //Charge towards player direction - Charge until it hits something 
-                _enemy.Rb.AddForce(_directionToCharge * (_enemy.enemyData.moveSpeed * 5 * _enemy.enemyData.chargeSpeedMultiplier * Time.fixedDeltaTime));
+                _enemy.Rb.AddForce(_directionToCharge * (_enemy.enemyData.moveSpeed * 5 * _enemy.enemyData.chargeSpeedMultiplier * Time.deltaTime));
                 _enemy.animator.CrossFade(Ability1Idle, 0);
 
                 //Check to see what the boss hit 

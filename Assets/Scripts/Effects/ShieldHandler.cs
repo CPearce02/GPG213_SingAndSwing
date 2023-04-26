@@ -1,6 +1,10 @@
 using Enemies;
 using Structs;
 using UnityEngine;
+using Events;
+using Core.Bard;
+using Enums;
+using Core.ScriptableObjects;
 
 namespace Effects
 {
@@ -13,23 +17,28 @@ namespace Effects
         [SerializeField] Material shieldMaterial;
         [Header("Particle Settings")]
         [SerializeField] ParticleEvent particleEvent;
+
+        private int colourIndex = 0;
     
         private void Awake()
         {
             if(enemy == null) enemy = GetComponentInParent<Enemy>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
+
         }
 
         private void OnEnable()
         {
             if (enemy == null) return;
             enemy.Destroyable += SetMaterial;
+
         }
 
         private void OnDisable()
         {
             if (enemy == null) return;
             enemy.Destroyable -= SetMaterial;
+
         }
     
         void SetMaterial(bool canBeDestroyed)
@@ -38,6 +47,15 @@ namespace Effects
 
             if(canBeDestroyed)
                 particleEvent.Invoke();
+        }
+
+        public void ChangeColour(int colourIndex)
+        {
+            if (shieldMaterial.name != "Outline_ColourToCombo") return;
+            if (colourIndex < enemy.enemyData.Combo.ComboValues.Count)
+            {
+                shieldMaterial.SetColor("_Colour", ComboDictionary.instance.comboPrefabDictionary[enemy.enemyData.Combo.ComboValues[colourIndex]].color);
+            }
         }
     }
 }

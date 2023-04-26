@@ -19,8 +19,11 @@ namespace Enemies.BossStates
             if (_enemy == null) return;
             _spawnEnemies = _enemy.GetComponentInChildren<SpawnEnemies>();
             _enemy.animator.CrossFade("Start_Move", 0);
-
-
+            _spawnEnemies.ClearEnemyList();
+            // if(_enemy.enemyData.healthAmount == 500)
+            // {
+            //     _spawnEnemies.SetSpawnAmount(5);
+            // }
         }
 
         public void Execute(EnemyStateMachine enemy)
@@ -65,7 +68,7 @@ namespace Enemies.BossStates
             }
             //Move to it
 
-            _enemy.transform.position = Vector2.MoveTowards(_enemy.transform.position, _closestPosition, _enemy.enemyData.moveSpeed * Time.deltaTime);
+            _enemy.transform.position = Vector2.MoveTowards(_enemy.transform.position, _closestPosition, _enemy.enemyData.moveSpeed * 2 * Time.deltaTime);
 
             _inPosition = true;
         }

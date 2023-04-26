@@ -3,6 +3,7 @@ using UnityEngine;
 using Enemies;
 using Events;
 using Core.ScriptableObjects;
+using Effects;
 
 namespace Core.Bard
 {
@@ -20,6 +21,8 @@ namespace Core.Bard
         [SerializeField] private AudioClip _failGuitarChord;
         private float _originalPitch;
         private bool _pitchSet;
+
+        private int _colourIndex;
 
         // Start is called before the first frame update
         void Start()
@@ -67,8 +70,6 @@ namespace Core.Bard
             {
                 //Turn off sheild 
                 _currentEnemy.SetCanBeDestroyed(true);
-                //Turn off UI
-                _currentEnemy.GetComponentInChildren<SpriteRenderer>().color = Color.white;
                 //Remove from list 
                 _enemies.Remove(_currentEnemy);
                 _currentEnemy = null;
@@ -111,7 +112,8 @@ namespace Core.Bard
         {
             if (_currentEnemy != null)
             {
-                // _currentEnemy.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                _colourIndex = 0;
+                _currentEnemy.GetComponentInChildren<ShieldHandler>().ChangeColour(_colourIndex);
                 _currentEnemy = null;
             }
         }
@@ -123,7 +125,8 @@ namespace Core.Bard
             //Set Current Enemy
             _currentEnemy = _enemy;
             //Highlight Enemy
-            // _enemy.GetComponentInChildren<SpriteRenderer>().color = Color.magenta;
+            _colourIndex = 0;
+            _currentEnemy.GetComponentInChildren<ShieldHandler>().ChangeColour(_colourIndex);
             GameEvents.onTargetEnemyEvent?.Invoke(_enemy);
             //Send the Combo to UI
             GameEvents.onNewCombo?.Invoke(_enemy.enemyData.Combo);
@@ -135,6 +138,10 @@ namespace Core.Bard
             _au.clip = _guitarChord;
             _au.pitch += 0.5f;
             _au.Play();
+
+            _colourIndex++;
+            _currentEnemy.GetComponentInChildren<ShieldHandler>().ChangeColour(_colourIndex);
+
         }
 
         private void PlayFailGuitar()
@@ -142,7 +149,10 @@ namespace Core.Bard
             _pitchSet = false;
             _au.clip = _failGuitarChord;
             _au.pitch = 1f;
-            _au.Play();        
+            _au.Play();
+
+            _colourIndex = 0;
+            _currentEnemy.GetComponentInChildren<ShieldHandler>().ChangeColour(_colourIndex);
         }
     }
 }

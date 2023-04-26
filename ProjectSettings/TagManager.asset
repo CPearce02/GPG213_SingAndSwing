@@ -21,8 +21,8 @@ TagManager:
   - Player
   - Ignore Collision
   - Player Attack
-  - 
-  - 
+  - Enemy Ignore Collision
+  - Platforms
   - 
   - 
   - 

@@ -1,12 +1,12 @@
 using Core.Player;
 using Structs;
 using UnityEngine;
-using UnityEngine.Events;
 
-namespace GameSections.Platforming
+namespace Animation
 {
     public class Checkpoint : MonoBehaviour
     {
+        [SerializeField] bool isCheckpoint;
         [SerializeField] bool checkpointActive;
         [SerializeField] ParticleEvent checkpointParticles;
         Animator _anim;
@@ -16,16 +16,23 @@ namespace GameSections.Platforming
         private void Awake()
         {
             _anim = GetComponentInChildren<Animator>();
+            if(!isCheckpoint) checkpointActive = false;
         }
 
         private void Start()
         {
-            checkpointActive = false;
+            if (!isCheckpoint)
+            {
+                HandleCheckpoint();
+                HandleParticles();
+            } else 
+                checkpointActive = false;
         }
         
     
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if(!isCheckpoint) return;
             if(checkpointActive) return;
             if(collision.TryGetComponent(out HealthManager platformingController))
             {

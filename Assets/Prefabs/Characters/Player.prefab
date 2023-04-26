@@ -608,7 +608,7 @@ AudioSource:
   m_GameObject: {fileID: 6419258818656474046}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1154996533918540843, guid: 294a89a4e8475534995a012b831955f6, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.665
@@ -859,6 +859,10 @@ PrefabInstance:
     - target: {fileID: 8800234070652476243, guid: 0f17184e62c445c4b9e5d69e7c6c5ba1, type: 3}
       propertyPath: m_Name
       value: AttackBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800234070652476243, guid: 0f17184e62c445c4b9e5d69e7c6c5ba1, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f17184e62c445c4b9e5d69e7c6c5ba1, type: 3}
