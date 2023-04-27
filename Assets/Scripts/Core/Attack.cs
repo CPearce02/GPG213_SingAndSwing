@@ -21,8 +21,9 @@ namespace Core
         {
             var attackable = collider.TryGetComponent<IAttackable>(out var attackableComponent);
             if (!attackable) return;
+            collider.TryGetComponent(out Enemies.Enemy enemy);
             attackableComponent.TakeDamage(damageAmount);
-            _audioSrc.Play();
+            if(_audioSrc != null && enemy.CanBeDestroyed) _audioSrc.Play();
         }
     }
 }

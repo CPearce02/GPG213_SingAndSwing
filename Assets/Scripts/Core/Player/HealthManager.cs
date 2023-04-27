@@ -177,6 +177,7 @@ namespace Core.Player
             if (_dead) return;
             Debug.Log($"{amount} in damage was taken by the player");
             ReduceHealth(amount);
+            GetComponent<AudioSource>().Play();
             StartCoroutine(DamageEffect());
 
             if (health <= 0)
