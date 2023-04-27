@@ -268,7 +268,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Game programmers:
 
-    
+
 
     Greg Tashjian
 
@@ -277,68 +277,67 @@ MonoBehaviour:
     Chantelle
     Pearce
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 
     Game designers:
 
-    
+
 
     Greg Tashjian
 
-    Elliot
-    Birch
-
-    Chantelle Pearce
-
-    
-
-    
-
-    
-
-    
-
-    Level designers:
-
-    
-
-    Greg
-    Tashjian
-
-    
-
-    
-
-    
-
-    
-
-    Bossfight designers:
-
-    
+    Elliot Birch
 
     Chantelle
     Pearce
 
+
+
+
+
+
+
+
+
+    Level designers:
+
+
+
+    Greg Tashjian
+
+
+
+
+
+
+
+
+
+    Bossfight
+    designers:
+
+
+
+    Chantelle Pearce
+
     Elliot Birch
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 
     Music:
 
-    
+
 
     Anthony
     Khatchigian - Dungeon (Level 2 music)
@@ -353,67 +352,64 @@ MonoBehaviour:
     GioeleFazzeri
     - Night-city drive (Secret area)
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 
     Art design:
 
-    
 
-    Elliot
-    Birch - Character and object designs
 
-    S4M_UR4I - 2D Metroidvania tileset
-    16x16 (Level 2 sprites)
+    Elliot Birch
+    - Character and object designs
+
+    S4M_UR4I - 2D Metroidvania tileset 16x16
+    (Level 2 sprites)
 
     Ansimuz - Magic cliffs pack (Level 1 sprites)
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 
     Sound
     effects:
 
-    
+
 
     FlorianReichelt - Fail sound effect
 
-    Aesterial-Arts
-    - Acoustic guitar E-major
+    Aesterial-Arts - Acoustic
+    guitar E-major
 
     User2696619206390 - Male choir
 
-    Mixkit -
-    Soft quick punch
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    And
-    thank you for playing!
+
+
+
+
+
+
+
+    And thank
+    you for playing!
 
 '
   m_isRightToLeft: 0
