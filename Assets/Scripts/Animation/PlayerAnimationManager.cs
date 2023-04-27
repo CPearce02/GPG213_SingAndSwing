@@ -31,6 +31,7 @@ namespace Animation
         private Coroutine _playerDamageFlashCoroutine;
         [SerializeField]private float _flashTime;
 
+        [SerializeField] private Material defaultMaterial;
         private Material _flashMaterial;
 
         #endregion
@@ -42,8 +43,8 @@ namespace Animation
                 playerInput = GetComponentInParent<PlayerInput>();
 
             healthManager = GetComponentInParent<HealthManager>();
-            _flashMaterial = GetComponent<SpriteRenderer>().material;
-            _flashMaterial.SetFloat("_FlashAmount", 0);
+            _flashMaterial = Instantiate(defaultMaterial);
+            GetComponent<SpriteRenderer>().material = _flashMaterial;
 
         }
 

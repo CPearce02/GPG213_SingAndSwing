@@ -24,6 +24,9 @@ namespace Effects
         private int colourIndex = 0;
 
         private Coroutine _damageFlashCoroutine;
+
+        private Material _damageFlashMaterial;
+        private Material _colourChangeMaterial;
     
         private void Awake()
         {
@@ -47,19 +50,23 @@ namespace Effects
     
         void SetMaterial(bool canBeDestroyed)
         {
-            _spriteRenderer.material = canBeDestroyed ? defaultMaterial : shieldMaterial;
-            defaultMaterial.SetFloat("_FlashAmount", 0);
-    
+            if(_damageFlashMaterial == null || _colourChangeMaterial == null)
+            {
+                _damageFlashMaterial = Instantiate(defaultMaterial);
+                _colourChangeMaterial = Instantiate(shieldMaterial);
+            }
+
+            _spriteRenderer.material = canBeDestroyed ? _damageFlashMaterial : _colourChangeMaterial;
+
             if(canBeDestroyed)
                 particleEvent.Invoke();
         }
 
         public void ChangeColour(int colourIndex)
         {
-            if (shieldMaterial.name != "Outline_ColourToCombo") return;
             if (colourIndex < enemy.enemyData.Combo.ComboValues.Count)
             {
-                shieldMaterial.SetColor("_Colour", ComboDictionary.instance.comboPrefabDictionary[enemy.enemyData.Combo.ComboValues[colourIndex]].color);
+                _colourChangeMaterial.SetColor("_Colour", ComboDictionary.instance.comboPrefabDictionary[enemy.enemyData.Combo.ComboValues[colourIndex]].color);
             }
         }
 
@@ -76,7 +83,7 @@ namespace Effects
             {
                 elapsedTime  += Time.fixedDeltaTime;
                 currentFlashAmount = Mathf.Lerp(1f, 0f, (elapsedTime /_flashTime));
-                defaultMaterial.SetFloat("_FlashAmount", currentFlashAmount);
+                _damageFlashMaterial.SetFloat("_FlashAmount", currentFlashAmount);
                 yield return null;
             }
         }

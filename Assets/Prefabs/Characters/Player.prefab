@@ -464,7 +464,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e44a2cf9566b39041a35813e8bd08822, type: 2}
+  - {fileID: 2100000, guid: ea2cd4265cccff64ebbf3b137e5a21d3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -533,6 +533,7 @@ MonoBehaviour:
   platformingController: {fileID: 6419258818573561550}
   isFalling: 0
   _flashTime: 0.2
+  defaultMaterial: {fileID: 2100000, guid: ea2cd4265cccff64ebbf3b137e5a21d3, type: 2}
 --- !u!114 &514009650263695910
 MonoBehaviour:
   m_ObjectHideFlags: 0

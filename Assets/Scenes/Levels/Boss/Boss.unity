@@ -5845,5 +5845,9 @@ PrefabInstance:
       propertyPath: <FollowTransform>k__BackingField
       value: 
       objectReference: {fileID: 1781090327}
+    - target: {fileID: 6419258818656474040, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ea2cd4265cccff64ebbf3b137e5a21d3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
