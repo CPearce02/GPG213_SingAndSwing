@@ -1,3 +1,4 @@
+using System.Collections;
 using Enemies.BossStates;
 using Events;
 using UnityEngine;
@@ -7,7 +8,6 @@ namespace Enemies
 {
     public class BossEnemyStateMachine : EnemyStateMachine
     {
-
         [Header("Boss Settings")]
         [SerializeField] private Enemy enemy;
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
@@ -21,6 +21,8 @@ namespace Enemies
         public Transform[] positions;
 
         public Combo[] comboList;
+
+        [SerializeField] Collider2D[] collisionsToTurnOffOnDeath;
 
         private void Awake()
         {
@@ -39,12 +41,14 @@ namespace Enemies
             if (enemy == null) enemy = GetComponent<Enemy>();
             // enemy.BossTakeDamage += ForceInterruptState;
             enemy.BossDeath += ForceDeathState;
+            enemy.BossDeath += RoomTransition;
         }
 
         private void OnDisable()
         {
             // enemy.BossTakeDamage -= ForceInterruptState;
             enemy.BossDeath -= ForceDeathState;
+            enemy.BossDeath -= RoomTransition;
         }
 
         public override void Update()
@@ -69,6 +73,30 @@ namespace Enemies
             }
         }
 
+        void RoomTransition()
+        {
+            
+            StartCoroutine(RoomT());
+        }
+
+        IEnumerator RoomT()
+        {
+            yield return new WaitForSeconds(1f);
+            GameEvents.onScreenShakeEvent?.Invoke(Enums.Strength.High, 2f);
+
+            foreach (Collider2D coll in collisionsToTurnOffOnDeath)
+            {
+                coll.usedByComposite = false;
+            }
+
+            yield return new WaitForSeconds(2f);
+
+            foreach(Collider2D coll in collisionsToTurnOffOnDeath)
+            {
+                coll.enabled = false;
+            }
+        }
+
         void ForceDeathState()
         {
             if (CurrentState is BossDeathState) return;
@@ -87,6 +115,5 @@ namespace Enemies
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(ChargeTransform.position, enemyData.chargeAttackSize);
         }
-
     }
 }

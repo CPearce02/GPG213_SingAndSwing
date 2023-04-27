@@ -1,12 +1,27 @@
 using Core.Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Events;
 
 namespace GameSections.Platforming
 {
     public class OutOfBounds : MonoBehaviour
     {
         PlatformingController _player;
+        [SerializeField] Enemies.Enemy boss;
+        bool _bossDead = false;
+
+        private void OnEnable()
+        {
+            if (boss == null) return;
+            boss.BossDeath += IfBossDead;
+        }
+
+        private void OnDisable()
+        {
+            if (boss == null) return;
+            boss.BossDeath -= IfBossDead;
+        }
 
         void Start()
         {
@@ -18,7 +33,21 @@ namespace GameSections.Platforming
         {
             // We should be using events and manage this stuff in a GameManager
             //if (transform.position.y >= player.transform.position.y) GameEvents.onPlayerRespawnEvent?.Invoke();
-            if (transform.position.y >= _player.transform.position.y) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if (transform.position.y >= _player.transform.position.y)
+            {
+                switch(_bossDead)
+                {
+                    case false:
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                        break;
+
+                    case true:
+                        SceneManager.LoadScene("EndLevel");
+                        break;
+                }
+            }
         }
+
+        void IfBossDead() => _bossDead = true;
     }
 }

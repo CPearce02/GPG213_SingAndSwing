@@ -266,137 +266,154 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'GAME PROGRAMMERS:
+  m_text: 'Game programmers:
 
+    
 
+    Greg Tashjian
 
-    GREG TASHJIAN
+    Elliot Birch
 
-    ELLIOT BIRCH
+    Chantelle
+    Pearce
 
-    CHANTELLE
-    PEARCE
+    
 
+    
 
+    
 
+    
 
+    Game designers:
 
+    
 
+    Greg Tashjian
 
-    GAME DESIGNERS:
+    Elliot
+    Birch
 
+    Chantelle Pearce
 
+    
 
-    GREG TASHJIAN
+    
 
-    ELLIOT BIRCH
+    
 
-    CHANTELLE
-    PEARCE
+    
 
+    Level designers:
 
+    
 
+    Greg
+    Tashjian
 
+    
 
+    
 
+    
 
-    LEVEL DESIGNERS:
+    
 
+    Bossfight designers:
 
+    
 
-    GREG TASHJIAN
+    Chantelle
+    Pearce
 
+    Elliot Birch
 
+    
 
+    
 
+    
 
+    
 
+    Music:
 
-    BOSSFIGHT
-    DESIGNERS:
+    
 
+    Anthony
+    Khatchigian - Dungeon (Level 2 music)
 
+    Kim Lightyear - Voices (Level 1 music)
 
-    CHANTELLE PEARCE
+    Alexander
+    Nakarada - Boss fight (Boss fight)
 
-    ELLIOT BIRCH
+    Incompetech - Leaving home (Main menu)
 
+    GioeleFazzeri
+    - Night-city drive (Secret area)
 
+    
 
+    
 
+    
 
+    
 
+    Art design:
 
-    MUSIC:
+    
 
+    Elliot
+    Birch - Character and object designs
 
+    S4M_UR4I - 2D Metroidvania tileset
+    16x16 (Level 2 sprites)
 
-    ANTHONY
-    KHATCHIGIAN - DUNGEON (LEVEL 2 MUSIC)
+    Ansimuz - Magic cliffs pack (Level 1 sprites)
 
-    KIM LIGHTYEAR - VOICES (LEVEL 1 MUSIC)
+    
 
-    ALEXANDER
-    NAKARADA - BOSS FIGHT (BOSS FIGHT)
+    
 
-    INCOMPETECH - LEAVING HOME (MAIN MENU)
+    
 
-    GIOELEFAZZERI
-    - NIGHT-CITY DRIVE (SECRET AREA)
+    
 
+    Sound
+    effects:
 
+    
 
+    FlorianReichelt - Fail sound effect
 
+    Aesterial-Arts
+    - Acoustic guitar E-major
 
+    User2696619206390 - Male choir
 
+    Mixkit -
+    Soft quick punch
 
-    ART DESIGN:
+    
 
+    
 
+    
 
-    ELLIOT BIRCH -
-    CHARACTER AND OBJECT DESIGNS
+    
 
-    S4M_UR4I - 2D METROIDVANIA TILESET 16X16 (LEVEL
-    2 SPRITES)
+    
 
-    ANSIMUZ - MAGIC CLIFFS PACK (LEVEL 1 SPRITES)
+    
 
+    
 
+    
 
-
-
-
-
-    SOUND
-    EFFECTS:
-
-
-
-    FLORIANREICHELT - FAIL SOUND EFFECT
-
-    AESTERIAL-ARTS - ACOUSTIC
-    GUITAR E-MAJOR
-
-    USER2696619206390 - MALE CHOIR
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    AND THANK
-    YOU FOR PLAYING!
+    And
+    thank you for playing!
 
 '
   m_isRightToLeft: 0
