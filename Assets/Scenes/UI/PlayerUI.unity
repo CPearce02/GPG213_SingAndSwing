@@ -751,19 +751,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2428606963906854286, guid: fd5f21474403d2d4a9527a2e692d6ef0, type: 3}
       propertyPath: successColour.a
-      value: 0.16470589
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2428606963906854286, guid: fd5f21474403d2d4a9527a2e692d6ef0, type: 3}
       propertyPath: successColour.b
-      value: 0.254183
+      value: 0.2857086
       objectReference: {fileID: 0}
     - target: {fileID: 2428606963906854286, guid: fd5f21474403d2d4a9527a2e692d6ef0, type: 3}
       propertyPath: successColour.g
-      value: 0.4528302
+      value: 0.27222022
       objectReference: {fileID: 0}
     - target: {fileID: 2428606963906854286, guid: fd5f21474403d2d4a9527a2e692d6ef0, type: 3}
       propertyPath: successColour.r
-      value: 0.26279968
+      value: 0.2924528
       objectReference: {fileID: 0}
     - target: {fileID: 2900717772104595731, guid: fd5f21474403d2d4a9527a2e692d6ef0, type: 3}
       propertyPath: m_IsActive
@@ -937,7 +937,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3871353093393509290, guid: fd5f21474403d2d4a9527a2e692d6ef0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fd5f21474403d2d4a9527a2e692d6ef0, type: 3}
 --- !u!223 &7678221199856568769 stripped
 Canvas:
