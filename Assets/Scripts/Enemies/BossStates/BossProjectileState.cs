@@ -61,6 +61,7 @@ namespace Enemies.BossStates
 
         private void MoveToCentre()
         {
+            _enemy.animator.CrossFade("Start_Move", 0);
             //FIND THE CENTRE TRANSFORM AND GO TO IT
             _enemy.transform.position = Vector2.MoveTowards(_enemy.transform.position, _centrePosition, _enemy.enemyData.moveSpeed * 2 * Time.deltaTime);
         }
@@ -70,7 +71,7 @@ namespace Enemies.BossStates
         {
             _shootingEnemy.SetDisableUpdate(false);
 
-            // Calculate the rotation angle based on the rotation sawpeed and time
+            // Calculate the rotation angle based on the rotation speed and time
             float rotationAngle = 200 * Time.deltaTime;
 
             // Rotate the object around its own z-axis by the rotation angle
