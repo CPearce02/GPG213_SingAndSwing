@@ -59,7 +59,7 @@ namespace Core.Bard
                 if (enemyComponent.enemyData.Combo != null && !_enemies.Contains(enemyComponent) && !enemyComponent.CanBeDestroyed)
                 {
                     _enemies.Add(enemyComponent);
-                    if(_currentEnemy == null) SelectCurrent(enemyComponent);
+                    // if(_currentEnemy == null) SelectCurrent(enemyComponent);
                 }
             }
         }

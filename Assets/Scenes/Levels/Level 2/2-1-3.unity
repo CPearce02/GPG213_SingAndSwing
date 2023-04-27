@@ -6687,6 +6687,18 @@ PrefabInstance:
       propertyPath: followObj
       value: 
       objectReference: {fileID: 6419258818536261501}
+    - target: {fileID: 8162570258018312773, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
+      propertyPath: m_Radius
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162570258018312773, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162570258018312773, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8162570258018312774, guid: eded154d3f6c6d3438b39d78a96542da, type: 3}
       propertyPath: m_Layer
       value: 2

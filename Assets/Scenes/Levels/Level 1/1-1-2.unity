@@ -44295,11 +44295,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3305986845520985328, guid: 22a296c12f06b464393a3b0db6a014cd, type: 3}
       propertyPath: m_text
-      value: 'Blue Outlined enemies are shielded.
-
-
-        Use your bard combos
-        to break the enemy shield.'
+      value: "Blue Outlined enemies are shielded.\n\nUse your bard combos to break
+        the enemy shield. \n\nStart the combo by pressing 'e'"
       objectReference: {fileID: 0}
     - target: {fileID: 6464269758738585517, guid: 22a296c12f06b464393a3b0db6a014cd, type: 3}
       propertyPath: m_RootOrder
@@ -44307,11 +44304,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6464269758738585517, guid: 22a296c12f06b464393a3b0db6a014cd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.12
       objectReference: {fileID: 0}
     - target: {fileID: 6464269758738585517, guid: 22a296c12f06b464393a3b0db6a014cd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.54
       objectReference: {fileID: 0}
     - target: {fileID: 6464269758738585517, guid: 22a296c12f06b464393a3b0db6a014cd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -44347,11 +44344,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9168207812104524792, guid: 22a296c12f06b464393a3b0db6a014cd, type: 3}
       propertyPath: m_text
-      value: 'Blue Outlined enemies are shielded.
-
-
-        Use your bard combos
-        to break the enemy shield.'
+      value: "Blue Outlined enemies are shielded.\n\nUse your bard combos to break
+        the enemy shield.  \n\nStart the combo by pressing 'e'"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22a296c12f06b464393a3b0db6a014cd, type: 3}

@@ -58,11 +58,12 @@ namespace Effects
 
             if(canBeDestroyed)
                 particleEvent.Invoke();
+            else ChangeColour(0);
         }
 
         public void ChangeColour(int colourIndex)
         {
-            if (colourIndex < enemy.enemyData.Combo.ComboValues.Count)
+            if (colourIndex < enemy.enemyData.Combo.ComboValues.Count )
             {
                 _colourChangeMaterial.SetColor("_Colour", ComboDictionary.instance.comboPrefabDictionary[enemy.enemyData.Combo.ComboValues[colourIndex]].color);
             }
