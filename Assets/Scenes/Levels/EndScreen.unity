@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5e3168591514c41bd0a15370b1b9cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 400
+  speed: 200
   initialWait: 3
 --- !u!114 &278484566
 MonoBehaviour:
@@ -282,8 +282,6 @@ MonoBehaviour:
 
 
 
-
-
     GAME DESIGNERS:
 
 
@@ -294,8 +292,6 @@ MonoBehaviour:
 
     CHANTELLE
     PEARCE
-
-
 
 
 
@@ -315,8 +311,6 @@ MonoBehaviour:
 
 
 
-
-
     BOSSFIGHT
     DESIGNERS:
 
@@ -325,8 +319,6 @@ MonoBehaviour:
     CHANTELLE PEARCE
 
     ELLIOT BIRCH
-
-
 
 
 
@@ -357,21 +349,17 @@ MonoBehaviour:
 
 
 
-
-
     ART DESIGN:
 
 
 
-    ELLIOT BIRCH
-    - CHARACTER AND OBJECT DESIGNS
+    ELLIOT BIRCH -
+    CHARACTER AND OBJECT DESIGNS
 
-    S4M_UR4I - 2D METROIDVANIA TILESET 16X16
-    (LEVEL 2 SPRITES)
+    S4M_UR4I - 2D METROIDVANIA TILESET 16X16 (LEVEL
+    2 SPRITES)
 
     ANSIMUZ - MAGIC CLIFFS PACK (LEVEL 1 SPRITES)
-
-
 
 
 
@@ -406,14 +394,13 @@ MonoBehaviour:
 
 
 
-
     AND THANK
     YOU FOR PLAYING!
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2caa83d5dfaff3b42b9fd49dcf89242d, type: 2}
-  m_sharedMaterial: {fileID: -5090442402603522692, guid: 2caa83d5dfaff3b42b9fd49dcf89242d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3bb2d151b2cc9044a8037ffe5f97dd28, type: 2}
+  m_sharedMaterial: {fileID: -2808040037596244110, guid: 3bb2d151b2cc9044a8037ffe5f97dd28, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -437,8 +424,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 56
+  m_fontSizeBase: 56
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -519,7 +506,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 278484564}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
