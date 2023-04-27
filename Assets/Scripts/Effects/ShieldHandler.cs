@@ -21,8 +21,6 @@ namespace Effects
 
         [SerializeField] float _flashTime;
 
-        private int colourIndex = 0;
-
         private Coroutine _damageFlashCoroutine;
 
         private Material _damageFlashMaterial;

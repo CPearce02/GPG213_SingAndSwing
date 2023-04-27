@@ -245,7 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 200
   initialWait: 3
-  creditsTime: 60
+  creditsTime: 40
 --- !u!114 &278484566
 MonoBehaviour:
   m_ObjectHideFlags: 0
