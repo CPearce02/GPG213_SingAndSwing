@@ -6,6 +6,7 @@ using DG.Tweening;
 using Events;
 using UnityEngine.UI;
 using Enums;
+using TMPro;
 
 namespace Core.Bard
 {
@@ -21,8 +22,8 @@ namespace Core.Bard
 
         [Header("State colours")]
         [SerializeField] private Color successColour = new();
-        [SerializeField] private Color baseColour = new();
-        [SerializeField] private Color failColour = new();
+        // [SerializeField] private Color baseColour = new();
+        // [SerializeField] private Color failColour = new();
 
         [Header("Speed")]
 
@@ -120,6 +121,7 @@ namespace Core.Bard
         {
             _comboIndex++;
             _noteToBePressed.color = successColour;
+            _noteToBePressed.GetComponentInChildren<TextMeshProUGUI>().color = successColour;
             _noteToBePressed.GetComponent<ComboNoteManager>()._beenPressed = true;
 
             if (_comboIndex >= _currentCombo.ComboValues.Count)
