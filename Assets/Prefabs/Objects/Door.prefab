@@ -141,6 +141,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Checkpoint
       objectReference: {fileID: 0}
+    - target: {fileID: 1216137490598865454, guid: 31ff6e04ae28cdc44b1feb5ae3084c0e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31ff6e04ae28cdc44b1feb5ae3084c0e, type: 3}
 --- !u!4 &658710515996168147 stripped
@@ -205,6 +209,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1216137490598865453, guid: 31ff6e04ae28cdc44b1feb5ae3084c0e, type: 3}
       propertyPath: checkpointActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216137490598865454, guid: 31ff6e04ae28cdc44b1feb5ae3084c0e, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

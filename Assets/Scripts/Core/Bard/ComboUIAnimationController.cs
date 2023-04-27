@@ -10,7 +10,7 @@ namespace Core.Bard
         [SerializeField] private float animationDuration = 0.2f;
 
         private CanvasGroup _canvasGroup;
-        
+
         private Tween FadeIn => _canvasGroup.DOFade(1, animationDuration);
         private Tween FadeOut => _canvasGroup.DOFade(0, animationDuration);
 
@@ -39,14 +39,8 @@ namespace Core.Bard
 
         void HideUI(bool complete)
         {
-
             FadeOut.Play();
         }
 
-        private void OnDestroy()
-        {
-            FadeIn.Kill();
-            FadeOut.Kill();
-        }
     }
 }

@@ -1,24 +1,45 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using Core.Player;
-using Events;
+using UnityEngine.Events;
+using Structs;
 
 public class TreasureChest : MonoBehaviour
 {
-    [SerializeField] string nextScene = "MainMenu";
+    Animator animator;
+
+    [SerializeField] float delayEventTime = 1;
+    [SerializeField] bool isOpen = false;
+    [SerializeField] UnityEvent onOpenEvent;
+    [SerializeField] ParticleEvent particles;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        collision.transform.TryGetComponent(out PlatformingController player);
+        if (isOpen) return;
 
-        if (player) StartCoroutine(EndGameSequence());
+        Open();
     }
 
-    IEnumerator EndGameSequence()
+    void Open()
     {
-        GameEvents.onPlayerFreezeEvent?.Invoke();
-        yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene(nextScene);
+        animator.CrossFade("Open", 0);
+        isOpen = true;
+        StartCoroutine(DelayEvent());
     }
+
+    IEnumerator DelayEvent()
+    {
+        yield return new WaitForSeconds(delayEventTime);
+        onOpenEvent?.Invoke();
+    }
+
+    void InvokeParticles()
+    {
+        particles.Invoke();
+    }
+
 }
