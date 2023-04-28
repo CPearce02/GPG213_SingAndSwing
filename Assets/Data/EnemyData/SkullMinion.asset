@@ -18,7 +18,7 @@ MonoBehaviour:
   Combo: {fileID: 0}
   moveSpeed: 10
   retreatTime: 0.5
-  triggerRange: 8
+  triggerRange: 20
   attackRange: 5
   damageAmount: 15
   attackCooldown: 0
