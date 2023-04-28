@@ -16,13 +16,13 @@ MonoBehaviour:
   enemyName: Skull Minion
   enemySprite: {fileID: -2022926031, guid: 1d3e163c9e468b54f9e64fb3277ee966, type: 3}
   Combo: {fileID: 0}
-  moveSpeed: 8
+  moveSpeed: 10
   retreatTime: 0.5
-  triggerRange: 8
+  triggerRange: 20
   attackRange: 5
   damageAmount: 15
   attackCooldown: 0
-  healthAmount: 1
+  healthAmount: 15
   decisionTime: 0
   stunTime: 0
   stunCoolDown: 0

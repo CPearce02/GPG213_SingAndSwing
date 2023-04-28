@@ -16,8 +16,8 @@ MonoBehaviour:
   enemyName: Skull 2
   enemySprite: {fileID: -2022926031, guid: 1d3e163c9e468b54f9e64fb3277ee966, type: 3}
   Combo: {fileID: 11400000, guid: 56cde7306c2f8214382c8c037062b6cd, type: 2}
-  moveSpeed: 5
-  retreatTime: 1
+  moveSpeed: 10
+  retreatTime: 0.5
   triggerRange: 8
   attackRange: 3
   damageAmount: 20
