@@ -8,13 +8,13 @@ namespace Enemies.EnemyStates
         private Transform _playerTransform;
         private EnemyStateMachine _enemy;
         float _retreatTime;
-        
+
         public RetreatState(Transform playerTransform, EnemyStateMachine enemy)
         {
             this._playerTransform = playerTransform;
             this._enemy = enemy;
         }
-        
+
         public void Enter(EnemyStateMachine enemy)
         {
             _retreatTime = enemy.enemyData.retreatTime;
@@ -23,7 +23,7 @@ namespace Enemies.EnemyStates
         public void Execute(EnemyStateMachine enemy)
         {
             _retreatTime -= Time.deltaTime;
-            if(_retreatTime > 0)
+            if (_retreatTime > 0)
             {
                 enemy.animator.CrossFade("Move", 0);
                 enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, _playerTransform.position,
@@ -33,7 +33,7 @@ namespace Enemies.EnemyStates
             {
                 _enemy.ChangeState(new ChaseState(_playerTransform));
             }
-            
+
         }
 
         public void Exit()

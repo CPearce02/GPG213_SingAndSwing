@@ -13,10 +13,10 @@ namespace Enemies.EnemyStates
         {
             this._playerTransform = playerTransform;
         }
-        
+
         public void Enter(EnemyStateMachine enemy)
         {
-            
+
         }
 
         public void Execute(EnemyStateMachine enemy)
@@ -26,9 +26,9 @@ namespace Enemies.EnemyStates
 
             _directionOfTravel = _directionOfTravel.normalized;
 
-            enemy.Rb.AddForce(_directionOfTravel * (enemy.enemyData.moveSpeed * 10 * Time.fixedDeltaTime));
+            enemy.Rb.AddForce(_directionOfTravel * (enemy.enemyData.moveSpeed * 10 * Time.deltaTime));
             if (Vector2.Distance(enemy.transform.position, _playerTransform.position) <
-                enemy.enemyData.attackRange - enemy.enemyData.attackRange * .5f) 
+                enemy.enemyData.attackRange - enemy.enemyData.attackRange * .5f)
             {
                 enemy.Rb.velocity = Vector2.zero;
                 enemy.ChangeState(new AttackState());
@@ -37,8 +37,8 @@ namespace Enemies.EnemyStates
 
         public void Exit()
         {
-            
+
         }
-        
+
     }
 }
