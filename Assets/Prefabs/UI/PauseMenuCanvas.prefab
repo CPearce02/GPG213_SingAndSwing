@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2848590519795432471}
   - component: {fileID: 2848590519795432470}
   - component: {fileID: 1926724743}
+  - component: {fileID: 1316860204835130090}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -92,6 +93,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1316860204835130090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2848590519795432472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0faf574539a58e4db4ffaa60542795b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3470861389806983094
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,7 +528,9 @@ PrefabInstance:
       propertyPath: m_CullTransparentMesh
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 392480730, guid: da2f02cdc2a31eb498496d521946aa5c, type: 3}
+    - {fileID: 392480731, guid: da2f02cdc2a31eb498496d521946aa5c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: da2f02cdc2a31eb498496d521946aa5c, type: 3}
 --- !u!224 &3470861389525108228 stripped
 RectTransform:
@@ -805,7 +820,9 @@ PrefabInstance:
       propertyPath: m_CullTransparentMesh
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 392480730, guid: da2f02cdc2a31eb498496d521946aa5c, type: 3}
+    - {fileID: 392480731, guid: da2f02cdc2a31eb498496d521946aa5c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: da2f02cdc2a31eb498496d521946aa5c, type: 3}
 --- !u!224 &3743195823650104805 stripped
 RectTransform:
@@ -1087,7 +1104,9 @@ PrefabInstance:
       propertyPath: m_CullTransparentMesh
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 392480730, guid: da2f02cdc2a31eb498496d521946aa5c, type: 3}
+    - {fileID: 392480731, guid: da2f02cdc2a31eb498496d521946aa5c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: da2f02cdc2a31eb498496d521946aa5c, type: 3}
 --- !u!224 &3743195822016114334 stripped
 RectTransform:

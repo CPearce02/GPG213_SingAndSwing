@@ -74,6 +74,7 @@ namespace Scenes.ScriptableObjects
 
         public IEnumerator TransitionInCoroutine(float initialDelaySeconds = 0f)
         {
+            GameEvents.onSceneTransitionStartEvent?.Invoke();
             yield return new WaitForSeconds(initialDelaySeconds == 0 ? transitionInDelay : initialDelaySeconds);
             while (Progress < 1f)
             {
@@ -82,11 +83,13 @@ namespace Scenes.ScriptableObjects
                 yield return null;
             }
             isTransitioning = false;
+            GameEvents.onSceneTransitionEndEvent?.Invoke();
             nextTransitionState = TransitionState.Out;
         }
 
         public IEnumerator TransitionOutCoroutine(float initialDelaySeconds = 0f)
         {
+            GameEvents.onSceneTransitionStartEvent?.Invoke();
             yield return new WaitForSeconds(initialDelaySeconds == 0 ? transitionInDelay : initialDelaySeconds);
             while (Progress > 0f)
             {
@@ -96,6 +99,7 @@ namespace Scenes.ScriptableObjects
             }
             isTransitioning = false;
             //We need to load the next level
+            GameEvents.onSceneTransitionEndEvent?.Invoke();
             GameEvents.onLevelLoadEvent?.Invoke();
             nextTransitionState = TransitionState.In;
         }

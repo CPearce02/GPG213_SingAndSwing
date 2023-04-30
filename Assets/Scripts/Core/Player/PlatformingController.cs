@@ -52,18 +52,29 @@ namespace Core.Player
             PlayerInput = GetComponent<PlayerInput>();
             JumpSpeed = playerStats.JumpSpeed;
         }
-        
+
         private void OnEnable()
         {
+            GameEvents.onPauseGame += DisablePlayerInputs;
+            GameEvents.onUnPauseGame += EnablePlayerInputs;
+            GameEvents.onSceneTransitionStartEvent += DisablePlayerInputs;
+            GameEvents.onSceneTransitionEndEvent += EnablePlayerInputs;
+
             JumpEvent += Jump;
 
         }
 
+
         private void OnDisable()
         {
+            GameEvents.onPauseGame -= DisablePlayerInputs;
+            GameEvents.onUnPauseGame -= EnablePlayerInputs;
+            GameEvents.onSceneTransitionStartEvent -= DisablePlayerInputs;
+            GameEvents.onSceneTransitionEndEvent -= EnablePlayerInputs;
+
             JumpEvent -= Jump;
         }
-
+        
         private void Update()
         {
             OnMove();
@@ -214,5 +225,9 @@ namespace Core.Player
 
         // We might need to refactor when we have two players
         private void SendPlayer() => GameEvents.onSendPlayerEvent?.Invoke(this);
+        
+        private void DisablePlayerInputs() => PlayerInput.DeactivateInput();
+
+        private void EnablePlayerInputs() => PlayerInput.ActivateInput();
     }
 }

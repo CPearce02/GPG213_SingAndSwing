@@ -33,16 +33,16 @@ namespace UI
         {
             if (uiPrefab.activeInHierarchy)
             {
-                _fadeIn = uiPrefab.GetComponent<CanvasGroup>().DOFade(0, animationDuration);
-                _scale = uiPrefab.transform.DOScale(Vector3.one / scaleFactor, animationDuration);
-                _fadeAndScale = DOTween.Sequence().Append(_fadeIn).Join(_scale);
+                _fadeIn = uiPrefab.GetComponent<CanvasGroup>().DOFade(0, animationDuration).SetUpdate(true);
+                _scale = uiPrefab.transform.DOScale(Vector3.one / scaleFactor, animationDuration).SetUpdate(true);
+                _fadeAndScale = DOTween.Sequence().Append(_fadeIn).Join(_scale).SetUpdate(true);
                 _fadeAndScale.OnComplete(() => { uiPrefab.SetActive(false); });
             }
             else
             {
                 uiPrefab.transform.localScale = Vector3.one / scaleFactor;
-                uiPrefab.GetComponent<CanvasGroup>().DOFade(1, animationDuration);
-                _fadeOut = uiPrefab.transform.DOScale(Vector3.one, animationDuration);
+                uiPrefab.GetComponent<CanvasGroup>().DOFade(1, animationDuration).SetUpdate(true);
+                _fadeOut = uiPrefab.transform.DOScale(Vector3.one, animationDuration).SetUpdate(true);
                 uiPrefab.SetActive(true);
             }
         }

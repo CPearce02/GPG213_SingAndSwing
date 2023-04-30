@@ -5,6 +5,7 @@ using DG.Tweening;
 //using static UnityEditor.Experimental.GraphView.GraphView;
 using Core.Player;
 using Events;
+using Sound;
 
 [RequireComponent(typeof(BeatListener))] [RequireComponent(typeof(Rigidbody2D))]
 public class MovingToBeat : MonoBehaviour

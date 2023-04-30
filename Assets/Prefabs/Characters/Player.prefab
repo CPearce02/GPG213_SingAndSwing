@@ -693,7 +693,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c6a34605020965f43b8518eb278cd9f8, type: 3}
   - {fileID: 8300000, guid: 0fa46f467919b95488ae14093fca5b90, type: 3}
   landingSounds:
-  - {fileID: 8300000, guid: e9f8cf29df78fad4e98f1038b78bc05c, type: 3}
+  - {fileID: 8300000, guid: d4fc10ff2e17bb34685c22b082aeac18, type: 3}
   attackSounds:
   - {fileID: 8300000, guid: 672a3b5944685234c9fb39eb9a00f97c, type: 3}
   - {fileID: 8300000, guid: c8b44504125eb544b8876d18f39846d4, type: 3}
@@ -983,7 +983,7 @@ AudioSource:
   m_GameObject: {fileID: 1964873660}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1154996533918540843, guid: 294a89a4e8475534995a012b831955f6, type: 2}
   m_audioClip: {fileID: 8300000, guid: 32887114c50660847b2cefdba9e49cc6, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5

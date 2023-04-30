@@ -10,6 +10,15 @@ namespace Events
 {
     public static class GameEvents
     {
+        #region User Events
+
+        public delegate void Pause();
+        public delegate void UnPause();
+        public static Pause onPauseGame;
+        public static UnPause onUnPauseGame;
+
+        #endregion
+        
         #region Player Events
         public delegate void PlayerKill();
         public delegate void PlayerTakeDamage(int amount);
@@ -87,7 +96,9 @@ namespace Events
 
         #region Effects
         public delegate void SceneTransitionIn();
+        public delegate void SceneTransitionStart();
         public delegate void SceneTransitionOut();
+        public delegate void SceneTransitionEnd();
         public delegate void ScreenShake(Strength str, float lengthInSeconds = 0.2f);
         public delegate void ParticleEffect(ParticleEvent particleEvent);
         public delegate void LoadLevel();
@@ -95,7 +106,9 @@ namespace Events
 
         public static ScreenShake onScreenShakeEvent;
         public static SceneTransitionOut onSceneTransitionOutEvent;
+        public static SceneTransitionStart onSceneTransitionStartEvent;
         public static SceneTransitionIn onSceneTransitionInEvent;
+        public static SceneTransitionEnd onSceneTransitionEndEvent;
         public static SendCamera onSendCameraEvent;
         public static ParticleEffect onParticleEvent;
         public static LoadLevel onLevelLoadEvent;
