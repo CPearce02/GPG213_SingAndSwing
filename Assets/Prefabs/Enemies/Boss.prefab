@@ -106,7 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b49f7c5e28b517e41b1781f26f6f532b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 6707594122339248265, guid: 816c5e1d5c2e13b47a2289b4396f6907, type: 3}
+  enemyPrefab: {fileID: 0}
+  spawnLimit: 4
 --- !u!1001 &5444886546340941674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -148,15 +149,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2332113700691211889, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
       propertyPath: takeDamageParticle.<Color>k__BackingField.b
-      value: 0.5411765
+      value: 0.2509804
       objectReference: {fileID: 0}
     - target: {fileID: 2332113700691211889, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
       propertyPath: takeDamageParticle.<Color>k__BackingField.g
-      value: 0.2901961
+      value: 0.2392157
       objectReference: {fileID: 0}
     - target: {fileID: 2332113700691211889, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
       propertyPath: takeDamageParticle.<Color>k__BackingField.r
-      value: 0.54901963
+      value: 0.5764706
       objectReference: {fileID: 0}
     - target: {fileID: 2332113700691211902, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
       propertyPath: m_Size.x
@@ -338,6 +339,102 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2332113700691211888, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
   m_PrefabInstance: {fileID: 5444886546340941674}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &6762757981941623591
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7767946816732133658}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 1154996533918540843, guid: 294a89a4e8475534995a012b831955f6, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &833268692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,6 +466,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  comboList:
+  - {fileID: 11400000, guid: 46e520199a450814d8d9c41c090a803e, type: 2}
+  - {fileID: 11400000, guid: a958662b9d2a83a46be640a1acd822fc, type: 2}
+  - {fileID: 11400000, guid: 484f0aa8bbc12d64fa07114fcb797db7, type: 2}
+  - {fileID: 11400000, guid: e1a56958fef55454181c5e17722994f9, type: 2}
+  collisionsToTurnOffOnDeath: []
 --- !u!114 &7767946816732133659 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2332113700691211889, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}

@@ -10,6 +10,7 @@ namespace Enemies
     {
         [Header("Boss Settings")]
         [SerializeField] private Enemy enemy;
+        
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
         [field: SerializeField] public Collider2D MainCollider { get; private set; }
         [field: SerializeField] public Transform ChargeTransform { get; private set; }
@@ -19,8 +20,18 @@ namespace Enemies
         [field: SerializeField] public bool CanBeStunned { get; set; }
         public Transform target;
         public Transform[] positions;
+        
+        [field: Header("Audio")]
+        [field: SerializeField] public AudioSource AudioSource { get; private set; }
+        [field: SerializeField] public AudioClip BossCharge { get; private set; }
+        [field: SerializeField] public AudioClip BossSpawnEnemies { get; private set; }
+        [field: SerializeField] public AudioClip BossDeath { get; private set; }
+        [field: SerializeField] public AudioClip BossStunned { get; private set; }
+        [field: SerializeField] public AudioClip BossProjectileAttack { get; private set; }
+        [field: SerializeField] public AudioClip BossRechargeShield { get; private set; }
 
         public Combo[] comboList;
+        
 
         [SerializeField] Collider2D[] collisionsToTurnOffOnDeath;
 
@@ -28,6 +39,7 @@ namespace Enemies
         {
             if (SpriteRenderer == null) SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
             if (MainCollider == null) MainCollider = GetComponentInChildren<Collider2D>();
+            if(AudioSource == null) AudioSource = GetComponent<AudioSource>();
         }
 
         public override void Start()

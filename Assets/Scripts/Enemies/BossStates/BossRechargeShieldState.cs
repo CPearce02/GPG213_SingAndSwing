@@ -15,7 +15,7 @@ namespace Enemies.BossStates
             _enemyComponent = _enemy.GetComponent<Enemy>();
             if (_enemy == null) return;
             _enemy.animator.CrossFade("Recharge", 0);
-
+            _enemy.AudioSource.PlayOneShot(_enemy.BossRechargeShield);
             //Choose new combo 
             _enemy.enemyData.Combo = _enemy.comboList[Random.Range(0,_enemy.comboList.Length)];
             _enemy.GetComponentInChildren<ShieldHandler>().ChangeColour(0);

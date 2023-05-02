@@ -26,12 +26,10 @@ namespace Enemies.BossStates
         {
             enemy.animator.CrossFade(Ability1Start, 0);
             this._enemy = enemy as BossEnemyStateMachine;
-
-
-
             //Aim towards player 
             _directionToCharge = _enemy.target.position - enemy.transform.position;
             _directionToCharge = _directionToCharge.normalized;
+            _enemy.AudioSource.PlayOneShot(_enemy.BossCharge);
         }
 
         public void Execute(EnemyStateMachine enemy)

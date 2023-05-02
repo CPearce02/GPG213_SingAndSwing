@@ -20,7 +20,7 @@ namespace Enemies.BossStates
                 decideAttackTime = _enemy.enemyData.decisionTime;
 
             //If it has no shield then it chooses between Projectile or Hoard
-            if (_enemy.GetComponent<Enemy>().CanBeDestroyed)
+            if (_enemy != null && _enemy.GetComponent<Enemy>().CanBeDestroyed)
             {
                 _attackType = Random.Range(2, 4);
             }

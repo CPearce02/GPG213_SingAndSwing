@@ -23,6 +23,7 @@ namespace Enemies.BossStates
             _shootingEnemy = _enemy.GetComponentInChildren<ShootingEnemy>();
             _aimDirection = _shootingEnemy.transform;
             _centrePosition = _enemy.positions[0].position;
+            _enemy.AudioSource.PlayOneShot(_enemy.BossProjectileAttack);
         }
 
         public void Execute(EnemyStateMachine enemy)

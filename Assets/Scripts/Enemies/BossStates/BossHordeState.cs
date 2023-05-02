@@ -20,6 +20,7 @@ namespace Enemies.BossStates
             _spawnEnemies = _enemy.GetComponentInChildren<SpawnEnemies>();
             _enemy.animator.CrossFade("Start_Move", 0);
             _spawnEnemies.ClearEnemyList();
+            _enemy.AudioSource.PlayOneShot(_enemy.BossSpawnEnemies);
             // if(_enemy.enemyData.healthAmount == 500)
             // {
             //     _spawnEnemies.SetSpawnAmount(5);

@@ -131,26 +131,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 833268692, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
-      propertyPath: comboList.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 833268692, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
-      propertyPath: comboList.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 46e520199a450814d8d9c41c090a803e, type: 2}
-    - target: {fileID: 833268692, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
-      propertyPath: comboList.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: a958662b9d2a83a46be640a1acd822fc, type: 2}
-    - target: {fileID: 833268692, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
-      propertyPath: comboList.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 484f0aa8bbc12d64fa07114fcb797db7, type: 2}
-    - target: {fileID: 833268692, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
-      propertyPath: comboList.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: e1a56958fef55454181c5e17722994f9, type: 2}
-    - target: {fileID: 833268692, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
       propertyPath: positions.Array.data[0]
       value: 
       objectReference: {fileID: 1261944983}
@@ -162,6 +142,38 @@ PrefabInstance:
       propertyPath: positions.Array.data[2]
       value: 
       objectReference: {fileID: 1903370524}
+    - target: {fileID: 833268692, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: <BossDeath>k__BackingField
+      value: 
+      objectReference: {fileID: 8300000, guid: 58849e88a26455b469901665b444b498, type: 3}
+    - target: {fileID: 833268692, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: <BossCharge>k__BackingField
+      value: 
+      objectReference: {fileID: 8300000, guid: d305fd1d5458eb14ca1a6175dbd0bcd4, type: 3}
+    - target: {fileID: 833268692, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: <AudioSource>k__BackingField
+      value: 
+      objectReference: {fileID: 1897413881}
+    - target: {fileID: 833268692, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: <BossStunned>k__BackingField
+      value: 
+      objectReference: {fileID: 8300000, guid: 00be518371537744199a34e25d3ba479, type: 3}
+    - target: {fileID: 833268692, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: <BossChargeClip>k__BackingField
+      value: 
+      objectReference: {fileID: 8300000, guid: d305fd1d5458eb14ca1a6175dbd0bcd4, type: 3}
+    - target: {fileID: 833268692, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: <BossSpawnEnemies>k__BackingField
+      value: 
+      objectReference: {fileID: 8300000, guid: 62996994d936b744499e030eacd83b31, type: 3}
+    - target: {fileID: 833268692, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: <BossRechargeShield>k__BackingField
+      value: 
+      objectReference: {fileID: 8300000, guid: 929c2d89a8909274c9d328eb0696cd99, type: 3}
+    - target: {fileID: 833268692, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+      propertyPath: <BossProjectileAttack>k__BackingField
+      value: 
+      objectReference: {fileID: 8300000, guid: c405e830147c1a34bb6ead518f72f028, type: 3}
     - target: {fileID: 833268692, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
       propertyPath: collisionsToTurnOffOnDeath.Array.size
       value: 4
@@ -5287,6 +5299,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d778276522fef428737fef44b86d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1897413881 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6762757981941623591, guid: 6d9918f8f68429340930b2f1ac10dff4, type: 3}
+  m_PrefabInstance: {fileID: 77218260}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1903370523
 GameObject:
   m_ObjectHideFlags: 0

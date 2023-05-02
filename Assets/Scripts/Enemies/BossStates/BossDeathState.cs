@@ -18,6 +18,8 @@ namespace Enemies.BossStates
 
             _bossSpriteRenderer = _enemy.SpriteRenderer;
             _bossCollider = _enemy.MainCollider;
+            
+            _enemy.AudioSource.PlayOneShot(_enemy.BossDeath);
 
             GameEvents.onBossFightEndEvent?.Invoke();
         }
