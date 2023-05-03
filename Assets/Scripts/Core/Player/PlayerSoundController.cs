@@ -6,12 +6,12 @@ namespace Core.Player
     [RequireComponent(typeof(AudioSource))]
     public class PlayerSoundController : MonoBehaviour
     {
-        [SerializeReference] AudioClip[] footstepSounds;
-        [SerializeReference] AudioClip[] jumpSounds;
-        [SerializeReference] AudioClip[] landingSounds;
-        [SerializeReference] AudioClip[] attackSounds;
-        [SerializeReference] AudioClip[] deathSounds;
-        [SerializeReference] AudioSource audioSource;
+        [SerializeField] AudioClip[] footstepSounds;
+        [SerializeField] AudioClip[] jumpSounds;
+        [SerializeField] AudioClip[] landingSounds;
+        [SerializeField] AudioClip[] attackSounds;
+        [SerializeField] AudioClip[] deathSounds;
+        [SerializeField] AudioSource audioSource;
 
         private void Awake()
         {
