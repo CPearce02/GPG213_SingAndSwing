@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyAttackBox
       objectReference: {fileID: 0}
+    - target: {fileID: 2097311874851691885, guid: 791f77aa108621b4dae53d979e573f85, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 791f77aa108621b4dae53d979e573f85, type: 3}
 --- !u!61 &3031686542250562275 stripped
@@ -147,7 +151,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4767656718564846575, guid: afe1515f585c6824bb875d7b2f747092, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767656719195334696, guid: afe1515f585c6824bb875d7b2f747092, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4767656719195334698, guid: afe1515f585c6824bb875d7b2f747092, type: 3}
       propertyPath: m_Sprite
