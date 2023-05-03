@@ -10,6 +10,7 @@ namespace Core.Player
         [SerializeReference] AudioClip[] jumpSounds;
         [SerializeReference] AudioClip[] landingSounds;
         [SerializeReference] AudioClip[] attackSounds;
+        [SerializeReference] AudioClip[] deathSounds;
         [SerializeReference] AudioSource audioSource;
 
         private void Awake()
@@ -24,6 +25,8 @@ namespace Core.Player
         void PlayLandingSound() => GetRandomClipFromListAndPlay(landingSounds);
 
         void PlayAttackSound() => GetRandomClipFromListAndPlay(attackSounds);
+        
+        void PlayDeathSound() => GetRandomClipFromListAndPlay(deathSounds);
 
         void GetRandomClipFromListAndPlay(AudioClip[] array)
         {

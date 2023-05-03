@@ -22723,5 +22723,17 @@ PrefabInstance:
       propertyPath: m_ShadowVolumeIntensityEnabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8612233445786958497, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
+      propertyPath: deathSounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612233445786958497, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
+      propertyPath: deathSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6858b6dbb05bb524db621a1ce58626e5, type: 3}
+    - target: {fileID: 8612233445786958497, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
+      propertyPath: deathSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: c720c790c166a7b439fde15f2d712ca6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
