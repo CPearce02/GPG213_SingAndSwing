@@ -697,6 +697,9 @@ MonoBehaviour:
   attackSounds:
   - {fileID: 8300000, guid: 672a3b5944685234c9fb39eb9a00f97c, type: 3}
   - {fileID: 8300000, guid: c8b44504125eb544b8876d18f39846d4, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: 6858b6dbb05bb524db621a1ce58626e5, type: 3}
+  - {fileID: 8300000, guid: c720c790c166a7b439fde15f2d712ca6, type: 3}
   audioSource: {fileID: 1214684918272868574}
 --- !u!82 &1214684918272868574
 AudioSource:
