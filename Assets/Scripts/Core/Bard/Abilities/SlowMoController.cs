@@ -108,6 +108,11 @@ namespace Core.Bard
                 _slowMoVolume.weight = weight;
                 yield return new WaitForFixedUpdate();
             }
+
+            if (weight > 1)
+            {
+                _slowMoVolume.weight = 1;
+            }
         }
 
         IEnumerator NoSlowMoEffect()
@@ -119,6 +124,11 @@ namespace Core.Bard
                 weight -= lerpSpeed;
                 _slowMoVolume.weight = weight;
                 yield return new WaitForFixedUpdate();
+            }
+
+            if (weight < 0)
+            {
+                _slowMoVolume.weight = 0;
             }
         }
 

@@ -7094,6 +7094,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1092601088233099228, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4740390284480006754, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -7175,12 +7179,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ac0a13c7b506aa648a83d5da26859970, type: 2}
     - target: {fileID: 5062850459585776216, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
-      propertyPath: weight
+      propertyPath: m_IsGlobal
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5062850459585776216, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
-      propertyPath: priority
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
@@ -27083,11 +27083,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3983897975658037960, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: m_AmplitudeGain
-      value: 0.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3983897975658037960, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: m_FrequencyGain
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6419258818573561545, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: m_RootOrder
