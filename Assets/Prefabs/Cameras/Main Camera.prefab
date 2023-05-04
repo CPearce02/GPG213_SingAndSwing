@@ -28,8 +28,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4740390284480006757}
-  m_LocalRotation: {x: 0.02397851, y: 0, z: 0, w: 0.9997125}
-  m_LocalPosition: {x: 0, y: -2, z: -10}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.65, y: -2.32, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -57,15 +57,15 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.19921876
     y: 0
-    width: 1
-    height: 1
+    width: 0.3652778
+    height: 0.36527777
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 8.4375
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -243,6 +243,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 338810966663702876, guid: ac3f1dd1feaeeca4fa1186580dbbdeb1, type: 3}
+      propertyPath: weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 338810966663702876, guid: ac3f1dd1feaeeca4fa1186580dbbdeb1, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -253,7 +257,7 @@ PrefabInstance:
     - target: {fileID: 338810966663702876, guid: ac3f1dd1feaeeca4fa1186580dbbdeb1, type: 3}
       propertyPath: sharedProfile
       value: 
-      objectReference: {fileID: 11400000, guid: e7ae1f92971db2449947456f40e509f5, type: 2}
+      objectReference: {fileID: 11400000, guid: ac0a13c7b506aa648a83d5da26859970, type: 2}
     - target: {fileID: 338810966663702877, guid: ac3f1dd1feaeeca4fa1186580dbbdeb1, type: 3}
       propertyPath: m_Name
       value: Post Processing
@@ -335,6 +339,10 @@ PrefabInstance:
     - target: {fileID: 338810966663702876, guid: ac3f1dd1feaeeca4fa1186580dbbdeb1, type: 3}
       propertyPath: weight
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 338810966663702876, guid: ac3f1dd1feaeeca4fa1186580dbbdeb1, type: 3}
+      propertyPath: priority
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 338810966663702876, guid: ac3f1dd1feaeeca4fa1186580dbbdeb1, type: 3}
       propertyPath: m_Enabled

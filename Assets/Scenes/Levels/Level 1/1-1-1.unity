@@ -7152,12 +7152,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5006469096646149891, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
       propertyPath: weight
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5006469096646149891, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
       propertyPath: sharedProfile
       value: 
       objectReference: {fileID: 11400000, guid: ac0a13c7b506aa648a83d5da26859970, type: 2}
+    - target: {fileID: 5062850459585776216, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
+      propertyPath: weight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5062850459585776216, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
+      propertyPath: priority
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
 --- !u!4 &757838330 stripped
