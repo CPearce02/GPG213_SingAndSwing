@@ -16,11 +16,10 @@ namespace Scenes
 
         void Update()
         {
-            if(_creditsStarted)
+            if (_creditsStarted)
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y + speed * Time.deltaTime, transform.position.z);
 
-                if (Input.anyKeyDown == true) QuitCredits();
             }
         }
 
