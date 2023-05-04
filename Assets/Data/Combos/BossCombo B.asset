@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04c57f1140eb98043b31f0f4899cc240, type: 3}
   m_Name: BossCombo B
   m_EditorClassIdentifier: 
-  <ComboValues>k__BackingField: 0300000003000000010000000000000002000000
+  <ComboValues>k__BackingField: 03000000020000000100000000000000
