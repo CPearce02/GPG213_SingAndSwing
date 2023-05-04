@@ -5554,6 +5554,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyMover
       objectReference: {fileID: 0}
+    - target: {fileID: 2332113700691211888, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2332113700691211889, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
       propertyPath: enemyData
       value: 
@@ -5601,6 +5605,14 @@ PrefabInstance:
     - target: {fileID: 2332113700691211903, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2332113701306299831, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3031686542250562273, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b11c1aa3f3f4874984267007c0bbddf, type: 3}
@@ -6986,7 +6998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4740390284480006755, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
       propertyPath: orthographic size
-      value: 8.4375
+      value: 6.75
       objectReference: {fileID: 0}
     - target: {fileID: 4740390284480006755, guid: 7ec6ce3b3d286af40991e28a9b496c73, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
@@ -7901,6 +7913,10 @@ PrefabInstance:
     - target: {fileID: 1361066466802119506, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: m_FrequencyGain
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6009364978798124480, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6009364978798124481, guid: d17271574ed4cd943b48a65f61e7d611, type: 3}
       propertyPath: m_LocalRotation.w
