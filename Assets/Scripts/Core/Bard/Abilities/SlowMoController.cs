@@ -18,10 +18,11 @@ namespace Core.Bard
         [SerializeField] private int _maxTimer;
         [SerializeField] [ReadOnly] private int _currentTimeRemaining;
 
-        [SerializeField] VolumeProfile volumeProfile;
-        VolumeProfile _oldVolumeProfile;
+        Volume _slowMoVolume;
 
         private bool _slowMoStarted;
+
+        [SerializeField] float lerpSpeed = 0.1f;
 
         public int Timer
         {
@@ -47,9 +48,8 @@ namespace Core.Bard
             _startFixedDeltaTime = Time.fixedDeltaTime;
             //Set Mana
             Timer = _maxTimer;
-            //Set Bard Input
 
-            InitializeOldVolume();
+            _slowMoVolume = GetComponent<Volume>();
         }
 
         private void OnEnable()
@@ -68,60 +68,6 @@ namespace Core.Bard
             // _bardInput.actions["SlowDownButton"].canceled -= ResetTimer;
         }
 
-        void InitializeOldVolume()
-        {
-            volumeProfile.TryGet(out Vignette vignette);
-            volumeProfile.TryGet(out ChromaticAberration chrome);
-
-            _oldVolumeProfile = ScriptableObject.CreateInstance<VolumeProfile>();
-            _oldVolumeProfile.Add<Vignette>();
-            _oldVolumeProfile.Add<ChromaticAberration>();
-
-            _oldVolumeProfile.TryGet(out Vignette oldVignette);
-            _oldVolumeProfile.TryGet(out ChromaticAberration oldChrome);
-
-            oldVignette.color.Override((Color)vignette.color);
-            oldVignette.intensity.Override((float)vignette.intensity);
-            oldChrome.intensity.Override((float)chrome.intensity);
-        }
-
-        void SlowMoEffect()
-        {
-            volumeProfile.TryGet(out Vignette vignette);
-            volumeProfile.TryGet(out ChromaticAberration chrome);
-
-            if (vignette)
-            {
-                vignette.color.Override(Color.blue);
-                vignette.intensity.Override(0.5f);
-            }
-
-            if (chrome)
-            {
-                chrome.intensity.Override(0.5f);
-            }
-        }
-
-        void NoSlowMoEffect()
-        {
-            volumeProfile.TryGet(out Vignette vignette);
-            volumeProfile.TryGet(out ChromaticAberration chrome);
-
-            _oldVolumeProfile.TryGet(out Vignette oldVignette);
-            _oldVolumeProfile.TryGet(out ChromaticAberration oldChrome);
-
-            if (vignette)
-            {
-                vignette.color.Override((Color)oldVignette.color);
-                vignette.intensity.Override((float)oldVignette.intensity);
-            }
-
-            if (chrome)
-            {
-                chrome.intensity.Override((float)oldChrome.intensity);
-            }
-        }
-
         private void SlowDownTime()
         {
             if(!_slowMoStarted)
@@ -130,8 +76,9 @@ namespace Core.Bard
                 Time.fixedDeltaTime = _startFixedDeltaTime * slowMotionTimeScale;
                 StartCoroutine("DecreaseTime");
 
-                //visually change screen - increase chrome 
-                SlowMoEffect();
+                //visually change screen - increase chrome
+                StopCoroutine(NoSlowMoEffect());
+                StartCoroutine(SlowMoEffect());
                 _slowMoStarted = true;
             }
             else
@@ -139,7 +86,6 @@ namespace Core.Bard
                 ResetTimer();
                 _slowMoStarted = false;
             }
-            
         }
 
         private void SetOriginalTime()
@@ -147,8 +93,33 @@ namespace Core.Bard
             Time.timeScale = _startTimeScale;
             Time.fixedDeltaTime = _startFixedDeltaTime;
 
-            //visually change screen - reset chrome 
-            NoSlowMoEffect();
+            //visually change screen - reset chrome
+            StopCoroutine(SlowMoEffect());
+            StartCoroutine(NoSlowMoEffect());
+        }
+
+        IEnumerator SlowMoEffect()
+        {
+            float weight = 0f;
+
+            while(weight < 1)
+            {
+                weight += lerpSpeed;
+                _slowMoVolume.weight = weight;
+                yield return new WaitForFixedUpdate();
+            }
+        }
+
+        IEnumerator NoSlowMoEffect()
+        {
+            float weight = 1f;
+
+            while (weight > 0)
+            {
+                weight -= lerpSpeed;
+                _slowMoVolume.weight = weight;
+                yield return new WaitForFixedUpdate();
+            }
         }
 
         private void ResetTimer()
