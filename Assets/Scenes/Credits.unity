@@ -383,7 +383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   initialWait: 3
-  creditsTime: 40
+  creditsTime: 45
 --- !u!114 &278484566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,97 +404,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game programmers:
-
-
-    Greg Tashjian
-
-    Elliot Birch
-
-    Chantelle
-    Pearce
-
-
-
-
-
-    Game designers:
-
-
-    Greg Tashjian
-
-    Elliot Birch
-
-    Chantelle
-    Pearce
-
-
-
-
-
-    Level designers:
-
-
-    Greg Tashjian
-
-
-
-
-
-    Music:
-
-
-    Anthony
-    Khatchigian - Dungeon (Level 2 music)
-
-    Kim Lightyear - Voices (Level 1 music)
-
-    Alexander
-    Nakarada - Boss fight (Boss fight)
-
-    Incompetech - Leaving home (Main menu)
-
-    GioeleFazzeri
-    - Night-city drive (Secret area)
-
-
-
-
-
-
-    Art design:
-
-
-    Elliot Birch - Character
-    and object designs
-
-    S4M_UR4I - 2D Metroidvania tileset 16x16 (Level 2 sprites)
-
-    Ansimuz
-    - Magic cliffs pack (Level 1 sprites)
-
-
-
-
-
-    Sound effects:
-
-
-    FlorianReichelt
-    - Fail sound effect
-
-    Aesterial-Arts - Acoustic guitar E-major
-
-    User2696619206390
-    - Male choir
-
-
-
-
-
-    And thank you for playing!
-
-'
+  m_text: "Game Programmers:\n\nGreg Tashjian\nElliot Birch\nChantelle Pearce\n\n\n\n\nGame
+    Designers:\n\nGreg Tashjian\nElliot Birch\nChantelle Pearce\n\n\n\n\nLevel Designers:\n\nGreg
+    Tashjian\n\n\n\n\nMusic:\n\nAnthony Khatchigian - Dungeon (Level 2 music)\nKim
+    Lightyear - Voices (Level 1 music)\nAlexander Nakarada - Boss fight (Boss fight)\nIncompetech
+    - Leaving home (Main menu & Credits)\nGioeleFazzeri - Night-city drive (Secret
+    area)\n\n\n\n\n\nArt Design:\n\nElliot Birch - Character and object designs\nS4M_UR4I
+    - 2D Metroidvania tileset 16x16 (Level 2 sprites)\nAnsimuz - Magic cliffs pack
+    (Level 1 sprites)\n\n\n\n\nSound Effects:\n\nFlorianReichelt - Fail sound effect\nAesterial-Arts
+    - Acoustic guitar E-major\nUser2696619206390 - Male choir\nUltraaxvii - Sword
+    Contact \nCrashoverride6 - Wind Gust\nNox_Sound - Ambiance_Atmosphere_Cave_Loop\nSclolex
+    - Water Dripping in Cave \n\n\n\n\n\n\n\n\nAnd thank you for playing!\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3bb2d151b2cc9044a8037ffe5f97dd28, type: 2}
   m_sharedMaterial: {fileID: -2808040037596244110, guid: 3bb2d151b2cc9044a8037ffe5f97dd28, type: 2}
