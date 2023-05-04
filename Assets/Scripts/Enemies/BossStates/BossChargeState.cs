@@ -55,7 +55,7 @@ namespace Enemies.BossStates
                     if (hasHit)
                         return;
 
-                    Debug.Log("Hitplayer");
+                    // Debug.Log("Hitplayer");
                     _enemy.Rb.velocity = Vector2.zero;
                     hasHit = true;
                     player.TakeDamage(_enemy.enemyData.chargeDamage);
@@ -65,7 +65,7 @@ namespace Enemies.BossStates
                 //hit the environment
                 else if (hit != null && hit.TryGetComponent(out TilemapCollider2D environment))
                 {
-                    Debug.Log("Hit wall");
+                    // Debug.Log("Hit wall");
 
                     //stunned
                     if (!_enemy.CanBeStunned) return;

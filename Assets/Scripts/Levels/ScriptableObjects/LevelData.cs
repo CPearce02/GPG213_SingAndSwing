@@ -49,11 +49,11 @@ namespace Levels.ScriptableObjects
             {
                 CurrentSection = section;
             }
-            else 
+            else
             {
                 CurrentSection = FindCurrentSection();
             }
-            
+
             SetNextSection();
         }
 
@@ -62,12 +62,12 @@ namespace Levels.ScriptableObjects
             if (IsLastSection())
             {
                 NextSection = null;
-                Debug.Log("No more sections");
+                // Debug.Log("No more sections");
                 return;
             }
             NextSection = LevelSections[LevelSections.IndexOf(CurrentSection) + 1];
         }
-        
+
         public bool IsLastSection() => currentSection == LevelSections[^1];
 
         SectionData FindCurrentSection() => LevelSections.Find(l => l.Scene == SceneManager.GetActiveScene().name);

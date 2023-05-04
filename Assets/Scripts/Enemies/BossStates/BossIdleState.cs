@@ -21,9 +21,9 @@ namespace Enemies.BossStates
 
             //If player is within range 
             var hit = Physics2D.OverlapCircle(enemy.transform.position, enemy.enemyData.triggerRange, enemy.PlayerLayer);
-            if (hit == null && !hasWokenUp) 
+            if (hit == null && !hasWokenUp)
                 _enemy.animator.CrossFade("Idle", 0);
-            
+
             if (hit != null && hit.TryGetComponent(out PlatformingController player) && !hasWokenUp)
             {
                 hasWokenUp = true;
@@ -54,10 +54,10 @@ namespace Enemies.BossStates
         void Wake()
         {
             _enemy.animator.SetTrigger(Wake1);
-            Debug.Log("Wake");
+            // Debug.Log("Wake");
             if (_enemy.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle_3"))
             {
-                Debug.Log("Idle 3");
+                // Debug.Log("Idle 3");
                 if (_enemy.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                     _enemy.ChangeState(new BossAimState());
             }

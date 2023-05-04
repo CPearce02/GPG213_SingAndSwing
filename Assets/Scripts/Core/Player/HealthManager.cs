@@ -12,10 +12,10 @@ namespace Core.Player
 {
     public class HealthManager : MonoBehaviour, IAttackable
     {
-        [SerializeField] [ReadOnly] private int health;
+        [SerializeField][ReadOnly] private int health;
         [SerializeField] private CharacterData playerStats;
         [SerializeField] Transform respawnPosition;
-        
+
         [Header("Effects")]
         [SerializeField] ParticleEvent deathParticles;
         [SerializeField] ParticleEvent damageParticles;
@@ -23,40 +23,40 @@ namespace Core.Player
 
         [SerializeField] VolumeProfile volumeProfile;
         VolumeProfile _oldVolumeProfile;
-        
+
         PlatformingController _controller;
         Rigidbody2D _rb;
-        
+
         [SerializeField][ReadOnly] int maxHealth;
         bool _dead = false;
 
         public bool Dead { get => _dead; private set => _dead = value; }
-        
+
         public int Health
         {
             get => health;
             private set
             {
                 health = Mathf.Clamp(value, 0, maxHealth);
-                var normalisedHealth = Health / (float) maxHealth; 
+                var normalisedHealth = Health / (float)maxHealth;
                 GameEvents.onPlayerHealthUIChangeEvent?.Invoke(normalisedHealth);
                 if (health == 0)
                 {
                     GameEvents.onPlayerDiedEvent?.Invoke();
-                    Debug.Log("Player died event");
+                    // Debug.Log("Player died event");
                 }
             }
         }
-        
+
         public Transform RespawnPosition { get => respawnPosition; set => respawnPosition = value; }
-        
+
         private void OnEnable()
         {
             GameEvents.onPlayerHealedEvent += IncreaseHealth;
             GameEvents.onPlayerKillEvent += KillPlayer;
             GameEvents.onPlayerRespawnEvent += Respawn;
         }
-        
+
         private void OnDisable()
         {
             GameEvents.onPlayerHealedEvent -= IncreaseHealth;
@@ -114,23 +114,23 @@ namespace Core.Player
         private void ReduceHealth(int amount)
         {
             if (Health == 0) return;
-            
+
             Health -= amount;
             takeDamageCameraShake.Invoke();
             damageParticles.Invoke();
             GameEvents.onMultiplierDecreaseEvent?.Invoke();
         }
-        
+
         private void IncreaseHealth(int amount) => Health += amount;
 
         private void KillPlayer() => Health = 0;
-        
+
         // Made this private because it can be called via an event :) 
         private void Respawn(float delaySeconds, Transform t)
         {
-            if(t == null) 
+            if (t == null)
                 t = respawnPosition;
-                
+
             if (delaySeconds == 0)
             {
                 transform.position = t.position;
@@ -166,8 +166,8 @@ namespace Core.Player
 
             if (vignette)
             {
-                vignette.color.Override((Color) oldVignette.color);
-                vignette.intensity.Override((float) oldVignette.intensity);
+                vignette.color.Override((Color)oldVignette.color);
+                vignette.intensity.Override((float)oldVignette.intensity);
             }
         }
 
@@ -175,7 +175,7 @@ namespace Core.Player
         public void TakeDamage(int amount)
         {
             if (_dead) return;
-            Debug.Log($"{amount} in damage was taken by the player");
+            // Debug.Log($"{amount} in damage was taken by the player");
             ReduceHealth(amount);
             GetComponent<AudioSource>().Play();
             StartCoroutine(DamageEffect());
@@ -209,6 +209,6 @@ namespace Core.Player
         {
             deathParticles.Invoke();
         }
-        
+
     }
 }

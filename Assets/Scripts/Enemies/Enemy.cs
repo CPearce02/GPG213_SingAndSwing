@@ -58,7 +58,7 @@ namespace Enemies
                     else
                     {
                         Destroy(gameObject);
-                        Debug.Log("Enemy died");
+                        // Debug.Log("Enemy died");
                     }
                 }
             }
@@ -107,7 +107,7 @@ namespace Enemies
             GameEvents.onScreenShakeEvent?.Invoke(Strength.Low, .2f);
             GameEvents.onMultiplierIncreaseEvent?.Invoke();
             takeDamageParticle.Invoke();
-            
+
             GetComponentInChildren<ShieldHandler>().CallDamageFlash();
         }
 

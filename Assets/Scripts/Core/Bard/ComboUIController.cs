@@ -32,7 +32,7 @@ namespace Core.Bard
 
         private Image _noteToBePressed;
         private ComboValues _expectedNote;
-        
+
 
         // Start is called before the first frame update
         void Start()
@@ -44,7 +44,7 @@ namespace Core.Bard
         {
             GameEvents.onNewCombo += SetCombo;
             GameEvents.onButtonPressed += CheckValueAndPosition;
-            GameEvents.onComboFinish +=  CheckComboComplete;
+            GameEvents.onComboFinish += CheckComboComplete;
         }
 
         private void OnDisable()
@@ -54,12 +54,12 @@ namespace Core.Bard
             GameEvents.onComboFinish -= CheckComboComplete;
         }
         private void DebugHitBox()
-        {   
+        {
             if (_noteToBePressed == null) return;
             //Check Position
             if (Vector2.Distance(_noteToBePressed.gameObject.GetComponent<RectTransform>().position, _hitBox.position) < 55)
             {
-                Debug.Log("CAN HIT");
+                // Debug.Log("CAN HIT");
                 _noteToBePressed.color = Color.green;
             }
             else
@@ -67,20 +67,20 @@ namespace Core.Bard
                 _noteToBePressed.color = Color.red;
             }
         }
-        
+
         private void SetCombo(Combo combo)
         {
             _currentCombo = combo;
             ResetCombo();
             SpawnNote();
         }
-        
+
         private void SpawnNote()
         {
-            if(_currentCombo == null) return;
+            if (_currentCombo == null) return;
             Image note = Instantiate(ComboDictionary.instance.comboPrefabDictionary[_currentCombo.ComboValues[_comboIndex]], _spawnPoint.position, Quaternion.identity);
             note.transform.SetParent(Notes.transform);
-            note.transform.localScale = new Vector3 (1,1,1);
+            note.transform.localScale = new Vector3(1, 1, 1);
             spawnedNotes.Add(note);
             _noteToBePressed = note;
             _noteToBePressed.GetComponent<ComboNoteManager>().SetMoveDuration(_increasedSpeed);
@@ -89,14 +89,14 @@ namespace Core.Bard
 
         private void CheckValueAndPosition(ComboValues value)
         {
-            if(_currentCombo == null) return;
+            if (_currentCombo == null) return;
 
             //Correct Value
-            if(value == _expectedNote)
+            if (value == _expectedNote)
             {
                 //Check Position - Is it within hitbox?
                 // if(Vector2.Distance(_noteToBePressed.gameObject.GetComponent<RectTransform>().position,_hitBox.position) < 55)
-                if(RectTransformUtility.RectangleContainsScreenPoint(_hitBox,_noteToBePressed.gameObject.GetComponent<RectTransform>().position))
+                if (RectTransformUtility.RectangleContainsScreenPoint(_hitBox, _noteToBePressed.gameObject.GetComponent<RectTransform>().position))
                 {
                     //Correct 
                     GameEvents.onCorrectButtonPressed?.Invoke();
@@ -141,7 +141,7 @@ namespace Core.Bard
         {
             foreach (Image _note in spawnedNotes)
             {
-                if(_note != null)
+                if (_note != null)
                 {
                     Destroy(_note.gameObject);
                 }
@@ -161,7 +161,7 @@ namespace Core.Bard
             // }
             // else
             // {
-                
+
             // }
             ResetCombo();
         }
@@ -175,6 +175,6 @@ namespace Core.Bard
             //Reset Speed;
             _increasedSpeed = _originalSpeed;
         }
-        
+
     }
 }
