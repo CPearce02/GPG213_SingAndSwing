@@ -331,7 +331,7 @@ MonoBehaviour:
   roofCheckTransform: {fileID: 1152786757}
   ignoreLayers:
     serializedVersion: 2
-    m_Bits: 68
+    m_Bits: 708
   groundCheckSize: {x: 0.43, y: 0.05}
   finalJumpForce:
     JumpForce: 0
